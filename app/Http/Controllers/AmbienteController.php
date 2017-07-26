@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Ambiente;
+use App\Instructor;
+
 
 class AmbienteController extends Controller
 {
@@ -13,7 +16,8 @@ class AmbienteController extends Controller
      */
     public function index()
     {
-        //
+        $ambientes=Ambiente::all();
+        return view('ambiente.index')->with('ambientes', $ambientes);
     }
 
     /**
@@ -23,7 +27,8 @@ class AmbienteController extends Controller
      */
     public function create()
     {
-        //
+        $instructores=Instructor::all();
+        return view('ambiente.create')->with('instructores', $instructores);
     }
 
     /**
@@ -34,7 +39,16 @@ class AmbienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $am= new Ambiente();
+        $am->nombre_ambiente=$request->get('nombre_ambiente');
+        $am->tipo_ambiente=$request->get('tipo_ambiente');
+        $am->movilidad=$request->get('movilidad');
+        $am->estado=$request->get('estado');
+        $am->cupo=$request->get('cupo');
+        $am->id_instructor=$request->get('id_instructor');
+        if ($am->save()){
+            return redirect('ambiente')->with('status', 'el ambiente fue adicionado con exito');
+        }
     }
 
     /**
@@ -45,7 +59,7 @@ class AmbienteController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('ambiente.show')->with('ambiente', Ambiente::find($id));
     }
 
     /**
@@ -56,7 +70,9 @@ class AmbienteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $am=Ambiente::find($id);
+        $instructores=Instructor::all();
+        return view('ambiente.edit', compact('am','instructores'));
     }
 
     /**
@@ -68,7 +84,15 @@ class AmbienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $am= Ambiente::find($id);
+        $am->nombre_ambiente=$request->get('nombre_ambiente');
+        $am->tipo_ambiente=$request->get('tipo_ambiente');
+        $am->movilidad=$request->get('movilidad');
+        $am->estado=$request->get('estado');
+        $am->cupo=$request->get('cupo');
+        if ($am->save()) {
+            return redirect('ambiente')->with('status', 'El ambiente fue modificado con exito');
+        }
     }
 
     /**
@@ -79,6 +103,12 @@ class AmbienteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Ambiente::destroy($id);
+        return redirect('ambiente')->with('status', 'El ambiente fue eliminado con exito');
     }
+    // public function listambientes(){
+    //     $am=Ambiente::all();
+    //     return view('home')->with('am', $am);
+
+    // }
 }

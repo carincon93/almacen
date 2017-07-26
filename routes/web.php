@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+// Route::get('/', 'ambienteController@listambientes');
+Route::resource('ambiente','ambienteController');
+Route::post('search', 'ambienteController@search');
 
 Auth::routes();
 

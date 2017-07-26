@@ -18,7 +18,7 @@ class CreateAmbientesTable extends Migration
             $table->string('nombre_ambiente');
             $table->string('tipo_ambiente');
             $table->string('movilidad');
-            $table->boolean('estado');
+            $table->string('estado');
             $table->integer('cupo');
             $table->integer('id_instructor')->unsigned();
             $table->foreign('id_instructor')->references('id')->on('instructores');
