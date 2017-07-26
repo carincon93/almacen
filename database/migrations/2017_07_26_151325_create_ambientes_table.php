@@ -15,11 +15,11 @@ class CreateAmbientesTable extends Migration
     {
         Schema::create('ambientes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre_ambiente',50);
-            $table->string('tipo_ambiente',50);
-            $table->string('movilidad',50);
+            $table->string('nombre_ambiente');
+            $table->string('tipo_ambiente');
+            $table->string('movilidad');
             $table->boolean('estado');
-            $table->integer('cupo',25);
+            $table->integer('cupo');
             $table->integer('id_instructor')->unsigned();
             $table->foreign('id_instructor')->references('id')->on('instructores');
             $table->timestamps();

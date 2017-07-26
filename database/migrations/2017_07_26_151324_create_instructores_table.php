@@ -15,11 +15,11 @@ class CreateInstructoresTable extends Migration
     {
         Schema::create('instructores', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre',50);
-            $table->string('apellidos',50);
-            $table->bigInteger('documento',13);
-            $table->string('area',50);
-            $table->integer('ip',50);
+            $table->string('nombre');
+            $table->string('apellidos');
+            $table->bigInteger('documento');
+            $table->string('area');
+            $table->integer('ip');
             $table->bigInteger('celular');
             $table->string('correo')->unique();
             $table->timestamps();
