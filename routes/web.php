@@ -15,8 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 // Route::get('/', 'ambienteController@listambientes');
-Route::resource('ambiente','ambienteController');
-Route::post('search', 'ambienteController@search');
+Route::resource('ambiente','AmbienteController');
+// Route::post('search', 'AmbienteController@search');
+
+Route::resource('instructor','InstructorController');
+// Route::post('search', 'InstructorController@search');
 
 Auth::routes();
 

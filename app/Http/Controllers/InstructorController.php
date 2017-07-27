@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\Instructor;
+use App\Instructor;
 
 class InstructorController extends Controller
 {
@@ -14,8 +14,8 @@ class InstructorController extends Controller
      */
     public function index()
     {
-        // $instructores=Instructor::all();
-        // return view('instructores.index')->with('instructores', $instructores);
+        $instructores=Instructor::all();
+        return view('instructor.index')->with('instructores', $instructores);
     }
 
     /**
@@ -25,8 +25,7 @@ class InstructorController extends Controller
      */
     public function create()
     {
-        // $categories=Category::all();
-        // return view('articles.create')->with('categories', $categories);
+        return view('instructor.create');
     }
 
     /**
@@ -37,20 +36,17 @@ class InstructorController extends Controller
      */
     public function store(Request $request)
     {
-       // $art= new Article();
-       //  $art->name=$request->get('name');
-       //  if ($request->hasFile('image')) {
-       //      $file = time().'.'.$request->image->extension();
-       //      $request->image->move(public_path('imgs'),$file);
-
-       //  }
-       //  $art->image='imgs/'.$file;
-       //  $art->content=$request->get('content');
-       //  $art->category_id=$request->get('category_id');
-
-       //  if ($art->save()){
-       //      return redirect('article')->with('status', 'Los Articulos <strong>'.$art->name.','.$art->image.' y '.$art->content.'</strong> fueron adicionados con exito');
-       //  };
+        $in= new Instructor();
+        $in->nombre=$request->get('nombre');
+        $in->apellidos=$request->get('apellidos');
+        $in->documento=$request->get('documento');
+        $in->area=$request->get('area');
+        $in->ip=$request->get('ip');
+        $in->celular=$request->get('celular');
+        $in->correo=$request->get('correo');
+        if ($in->save()){
+            return redirect('instructor')->with('status', 'el instructor fue adicionado con exito');
+        }
     }
 
     /**
@@ -61,7 +57,7 @@ class InstructorController extends Controller
      */
     public function show($id)
     {
-        //return view('articles.show')->with('article', Article::find($id));
+        return view('instructor.show')->with('instructor', Instructor::find($id));
     }
 
     /**
@@ -72,9 +68,8 @@ class InstructorController extends Controller
      */
     public function edit($id)
     {
-        //$art=Article::find($id);
-        // $categories=Category::all();
-        // return view('articles.edit', compact('art','categories'));
+        $in=Instructor::find($id);
+        return view('instructor.edit')->with('in',$in);
     }
 
     /**
@@ -86,19 +81,17 @@ class InstructorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $art= Article::find($id);
-        // $art->name=$request->get('name');
-        // if ($request->hasFile('image')) {
-        //     $file = time().'.'.$request->image->extension();
-        //     $request->image->move(public_path('imgs'),$file);
-
-        //     $art->image='imgs/'.$file;
-        // }
-        // $art->content=$request->get('content');
-        // $art->category_id=$request->get('category_id');
-        // if ($art->save()){
-        //     return redirect('article')->with('status', 'Los Articulos fueron modificados con exito');
-        // };
+        $in= new Instructor();
+        $in->nombre=$request->get('nombre');
+        $in->apellidos=$request->get('apellidos');
+        $in->documento=$request->get('documento');
+        $in->area=$request->get('area');
+        $in->ip=$request->get('ip');
+        $in->celular=$request->get('celular');
+        $in->correo=$request->get('correo');
+        if ($in->save()){
+            return redirect('instructor')->with('status', 'el instructor fue modificado con exito');
+        }
     }
 
     /**
@@ -109,8 +102,8 @@ class InstructorController extends Controller
      */
     public function destroy($id)
     {
-        // Article::destroy($id);
-        // return redirect('article')->with('status', 'El Articulo fue eliminado con exito');
+        Instructor::destroy($id);
+        return redirect('instructor')->with('status', 'El instructor fue eliminado con exito');
     }
     public function listarticles(){
         // $arts=Article::all();
@@ -118,8 +111,8 @@ class InstructorController extends Controller
 
     }
     public function search(Request $request){
-        // $query=Article::name($request->get('name'))->orderBy('id','ASC')->get();
-        // return view('articles.ajax')->with('articles',$query);
+        // $query=Instructor::name($request->get('nombre'))->orderBy('id','ASC')->get();
+        // return view('instructor.ajax')->with('instructores',$query);
         
     }
 }

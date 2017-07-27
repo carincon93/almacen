@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-07-2017 a las 19:02:11
+-- Tiempo de generación: 27-07-2017 a las 03:25:05
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.8
 
@@ -31,20 +31,27 @@ CREATE TABLE `ambientes` (
   `nombre_ambiente` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tipo_ambiente` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `movilidad` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `estado` tinyint(1) NOT NULL,
+  `estado` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cupo` int(11) NOT NULL,
   `id_instructor` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `ambientes`
+--
+
+INSERT INTO `ambientes` (`id`, `nombre_ambiente`, `tipo_ambiente`, `movilidad`, `estado`, `cupo`, `id_instructor`, `created_at`, `updated_at`) VALUES
+(1, 'fghjk', 'yjh', 'dfgh', 'dfg', 12, 1, '2017-07-27 02:58:06', '2017-07-27 03:40:01');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `instructores`
+-- Estructura de tabla para la tabla `instructors`
 --
 
-CREATE TABLE `instructores` (
+CREATE TABLE `instructors` (
   `id` int(10) UNSIGNED NOT NULL,
   `nombre` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `apellidos` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -58,10 +65,10 @@ CREATE TABLE `instructores` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `instructores`
+-- Volcado de datos para la tabla `instructors`
 --
 
-INSERT INTO `instructores` (`id`, `nombre`, `apellidos`, `documento`, `area`, `ip`, `celular`, `correo`, `created_at`, `updated_at`) VALUES
+INSERT INTO `instructors` (`id`, `nombre`, `apellidos`, `documento`, `area`, `ip`, `celular`, `correo`, `created_at`, `updated_at`) VALUES
 (1, 'ALEXANDER ', 'GARCIA VASQUEZ', 7684828, 'Instructor  G-19 Mantenimiento', 62500, 3148515827, 'agarciavasquez@misena.edu.co', '2017-07-26 05:00:00', '0000-00-00 00:00:00'),
 (2, 'APARICIO', 'MEJIA RENDON', 75091846, 'Instructor G-16 Construccion', 0, 3014160504, 'apariciomejia@misena.edu.co', '2017-07-26 05:00:00', '0000-00-00 00:00:00'),
 (3, 'CONSUELO', 'GARCIA ESCOBAR ', 24318223, 'Instructor  G-20 Emprendimiento', 0, 3113076751, 'cgarciae@misena.edu.co', '2017-07-26 05:00:00', '0000-00-00 00:00:00'),
@@ -140,6 +147,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'jaime', 'jaime.palomino97@hotmail.com', '$2y$10$1y4Mb5GWNCknOhA./vOgG.mckLsjdHAbr8tS36vrJSQ2yERx0tqxy', NULL, '2017-07-27 03:05:26', '2017-07-27 03:05:26');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -151,9 +165,9 @@ ALTER TABLE `ambientes`
   ADD KEY `ambientes_id_instructor_foreign` (`id_instructor`);
 
 --
--- Indices de la tabla `instructores`
+-- Indices de la tabla `instructors`
 --
-ALTER TABLE `instructores`
+ALTER TABLE `instructors`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `instructores_correo_unique` (`correo`);
 
@@ -184,12 +198,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `ambientes`
 --
 ALTER TABLE `ambientes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `instructores`
+-- AUTO_INCREMENT de la tabla `instructors`
 --
-ALTER TABLE `instructores`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+ALTER TABLE `instructors`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT de la tabla `migrations`
 --
@@ -199,7 +213,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Restricciones para tablas volcadas
 --
@@ -208,7 +222,7 @@ ALTER TABLE `users`
 -- Filtros para la tabla `ambientes`
 --
 ALTER TABLE `ambientes`
-  ADD CONSTRAINT `ambientes_id_instructor_foreign` FOREIGN KEY (`id_instructor`) REFERENCES `instructores` (`id`);
+  ADD CONSTRAINT `ambientes_id_instructor_foreign` FOREIGN KEY (`id_instructor`) REFERENCES `instructors` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

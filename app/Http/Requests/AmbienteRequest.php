@@ -31,7 +31,6 @@ class AmbienteRequest extends FormRequest
                'cupo'=>'required',
                'id_instructor'=>'required'
             ];
-        }
     }
     public function messages()
     {
