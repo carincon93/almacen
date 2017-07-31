@@ -18,7 +18,7 @@
                         <ul>
                           @foreach($dataClassroom as $clas)
                             <li>
-                                <a href="{{ url('classroom_loan/'.$clas->id) }}" class="classroom">{{ $clas->nombre_ambiente}}</a>
+                                <a href="{{ url('classroom_loan/'.$clas->id) }}" class="classroom"><h3>{{ $clas->nombre_ambiente}}</h3></a>
                             </li>
                           @endforeach
                         </ul>
