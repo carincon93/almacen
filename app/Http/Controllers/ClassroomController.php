@@ -18,7 +18,8 @@ class ClassroomController extends Controller
     public function index()
     {
         $classrooms=Classroom::all();
-        return view('classrooms.index')->with('classrooms', $classrooms);
+        return view('classrooms.index')
+            ->with('classrooms', $classrooms);
     }
 
     /**
@@ -28,8 +29,9 @@ class ClassroomController extends Controller
      */
     public function create()
     {
-        $instructores=Instructor::all();
-        return view('classrooms.create')->with('instructores', $instructores);
+        $instructores = Instructor::all();
+        return view('classrooms.create')
+            ->with('instructores', $instructores);
     }
 
     /**
