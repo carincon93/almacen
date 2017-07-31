@@ -3,7 +3,7 @@
     <div class="container">
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-          Launch demo modal
+          Prestar ambientes
         </button>
 
         <!-- Modal -->
@@ -16,7 +16,7 @@
                     </div>
                     <div class="modal-body">
                         @foreach($dataClassroom as $clas)
-                        <a href="{{ url('classroom/'.$clas->id) }}">{{ $clas->nombre_ambiente}}</a>
+                        <a href="{{ url('classroom/'.$clas->id) }}" class="classroom"><h3>{{ $clas->nombre_ambiente}}</h3></a>
                         @endforeach
                     </div>
                     <div class="modal-footer">
