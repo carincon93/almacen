@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-07-2017 a las 04:21:14
--- Versión del servidor: 10.1.24-MariaDB
--- Versión de PHP: 7.1.6
+-- Tiempo de generación: 31-07-2017 a las 16:00:14
+-- Versión del servidor: 10.1.22-MariaDB
+-- Versión de PHP: 7.1.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -47,7 +47,32 @@ CREATE TABLE `classrooms` (
 --
 
 INSERT INTO `classrooms` (`id`, `nombre_ambiente`, `tipo_ambiente`, `movilidad`, `estado`, `cupo`, `disponibilidad`, `borrowed_at`, `instructor_id`, `created_at`, `updated_at`) VALUES
-(1, 'sistemas 1', '', '', '', 0, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06');
+(1, 'SISTEMAS 1', 'AULA', 'Fijo', '', 60, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(2, 'SISTEMAS 2', 'AULA', 'Fijo', '', 40, 'disponible', '2017-07-31 08:52:06', NULL, NULL, '2017-07-31 13:52:36'),
+(3, 'AMBIENTE LEGO', 'AULA', 'Fijo', '', 50, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(4, 'AUDITORIO PROCESOS INDUSTRIALES Y CONSTRUCCION', 'AUDITORIO', 'Fijo', '', 200, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(5, 'AUTOCAD', 'LABORATORIO', 'Fijo', '', 50, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(6, 'AUTOMOTRIZ', 'TALLER', 'Fijo', '', 90, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(7, 'CONFECCION', 'TALLER', 'Fijo', '', 60, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(8, 'DIESEL', 'TALLER', 'Fijo', '', 100, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(9, 'ELECTRICIDAD1', 'TALLER', 'Fijo', '', 60, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(10, 'ELECTRICIDAD 2', 'TALLER', 'Fijo', '', 70, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(11, 'ELECTRICIDAD 3', 'AULA', 'Fijo', '', 50, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(12, 'ELECTRICIDAD 4', 'TALLER', 'Fijo', '', 30, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(13, 'ESPACIO DEPORTIVO PARA LA PRÁCTICA DEL FÚTBOL BALONCESTO VOLEIBOL', 'CAMPO DEPORTIVO', 'Fijo', '', 300, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(14, 'ESPACIO PARA TRABAJO EN ALTURAS', 'TALLER', 'Fijo', '', 350, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(15, 'GAS', 'TALLER', 'Fijo', '', 50, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(16, 'GIMNASIO REGIONAL CALDAS', 'AULA', 'Fijo', '', 1000, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(17, 'MADERAS', 'TALLER', 'Fijo', '', 35, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(18, 'MANTENIMIENTO', 'TALLER', 'Fijo', '', 105, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(19, 'MECANIZADO', 'TALLER', 'Fijo', '', 80, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(20, 'METALOGRAFIA', 'TALLER', 'Fijo', '', 50, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(21, 'MOTOS CPI', 'TALLER', 'Fijo', '', 60, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(22, 'REFRIGERACION', 'TALLER', 'Fijo', '', 60, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(23, 'SISTEMAS 3', 'AULA', 'Fijo', '', 50, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(24, 'SALUD OCUPACIONAL', 'AULA', 'Fijo', '', 70, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(25, 'SOLDADURA', 'TALLER', 'Fijo', '', 75, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06'),
+(26, 'TECNOPARQUE PROCESOS INDUSTRIALES', 'TALLER', 'Fijo', '', 50, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06');
 
 -- --------------------------------------------------------
 
@@ -64,6 +89,14 @@ CREATE TABLE `historial_classroom_loans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `historial_classroom_loans`
+--
+
+INSERT INTO `historial_classroom_loans` (`id`, `instructor_id`, `classroom_id`, `borrowed_at`, `delivered_at`, `created_at`, `updated_at`) VALUES
+(1, 2, 2, '2017-07-31 08:10:02', NULL, '2017-07-31 13:10:09', '2017-07-31 13:10:09'),
+(2, 2, 2, '2017-07-31 08:52:06', '2017-07-31 08:52:25', '2017-07-31 13:52:19', '2017-07-31 13:52:35');
 
 -- --------------------------------------------------------
 
@@ -317,12 +350,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `classrooms`
 --
 ALTER TABLE `classrooms`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT de la tabla `historial_classroom_loans`
 --
 ALTER TABLE `historial_classroom_loans`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `instructors`
 --
