@@ -16,7 +16,11 @@
                     </div>
                     <div class="modal-body">
                         @foreach($dataClassroom as $clas)
-                        <a href="{{ url('classroom/'.$clas->id) }}">{{ $clas->nombre_ambiente}}</a>
+                        <ul>
+                            <li>
+                                <a href="{{ url('classroom/'.$clas->id) }}">{{ $clas->nombre_ambiente}}</a>  
+                            </li>
+                        </ul>
                         @endforeach
                     </div>
                     <div class="modal-footer">
