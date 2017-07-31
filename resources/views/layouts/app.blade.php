@@ -51,6 +51,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
+<<<<<<< HEAD
                             <ul class="dropdown-menu" role="menu">
                                 <li>
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class=""></i>Cerrar sesion</a>
@@ -65,6 +66,31 @@
                         @endif
                     </ul>
                 </div>
+=======
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                    Cerrar sesion
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @else
+                    
+                        <li><a href="{{ url('/login') }}"><i class="glyphicon glyphicon-user"></i> Iniciar sesion</a></li>
+                    
+                
+                @endif
+                </ul>
+>>>>>>> 648ae83a85f8334508a156c6d66d9c4e3f1fbfdd
             </div>
         </nav>
 
