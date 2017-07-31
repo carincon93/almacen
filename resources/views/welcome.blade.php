@@ -15,9 +15,13 @@
                         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                     </div>
                     <div class="modal-body">
-                        @foreach($dataClassroom as $clas)
-                        <a href="{{ url('classroom/'.$clas->id) }}">{{ $clas->nombre_ambiente}}</a>
-                        @endforeach
+                        <ul>
+                          @foreach($dataClassroom as $clas)
+                            <li>
+                                <a href="{{ url('classroom/'.$clas->id) }}" class="classroom">{{ $clas->nombre_ambiente}}</a>
+                            </li>
+                          @endforeach
+                        </ul>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
