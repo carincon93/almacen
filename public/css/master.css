@@ -3,6 +3,11 @@ a:hover,
 a:active {
 	color: inherit;
 }
+@media (min-width: 768px) {
+	.navbar {
+		border-radius: 0px;
+	}
+}
 .modal-body {
 	color: #fff;
 }
