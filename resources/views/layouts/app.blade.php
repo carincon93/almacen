@@ -13,64 +13,67 @@
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/master.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+        <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              @if (Auth::guest())
+                <a href="{{ url('/') }}" class="navbar-brand">ALMACEN</a>
+              @else
+                <a href="{{ url('home') }}" class="navbar-brand">ALMACEN</a>
+              @endif
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
+            </div>
+            <div class="collapse navbar-collapse">
+                @if (Auth::check())
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="{{ url('instructor') }}">Instructores</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('classroom') }}">Ambientes</a>
+                        </li>
                     </ul>
+                @endif
+                <ul class="nav navbar-nav navbar-right">
+                @if (Auth::check())
+                    <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                    Cerrar sesion
                                 </a>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                             </li>
-                        @endif
-                    </ul>
-                </div>
+                        </ul>
+                    </li>
+                @else
+                    <li><a href="{{ url('/login') }}"><i class="fa fa-fw fa-sign-in"></i> Iniciar sesion</a></li>
+                @endif
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
 
         @yield('content')
     </div>
@@ -90,12 +93,10 @@
             $('#documento').keyup(function(event) {
                 $documento = $(this).val();
                 $token = $('input[type=hidden]').val();
-
                 $.post('/ajaxsearch', {_token: $token, documento: $documento}, function(data) {
                     $('.table-data').html(data);
                 })
             });
-
             $('.save_entrie').click(function(event) {
                 $token = $('form').find('input[name=_token]').val();
                 $instructor_id = $('form').find('select[name=instructor_id]').val();
@@ -105,7 +106,6 @@
                     /*optional stuff to do after success */
                 });
             });
-
             $('.modify_entrie').click(function(event) {
                 $token = $('form').find('input[name=_token]').val();
                 $borrowed_at = $('form').find('.borrowed').val();
@@ -115,7 +115,46 @@
                     /*optional stuff to do after success */
                 });
             });
-
+            //eliminar instructor
+            $('form').on('click','.btn-delete-instructor', function(event){
+                event.preventDefault();
+                if (confirm('Realmente desea eliminar este instructor?')) {
+                    $(this).parent().submit();
+                }
+            });
+            $(window).keydown(function(event) {
+                if (event.keyCode==13) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+            $('#name').keyup(function(event) {
+                $name=$(this).val();
+                $token=$('input[type=hidden]').val();
+                $.post('/search', {_token: $token, name: $name}, function(data) {
+                    $('.tbody').html(data);
+                });
+            });
+            //elimar ambiente
+            $('form').on('click','.btn-delete-classroom', function(event){
+                event.preventDefault();
+                if (confirm('Realmente desea eliminar este ambiente?')) {
+                    $(this).parent().submit();
+                }
+            });
+            $(window).keydown(function(event) {
+                if (event.keyCode==13) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+            $('#name').keyup(function(event) {
+                $name=$(this).val();
+                $token=$('input[type=hidden]').val();
+                $.post('/search', {_token: $token, name: $name}, function(data) {
+                    $('.tbody').html(data);
+                });
+            });
         });
     </script>
 </body>

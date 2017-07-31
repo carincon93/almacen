@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-07-2017 a las 04:21:14
+-- Tiempo de generación: 31-07-2017 a las 18:51:58
 -- Versión del servidor: 10.1.24-MariaDB
 -- Versión de PHP: 7.1.6
 
@@ -47,7 +47,32 @@ CREATE TABLE `classrooms` (
 --
 
 INSERT INTO `classrooms` (`id`, `nombre_ambiente`, `tipo_ambiente`, `movilidad`, `estado`, `cupo`, `disponibilidad`, `borrowed_at`, `instructor_id`, `created_at`, `updated_at`) VALUES
-(1, 'sistemas 1', '', '', '', 0, 'disponible', '2017-07-30 21:19:50', NULL, NULL, '2017-07-31 02:20:06');
+(1, 'sistemas 1', 'aula', 'fijo', '', 60, 'no disponible', '2017-07-31 11:51:15', 10, NULL, '2017-07-31 16:51:23'),
+(2, 'sistemas 2', 'aula', 'fijo', '', 40, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(3, 'ambiente lego', 'aula', 'fijo', '', 50, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(4, 'auditorio procesos industriales y construccion', 'auditorio', 'fijo', '', 200, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(5, 'autocad', 'laboratorio', 'fijo', '', 50, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(6, 'automotriz', 'taller', 'fijo', '', 90, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(7, 'confeccion', 'taller', 'fijo', '', 60, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(8, 'diesel', 'taller', 'fijo', '', 100, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(9, 'electricidad1', 'taller', 'fijo', '', 60, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(10, 'electricidad 2', 'taller', 'fijo', '', 70, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(11, 'electricidad 3', 'aula', 'fijo', '', 50, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(12, 'electricidad 4', 'taller', 'fijo', '', 30, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(13, 'espacio deportivo para la practica del futbol baloncesto voleibol', 'campo deportivo', 'fijo', '', 300, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(14, 'espacio para trabajo en alturas', 'taller', 'fijo', '', 350, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(15, 'gas', 'taller', 'fijo', '', 50, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(16, 'gimnasio regional caldas', 'aula', 'fijo', '', 1000, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(17, 'maderas', 'taller', 'fijo', '', 35, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(18, 'mantenimiento', 'taller', 'fijo', '', 105, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(19, 'mecanizado', 'taller', 'fijo', '', 80, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(20, 'metalografia', 'taller', 'fijo', '', 50, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(21, 'motos cpi', 'taller', 'fijo', '', 60, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(22, 'refrigeracion', 'taller', 'fijo', '', 60, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(23, 'sistemas 3', 'aula', 'fijo', '', 50, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(24, 'salud ocupacional', 'aula', 'fijo', '', 70, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(25, 'soldadura', 'taller', 'fijo', '', 75, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(26, 'tecnoparque procesos industriales', 'taller', 'fijo', '', 50, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -64,6 +89,17 @@ CREATE TABLE `historial_classroom_loans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `historial_classroom_loans`
+--
+
+INSERT INTO `historial_classroom_loans` (`id`, `instructor_id`, `classroom_id`, `borrowed_at`, `delivered_at`, `created_at`, `updated_at`) VALUES
+(1, 2, 2, '2017-07-31 08:10:02', NULL, '2017-07-31 13:10:09', '2017-07-31 13:10:09'),
+(2, 2, 2, '2017-07-31 08:52:06', '2017-07-31 08:52:25', '2017-07-31 13:52:19', '2017-07-31 13:52:35'),
+(3, 9, 1, '2017-07-31 11:28:48', NULL, '2017-07-31 16:29:01', '2017-07-31 16:29:01'),
+(4, 4, 1, '2017-07-31 11:29:18', '2017-07-31 11:29:26', '2017-07-31 16:29:22', '2017-07-31 16:29:34'),
+(5, 10, 1, '2017-07-31 11:51:15', NULL, '2017-07-31 16:51:23', '2017-07-31 16:51:23');
 
 -- --------------------------------------------------------
 
@@ -317,12 +353,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `classrooms`
 --
 ALTER TABLE `classrooms`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT de la tabla `historial_classroom_loans`
 --
 ALTER TABLE `historial_classroom_loans`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `instructors`
 --

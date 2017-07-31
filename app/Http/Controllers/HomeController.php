@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Classroom;
+use App\Instructor;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // return view('home');
+        $ins= Instructor::all();
+        $clr= Classroom::all();
+        return view('home')
+            ->with('cins',count($ins))
+            ->with('clrs',count($clr));
     }
 }

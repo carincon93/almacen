@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Instructor extends Model
 {
     protected $fillable = [
-        'nombre', 'instructor_type_id',
+        'nombre','apellidos','numero_documento','area','ip','telefono','celular','email','instructor_type_id',
     ];
 
     public function instructor_type() {

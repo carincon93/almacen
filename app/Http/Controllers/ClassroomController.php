@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Classroom;
 use App\Instructor;
 use App\Historial_classroom_loan;
+use App\Http\Requests\ClassroomRequest;
 
 class ClassroomController extends Controller
 {
@@ -16,7 +17,8 @@ class ClassroomController extends Controller
      */
     public function index()
     {
-        //
+        $classrooms=Classroom::all();
+        return view('classrooms.index')->with('classrooms', $classrooms);
     }
 
     /**
@@ -26,7 +28,8 @@ class ClassroomController extends Controller
      */
     public function create()
     {
-        return 'create';
+        $instructores=Instructor::all();
+        return view('classrooms.create')->with('instructores', $instructores);
     }
 
     /**
@@ -35,9 +38,17 @@ class ClassroomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClassroomRequest $request)
     {
-        //
+        $clr= new Classroom();
+        $clr->nombre_ambiente=$request->get('nombre_ambiente');
+        $clr->tipo_ambiente=$request->get('tipo_ambiente');
+        $clr->movilidad=$request->get('movilidad');
+        $clr->estado=$request->get('estado');
+        $clr->cupo=$request->get('cupo');
+        if ($clr->save()){
+            return redirect('classroom')->with('status', 'el ambiente fue adicionado con exito');
+        }
     }
 
     /**
@@ -48,7 +59,7 @@ class ClassroomController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('classrooms.show')->with('classroom', classroom::find($id));
     }
 
     /**
@@ -59,9 +70,9 @@ class ClassroomController extends Controller
      */
     public function edit($id)
     {
-        $dataInstructor = Instructor::all();
-        $dataClassroom = Classroom::find($id);
-        return view('classrooms.edit')->with('dataClassroom',  $dataClassroom)->with('dataInstructor', $dataInstructor);
+        $am=Ambiente::find($id);
+        $instructores=Instructor::all();
+        return view('classroom.edit', compact('am','instructores'));
     }
 
     /**
@@ -73,6 +84,15 @@ class ClassroomController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $am= Ambiente::find($id);
+        $am->nombre_ambiente=$request->get('nombre_ambiente');
+        $am->tipo_ambiente=$request->get('tipo_ambiente');
+        $am->movilidad=$request->get('movilidad');
+        $am->estado=$request->get('estado');
+        $am->cupo=$request->get('cupo');
+        if ($am->save()) {
+            return redirect('ambiente')->with('status', 'El ambiente fue modificado con exito');
+        }
     }
 
     /**
@@ -83,7 +103,8 @@ class ClassroomController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Ambiente::destroy($id);
+        return redirect('ambiente')->with('status', 'El ambiente fue eliminado con exito');
     }
 
     public function classrooml($id)

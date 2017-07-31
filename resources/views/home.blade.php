@@ -8,10 +8,21 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    <ul class="list-group">
+
+                        <li class="list-group-item">
+                            <span class="badge">{{ $cins }}</span>
+                            <a href="{{ url('instructor') }}">Instructores</a>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">{{ $clrs }}</span>
+                            <a href="{{ url('classroom') }}">ambientes</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
