@@ -13,7 +13,7 @@
                 <h3 class="text-capitalize">{{ $dataClassroom->instructor->nombre.' '.$dataClassroom->instructor->apellidos }}</h3>
                 @endif
                 <hr>
-                <form action="{{ url('classroom/'.$dataClassroom->id.'/loan') }}" method="POST">
+                <form action="{{ url('classroom_loan/'.$dataClassroom->id.'/loan') }}" method="POST">
                     {!! csrf_field() !!}
                     <input type="hidden" name="id" value="{{ $dataClassroom->id }}" id="id">
                     <!-- Ambiente disponible -->
