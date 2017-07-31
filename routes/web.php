@@ -26,3 +26,5 @@ Route::post('modify_loan/{borrowed_at}', 'ClassroomController@modify_loan');
 
 // Classroom CRUD
 Route::resource('classroom', 'ClassroomController');
+
+Route::resource('instructor','InstructorController');
