@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Classroom;
-use App\Instructor;
-use App\Historial_classroom_loan;
 use App\Http\Requests\ClassroomRequest;
+use App\Instructor;
+use App\Classroom;
+use App\Historial_classroom_loan;
 
 class ClassroomController extends Controller
 {
@@ -70,8 +70,8 @@ class ClassroomController extends Controller
      */
     public function edit($id)
     {
-        $clr=Classroom::find($id);
-        return view('classrooms.editar')->with('clr',$clr);
+        $clr = Classroom::find($id);
+        return view('classrooms.edit')->with('clr', $clr);
     }
 
     /**

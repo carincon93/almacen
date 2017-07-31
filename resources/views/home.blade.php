@@ -16,7 +16,7 @@
                         </li>
                         <li class="list-group-item">
                             <span class="badge">{{ $clrs }}</span>
-                            <a href="{{ url('classroom') }}">ambientes</a>
+                            <a href="{{ url('classroom') }}">Ambientes</a>
                         </li>
                     </ul>
                 </div>
@@ -25,4 +25,3 @@
     </div>
 </div>
 @endsection
-

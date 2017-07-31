@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\InstructorRequest;
 use App\Instructor;
 use App\Instructor_type;
-use App\Http\Requests\InstructorRequest;
 
 class InstructorController extends Controller
 {
@@ -16,10 +16,10 @@ class InstructorController extends Controller
      */
     public function index()
     {
-        
-        $instructors=Instructor::all();
 
-        return view('instructors.index')->with('instructors', $instructors);
+        $instructors = Instructor::all();
+        return view('instructors.index')
+            ->with('instructors', $instructors);
     }
 
     /**
@@ -29,8 +29,9 @@ class InstructorController extends Controller
      */
     public function create()
     {
-        $instructor_type=Instructor_type::all();
-        return view('instructors.create')->with('instructor_type', $instructor_type);
+        $instructor_type = Instructor_type::all();
+        return view('instructors.create')
+            ->with('instructor_type', $instructor_type);
     }
 
     /**
@@ -42,17 +43,18 @@ class InstructorController extends Controller
     public function store(InstructorRequest $request)
     {
         $in= new Instructor();
-        $in->nombre=$request->get('nombre');
-        $in->apellidos=$request->get('apellidos');
-        $in->numero_documento=$request->get('numero_documento');
-        $in->area=$request->get('area');
-        $in->ip=$request->get('ip');
-        $in->telefono=$request->get('telefono');
-        $in->celular=$request->get('celular');
-        $in->email=$request->get('email');
-        $in->instructor_type_id=$request->get('instructor_type_id');
+        $in->nombre               = $request->get('nombre');
+        $in->apellidos            = $request->get('apellidos');
+        $in->numero_documento     = $request->get('numero_documento');
+        $in->area                 = $request->get('area');
+        $in->ip                   = $request->get('ip');
+        $in->telefono             = $request->get('telefono');
+        $in->celular              = $request->get('celular');
+        $in->email                = $request->get('email');
+        $in->instructor_type_id   = $request->get('instructor_type_id');
         if ($in->save()){
-            return redirect('instructor')->with('status', 'el instructor fue adicionado con exito');
+            return redirect('instructor')
+                ->with('status', 'el instructor fue adicionado con exito');
         }
     }
 
@@ -64,8 +66,10 @@ class InstructorController extends Controller
      */
     public function show($id)
     {
-        $instructor_type=Instructor_type::all();
-        return view('instructors.show')->with('instructor', Instructor::find($id))->with('instructor_type', $instructor_type);
+        $instructor_type = Instructor_type::all();
+        return view('instructors.show')
+            ->with('instructor', Instructor::find($id))
+            ->with('instructor_type', $instructor_type);
     }
 
     /**
@@ -76,10 +80,12 @@ class InstructorController extends Controller
      */
     public function edit($id)
     {
-        
-        $in=Instructor::find($id);
-        $instructor_type=Instructor_type::all();
-        return view('instructors.edit')->with('in',$in)->with('instructor_type',$instructor_type);
+
+        $in              = Instructor::find($id);
+        $instructor_type = Instructor_type::all();
+        return view('instructors.edit')
+            ->with('in',$in)
+            ->with('instructor_type',$instructor_type);
     }
 
     /**
@@ -91,17 +97,19 @@ class InstructorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $in= new Instructor();
-        $in->nombre=$request->get('nombre');
-        $in->apellidos=$request->get('apellidos');
-        $in->documento=$request->get('documento');
-        $in->area=$request->get('area');
-        $in->ip=$request->get('ip');
-        $in->celular=$request->get('celular');
-        $in->correo=$request->get('correo');
-        $in->instructor_type_id=$request->get('instructor_type_id');
+        $in = new Instructor();
+        $in->nombre                 = $request->get('nombre');
+        $in->apellidos              = $request->get('apellidos');
+        $in->numero_documento       = $request->get('numero_documento');
+        $in->area                   = $request->get('area');
+        $in->ip                     = $request->get('ip');
+        $in->telefono               = $request->get('telefono');
+        $in->celular                = $request->get('celular');
+        $in->email                  = $request->get('email');
+        $in->instructor_type_id     = $request->get('instructor_type_id');
         if ($in->save()){
-            return redirect('instructor')->with('status', 'el instructor fue modificado con exito');
+            return redirect('instructor')
+                ->with('status', 'el instructor fue modificado con exito');
         }
     }
 
@@ -114,7 +122,8 @@ class InstructorController extends Controller
     public function destroy($id)
     {
         Instructor::destroy($id);
-        return redirect('instructor')->with('status', 'El instructor fue eliminado con exito');
+        return redirect('instructor')
+            ->with('status', 'El instructor fue eliminado con exito');
     }
     public function listarticles(){
         // $arts=Article::all();
@@ -124,6 +133,6 @@ class InstructorController extends Controller
     public function search(Request $request){
         // $query=Instructor::name($request->get('nombre'))->orderBy('id','ASC')->get();
         // return view('instructor.ajax')->with('instructores',$query);
-        
+
     }
 }

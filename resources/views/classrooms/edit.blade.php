@@ -1,56 +1,70 @@
 @extends('layouts.app')
-@if(Auth::check())
-@section('title', 'Modificar Ambiente')
-@else
-@section('title', 'Prestar Ambiente')
-@endif
+@section('title','Editar ambiente')
+
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <ul class="breadcrumb">
-                    <li><a href="{{ url('/') }}">Inicio</a></li>
-                    <li class="active">Modificar Ambiente</li>
-                </ul>
-                <h1>{{ $dataClassroom->nombre_ambiente }}</h1>
+                <h1>Editar ambiente</h1>
                 <hr>
-                <form action="{{ url('classroom/loan') }}" method="POST">
-                    {!! csrf_field() !!}
-                    <input type="hidden" name="classroom_id" value="{{ $dataClassroom->id }}">
+                <ul class="breadcrumb">
+                    <li><a href="{{ url('classroom') }}">lista de ambientes</a></li>
+                    <li>editar ambiente</li>
+                </ul>
+
+                @if (count($errors)>0)
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+                    @foreach($errors->all() as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </div>
+                @endif
+                <hr>
+
+
+                <form action="{{ url('classroom/'.$clr->id) }}" method="POST">
                     <div class="form-group">
-                        <select name="instructor_id" id="" class="text-capitalize">
-                            <option value="">Seleccione un instructor</option>
-                            @foreach($dataInstructor as $ins)
-                            <option value="{{ $ins->id }}" >{{ $ins->nombre.' '.$ins->apellidos }}</option>
-                            @endforeach
-                        </select>
+                        {!! csrf_field()  !!}
+                        {{ method_field('put') }}
+                        <div class="form-group">
+                            <input type="text" name="nombre_ambiente" class="form-control" value="{{ $clr->nombre_ambiente }}">
+                        </div>
+                        <div class="form-group">
+                            <select name="tipo_ambiente" class="form-control">
+                                <option value="auditorio" {{ $clr->tipo_ambiente == 'auditorio' ? 'selected="selected"' : '' }}>Auditorio</option>
+                                <option value="aula" {{ $clr->tipo_ambiente == 'aula' ? 'selected="selected"' : '' }}>Aula</option>
+                                <option value="campo deportivo" {{ $clr->tipo_ambiente == 'campo deportivo' ? 'selected="selected"' : '' }}>Campo deportivo</option>
+                                <option value="laboratorio" {{ $clr->tipo_ambiente == 'laboratorio' ? 'selected="selected"' : '' }}>Laboratorio</option>
+                                <option value="taller" {{ $clr->tipo_ambiente == 'taller' ? 'selected="selected"' : ''  }}>Taller</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select name="movilidad" class="form-control">
+                                <option value="fijo" {{ $clr->movilidad == 'fijo' ? 'selected="selected"' : '' }}>Fijo</option>
+                                <option value="movil" {{ $clr->movilidad == 'movil' ? 'selected="selected"' : '' }}>Móvil</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select name="estado" class="form-control">
+                                <option value="activo" {{ $clr->estado == 'activo' ? 'selected="selected"' : '' }}>Activo</option>
+                                <option value="inactivo" {{ $clr->estado == 'inactivo' ? 'selected="selected"' : '' }}>Inactivo</option>
+                                <option value="reparacion" {{ $clr->estado == 'reparacion' ? 'selected="selected"' : '' }}>En reparación</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="cupo" class="form-control" value="{{ $clr->cupo }}">
+                        </div>
                     </div>
-                    <button type="submit">Guardar</button>
-                </form>
-                <form action="{{ url('classroom/'.$dataClassroom->id) }}" method="POST">
-                    {{ method_field('PUT') }}
-                    {!! csrf_field() !!}
-                    @if(Auth::check())
                     <div class="form-group">
-                        <input type="text" name="nombre_ambiente" class="form-control" placeholder="Nombre" value="{{ $dataClassroom->nombre_ambiente }}">
+                        <button class="btn btn-success" type="submit">
+                            <i class="fa fa-fw fa-paper-plane"></i>
+                            Guardar
+                        </button>
                     </div>
-                    @endif
-                    @if($dataClassroom->disponibilidad != 'no disponible')
-                    <div class="checkbox form-group">
-                      <label>
-                          <input type="checkbox" name="disponibilidad" value="no disponible"> ¿Prestar ambiente?
-                      </label>
-                    </div>
-                    @else
-                    <div class="checkbox form-group">
-                      <label>
-                          <input type="checkbox" name="disponibilidad" value="disponible"> ¿Desea cambiar la disponibilidad del ambiente a: Disponible?
-                      </label>
-                    </div>
-                    @endif
-                    <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-send"></i> Modificar</button>
                 </form>
             </div>
         </div>
+
     </div>
 @endsection
