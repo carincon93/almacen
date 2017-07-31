@@ -11,16 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-// Route::get('/', 'ambienteController@listambientes');
-Route::resource('ambiente','AmbienteController');
-// Route::post('search', 'AmbienteController@search');
-
-Route::resource('instructor','InstructorController');
-// Route::post('search', 'InstructorController@search');
-
 Auth::routes();
 
+// Welcome
+Route::get('/', 'WelcomeController@index')->name('welcome');
+Route::post('ajaxsearch', 'WelcomeController@ajaxsearch');
+// Home
 Route::get('/home', 'HomeController@index')->name('home');
+// Classroom Loan
+Route::get('/classroom/{id}', 'ClassroomController@classrooml');
+Route::post('/classroom/{id}/loan', 'ClassroomController@classroom_update');
+Route::post('loan', 'ClassroomController@loan');
+Route::post('modify_loan/{borrowed_at}', 'ClassroomController@modify_loan');
+
+// Classroom CRUD
+Route::resource('classroom', 'ClassroomController');

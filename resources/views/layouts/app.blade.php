@@ -8,9 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Styles -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -44,6 +45,7 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -74,6 +76,47 @@
     </div>
 
     <!-- Scripts -->
+    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#myModal').on('shown.bs.modal', function() {
+                $(this).find('[autofocus]').focus();
+                $('.modal-header').click(function(event) {
+                    $(this).find('[autofocus]').focus();
+                });
+            });
+            $('#documento').keyup(function(event) {
+                $documento = $(this).val();
+                $token = $('input[type=hidden]').val();
+
+                $.post('/ajaxsearch', {_token: $token, documento: $documento}, function(data) {
+                    $('.table-data').html(data);
+                })
+            });
+
+            $('.save_entrie').click(function(event) {
+                $token = $('form').find('input[name=_token]').val();
+                $instructor_id = $('form').find('select[name=instructor_id]').val();
+                $classroom_id = $('form').find('#id').val();
+                $borrowed_at = $('form').find('input[name=borrowed_at]').val();
+                $.post('/loan', {_token: $token, instructor_id: $instructor_id, classroom_id: $classroom_id, borrowed_at: $borrowed_at}, function(data, textStatus, xhr) {
+                    /*optional stuff to do after success */
+                });
+            });
+
+            $('.modify_entrie').click(function(event) {
+                $token = $('form').find('input[name=_token]').val();
+                $borrowed_at = $('form').find('.borrowed').val();
+                $delivered_at = $('form').find('input[name=delivered_at]').val();
+                // alert($delivered_at);
+                $.post('/modify_loan/'+$borrowed_at, {_token: $token, delivered_at: $delivered_at}, function(data, textStatus, xhr) {
+                    /*optional stuff to do after success */
+                });
+            });
+
+        });
+    </script>
 </body>
 </html>

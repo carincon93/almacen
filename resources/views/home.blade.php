@@ -1,4 +1,4 @@
-@extends('layout-app.base')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -8,17 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    <ul class="list-group">
-
-                        <li class="list-group-item">
-                            <span class="badge">{{ $cins }}</span>
-                            <a href="{{ url('instructor') }}">Instructores</a>
-                        </li>
-                        <li class="list-group-item">
-                            <span class="badge">{{ $cams }}</span>
-                            <a href="{{ url('ambiente') }}">Ambientes</a>
-                        </li>
-                    </ul>
+                    You are logged in!
                 </div>
             </div>
         </div>
