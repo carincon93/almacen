@@ -38,6 +38,10 @@
 					<th>cupo</th>
 					<td>{{ $classroom->cupo }}</td>
 				</tr>
+				<tr>
+					<th>disponibilidad</th>
+					<td>{{ $classroom->disponibilidad }}</td>
+				</tr>
 {{-- 				<tr>
 					
 					<th>instructor</th>
