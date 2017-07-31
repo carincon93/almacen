@@ -70,9 +70,8 @@ class ClassroomController extends Controller
      */
     public function edit($id)
     {
-        $am=Ambiente::find($id);
-        $instructores=Instructor::all();
-        return view('classroom.edit', compact('am','instructores'));
+        $clr=Classroom::find($id);
+        return view('classrooms.editar')->with('clr',$clr);
     }
 
     /**
@@ -84,14 +83,16 @@ class ClassroomController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $am= Ambiente::find($id);
-        $am->nombre_ambiente=$request->get('nombre_ambiente');
-        $am->tipo_ambiente=$request->get('tipo_ambiente');
-        $am->movilidad=$request->get('movilidad');
-        $am->estado=$request->get('estado');
-        $am->cupo=$request->get('cupo');
-        if ($am->save()) {
-            return redirect('ambiente')->with('status', 'El ambiente fue modificado con exito');
+        $clr= Classroom::find($id);
+        $clr->nombre_ambiente=$request->get('nombre_ambiente');
+        // $clr->tipo_ambiente=$request->get('tipo_ambiente');
+        $clr->movilidad=$request->get('movilidad');
+        $clr->estado=$request->get('estado');
+        $clr->cupo=$request->get('cupo');
+
+
+        if ($clr->save()) {
+            return redirect('classroom')->with('status', 'El ambiente fue modificado con exito');
         }
     }
 
@@ -103,8 +104,8 @@ class ClassroomController extends Controller
      */
     public function destroy($id)
     {
-        Ambiente::destroy($id);
-        return redirect('ambiente')->with('status', 'El ambiente fue eliminado con exito');
+        Classroom::destroy($id);
+        return redirect('classroom')->with('status', 'El ambiente fue eliminado con exito');
     }
 
     public function classrooml($id)
