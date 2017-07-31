@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ClassroomRequest;
-use App\Instructor;
 use App\Classroom;
 use App\Historial_classroom_loan;
+use App\Instructor;
 
 class ClassroomController extends Controller
 {
@@ -40,12 +40,12 @@ class ClassroomController extends Controller
      */
     public function store(ClassroomRequest $request)
     {
-        $clr= new Classroom();
-        $clr->nombre_ambiente=$request->get('nombre_ambiente');
-        $clr->tipo_ambiente=$request->get('tipo_ambiente');
-        $clr->movilidad=$request->get('movilidad');
-        $clr->estado=$request->get('estado');
-        $clr->cupo=$request->get('cupo');
+        $clr                    = new Classroom();
+        $clr->nombre_ambiente   = $request->get('nombre_ambiente');
+        $clr->tipo_ambiente     = $request->get('tipo_ambiente');
+        $clr->movilidad         = $request->get('movilidad');
+        $clr->estado            = $request->get('estado');
+        $clr->cupo              = $request->get('cupo');
         if ($clr->save()){
             return redirect('classroom')->with('status', 'el ambiente fue adicionado con exito');
         }
@@ -71,7 +71,8 @@ class ClassroomController extends Controller
     public function edit($id)
     {
         $clr = Classroom::find($id);
-        return view('classrooms.edit')->with('clr', $clr);
+        return view('classrooms.edit')
+            ->with('clr', $clr);
     }
 
     /**
@@ -84,11 +85,11 @@ class ClassroomController extends Controller
     public function update(Request $request, $id)
     {
         $clr= Classroom::find($id);
-        $clr->nombre_ambiente=$request->get('nombre_ambiente');
-        // $clr->tipo_ambiente=$request->get('tipo_ambiente');
-        $clr->movilidad=$request->get('movilidad');
-        $clr->estado=$request->get('estado');
-        $clr->cupo=$request->get('cupo');
+        $clr->nombre_ambiente = $request->get('nombre_ambiente');
+        $clr->tipo_ambiente   = $request->get('tipo_ambiente');
+        $clr->movilidad       = $request->get('movilidad');
+        $clr->estado          = $request->get('estado');
+        $clr->cupo            = $request->get('cupo');
 
 
         if ($clr->save()) {
@@ -110,8 +111,8 @@ class ClassroomController extends Controller
 
     public function classrooml($id)
     {
-        $dataInstructor = Instructor::all();
-        $dataClassroom = Classroom::find($id);
+        $dataInstructor    = Instructor::all();
+        $dataClassroom     = Classroom::find($id);
         $dataClassroomLoan = Historial_classroom_loan::all();
 
         return view('classrooms.classroom_loan')
@@ -121,9 +122,9 @@ class ClassroomController extends Controller
     }
     public function classroom_update(Request $request)
     {
-        $dataClassroom = Classroom::find($request->id);
+        $dataClassroom                 = Classroom::find($request->id);
         $dataClassroom->disponibilidad = $request->get('disponibilidad');
-        $dataClassroom->borrowed_at = $request->get('borrowed_at');
+        $dataClassroom->borrowed_at    = $request->get('borrowed_at');
         $dataClassroom->instructor_id  = $request->get('instructor_id');
 
         if($dataClassroom->save()) {
@@ -135,14 +136,14 @@ class ClassroomController extends Controller
     {
         $dataClassroom = new Historial_classroom_loan();
         $dataClassroom->instructor_id  = $request->get('instructor_id');
-        $dataClassroom->classroom_id = $request->get('classroom_id');
-        $dataClassroom->borrowed_at = $request->get('borrowed_at');
+        $dataClassroom->classroom_id   = $request->get('classroom_id');
+        $dataClassroom->borrowed_at    = $request->get('borrowed_at');
         $dataClassroom->save();
     }
 
     public function modify_loan(Request $request, $borrowed_at)
     {
-        $cl = Historial_classroom_loan::where('borrowed_at', '=', $borrowed_at)->first();
+        $cl               = Historial_classroom_loan::where('borrowed_at', '=', $borrowed_at)->first();
         $cl->delivered_at = $request->get('delivered_at');
         $cl->save();
     }
