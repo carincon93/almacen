@@ -42,7 +42,7 @@ class InstructorController extends Controller
      */
     public function store(InstructorRequest $request)
     {
-        $in= new Instructor();
+        $in = new Instructor();
         $in->nombre               = $request->get('nombre');
         $in->apellidos            = $request->get('apellidos');
         $in->numero_documento     = $request->get('numero_documento');
@@ -54,7 +54,7 @@ class InstructorController extends Controller
         $in->instructor_type_id   = $request->get('instructor_type_id');
         if ($in->save()){
             return redirect('instructor')
-                ->with('status', 'el instructor fue adicionado con exito');
+                ->with('status', 'El instructor fue adicionado con éxito');
         }
     }
 
@@ -109,7 +109,7 @@ class InstructorController extends Controller
         $in->instructor_type_id     = $request->get('instructor_type_id');
         if ($in->save()){
             return redirect('instructor')
-                ->with('status', 'el instructor fue modificado con exito');
+                ->with('status', 'El instructor fue modificado con éxito');
         }
     }
 
@@ -123,7 +123,7 @@ class InstructorController extends Controller
     {
         Instructor::destroy($id);
         return redirect('instructor')
-            ->with('status', 'El instructor fue eliminado con exito');
+            ->with('status', 'El instructor fue eliminado con éxito');
     }
     public function listarticles(){
         // $arts=Article::all();

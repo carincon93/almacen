@@ -17,9 +17,15 @@ class ClassroomController extends Controller
      */
     public function index()
     {
-        $classrooms=Classroom::all();
+        $classrooms = Classroom::all();
         return view('classrooms.index')
             ->with('classrooms', $classrooms);
+    }
+
+    public function classrooms()
+    {
+        $dataClassroom = Classroom::all();
+        return view('classrooms')->with('dataClassroom', $dataClassroom);
     }
 
     /**
@@ -49,7 +55,7 @@ class ClassroomController extends Controller
         $clr->estado            = $request->get('estado');
         $clr->cupo              = $request->get('cupo');
         if ($clr->save()){
-            return redirect('classroom')->with('status', 'el ambiente fue adicionado con exito');
+            return redirect('classroom')->with('status', 'El ambiente '.$clr->nombre_ambiente.' fue adicionado con éxito');
         }
     }
 
@@ -95,7 +101,7 @@ class ClassroomController extends Controller
 
 
         if ($clr->save()) {
-            return redirect('classroom')->with('status', 'El ambiente fue modificado con exito');
+            return redirect('classroom')->with('status', 'El ambiente fue modificado con éxito');
         }
     }
 
@@ -108,7 +114,7 @@ class ClassroomController extends Controller
     public function destroy($id)
     {
         Classroom::destroy($id);
-        return redirect('classroom')->with('status', 'El ambiente fue eliminado con exito');
+        return redirect('classroom')->with('status', 'El ambiente fue eliminado con éxito');
     }
 
     public function classrooml($id)
@@ -130,7 +136,7 @@ class ClassroomController extends Controller
         $dataClassroom->instructor_id  = $request->get('instructor_id');
 
         if($dataClassroom->save()) {
-            return redirect('/')->with('status', 'El ambiente '.$dataClassroom->nombre_ambiente.' fue asignado con éxtio!');
+            return redirect('/classrooms')->with('status', 'El ambiente '.$dataClassroom->nombre_ambiente.' fue asignado con éxtio!');
         }
     }
 
@@ -145,7 +151,7 @@ class ClassroomController extends Controller
 
     public function modify_loan(Request $request, $borrowed_at)
     {
-        $cl               = Historial_classroom_loan::where('borrowed_at', '=', $borrowed_at)->first();
+        $cl = Historial_classroom_loan::where('borrowed_at', '=', $borrowed_at)->first();
         $cl->delivered_at = $request->get('delivered_at');
         $cl->save();
     }

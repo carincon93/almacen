@@ -1,22 +1,26 @@
+body,
+html {
+	height: 100%;
+}
 a,
 a:hover,
 a:active {
 	color: inherit;
 }
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
 	.navbar {
 		border-radius: 0px;
 	}
-}
+}*/
 .modal-body {
 	color: #fff;
 }
 .classroom {
 	background: url(../images/DSC01103.jpg) no-repeat left;
-	height: 100%;
-    padding: 2rem 6rem;
+    height: 13rem;
+    padding: 4rem 1rem;
     text-transform: capitalize;
-    width: 100%;
+    margin-bottom: 1rem;
     display: block;
     text-align: right;
     font-size: 2rem;
@@ -35,13 +39,64 @@ a:active {
     height: 100%;
     left: 0;
 }
-.classroom h3 {
+.classroom-content {
+	color: #fff;
 	position: relative;
 	z-index: 2;
 }
+	.classroom .classroom-content h3 {
+		font-weight: 600;
+		margin: 0;
+	}
+.cr-repair:before {
+	background: linear-gradient(141deg, #b80f0f 0%, rgba(219, 31, 31, 0.88) 51%, rgba(232, 44, 44, 0.68) 75%);
+}
+.cr-inactive {
+	filter: grayscale(100%);
+}
+.cr:hover {
+	cursor: not-allowed;
+}
+.cr:active h3 {
+	color: #fff;
+}
+
+#app {
+	padding: 6rem 0;
+	transition: all .5s ease-in-out;
+}
+body.side-left > #app {
+	margin-right: 60rem;
+}
+
+.box {
+	background: #fff;
+	border: 0.2px solid #efefef;
+	display: block;
+	width: 48rem;
+}
+.box:hover {
+	cursor: pointer;
+}
+.box1 header {
+  background : -moz-radial-gradient(50% 50%, circle farthest-corner, rgba(70, 183, 220, 1) 48.76%, rgba(42, 179, 220, 1) 99.5%);
+  background : -webkit-radial-gradient(50% 50%, circle farthest-corner, rgba(70, 183, 220, 1) 48.76%, rgba(42, 179, 220, 1) 99.5%);
+  background : -webkit-gradient(radial,50% 50% ,80.5 , 50% 50%, 165.09 ,color-stop(0.4876,rgba(70, 183, 220, 1) ),color-stop(0.995,rgba(42, 179, 220, 1) ));
+  background : -o-radial-gradient(50% 50%, circle farthest-corner, rgba(70, 183, 220, 1) 48.76%, rgba(42, 179, 220, 1) 99.5%);
+  background : -ms-radial-gradient(50% 50%, circle farthest-corner, rgba(70, 183, 220, 1) 48.76%, rgba(42, 179, 220, 1) 99.5%);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Stlye=2);"
+  background : radial-gradient(50% 50%, circle farthest-corner, rgba(70, 183, 220, 1) 48.76%, rgba(42, 179, 220, 1) 99.5%);
+  opacity : 0.82;
+  filter: alpha(opacity=82) progid:DXImageTransform.Microsoft.Alpha(opacity=82) progid:DXImageTransform.Microsoft.Alpha(Stlye=2);
+  height: 12rem;
+}
+.box-body {
+	padding: 1rem 4rem 1.3rem;
+}
+
 @media (min-width: 768px) {
 	.modal-dialog {
-		width: 800px;
+		width: 1000px;
 	}
 
 }

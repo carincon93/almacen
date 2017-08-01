@@ -19,6 +19,7 @@ Route::post('ajaxsearch', 'WelcomeController@ajaxsearch');
 // Home
 Route::get('/home', 'HomeController@index')->name('home');
 // Classroom Loan
+Route::get('/classrooms', 'ClassroomController@classrooms');
 Route::get('/classroom_loan/{id}', 'ClassroomController@classrooml');
 Route::post('/classroom_loan/{id}/loan', 'ClassroomController@classroom_update');
 Route::post('loan', 'ClassroomController@loan');
