@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-07-2017 a las 18:51:58
+-- Tiempo de generación: 01-08-2017 a las 23:19:03
 -- Versión del servidor: 10.1.24-MariaDB
 -- Versión de PHP: 7.1.6
 
@@ -35,6 +35,7 @@ CREATE TABLE `classrooms` (
   `movilidad` varchar(15) COLLATE utf8_bin NOT NULL,
   `estado` varchar(128) COLLATE utf8_bin NOT NULL,
   `cupo` int(11) NOT NULL,
+  `imagen` varchar(64) COLLATE utf8_bin DEFAULT NULL,
   `disponibilidad` varchar(15) COLLATE utf8_bin DEFAULT NULL,
   `borrowed_at` datetime DEFAULT NULL,
   `instructor_id` int(10) UNSIGNED DEFAULT NULL,
@@ -46,33 +47,34 @@ CREATE TABLE `classrooms` (
 -- Volcado de datos para la tabla `classrooms`
 --
 
-INSERT INTO `classrooms` (`id`, `nombre_ambiente`, `tipo_ambiente`, `movilidad`, `estado`, `cupo`, `disponibilidad`, `borrowed_at`, `instructor_id`, `created_at`, `updated_at`) VALUES
-(1, 'sistemas 1', 'aula', 'fijo', '', 60, 'no disponible', '2017-07-31 11:51:15', 10, NULL, '2017-07-31 16:51:23'),
-(2, 'sistemas 2', 'aula', 'fijo', '', 40, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(3, 'ambiente lego', 'aula', 'fijo', '', 50, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(4, 'auditorio procesos industriales y construccion', 'auditorio', 'fijo', '', 200, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(5, 'autocad', 'laboratorio', 'fijo', '', 50, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(6, 'automotriz', 'taller', 'fijo', '', 90, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(7, 'confeccion', 'taller', 'fijo', '', 60, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(8, 'diesel', 'taller', 'fijo', '', 100, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(9, 'electricidad1', 'taller', 'fijo', '', 60, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(10, 'electricidad 2', 'taller', 'fijo', '', 70, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(11, 'electricidad 3', 'aula', 'fijo', '', 50, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(12, 'electricidad 4', 'taller', 'fijo', '', 30, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(13, 'espacio deportivo para la practica del futbol baloncesto voleibol', 'campo deportivo', 'fijo', '', 300, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(14, 'espacio para trabajo en alturas', 'taller', 'fijo', '', 350, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(15, 'gas', 'taller', 'fijo', '', 50, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(16, 'gimnasio regional caldas', 'aula', 'fijo', '', 1000, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(17, 'maderas', 'taller', 'fijo', '', 35, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(18, 'mantenimiento', 'taller', 'fijo', '', 105, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(19, 'mecanizado', 'taller', 'fijo', '', 80, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(20, 'metalografia', 'taller', 'fijo', '', 50, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(21, 'motos cpi', 'taller', 'fijo', '', 60, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(22, 'refrigeracion', 'taller', 'fijo', '', 60, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(23, 'sistemas 3', 'aula', 'fijo', '', 50, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(24, 'salud ocupacional', 'aula', 'fijo', '', 70, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(25, 'soldadura', 'taller', 'fijo', '', 75, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(26, 'tecnoparque procesos industriales', 'taller', 'fijo', '', 50, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00');
+INSERT INTO `classrooms` (`id`, `nombre_ambiente`, `tipo_ambiente`, `movilidad`, `estado`, `cupo`, `imagen`, `disponibilidad`, `borrowed_at`, `instructor_id`, `created_at`, `updated_at`) VALUES
+(1, 'sistemas 1', 'aula', 'fijo', 'reparacion', 60, 'images/classrooms/1501619214.jpg', 'no disponible', '2017-07-31 11:51:15', 10, NULL, '2017-08-01 20:26:54'),
+(2, 'sistemas 2', 'aula', 'fijo', 'inactivo', 40, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(3, 'ambiente lego', 'aula', 'fijo', '', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(4, 'auditorio procesos industriales y construccion', 'auditorio', 'fijo', '', 200, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(5, 'autocad', 'laboratorio', 'fijo', '', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(6, 'automotriz', 'taller', 'fijo', '', 90, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(7, 'confeccion', 'taller', 'fijo', '', 60, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(8, 'diesel', 'taller', 'fijo', '', 100, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(9, 'electricidad1', 'taller', 'fijo', '', 60, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(10, 'electricidad 2', 'taller', 'fijo', '', 70, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(11, 'electricidad 3', 'aula', 'fijo', '', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(12, 'electricidad 4', 'taller', 'fijo', '', 30, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(13, 'espacio deportivo para la practica del futbol baloncesto voleibol', 'campo deportivo', 'fijo', '', 300, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(14, 'espacio para trabajo en alturas', 'taller', 'fijo', '', 350, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(15, 'gas', 'taller', 'fijo', '', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(16, 'gimnasio regional caldas', 'aula', 'fijo', '', 1000, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(17, 'maderas', 'taller', 'fijo', '', 35, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(18, 'mantenimiento', 'taller', 'fijo', '', 105, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(19, 'mecanizado', 'taller', 'fijo', '', 80, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(20, 'metalografia', 'taller', 'fijo', '', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(21, 'motos cpi', 'taller', 'fijo', '', 60, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(22, 'refrigeracion', 'taller', 'fijo', '', 60, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(23, 'sistemas 3', 'aula', 'fijo', '', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(24, 'salud ocupacional', 'aula', 'fijo', '', 70, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(25, 'soldadura', 'taller', 'fijo', '', 75, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(26, 'tecnoparque procesos industriales', 'taller', 'fijo', '', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(27, 'dadasd', 'aula', 'fijo', 'activo', 12, 'images/classrooms/1501618809.png', NULL, NULL, NULL, '2017-08-01 20:20:09', '2017-08-01 20:20:09');
 
 -- --------------------------------------------------------
 
@@ -294,6 +296,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Camilo', 'camilo@mail.com', '$2y$10$gDRWdhYlLVF0G9ifXxynKuY2nuGaq.Q3FDDqL8WGdaQd5VFjeUSwO', NULL, '2017-08-01 19:32:52', '2017-08-01 19:32:52');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -353,7 +362,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `classrooms`
 --
 ALTER TABLE `classrooms`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT de la tabla `historial_classroom_loans`
 --
@@ -378,7 +387,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Restricciones para tablas volcadas
 --

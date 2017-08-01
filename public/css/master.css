@@ -20,6 +20,7 @@ a:active {
 	overflow: hidden;
 	padding: 2rem;
 	position: relative;
+	text-transform: capitalize;
 }
 .header-classroom h3 {
 	color: #fff;
