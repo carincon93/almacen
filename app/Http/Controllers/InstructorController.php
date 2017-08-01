@@ -95,9 +95,9 @@ class InstructorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(InstructorRequest $request, $id)
     {
-        $in = new Instructor();
+        $in = Instructor::find($id);
         $in->nombre                 = $request->get('nombre');
         $in->apellidos              = $request->get('apellidos');
         $in->numero_documento       = $request->get('numero_documento');

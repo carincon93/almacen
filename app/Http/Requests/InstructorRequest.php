@@ -30,7 +30,7 @@ class InstructorRequest extends FormRequest
                'area'=>'required',
                'ip'=>'required',
                'celular'=>'required',
-               'email'=>'required',
+               'email'=>'required|unique:instructors',
                'instructor_type_id'=>'required'
 
             ];
@@ -45,6 +45,7 @@ class InstructorRequest extends FormRequest
             'ip.required'=>'El campo ip es requerido',
             'celular.required'=>'El campo celular es requerido',
             'email.required'=>'El campo correo es requerido',
+            'email.unique'=>'El campo correo es debe ser unico',
             'instructor_type_id.required'=>'El campo instructor_type es requerido'
         ];
     }
