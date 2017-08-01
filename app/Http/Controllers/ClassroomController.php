@@ -48,12 +48,17 @@ class ClassroomController extends Controller
      */
     public function store(ClassroomRequest $request)
     {
-        $clr                    = new Classroom();
+        if ($request->hasFile('imagen')) {
+            $file = time().'.'.$request->imagen->getClientOriginalExtension();
+            $request->imagen->move(public_path('images/classrooms'), $file);
+        }
+        $clr = new Classroom();
         $clr->nombre_ambiente   = $request->get('nombre_ambiente');
         $clr->tipo_ambiente     = $request->get('tipo_ambiente');
         $clr->movilidad         = $request->get('movilidad');
         $clr->estado            = $request->get('estado');
         $clr->cupo              = $request->get('cupo');
+        $clr->imagen            = 'images/classrooms/'.$file;
         if ($clr->save()){
             return redirect('classroom')->with('status', 'El ambiente '.$clr->nombre_ambiente.' fue adicionado con éxito');
         }
@@ -98,6 +103,12 @@ class ClassroomController extends Controller
         $clr->movilidad       = $request->get('movilidad');
         $clr->estado          = $request->get('estado');
         $clr->cupo            = $request->get('cupo');
+        if ($request->hasFile('imagen')) {
+            // File::delete(public_path($clr->imagen));
+            $file = time().'.'.$request->imagen->getClientOriginalExtension();
+            $request->imagen->move(public_path('images/classrooms/'), $file);
+            $clr->imagen = 'images/classrooms/'.$file;
+        }
 
 
         if ($clr->save()) {

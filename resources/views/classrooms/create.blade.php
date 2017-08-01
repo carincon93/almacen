@@ -25,7 +25,7 @@
 				<hr>
 
 
-				<form action="{{ url('classroom') }}" method="post">
+				<form action="{{ url('classroom') }}" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
 						{!! csrf_field()  !!}
 						<div class="form-group">
@@ -62,7 +62,9 @@
 						</div>
 						<div class="form-group">
 							<input type="text" name="cupo" class="form-control" placeholder="cupo">
-
+						</div>
+						<div class="form-group">
+							<input type="file" name="imagen" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">

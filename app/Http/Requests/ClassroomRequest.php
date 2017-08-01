@@ -23,13 +23,25 @@ class ClassroomRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->method() == 'PUT') {
             return [
-               'nombre_ambiente'=>'required',
-               'tipo_ambiente'=>'required',
-               'movilidad'=>'required',
-               'estado'=>'required',
-               'cupo'=>'required'
+            'nombre_ambiente' => 'required',
+            'tipo_ambiente'=>'required',
+            'movilidad'=>'required',
+            'estado'=>'required',
+            'cupo'=>'required',
+            'imagen'=>'required'
+
             ];
+        } else {
+            return [
+                'nombre_ambiente' => 'required',
+                'tipo_ambiente'=>'required',
+                'movilidad'=>'required',
+                'estado'=>'required',
+                'cupo'=>'required',
+            ];
+        }
     }
     public function messages()
     {
@@ -40,7 +52,9 @@ class ClassroomRequest extends FormRequest
             'tipo_ambiente.min'=>'El campo Nombre no puede tener menos de 5 caracteres',
             'movilidad.required'=>'El campo Movilidad es requerido',
             'estado.required'=>'El campo Estado es requerido',
-            'cupo.required'=>'El campo Cupo es requerido'
+            'cupo.required'=>'El campo Cupo es requerido',
+            'image.required'=>'El campo imagen es requerido'
+
         ];
     }
 }
