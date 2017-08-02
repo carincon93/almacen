@@ -7,6 +7,7 @@ use App\Http\Requests\ClassroomRequest;
 use App\Classroom;
 use App\Historial_classroom_loan;
 use App\Instructor;
+use App\Http\Requests\Classroom_LoanRequest;
 
 class ClassroomController extends Controller
 {

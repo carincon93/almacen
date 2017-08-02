@@ -29,3 +29,9 @@ Route::post('modify_loan/{borrowed_at}', 'ClassroomController@modify_loan');
 Route::resource('classroom', 'ClassroomController');
 
 Route::resource('instructor','InstructorController');
+
+// redireccion error 404
+Route::get('error', function()
+{
+	return Response::view('error.error404', array(), 404);
+});
