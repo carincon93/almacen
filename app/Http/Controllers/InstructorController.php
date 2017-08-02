@@ -17,7 +17,7 @@ class InstructorController extends Controller
     public function index()
     {
 
-        $instructors = Instructor::all();
+        $instructors = Instructor::paginate(5);
         return view('instructors.index')
             ->with('instructors', $instructors);
     }
@@ -124,11 +124,6 @@ class InstructorController extends Controller
         Instructor::destroy($id);
         return redirect('instructor')
             ->with('status', 'El instructor fue eliminado con éxito');
-    }
-    public function listarticles(){
-        // $arts=Article::all();
-        // return view('welcome')->with('arts', $arts);
-
     }
     public function search(Request $request){
         // $query=Instructor::name($request->get('nombre'))->orderBy('id','ASC')->get();

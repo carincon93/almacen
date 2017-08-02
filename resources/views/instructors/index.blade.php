@@ -60,8 +60,11 @@
 									</td>
 								</tr>
 								@endforeach
+
 							</tbody>
+
 						</table>
+						{{ $instructors->links() }}
 					</div>
 
 				</div>
