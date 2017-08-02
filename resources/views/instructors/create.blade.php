@@ -8,8 +8,8 @@
 				<h1>Adicionar instructor</h1>
 				<hr>
 				<ul class="breadcrumb">
-					<li><a href="{{ url('instructor') }}">lista de instructores</a></li>
-					<li>adicionar instructor</li>
+					<li><a href="{{ url('instructor') }}">Lista de instructores</a></li>
+					<li>Adicionar instructor</li>
 				</ul>
 
 				@if (count($errors)>0)
@@ -22,38 +22,36 @@
 
 				@endif
 				<hr>
-
-
 				<form action="{{ url('instructor') }}" method="post">
 					<div class="form-group">
 						{!! csrf_field()  !!}
 						<div class="form-group">
-							<input type="text" name="nombre" class="form-control" placeholder="nombre">
+							<input type="text" name="nombre" class="form-control" placeholder="Nombre">
 						</div>
 						<div class="form-group">
-							<input type="text" name="apellidos" class="form-control" placeholder="apellidos">
+							<input type="text" name="apellidos" class="form-control" placeholder="Apellidos">
 						</div>
 						<div class="form-group">
-							<input type="number" name="numero_documento" class="form-control" placeholder="numero_documento">
+							<input type="number" name="numero_documento" class="form-control" placeholder="Numero de documento">
 						</div>
 						<div class="form-group">
-							<input type="text" name="area" class="form-control" placeholder="area">
+							<input type="text" name="area" class="form-control" placeholder="Area">
 						</div>
 						<div class="form-group">
-							<input type="number" name="ip" class="form-control" placeholder="ip">
+							<input type="number" name="ip" class="form-control" placeholder="Ip">
 						</div>
 						<div class="form-group">
-							<input type="number" name="telefono" class="form-control" placeholder="telefono">
+							<input type="number" name="telefono" class="form-control" placeholder="Telefono">
 						</div>
 						<div class="form-group">
-							<input type="number" name="celular" class="form-control" placeholder="celular">
+							<input type="number" name="celular" class="form-control" placeholder="Celular">
 						</div>
 						<div class="form-group">
-							<input type="email" name="email" class="form-control" placeholder="correo">
+							<input type="email" name="email" class="form-control" placeholder="Correo">
 						</div>
 						<div class="form-group">
 							<select name="instructor_type_id" class="form-control">
-								<option value="">selecciones tipo de contrato</option>
+								<option value="">Seleccione el tipo de contrato...</option>
 								@foreach($instructor_type as $it)
 								<option value="{{ $it->id }}" >{{ $it->tipo_instructor }}</option>
 								@endforeach
