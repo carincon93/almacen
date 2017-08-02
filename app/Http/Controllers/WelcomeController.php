@@ -15,13 +15,7 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
-    }
-
-    public function ajaxsearch(Request $request)
-    {
-        $query = Instructor::documento($request->get('documento'))->limit(1)->get();
-        return view('instructors.ajax')
-            ->with('data', $query);
+        $dataClassroom = Classroom::all();
+        return view('welcome')->with('dataClassroom', $dataClassroom);
     }
 }

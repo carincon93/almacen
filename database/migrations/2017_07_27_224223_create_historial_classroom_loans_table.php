@@ -21,6 +21,7 @@ class CreateHistorialClassroomLoansTable extends Migration
             $table->foreign('classroom_id')->references('id')->on('classrooms');
             $table->dateTime('borrowed_at');
             $table->dateTime('delivered_at')->nullable();
+            $table->text('novedad')->nullable();
             $table->timestamps();
         });
     }

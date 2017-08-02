@@ -22,12 +22,6 @@ class ClassroomController extends Controller
             ->with('classrooms', $classrooms);
     }
 
-    public function classrooms()
-    {
-        $dataClassroom = Classroom::all();
-        return view('classrooms')->with('dataClassroom', $dataClassroom);
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -48,17 +42,12 @@ class ClassroomController extends Controller
      */
     public function store(ClassroomRequest $request)
     {
-        if ($request->hasFile('imagen')) {
-            $file = time().'.'.$request->imagen->getClientOriginalExtension();
-            $request->imagen->move(public_path('images/classrooms'), $file);
-        }
         $clr = new Classroom();
         $clr->nombre_ambiente   = $request->get('nombre_ambiente');
         $clr->tipo_ambiente     = $request->get('tipo_ambiente');
         $clr->movilidad         = $request->get('movilidad');
         $clr->estado            = $request->get('estado');
         $clr->cupo              = $request->get('cupo');
-        $clr->imagen            = 'images/classrooms/'.$file;
         if ($clr->save()){
             return redirect('classroom')->with('status', 'El ambiente '.$clr->nombre_ambiente.' fue adicionado con éxito');
         }
@@ -103,14 +92,6 @@ class ClassroomController extends Controller
         $clr->movilidad       = $request->get('movilidad');
         $clr->estado          = $request->get('estado');
         $clr->cupo            = $request->get('cupo');
-        if ($request->hasFile('imagen')) {
-            // File::delete(public_path($clr->imagen));
-            $file = time().'.'.$request->imagen->getClientOriginalExtension();
-            $request->imagen->move(public_path('images/classrooms/'), $file);
-            $clr->imagen = 'images/classrooms/'.$file;
-        }
-
-
         if ($clr->save()) {
             return redirect('classroom')->with('status', 'El ambiente fue modificado con éxito');
         }
@@ -147,7 +128,7 @@ class ClassroomController extends Controller
         $dataClassroom->instructor_id  = $request->get('instructor_id');
 
         if($dataClassroom->save()) {
-            return redirect('/classrooms')->with('status', 'El ambiente '.$dataClassroom->nombre_ambiente.' fue asignado con éxtio!');
+            return redirect('/')->with('status', 'El ambiente '.$dataClassroom->nombre_ambiente.' fue asignado con éxtio!');
         }
     }
 
@@ -164,6 +145,7 @@ class ClassroomController extends Controller
     {
         $cl = Historial_classroom_loan::where('borrowed_at', '=', $borrowed_at)->first();
         $cl->delivered_at = $request->get('delivered_at');
+        $cl->novedad = $request->get('novedad');
         $cl->save();
     }
 }

@@ -24,10 +24,10 @@ class InstructorRequest extends FormRequest
     public function rules()
     {
             return [
-               'nombre'=>'required',
-               'apellidos'=>'required',
+               'nombre'=>'required|max:64',
+               'apellidos'=>'required|max:64',
                'numero_documento'=>'required|max:10',
-               'area'=>'required',
+               'area'=>'required|max:128',
                'ip'=>'required|max:5',
                'telefono'=>'max:7',
                'celular'=>'required|max:10',
@@ -39,19 +39,22 @@ class InstructorRequest extends FormRequest
     public function messages()
     {
          return [
-            'nombre.required'=>'El campo Nombre es requerido',
-            'apellidos.required'=>'El campo Apellidos es requerido',
-            'numero_documento.required'=>'El campo Documento es requerido',
-            'numero_documento.max'=>'El campo Documento debe tener como maximo 10 numeros',
-            'area.required'=>'El campo Area es requerido',
-            'ip.required'=>'El campo Ip es requerido',
-            'ip.max'=>'El campo Ip debe tener como maximo 5 numeros',
-            'telefono.max'=>'El campo Telefono debe tener como maximo 7 numeros',
-            'celular.required'=>'El campo Celular es requerido',
-            'celular.max'=>'El campo Celular debe tener como maximo 10 numeros',
-            'email.required'=>'El campo Correo es requerido',
-            'email.unique'=>'este Correo ya existe',
-            'instructor_type_id.required'=>'El campo Tipo de instructor es requerido'
+            'nombre.required'=>'El campo nombre es requerido',
+            'nombre.max'=>'El campo nombre debe tener como máximo 64 caracteres',
+            'apellidos.required'=>'El campo apellidos es requerido',
+            'apellidos.max'=>'El campo apellidos debe tener como máximo 64 caracteres',
+            'numero_documento.required'=>'El campo documento es requerido',
+            'numero_documento.max'=>'El campo documento debe tener como máximo 10 numeros',
+            'area.required'=>'El campo área es requerido',
+            'area.max'=>'El campo área debe tener como máximo 128 caracteres',
+            'ip.required'=>'El campo ip es requerido',
+            'ip.max'=>'El campo ip debe tener como máximo 5 numeros',
+            'telefono.max'=>'El campo teléfono debe tener como máximo 7 numeros',
+            'celular.required'=>'El campo celular es requerido',
+            'celular.max'=>'El campo celular debe tener como máximo 10 numeros',
+            'email.required'=>'El campo correo es requerido',
+            'email.unique'=>'este correo ya existe',
+            'instructor_type_id.required'=>'El campo tipo de instructor es requerido'
         ];
     }
 }

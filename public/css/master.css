@@ -13,49 +13,17 @@ a:active {
 	}
 }*/
 .classroom {
-	margin-bottom: 1rem;
-}
-.header-classroom {
-	height: 12rem;
-	overflow: hidden;
-	padding: 2rem;
-	position: relative;
-	text-transform: capitalize;
-}
-.header-classroom h3 {
+	background: #fc7;
 	color: #fff;
-	position: relative;
-	z-index: 3;
+	display: block;
+	font-size: 1.6rem;
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+	padding: 1rem;
+    text-transform: capitalize;
 }
-.header-classroom::after {
-		content: '';
-	    background: linear-gradient(141deg, #0fb8ad 0%, rgba(31, 200, 219, 0.88) 51%, rgba(44, 181, 232, 0.68) 75%);
-		height: 100%;
-		left: 0;
-		position: absolute;
-	    top: 0;
-		width: 100%;
-		z-index: 2;
-}
-img.classroom-image {
-	height: inherit;
-	left: 0;
-	object-fit: cover;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	z-index: 1;
-}
-.body-classroom {
-	background: #fff;
-	height: 10rem;
-}
-
-.classroom:hover {
-
-}
-.cr-repair:before {
-	background: linear-gradient(141deg, #b80f0f 0%, rgba(219, 31, 31, 0.88) 51%, rgba(232, 44, 44, 0.68) 75%);
+.cr-repair {
+	background: #b80f0f;
 }
 .cr-inactive {
 	filter: grayscale(100%);
@@ -63,16 +31,13 @@ img.classroom-image {
 .cr:hover {
 	cursor: not-allowed;
 }
-.cr:active h3 {
-	color: #fff;
-}
 
-#app {
+.app-welcome {
 	padding: 6rem 0;
 	transition: all .5s ease-in-out;
 }
-body.side-left > #app {
-	margin-right: 60rem;
+body.side-left > div > .app-welcome {
+	transform: translateX(-56%);
 }
 
 .box {

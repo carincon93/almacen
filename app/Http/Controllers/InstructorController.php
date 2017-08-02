@@ -125,9 +125,10 @@ class InstructorController extends Controller
         return redirect('instructor')
             ->with('status', 'El instructor fue eliminado con éxito');
     }
-    public function search(Request $request){
-        // $query=Instructor::name($request->get('nombre'))->orderBy('id','ASC')->get();
-        // return view('instructor.ajax')->with('instructores',$query);
-
+    public function ajaxsearch(Request $request)
+    {
+        $query = Instructor::documento($request->get('documento'))->limit(1)->get();
+        return view('instructors.ajax')
+            ->with('data', $query);
     }
 }

@@ -17,10 +17,10 @@ class CreateInstructorsTable extends Migration
             $table->increments('id');
             $table->string('nombre', 64);
             $table->string('apellidos', 64);
-            $table->bigInteger('numero_documento');
+            $table->integer('numero_documento');
             $table->string('area', 128);
             $table->integer('ip');
-            $table->bigInteger('telefono')->nullable();
+            $table->integer('telefono')->nullable();
             $table->bigInteger('celular');
             $table->string('email', 64)->unique();
             $table->integer('instructor_type_id')->unsigned();

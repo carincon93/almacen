@@ -25,16 +25,15 @@
 				<hr>
 
 
-				<form action="{{ url('classroom') }}" method="POST" enctype="multipart/form-data">
+				<form action="{{ url('classroom') }}" method="POST">
 					<div class="form-group">
 						{!! csrf_field()  !!}
 						<div class="form-group">
 							<input type="text" name="nombre_ambiente" class="form-control" placeholder="Nombre del ambiente">
 						</div>
 						<div class="form-group">
-							<label>Tipo de ambiente</label>
 							<select name="tipo_ambiente" class="form-control">
-								<option>Seleccione el tipo de ambiente..</option>
+								<option value="">Seleccione el tipo de ambiente..</option>
 								<option value="aula">Aula</option>
 								<option value="taller">Taller</option>
 								<option value="auditorio">Auditorio</option>
@@ -43,29 +42,22 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<label>Movilidad del ambiente</label>
 							<select name="movilidad" class="form-control">
-								<option>Seleccione el tipo de movilidad del ambiente..</option>
+								<option value="">Seleccione el tipo de movilidad del ambiente..</option>
 								<option value="fijo">Fijo</option>
 								<option value="movil">Móvil</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<label>Estado del ambiente</label>
 							<select name="estado" class="form-control">
-								<option>Seleccione el estado en que se encuentra el ambiente..</option>
+								<option value="">Seleccione el estado en que se encuentra el ambiente..</option>
 								<option value="activo">Activo</option>
 								<option value="inactivo">Inactivo</option>
 								<option value="en reparacion">En reparación</option>
 							</select>
-
 						</div>
 						<div class="form-group">
 							<input type="text" name="cupo" class="form-control" placeholder="Cupo del ambiente">
-						</div>
-						<div class="form-group">
-							<label>Seleccione la imagen del ambiente</label>
-							<input type="file" name="imagen" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">

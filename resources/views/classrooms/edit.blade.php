@@ -23,7 +23,7 @@
                 <hr>
 
 
-                <form action="{{ url('classroom/'.$clr->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('classroom/'.$clr->id) }}" method="POST">
                     <div class="form-group">
                         {!! csrf_field()  !!}
                         {{ method_field('put') }}
@@ -55,9 +55,6 @@
                         <div class="form-group">
                             <input type="text" name="cupo" class="form-control" value="{{ $clr->cupo }}">
                         </div>
-                        <div class="form-group">
-							<input type="file" name="imagen" class="form-control">
-						</div>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-success" type="submit">

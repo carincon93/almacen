@@ -6,7 +6,6 @@
             <li class="col-md-4">
                 <div class="classroom" data-id="{{ $clas->id }}">
                     <header class="header-classroom">
-                        <img src="{{ $clas->imagen }}" alt="" class="classroom-image">
                         <h3>{{ $clas->nombre_ambiente }}</h3>
                     </header>
                     <div class="body-classroom">

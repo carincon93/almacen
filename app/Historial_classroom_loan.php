@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Historial_classroom_loan extends Model
 {
     protected $fillable = [
-        'instructor_id', 'classroom_id', 'borrowed_at', 'delivered_at',
+        'instructor_id', 'classroom_id', 'borrowed_at', 'delivered_at', 'novedad',
     ];
 
     public function instructor() {

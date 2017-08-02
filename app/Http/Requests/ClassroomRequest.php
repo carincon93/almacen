@@ -23,36 +23,24 @@ class ClassroomRequest extends FormRequest
      */
     public function rules()
     {
-        if ($this->method() == 'PUT') {
-            return [
-            'nombre_ambiente' => 'required',
+        return [
+            'nombre_ambiente' => 'required|max:128',
             'tipo_ambiente'=>'required',
             'movilidad'=>'required',
             'estado'=>'required',
-            'cupo'=>'required',
-            'imagen'=>'required'
-
-            ];
-        } else {
-            return [
-                'nombre_ambiente' => 'required',
-                'tipo_ambiente'=>'required',
-                'movilidad'=>'required',
-                'estado'=>'required',
-                'cupo'=>'required',
-            ];
-        }
+            'cupo'=>'required|max:3',
+        ];
     }
     public function messages()
     {
          return [
-            'nombre_ambiente.required'=>'El campo Nombre de ambiente es requerido',
-            'tipo_ambiente.required'=>'El campo Tipo de ambiente es requerido',
-            'movilidad.required'=>'El campo Movilidad es requerido',
-            'estado.required'=>'El campo Estado es requerido',
-            'cupo.required'=>'El campo Cupo es requerido',
-            'image.required'=>'El campo Imagen es requerido'
-
+            'nombre_ambiente.required'=>'El campo nombre de ambiente es requerido',
+            'nombre_ambiente.max'=>'El campo nombre debe tener como máximo 128 caracteres',
+            'tipo_ambiente.required'=>'El campo tipo de ambiente es requerido',
+            'movilidad.required'=>'El campo movilidad es requerido',
+            'estado.required'=>'El campo estado es requerido',
+            'cupo.required'=>'El campo cupo es requerido',
+            'cupo.max'=>'El campo cupo debe tener como máximo 3 caracteres',
         ];
     }
 }

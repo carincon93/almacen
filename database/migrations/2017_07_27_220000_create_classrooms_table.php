@@ -18,7 +18,7 @@ class CreateClassroomsTable extends Migration
             $table->string('nombre_ambiente', 128);
             $table->string('tipo_ambiente', 64);
             $table->string('movilidad', 15);
-            $table->string('estado', 128);
+            $table->text('estado');
             $table->integer('cupo');
             $table->string('disponibilidad', 15)->nullable();
             $table->dateTime('borrowed_at')->nullable();

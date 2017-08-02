@@ -35,8 +35,6 @@
                     <button class="btn btn-success save_entrie" type="submit">Modificar</button>
                     <!-- Ambiente NO disponible -->
                     @else
-                    <input type="hidden" name="borrowed_at" value="{{ $dataClassroom->borrowed_at }}" class="borrowed">
-                    <input type="hidden" name="delivered_at" value="{{ date('Y-m-d H:i:s') }}">
                     <div class="form-group hidden">
                         <select name="instructor_id" id="" class="text-capitalize">
                             <option value=""></option>
@@ -47,6 +45,11 @@
                           <input type="checkbox" name="disponibilidad" value="disponible"> ¿Desea cambiar la disponibilidad del ambiente a: Disponible?
                       </label>
                     </div>
+                    <div class="form-group">
+                        <textarea name="novedad" rows="8" cols="80"></textarea>
+                    </div>
+                    <input type="hidden" name="borrowed_at" value="{{ $dataClassroom->borrowed_at }}" class="borrowed">
+                    <input type="hidden" name="delivered_at" value="{{ date('Y-m-d H:i:s') }}">
                     <button class="btn btn-success modify_entrie" type="submit">Modificar</button>
                     @endif
                 </form>

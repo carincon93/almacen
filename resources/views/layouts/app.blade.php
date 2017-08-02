@@ -115,7 +115,8 @@
                 $token = $('form').find('input[name=_token]').val();
                 $borrowed_at = $('form').find('.borrowed').val();
                 $delivered_at = $('form').find('input[name=delivered_at]').val();
-                $.post('/modify_loan/'+$borrowed_at, {_token: $token, delivered_at: $delivered_at}, function(data, textStatus, xhr) {
+                $novedad = $('form').find('textarea[name=novedad]').val();
+                $.post('/modify_loan/'+$borrowed_at, {_token: $token, delivered_at: $delivered_at, novedad: $novedad}, function(data, textStatus, xhr) {
                     /*optional stuff to do after success */
                 });
             });
