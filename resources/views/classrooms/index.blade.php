@@ -62,7 +62,7 @@
 						</tbody>
 
 					</table>
-
+					{{ $classrooms->links() }}
 				</div>
 
 			</div>

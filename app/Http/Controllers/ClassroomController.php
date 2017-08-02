@@ -17,7 +17,7 @@ class ClassroomController extends Controller
      */
     public function index()
     {
-        $classrooms = Classroom::all();
+        $classrooms = Classroom::paginate(5);
         return view('classrooms.index')
             ->with('classrooms', $classrooms);
     }
