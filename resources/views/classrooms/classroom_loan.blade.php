@@ -3,6 +3,16 @@
 @section('content')
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
+            @if (count($errors)>0)
+
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+                @foreach($errors->all() as $message)
+                <li>{{ $message }}</li>
+                @endforeach
+            </div>
+
+            @endif
             <ul class="breadcrumb">
                 <li><a href="{{ url('/') }}">Inicio</a></li>
                 <li class="active">Prestar Ambiente</li>
@@ -26,12 +36,12 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="checkbox form-group">
+                {{-- <div class="checkbox form-group">
                   <label>
                       <input type="checkbox" name="disponibilidad" value="no disponible"> ¿Prestar ambiente?
                   </label>
-                </div>
-                <button class="btn btn-success save_entrie" type="submit">Modificar</button>
+                </div> --}}
+                <button class="btn btn-success save_entrie" type="submit">prestar ambiente</button>
                 <!-- Ambiente NO disponible -->
                 @else
                 <div class="form-group hidden">

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ClassroomRequest;
-use App\Http\Requests\Classroom_LoanRequest;
+use App\Http\Requests\LoanRequest;
 use App\Classroom;
 use App\Historial_classroom_loan;
 use App\Instructor;
@@ -121,10 +121,10 @@ class ClassroomController extends Controller
             ->with('dataInstructor', $dataInstructor)
             ->with('dataClassroomLoan', $dataClassroomLoan);
     }
-    public function classroom_update(Request $request)
+    public function classroom_update(LoanRequest $request)
     {
         $dataClassroom                 = Classroom::find($request->id);
-        $dataClassroom->disponibilidad = $request->get('disponibilidad');
+        $dataClassroom->disponibilidad = 'no disponible';
         $dataClassroom->borrowed_at    = $request->get('borrowed_at');
         $dataClassroom->instructor_id  = $request->get('instructor_id');
 

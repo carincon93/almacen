@@ -2,6 +2,12 @@
 @section('content')
     <div class="app-welcome row">
         <div class="col-md-8">
+            @if (session('status'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+                {!!  html_entity_decode(session('status')) !!}
+            </div>
+            @endif
             <div class="box-wrapper">
                 <div class="box box1" data-target="classrooms">
                     <header></header>
