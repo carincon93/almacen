@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClassroomRequest;
 use App\Http\Requests\LoanRequest;
+use App\Http\Requests\LoanMRequest;
 use App\Classroom;
 use App\Historial_classroom_loan;
 use App\Instructor;
@@ -143,13 +144,13 @@ class ClassroomController extends Controller
             ->with('dataClassroomLoan', $dataClassroomLoan);
     }
 
-    public function classroom_update2(Request $request)
+    public function classroom_update2(LoanMRequest $request)
     {
         $dataClassroom                 = Classroom::find($request->id);
         $dataClassroom->disponibilidad = 'disponible';
         $dataClassroom->instructor_id  = null;
         if($dataClassroom->save()) {
-            return redirect('/')->with('status', 'El am fue asignado con éxtio!');
+            return redirect('/')->with('status', 'El ambiente se encuentra disponible de nuevo');
         }
     }
 
