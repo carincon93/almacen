@@ -26,6 +26,7 @@
                 {!! csrf_field() !!}
                 <input type="hidden" name="id" value="{{ $dataClassroom->id }}" id="id">
                 <div class="form-group">
+                    <label>Agregar novedad</label>
                     <textarea name="novedad" rows="8" cols="80" class="form-control"></textarea>
                 </div>
                 <input type="hidden" name="borrowed_at" value="{{ $dataClassroom->borrowed_at }}" class="borrowed">
