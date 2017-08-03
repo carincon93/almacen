@@ -30,7 +30,7 @@
                                     @elseif($clas->estado == 'inactivo')
                                     <a href="#" class="cr cr-inactive classroom"><i class="fa fa-fw fa-ban"></i> {{ $clas->nombre_ambiente }} <span>(Inactivo)</span></a>
                                     @elseif($clas->disponibilidad == 'no disponible')
-                                    <a href="{{ url('classroom_loan/'.$clas->id) }}" class="classroom"><i class="fa fa-fw fa-circle"></i>{{ $clas->nombre_ambiente }} <span class="cr-instructor">{{ $clas->instructor->nombre.' '.$clas->instructor->apellidos }}</span></a>
+                                    <a href="{{ url('classroom_loan2/'.$clas->id) }}" class="classroom"><i class="fa fa-fw fa-circle"></i>{{ $clas->nombre_ambiente }} <span class="cr-instructor">{{ $clas->instructor->nombre.' '.$clas->instructor->apellidos }}</span></a>
                                     @else
                                     <a href="{{ url('classroom_loan/'.$clas->id) }}" class="classroom">{{ $clas->nombre_ambiente }}</a>
                                     @endif

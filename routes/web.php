@@ -22,8 +22,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/classrooms', 'ClassroomController@classrooms');
 Route::get('/classroom_loan/{id}', 'ClassroomController@classrooml');
 Route::post('/classroom_loan/{id}/loan', 'ClassroomController@classroom_update');
+Route::get('/classroom_loan2/{id}', 'ClassroomController@classrooml2');
+Route::post('/classroom_loan2/{id}/loan', 'ClassroomController@classroom_update2');
+
 Route::post('loan', 'ClassroomController@loan');
 Route::post('modify_loan/{borrowed_at}', 'ClassroomController@modify_loan');
+
 
 // Classroom CRUD
 Route::resource('classroom', 'ClassroomController');

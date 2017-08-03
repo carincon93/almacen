@@ -133,6 +133,26 @@ class ClassroomController extends Controller
         }
     }
 
+    public function classrooml2($id)
+    {
+        $dataClassroom     = Classroom::find($id);
+        $dataClassroomLoan = Historial_classroom_loan::all();
+
+        return view('classrooms.classroom_loan2')
+            ->with('dataClassroom',  $dataClassroom)
+            ->with('dataClassroomLoan', $dataClassroomLoan);
+    }
+
+    public function classroom_update2(Request $request)
+    {
+        $dataClassroom                 = Classroom::find($request->id);
+        $dataClassroom->disponibilidad = 'disponible';
+        $dataClassroom->instructor_id  = null;
+        if($dataClassroom->save()) {
+            return redirect('/')->with('status', 'El am fue asignado con éxtio!');
+        }
+    }
+
     public function loan(Request $request)
     {
         $dataClassroom = new Historial_classroom_loan();
