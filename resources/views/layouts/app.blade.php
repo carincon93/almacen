@@ -42,10 +42,10 @@
                     @if(Auth::check())
                     <li class="header">ADMINISTRAR</li>
                     <li>
-                        <a href="{{ url('classroom') }}" class="sidebar-links"><i class="fa fa-fw fa-cog"></i> Gestionar ambientes <span class="badge">{{ $clrs }}</span></a>
+                        <a href="{{ url('classroom') }}" class="sidebar-links"><i class="fa fa-fw fa-cog"></i> Gestionar ambientes</a>
                     </li>
                     <li>
-                        <a href="{{ url('instructor') }}" class="sidebar-links"><i class="fa fa-fw fa-cog"></i> Gestionar instructores <span class="badge">{{ $cins }}</span></a>
+                        <a href="{{ url('instructor') }}" class="sidebar-links"><i class="fa fa-fw fa-cog"></i> Gestionar instructores</span></a>
                     </li>
                     @endif
                     <li class="header">ACCIONES</li>
