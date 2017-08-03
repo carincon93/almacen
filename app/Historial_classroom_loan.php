@@ -13,6 +13,9 @@ class Historial_classroom_loan extends Model
     public function instructor() {
     	return $this->belongsTo('App\instructor');
     }
+    public function classroom() {
+    	return $this->belongsTo('App\classroom');
+    }
 
     // public function scopeBorrowed($query, $borrowed_at)
     // {

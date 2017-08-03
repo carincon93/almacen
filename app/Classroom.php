@@ -13,4 +13,7 @@ class Classroom extends Model
     public function instructor() {
     	return $this->belongsTo('App\instructor');
     }
+    public function Historial_classroom_loan() {
+    	return $this->hasMany('App\historial_classroom_loan');
+    }
 }

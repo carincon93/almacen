@@ -2,68 +2,168 @@ body,
 html {
 	height: 100%;
 }
+body {
+	font-family: sans-serif;
+}
 a,
 a:hover,
 a:active {
 	color: inherit;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 700;
+}
+.table-bordered, .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    border: 1px solid;
+    border-color: rgba(158,173,195,.16);
+}
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #fefeff;
+}
+.table>tbody>tr>td {
+    color: #918D99;
+}
+.padding-box {
+	padding: 15px 20px;
 }
 /*@media (min-width: 768px) {
 	.navbar {
 		border-radius: 0px;
 	}
 }*/
+.table-classrooms {
+	border-collapse: separate;
+    border-spacing: 0 0.5em;
+	width: 100%;
+}
 .classroom {
-	background: #fc7;
-	color: #fff;
+	background: #fff;
+	/*color: #fff;*/
 	display: block;
 	font-size: 1.6rem;
 	font-weight: 600;
-	margin-bottom: 0.5rem;
 	padding: 1rem;
+	position: relative;
     text-transform: capitalize;
+}
+.classroom .fa-circle {
+	color: #adff2f;
+	font-size: 1rem;
+    position: absolute;
+	right: 1rem;
+	top: 1.6rem;
+}
+#classrooms {
+	transition: all 0.2 ease;
+}
+.cr-instructor {
+	font-size: 1.5rem;
+    font-weight: lighter;
+    position: absolute;
+    right: 3rem;
 }
 .cr-repair {
 	background: #b80f0f;
+	color: #fff;
+}
+.cr-repair:hover {
+	color: #fff;
+}
+.cr-repair i {
+	color: #ffca00;
+}
+
+.cr-inactive span,
+.cr-repair span {
+	font-size: 1rem;
+	font-weight: 100;
+	text-transform: initial;
+	vertical-align: middle;
 }
 .cr-inactive {
-	filter: grayscale(100%);
+	background: #909090;
+}
+.cr-inactive i {
+	color: #b80f0f;
 }
 .cr:hover {
 	cursor: not-allowed;
 }
 
-.app-welcome {
-	padding: 6rem 0;
-	transition: all .5s ease-in-out;
-}
-body.side-left > div > .app-welcome {
-	transform: translateX(-56%);
+
+.box:hover {
+	cursor: pointer;
 }
 
+
+/*==========================*/
+/*     Panel lateral        */
+/*==========================*/
+#app {
+	position: relative;
+	width: 100%;
+}
+#page-sidebar {
+	background: #d6d6d6;
+	float: left;
+	height: 100vh;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 300px;
+	z-index: 20;
+}
+#sidebar-menu {
+	list-style: none;
+	margin: 0;
+	padding: 5px 20px;
+}
+#header-logo {
+    height: 60px;
+    position: relative;
+}
+
+/*==========================*/
+/*    Contenido de página   */
+/*==========================*/
+#page-content-wrapper {
+    float: left;
+	padding-top: 60px;
+	width: 100%;
+}
+#page-content {
+	margin-left: 300px;
+    padding: 20px 30px;
+}
+.box-wrapper {
+	margin-bottom: 2rem;
+}
 .box {
 	background: #fff;
 	border: 0.2px solid #efefef;
 	display: block;
-	width: 48rem;
+	padding: 15px 20px;
 }
-.box:hover {
-	cursor: pointer;
+.box-table {
+	background: #fff;
+	border: 0.2px solid #efefef;
 }
-.box1 header {
-  background : -moz-radial-gradient(50% 50%, circle farthest-corner, rgba(70, 183, 220, 1) 48.76%, rgba(42, 179, 220, 1) 99.5%);
-  background : -webkit-radial-gradient(50% 50%, circle farthest-corner, rgba(70, 183, 220, 1) 48.76%, rgba(42, 179, 220, 1) 99.5%);
-  background : -webkit-gradient(radial,50% 50% ,80.5 , 50% 50%, 165.09 ,color-stop(0.4876,rgba(70, 183, 220, 1) ),color-stop(0.995,rgba(42, 179, 220, 1) ));
-  background : -o-radial-gradient(50% 50%, circle farthest-corner, rgba(70, 183, 220, 1) 48.76%, rgba(42, 179, 220, 1) 99.5%);
-  background : -ms-radial-gradient(50% 50%, circle farthest-corner, rgba(70, 183, 220, 1) 48.76%, rgba(42, 179, 220, 1) 99.5%);
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Stlye=2);"
-  background : radial-gradient(50% 50%, circle farthest-corner, rgba(70, 183, 220, 1) 48.76%, rgba(42, 179, 220, 1) 99.5%);
-  opacity : 0.82;
-  filter: alpha(opacity=82) progid:DXImageTransform.Microsoft.Alpha(opacity=82) progid:DXImageTransform.Microsoft.Alpha(Stlye=2);
-  height: 12rem;
+.box-table h4 {
+	border-bottom: #F7F7F7 solid 1px;
+	margin: 0;
+	padding: 15px 20px;
 }
-.box-body {
-	padding: 1rem 4rem 1.3rem;
+.historial-count {
+	background: #fc7323;
+	border-radius: 10rem;
+    color: #fff;
+	font-weight: 800;
+    padding: 0.5rem;
 }
+
+
+
+
 
 @media (min-width: 768px) {
 	.modal-dialog {
