@@ -5,6 +5,9 @@ html {
 body {
 	font-family: sans-serif;
 }
+/*==========================*/
+/*        Reset CSS         */
+/*==========================*/
 a,
 a:hover,
 a:active {
@@ -23,71 +26,13 @@ h1, h2, h3, h4, h5, h6 {
 .table>tbody>tr>td {
     color: #918D99;
 }
-.padding-box {
-	padding: 15px 20px;
-}
-/*@media (min-width: 768px) {
-	.navbar {
-		border-radius: 0px;
-	}
-}*/
-.table-classrooms {
-	border-collapse: separate;
-    border-spacing: 0 0.5em;
-	width: 100%;
-}
-.classroom {
-	background: #fff;
-	/*color: #fff;*/
-	display: block;
-	font-size: 1.6rem;
-	font-weight: 600;
-	padding: 1rem;
-	position: relative;
-    text-transform: capitalize;
-}
-.classroom .fa-circle {
-	color: #adff2f;
-	font-size: 1rem;
-    position: absolute;
-	right: 1rem;
-	top: 1.6rem;
-}
-#classrooms {
-	transition: all 0.2 ease;
-}
-.cr-instructor {
-	font-size: 1.5rem;
-    font-weight: lighter;
-    position: absolute;
-    right: 3rem;
-}
-.cr-repair {
-	background: #b80f0f;
-	color: #fff;
-}
-.cr-repair:hover {
-	color: #fff;
-}
-.cr-repair i {
-	color: #ffca00;
+
+button:focus {
+	outline: 0;
 }
 
-.cr-inactive span,
-.cr-repair span {
-	font-size: 1rem;
-	font-weight: 100;
-	text-transform: initial;
-	vertical-align: middle;
-}
-.cr-inactive {
-	background: #909090;
-}
-.cr-inactive i {
-	color: #b80f0f;
-}
-.cr:hover {
-	cursor: not-allowed;
+.padding-box {
+	padding: 15px 20px;
 }
 
 
@@ -113,6 +58,9 @@ h1, h2, h3, h4, h5, h6 {
 	width: 300px;
 	z-index: 20;
 }
+.background-auth {
+	background: #272634 !important;
+}
 #sidebar-menu {
 	list-style: none;
 	margin: 0;
@@ -121,7 +69,77 @@ h1, h2, h3, h4, h5, h6 {
 #header-logo {
     height: 60px;
     position: relative;
+	padding: 2rem;
+	text-align: center;
 }
+#user {
+	background: #201f2b;
+	/*height: 80px;*/
+	padding: 2rem;
+}
+.login {
+	background: #fc7323;
+	border: none;
+	color: #fff;
+	margin-left: 7rem;
+	padding: 0.5rem 1rem;
+}
+.logout {
+	font-size: 1.3rem;
+	display: block;
+	text-align: right;
+}
+#sidebar-menu li.header {
+    color: rgba(255,255,255,.5);
+}
+.sidebar-links {
+	font-size: 14px;
+	font-weight: 400;
+	height: 32px;
+	line-height: 32px;
+	padding: 0;
+}
+.sidebar-links .badge {
+	font-size: 10px;
+}
+.sidebar-links i {
+	background: rgba(0,0,0,.31);
+	font-size: 16px;
+	line-height: 31px;
+	display: block;
+	float: left;
+	width: 32px;
+	margin-right: 10px;
+	margin-left: 0;
+	border-radius: 3px;
+	text-align: center;
+	height: 32px;
+}
+#page-sidebar ul li {
+	margin: 8px 0;
+	position: relative;
+}
+/*#page-sidebar ul li a.sidebar-links:after, .icon-angle-right:before {
+    content: "\f105";
+}
+
+.sidebar-links:after {
+	line-height: 21px;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    -webkit-transition-duration: .5s;
+    -moz-transition-duration: .5s;
+    -o-transition-duration: .5s;
+    transition-duration: .5s;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    transition-property: transform;
+}*/
 
 /*==========================*/
 /*    Contenido de página   */
@@ -162,12 +180,69 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+.table-classrooms {
+	border-collapse: separate;
+    border-spacing: 0 0.5em;
+	width: 100%;
+}
+.classroom {
+	background: #fff;
+	/*color: #fff;*/
+	display: block;
+	font-size: 1.6rem;
+	font-weight: 600;
+	padding: 1rem;
+	position: relative;
+    text-transform: capitalize;
+}
+.classroom .fa-circle {
+	color: #adff2f;
+	font-size: 1rem;
+    position: absolute;
+	right: 1rem;
+	top: 1.6rem;
+}
+#classrooms {
+	transition: all 0.2 ease;
+}
+.cr-instructor {
+	color: #b7b7b7;
+	font-size: 1.5rem;
+    font-weight: lighter;
+    position: absolute;
+    right: 3rem;
+}
+.cr-repair {
+	background: #b80f0f;
+	color: #fff;
+}
+.cr-repair:hover {
+	color: #fff;
+}
+.cr-repair i {
+	color: #ffca00;
+}
+
+.cr-inactive span,
+.cr-repair span {
+	font-size: 1rem;
+	font-weight: 100;
+	text-transform: initial;
+	vertical-align: middle;
+}
+.cr-inactive {
+	background: #909090;
+}
+.cr-inactive i {
+	color: #b80f0f;
+}
+.cr:hover {
+	cursor: not-allowed;
+}
+
 
 
 
 @media (min-width: 768px) {
-	.modal-dialog {
-		width: 1000px;
-	}
 
 }

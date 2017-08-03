@@ -18,21 +18,46 @@
 </head>
 <body>
     <div id="app">
-        <div id="page-sidebar">
-            <div id="header-logo"></div>
+        <div id="page-sidebar" class="background-auth">
+            <div id="header-logo">
+
+            </div>
             <div class="sidebar-content">
+                <div id="user">
+                    @if(Auth::check())
+                    <span>Admin</span>
+                    <h5 class="text-capitalize">{{ Auth::user()->name }}</h5>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();" class="logout">
+                        Cerrar Sesión
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                    @else
+                    <button type="button" class="login" data-toggle="modal" data-target="#myModal">Iniciar sesión</button>
+                    @endif
+                </div>
                 <ul id="sidebar-menu" class="list-unstyled">
-                    <li class="header"></li>
+                    @if(Auth::check())
+                    <li class="header">ADMINISTRAR</li>
                     <li>
-                        <a href="">Prestar ambiente</a>
+                        <a href="{{ url('classroom') }}" class="sidebar-links"><i class="fa fa-fw fa-cog"></i> Gestionar ambientes <span class="badge">{{ $clrs }}</span></a>
+                    </li>
+                    <li>
+                        <a href="{{ url('instructor') }}" class="sidebar-links"><i class="fa fa-fw fa-cog"></i> Gestionar instructores <span class="badge">{{ $cins }}</span></a>
+                    </li>
+                    @endif
+                    <li class="header">ACCIONES</li>
+                    <li>
+                        <a href="" class="sidebar-links">Prestar ambiente</a>
                     </li>
                     <li class="header"></li>
                     <li>
-                        <a href="">Historial de prestamos</a>
+                        <a href="" class="sidebar-links">Historial de prestamos</a>
                     </li>
                 </ul>
             </div>
-
         </div>
         <div id="page-content-wrapper">
             <div id=page-content>
