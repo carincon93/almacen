@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('title', 'Prestar Ambiente')
+@section('page-desc')
+<ul class="breadcrumb">
+    <li><a href="{{ url('/') }}">Inicio</a></li>
+    <li class="active">Prestar Ambiente</li>
+</ul>
+@endsection
 @section('content')
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -13,10 +19,6 @@
             </div>
 
             @endif
-            <ul class="breadcrumb">
-                <li><a href="{{ url('/') }}">Inicio</a></li>
-                <li class="active">Prestar Ambiente</li>
-            </ul>
             <h1 class="text-capitalize">{{ $dataClassroom->nombre_ambiente }}</h1>
             @if($dataClassroom->instructor_id != '')
             <h3 class="text-capitalize">{{ $dataClassroom->instructor->nombre.' '.$dataClassroom->instructor->apellidos }}</h3>

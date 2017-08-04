@@ -27,14 +27,25 @@ h1, h2, h3, h4, h5, h6 {
     color: #918D99;
 }
 
+button,
+input,
+textarea,
+select {
+	border-radius: 0px !important;
+}
+.form-control:focus,
 button:focus {
+	border-color: inherit;
+	box-shadow: inherit;
 	outline: 0;
 }
-
+.breadcrumb {
+	background: transparent;
+	margin-bottom: 0;
+}
 .padding-box {
 	padding: 15px 20px;
 }
-
 
 .box:hover {
 	cursor: pointer;
@@ -56,7 +67,7 @@ button:focus {
 	position: fixed;
 	top: 0;
 	width: 300px;
-	z-index: 20;
+	z-index: 120;
 }
 .background-auth {
 	background: #272634 !important;
@@ -76,13 +87,6 @@ button:focus {
 	background: #201f2b;
 	/*height: 80px;*/
 	padding: 2rem;
-}
-.login {
-	background: #fc7323;
-	border: none;
-	color: #fff;
-	margin-left: 7rem;
-	padding: 0.5rem 1rem;
 }
 .logout {
 	font-size: 1.3rem;
@@ -122,24 +126,12 @@ button:focus {
 /*#page-sidebar ul li a.sidebar-links:after, .icon-angle-right:before {
     content: "\f105";
 }
-
+*/
 .sidebar-links:after {
-	line-height: 21px;
-    position: absolute;
-    top: 50%;
-    right: 5px;
-    width: 20px;
-    height: 20px;
-    margin-top: -10px;
-    -webkit-transition-duration: .5s;
-    -moz-transition-duration: .5s;
-    -o-transition-duration: .5s;
-    transition-duration: .5s;
-    -webkit-transition-property: -webkit-transform;
-    -moz-transition-property: -moz-transform;
-    -o-transition-property: -o-transform;
-    transition-property: transform;
-}*/
+	content: "\f061";
+	float: right;
+	font-family: FontAwesome;
+}
 
 /*==========================*/
 /*    Contenido de página   */
@@ -150,8 +142,49 @@ button:focus {
 	width: 100%;
 }
 #page-content {
-	margin-left: 300px;
     padding: 20px 30px;
+	margin-left: 300px;
+}
+#page-header {
+	background: #fff;
+	box-shadow: 0 1px 1px rgba(0,0,0,.05);
+	height: 60px;
+	left: 0;
+	padding-left: 300px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+}
+.page-header-content {
+	padding: 1rem;
+}
+#page-desc {
+	background: rgba(252,252,252,.89);
+	margin: -20px -30px 30px;
+	padding: 20px 30px;
+	position: relative;
+}
+.form-group.search {
+	position: relative;
+	width: 30%;
+}
+.form-group.search i {
+	position: absolute;
+	right: 0;
+	top: 1rem;
+}
+
+
+input[name="nombre_ambiente"] {
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #272634;
+	box-shadow: inherit;
+}
+input[name="nombre_ambiente"]:after {
+	content: 'dasdas';
+	font-size: 1rem;
 }
 .box-wrapper {
 	margin-bottom: 2rem;

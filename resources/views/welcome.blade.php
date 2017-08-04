@@ -1,7 +1,26 @@
 @extends('layouts.app')
+@section('page-header')
+    <div class="page-header-content">
+        <div class="form-wrapper">
+            <form action="" method="POST" class="search-ajax">
+                {!! csrf_field() !!}
+                <div class="form-group search">
+                    <i class="fa fa-fw fa-search"></i>
+                    <input type="search" class="form-control" name="nombre_ambiente" placeholder="Buscar ambiente">
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection
+@section('page-desc')
+    <div>
+        <h4>Prestar ambiente</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, facere!</p>
+    </div>
+@endsection
 @section('content')
     <div class="app-welcome row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             @if (session('status'))
             <div class="alert alert-success alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
@@ -9,22 +28,12 @@
             </div>
             @endif
             <div class="box-wrapper">
-                <div class="box box1" data-target="classrooms">
-                    <header></header>
-                    <div class="box-body">
-                        <h4>Prestar ambiente</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio molestiae incidunt cum eius
-                            voluptatem architecto consequuntur ea soluta ut velit. Harum, tenetur recusandae nam voluptatibus.
-                        </p>
-                    </div>
-                </div>
                 <div id="classrooms">
-                    <table class="table-classrooms">
-                        <tbody>
-                            @foreach($dataClassroom as $clas)
-                            <tr>
-                                <td>
+                    <div class="row content-ajax">
+                        @foreach($dataClassroom as $clas)
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-body">
                                     @if($clas->estado == 'reparacion')
                                     <a href="#" class="cr cr-repair classroom"><i class="fa fa-fw fa-exclamation-triangle"></i> {{ $clas->nombre_ambiente }} <span>(En reparación)</span></a>
                                     @elseif($clas->estado == 'inactivo')
@@ -34,12 +43,11 @@
                                     @else
                                     <a href="{{ url('classroom_loan/'.$clas->id) }}" class="classroom">{{ $clas->nombre_ambiente }}</a>
                                     @endif
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
             <div class="box-table">
@@ -69,101 +77,13 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
             <div class="box box2">
                 <header></header>
                 <div class="box-body">
                     <h5>Total prestamos de ambientes <span class="historial-count">{{ $countHistorial }}</span></h5>
                 </div>
             </div>
-        </div>
-
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Iniciar sesión</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                            {{ csrf_field() }}
-
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">Password</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" required>
-
-                                    @if ($errors->has('password'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-8 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Login
-                                    </button>
-
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        Forgot Your Password?
-                                    </a>
-                                </div>
-                            </div>
-                        </form>
-
-                        <!-- <ul class="list-unstyled row">
-                            @foreach($dataClassroom as $clas)
-                            <li class="col-md-4">
-                                @if($clas->estado == 'reparacion')
-                                <a href="#" class="cr cr-repair classroom"><i class="fa fa-fw fa-exclamation-triangle"></i> {{ $clas->nombre_ambiente }}</a>
-                                @elseif($clas->estado == 'inactivo')
-                                <a href="#" class="cr cr-inactive classroom"><i class="fa fa-fw fa-ban"></i> {{ $clas->nombre_ambiente }}</a>
-                                @elseif($clas->disponibilidad == 'no disponible')
-                                <a href="{{ url('classroom_loan/'.$clas->id) }}" class="classroom"><span class="fa fa-fw fa-circle"></span>{{ $clas->nombre_ambiente }}</a>
-                                @else
-                                <a href="{{ url('classroom_loan/'.$clas->id) }}" class="classroom">{{ $clas->nombre_ambiente }}</a>
-                                @endif
-                            </li>
-                            @endforeach
-                        </ul> -->
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div> -->
     </div>
 @endsection

@@ -146,7 +146,7 @@ class ClassroomController extends Controller
 
     public function classroom_update2(LoanMRequest $request)
     {
-        $dataClassroom                 = Classroom::find($request->id);
+        $dataClassroom = Classroom::find($request->id);
         $dataClassroom->disponibilidad = 'disponible';
         $dataClassroom->instructor_id  = null;
         if($dataClassroom->save()) {
@@ -154,6 +154,7 @@ class ClassroomController extends Controller
         }
     }
 
+    // Registrar en el historial
     public function loan(Request $request)
     {
         $dataClassroom = new Historial_classroom_loan();
@@ -162,12 +163,21 @@ class ClassroomController extends Controller
         $dataClassroom->borrowed_at    = $request->get('borrowed_at');
         $dataClassroom->save();
     }
-
+    // Registar en el historial la hora de entrega y novedad
     public function modify_loan(Request $request, $borrowed_at)
     {
         $cl = Historial_classroom_loan::where('borrowed_at', '=', $borrowed_at)->first();
         $cl->delivered_at = $request->get('delivered_at');
         $cl->novedad = $request->get('novedad');
         $cl->save();
+    }
+
+
+
+    // Buscar ambiente mediante ajax
+    public function classroomajax(Request $request)
+    {
+        $query = Classroom::Nombre_ambiente($request->get('nombre_ambiente'))->orderBy('id', 'ASC')->get();
+        return view('classrooms.loansajax')->with('data', $query);
     }
 }

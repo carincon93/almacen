@@ -18,26 +18,80 @@
 </head>
 <body>
     <div id="app">
-        <div id="page-sidebar" class="background-auth">
-            <div id="header-logo">
 
-            </div>
-            <div class="sidebar-content">
+        <div id="page-sidebar" class="background-auth">
+            <div>
+                <div id="header-logo">
+
+                </div>
                 <div id="user">
                     @if(Auth::check())
                     <span>Admin</span>
                     <h5 class="text-capitalize">{{ Auth::user()->name }}</h5>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();" class="logout">
-                        Cerrar Sesión
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                    @else
-                    <button type="button" class="login" data-toggle="modal" data-target="#myModal">Iniciar sesión</button>
-                    @endif
-                </div>
+                    document.getElementById('logout-form').submit();" class="logout">
+                    Cerrar Sesión
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+                @else
+                <h4 class="login">Iniciar sesión</h4>
+                <form method="POST" action="{{ route('login') }}">
+                    {{ csrf_field() }}
+
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <label for="email">Correo Electrónico</label>
+
+                        <div>
+                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+
+                            @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <label for="password">Contraseña</label>
+
+                        <div>
+                            <input id="password" type="password" class="form-control" name="password" required>
+
+                            @if ($errors->has('password'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">
+                            Login
+                        </button>
+
+                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                            Forgot Your Password?
+                        </a>
+
+                    </div>
+                </form>
+                @endif
+            </div>
+
+            </div>
+            <div class="sidebar-content">
                 <ul id="sidebar-menu" class="list-unstyled">
                     @if(Auth::check())
                     <li class="header">ADMINISTRAR</li>
@@ -61,6 +115,8 @@
         </div>
         <div id="page-content-wrapper">
             <div id=page-content>
+                <div id="page-header">@yield('page-header')</div>
+                <div id="page-desc">@yield('page-desc')</div>
                 @yield('content')
             </div>
         </div>
@@ -72,9 +128,6 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('.box2').click(function(event) {
-                $('body').addClass('side-left');
-            });
             // $('#myModal').on('shown.bs.modal', function() {
             //     $(this).find('[autofocus]').focus();
             //     $('.modal-header').click(function(event) {
@@ -84,7 +137,15 @@
             $('div[data-target=classrooms]').click(function(event) {
                 $('#classrooms').slideToggle(400);
             });
-            // Ajax Prestamo Ambientes
+            $('.search-ajax').each(function(index, el) {
+                $(window).keydown(function(event) {
+                    if (event.keyCode==13) {
+                        event.preventDefault();
+                        return false;
+                    }
+                });
+            });
+
             $('#documento').keyup(function(event) {
                 $documento = $(this).val();
                 $token = $('input[type=hidden]').val();
@@ -92,6 +153,7 @@
                     $('.table-data').html(data);
                 })
             });
+            // Ajax Prestamo Ambientes
             $('.save_entrie').click(function(event) {
                 $token = $('form').find('input[name=_token]').val();
                 $instructor_id = $('form').find('select[name=instructor_id]').val();
@@ -111,6 +173,14 @@
                 });
             });
 
+            $('input[name=nombre_ambiente]').keyup(function(event) {
+                $token = $('form').find('input[name=_token]').val();
+                $nombre_ambiente = $('form').find('input[type=search]').val();
+                $.post('/classroomajax', {_token: $token, nombre_ambiente: $nombre_ambiente}, function(data, textStatus, xhr) {
+                    $('.content-ajax').html(data);
+                });
+            });
+
             // Eliminar Instructor
             $('form').on('click','.btn-delete-instructor', function(event){
                 event.preventDefault();
@@ -127,12 +197,6 @@
             });
 
             // Ajax Tablas
-            $(window).keydown(function(event) {
-                if (event.keyCode==13) {
-                    event.preventDefault();
-                    return false;
-                }
-            });
             $('#name').keyup(function(event) {
                 $name=$(this).val();
                 $token=$('input[type=hidden]').val();
@@ -140,6 +204,7 @@
                     $('.tbody').html(data);
                 });
             });
+
         });
     </script>
 </body>
