@@ -16,7 +16,11 @@ class Classroom extends Model
     public function Historial_classroom_loan() {
     	return $this->hasMany('App\historial_classroom_loan');
     }
-
+    public function scopeName($query, $name){
+        if (trim($name)!='') {
+            $query->where('nombre_ambiente',"LIKE","%$name%");
+        }
+    }
     public function scopeNombre_ambiente($query, $nombre_ambiente)
     {
         if(trim($nombre_ambiente) != ' ') {

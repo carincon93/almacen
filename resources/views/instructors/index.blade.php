@@ -9,12 +9,13 @@
 			<a class="btn btn-success" href="{{ url('instructor/create') }}">
 				<i class="fa fa-fw fa-plus"></i> Adicionar
 			</a>
-			<!-- <br>
-			<br>
-			<form action="{{ url('search' ) }}">
-				<input type="text" name="nombre" autocomplete="on">
-				<button type="submit">Buscar</button>
-			</form> -->
+			<div class="form-group">
+					<div class="form-group">
+						{!! csrf_field()  !!}
+						<input type="search" name="nombre" class="form-control" placeholder="Buscar" autocomplete="off" id="nombre">
+						
+					</div>
+			</div>
 			@if (session('status'))
 			<div class="alert alert-success alert-dismissible" role="alert">
 				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>

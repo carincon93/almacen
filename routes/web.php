@@ -15,7 +15,8 @@ Auth::routes();
 
 // Welcome
 Route::get('/', 'WelcomeController@index')->name('welcome');
-Route::post('ajaxsearch', 'WelcomeController@ajaxsearch');
+Route::get('/ajaxsearch', 'ClassroomController@ajaxsearch');
+Route::get('/ajaxsearch2', 'InstructorController@ajaxsearch');
 // Home
 Route::get('/home', 'HomeController@index')->name('home');
 // Classroom Loan
