@@ -20,6 +20,11 @@ class Instructor extends Model
     public function historial_classroom_loan() {
     	return $this->hasMany('App\historial_classroom_loan');
     }
+    public function scopeName($query, $name){
+        if (trim($name)!='') {
+            $query->where('nombre',"LIKE","%$name%");
+        }
+    }
 
     public function scopeDocumento($query, $documento)
     {

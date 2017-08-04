@@ -196,15 +196,20 @@
                 }
             });
 
-            // Ajax Tablas
-            $('#name').keyup(function(event) {
-                $name=$(this).val();
-                $token=$('input[type=hidden]').val();
-                $.post('/search', {_token: $token, name: $name}, function(data) {
+            //search classroom
+            $('#nombreambiente').keyup(function() {
+                $nombreambiente=$(this).val();
+                $.get('/ajaxsearch', {nombre_ambiente: $nombreambiente}, function(data) {
                     $('.tbody').html(data);
                 });
             });
-
+            // search instructor
+            $('#nombre').keyup(function() {
+                $nombre=$(this).val();
+                $.get('/ajaxsearch2', {nombre: $nombre}, function(data) {
+                    $('.tbody').html(data);
+                });
+            });
         });
     </script>
 </body>

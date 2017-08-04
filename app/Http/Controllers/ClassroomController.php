@@ -172,7 +172,10 @@ class ClassroomController extends Controller
         $cl->save();
     }
 
-
+    public function ajaxsearch(Request $request){
+        $query=Classroom::name($request->get('nombre_ambiente'))->orderBy('id','ASC')->get();
+        return view('classrooms.ajax', compact('query'));
+    }
 
     // Buscar ambiente mediante ajax
     public function classroomajax(Request $request)

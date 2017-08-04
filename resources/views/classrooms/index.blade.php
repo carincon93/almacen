@@ -9,12 +9,13 @@
 			<a class="btn btn-success" href="{{ url('classroom/create') }}">
 				<i class="fa fa-fw fa-plus"></i> Adicionar
 			</a>
-			{{-- <form class="form-inline" action="{{ url('ambiente/search') }}" method="post">
-				<div class="form-group">
-					{!! csrf_field()  !!}
-					<input type="search" name="name" class="form-control" placeholder="Buscar" autocomplete="off" id="name">
-				</div>
-			</form> --}}
+			<div class="form-group">
+					<div class="form-group">
+						{!! csrf_field()  !!}
+						<input type="search" name="nombre_ambiente" class="form-control" placeholder="Buscar" autocomplete="off" id="nombreambiente">
+						
+					</div>
+			</div>
 			@if (session('status'))
 			<div class="alert alert-success alert-dismissible" role="alert">
 				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
