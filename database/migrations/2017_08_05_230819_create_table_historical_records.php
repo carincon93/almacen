@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHistorialClassroomLoansTable extends Migration
+class CreateTableHistoricalRecords extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateHistorialClassroomLoansTable extends Migration
      */
     public function up()
     {
-        Schema::create('historial_classroom_loans', function (Blueprint $table) {
+        Schema::create('historical_records', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('instructor_id')->unsigned();
             $table->foreign('instructor_id')->references('id')->on('instructors');
@@ -23,6 +23,7 @@ class CreateHistorialClassroomLoansTable extends Migration
             $table->dateTime('delivered_at')->nullable();
             $table->text('novedad')->nullable();
             $table->timestamps();
+            $table->dropColumn(['created_at', 'updated_at']);
         });
     }
 
@@ -33,6 +34,6 @@ class CreateHistorialClassroomLoansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classroom_loans');
+        Schema::dropIfExists('historical_records');
     }
 }
