@@ -27,6 +27,15 @@ $(document).ready(function() {
         });
     });
 
+    // Numero documento instructor Ajax
+     $('#numero_documento').keyup(function(event) {
+        $numero_documento = $(this).val();
+        $.get('/documentoinstructorajax', {numero_documento: $numero_documento}, function(data, textStatus, xhr) {
+            $('#docinstructor').html(data);
+        });
+    });
+
+
     $('#hnombre_ambiente').keyup(function(event) {
         $('.pagination').hide();
         $token           = $('input[name="_token"').val();

@@ -22,6 +22,9 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 
 // Welcome Ajaxsearch
 Route::get('/findclassroom', 'WelcomeController@ajaxsearch');
+Route::get('/documentoinstructorajax', 'WelcomeController@documentoajax');
+
+
 
 // Prestar Ambiente
 Route::get('/classroom_request/{id}', 'ClassroomController@request');
