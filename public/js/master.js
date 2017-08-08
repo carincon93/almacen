@@ -11,18 +11,16 @@ $(document).ready(function() {
 
 
     $('#wnombre_ambiente').keyup(function(event) {
-        $token           = $('input[name="_token"').val();
         $nombre_ambiente = $(this).val();
-        $.get('/findclassroom', {_token: $token, nombre_ambiente: $nombre_ambiente}, function(data, textStatus, xhr) {
+        $.get('/findclassroom', {nombre_ambiente: $nombre_ambiente}, function(data, textStatus, xhr) {
             $('#classroom-section').html(data);
         });
     });
 
     $('#hnombre_instructor').keyup(function(event) {
         $('.pagination').hide();
-        $token             = $('input[name="_token"').val();
         $nombre_instructor = $(this).val();
-        $.get('/findinstructor', {_token: $token, nombre_instructor: $nombre_instructor}, function(data, textStatus, xhr) {
+        $.get('/findinstructor', {nombre_instructor: $nombre_instructor}, function(data, textStatus, xhr) {
             $('#tinstructors').html(data);
         });
     });
@@ -38,9 +36,8 @@ $(document).ready(function() {
 
     $('#hnombre_ambiente').keyup(function(event) {
         $('.pagination').hide();
-        $token           = $('input[name="_token"').val();
         $nombre_ambiente = $(this).val();
-        $.get('/findclassroomtbl', {_token: $token, nombre_ambiente: $nombre_ambiente}, function(data, textStatus, xhr) {
+        $.get('/findclassroomtbl', {nombre_ambiente: $nombre_ambiente}, function(data, textStatus, xhr) {
             $('#tclassrooms').html(data);
         });
     });

@@ -23,7 +23,7 @@ class ClassroomController extends Controller
      */
     public function index()
     {
-        $dataClassroom = Classroom::orderBy('nombre_ambiente', 'ASC')->paginate(10);
+        $dataClassroom = Classroom::all()->sortBy('nombre_ambiente');
         return view('classrooms.index')
             ->with('dataClassroom', $dataClassroom);
     }

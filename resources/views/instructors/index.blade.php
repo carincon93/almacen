@@ -73,14 +73,6 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="table-footer clearfix">
-            <div class="col-md-6">
-                Total de instructores
-            </div>
-            <div class="col-md-6">
-                {{ $dataInstructor->links() }}
-            </div>
-        </div>
     </div>
 </div>
 

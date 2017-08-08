@@ -61,15 +61,6 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="table-footer clearfix">
-            <div class="col-md-6">
-                Total de ambientes
-            </div>
-            <div class="col-md-6">
-                {{ $dataClassroom->links() }}
-            </div>
-        </div>
-
     </div>
 </div>
 @endsection
