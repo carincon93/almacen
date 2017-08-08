@@ -23,7 +23,7 @@ class InstructorRequest extends FormRequest
      */
     public function rules()
     {
-            return [
+        return [
                'nombre'=>'required|max:64',
                'apellidos'=>'required|max:64',
                'numero_documento'=>'required|max:10',
@@ -47,13 +47,13 @@ class InstructorRequest extends FormRequest
             'numero_documento.max'=>'El campo documento debe tener como máximo 10 numeros',
             'area.required'=>'El campo área es requerido',
             'area.max'=>'El campo área debe tener como máximo 128 caracteres',
-            'ip.required'=>'El campo ip es requerido',
-            'ip.max'=>'El campo ip debe tener como máximo 5 numeros',
+            'ip.required'=>'El campo IP es requerido',
+            'ip.max'=>'El campo IP debe tener como máximo 5 numeros',
             'telefono.max'=>'El campo teléfono debe tener como máximo 7 numeros',
             'celular.required'=>'El campo celular es requerido',
             'celular.max'=>'El campo celular debe tener como máximo 10 numeros',
-            'email.required'=>'El campo correo es requerido',
-            'email.unique'=>'este correo ya existe',
+            'email.required'=>'El campo correo electrónico es requerido',
+            'email.unique'=>'Este correo electrónico ya existe',
             'instructor_type_id.required'=>'El campo tipo de instructor es requerido'
         ];
     }

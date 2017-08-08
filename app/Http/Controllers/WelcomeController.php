@@ -3,27 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Instructor;
+
 use App\Classroom;
-use App\Historial_classroom_loan;
+use App\Instructor;
+use App\Historical_record;
 
 class WelcomeController extends Controller
 {
-    /**
-     * Display welcome view.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $countHistorial = Historial_classroom_loan::all()->count();
-        $dataHistorial = Historial_classroom_loan::orderBy('borrowed_at', 'desc')->paginate(5);
-        $dataClassroom = Classroom::all();
-        $count = 1;
+        $dataClassroom  = Classroom::all()->sortBy('nombre_ambiente');
+        // $dataHistorical = Historical_record::all()->sortByDesc('borrowed_at');
+        $dataHistorical = Historical_record::orderByDesc('borrowed_at', 'DESC')->take(5)->get();
+        $dataInstructor = Instructor::all()->sortBy('nombre');
         return view('welcome')
-            ->with('count', $count)
-            ->with('dataClassroom', $dataClassroom)
-            ->with('dataHistorial', $dataHistorial)
-            ->with('countHistorial', $countHistorial);
+        ->with('dataClassroom', $dataClassroom)
+            ->with('dataHistorical', $dataHistorical)
+                ->with('dataInstructor', $dataInstructor);
+    }
+
+    public function ajaxsearch(Request $request)
+    {
+        $query = Classroom::nombre_ambiente($request->get('nombre_ambiente'))->orderBy('id', 'ASC')->get();
+        return view('classroomajx', compact('query'));
     }
 }

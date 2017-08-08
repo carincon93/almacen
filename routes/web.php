@@ -11,34 +11,41 @@
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Auth::routes();
 
-// Welcome
 Route::get('/', 'WelcomeController@index')->name('welcome');
-Route::get('/ajaxsearch', 'ClassroomController@ajaxsearch');
-Route::get('/ajaxsearch2', 'InstructorController@ajaxsearch');
-// Home
-Route::get('/home', 'HomeController@index')->name('home');
-// Classroom Loan
-Route::get('/classrooms', 'ClassroomController@classrooms');
-Route::get('/classroom_loan/{id}', 'ClassroomController@classrooml');
-Route::post('/classroom_loan/{id}/loan', 'ClassroomController@classroom_update');
-// Classroom Loan - Delivered
-Route::get('/classroom_loan2/{id}', 'ClassroomController@classrooml2');
-Route::post('/classroom_loan2/{id}/loan', 'ClassroomController@classroom_update2');
-// Classroom Loan - Search
-Route::post('/classroomajax', 'ClassroomController@classroomajax');
-// Historial Loans
-Route::post('loan', 'ClassroomController@loan');
-Route::post('modify_loan/{borrowed_at}', 'ClassroomController@modify_loan');
+Route::get('/admin', 'AdminController@index')->name('admin');
+
+// Welcome Ajaxsearch
+Route::get('/findclassroom', 'WelcomeController@ajaxsearch');
+
+// Prestar Ambiente
+Route::get('/classroom_request/{id}', 'ClassroomController@request');
+Route::post('/classroom_request/{id}/approved', 'ClassroomController@request_approved');
+// Entregar Ambiente
+Route::get('/classroom_delivery/{id}', 'ClassroomController@delivery');
+Route::post('/classroom_delivery/{id}/approved', 'ClassroomController@delivery_approved');
+
+Route::post('/save_historical_record', 'ClassroomController@save_historical_record');
+Route::post('/modify_historical_record/{borrowed_at}', 'ClassroomController@modify_historical_record');
+
+// Instuctor
+Route::resource('/admin/instructor', 'InstructorController');
+// Ajax Instructor
+Route::get('/findinstructor', 'InstructorController@ajaxsearch');
 
 
-// Classroom CRUD
-Route::resource('classroom', 'ClassroomController');
+// Classroom
+Route::resource('/admin/classroom', 'ClassroomController');
+// Ajax Classroom
+Route::get('/findclassroomtbl', 'ClassroomController@ajaxsearch');
 
-Route::resource('instructor','InstructorController');
 
-// redireccion error 404
+// Redirección - Error 404
 Route::get('error', function()
 {
 	return Response::view('error.error404', array(), 404);

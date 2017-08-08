@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\InstructorRequest;
+
 use App\Instructor;
 use App\Instructor_type;
 
 class InstructorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,10 +21,9 @@ class InstructorController extends Controller
      */
     public function index()
     {
-
-        $instructors = Instructor::paginate(5);
+        $dataInstructor = Instructor::orderBy('nombre', 'ASC')->paginate(10);
         return view('instructors.index')
-            ->with('instructors', $instructors);
+            ->with('dataInstructor', $dataInstructor);
     }
 
     /**
@@ -42,19 +46,19 @@ class InstructorController extends Controller
      */
     public function store(InstructorRequest $request)
     {
-        $in = new Instructor();
-        $in->nombre               = $request->get('nombre');
-        $in->apellidos            = $request->get('apellidos');
-        $in->numero_documento     = $request->get('numero_documento');
-        $in->area                 = $request->get('area');
-        $in->ip                   = $request->get('ip');
-        $in->telefono             = $request->get('telefono');
-        $in->celular              = $request->get('celular');
-        $in->email                = $request->get('email');
-        $in->instructor_type_id   = $request->get('instructor_type_id');
-        if ($in->save()){
-            return redirect('instructor')
-                ->with('status', 'El instructor fue adicionado con éxito');
+        $ins = new Instructor();
+        $ins->nombre               = $request->get('nombre');
+        $ins->apellidos            = $request->get('apellidos');
+        $ins->numero_documento     = $request->get('numero_documento');
+        $ins->area                 = $request->get('area');
+        $ins->ip                   = $request->get('ip');
+        $ins->telefono             = $request->get('telefono');
+        $ins->celular              = $request->get('celular');
+        $ins->email                = $request->get('email');
+        $ins->instructor_type_id   = $request->get('instructor_type_id');
+        if ($ins->save()){
+            return redirect('/admin/instructor')
+                ->with('status', 'El instructor '.$ins->nombre.' '.$ins->apellidos.' fue adicionado con éxito');
         }
     }
 
@@ -66,10 +70,9 @@ class InstructorController extends Controller
      */
     public function show($id)
     {
-        $instructor_type = Instructor_type::all();
+        $dataInstructor  = Instructor::find($id);
         return view('instructors.show')
-            ->with('instructor', Instructor::find($id))
-            ->with('instructor_type', $instructor_type);
+        ->with('dataInstructor', $dataInstructor);
     }
 
     /**
@@ -80,12 +83,11 @@ class InstructorController extends Controller
      */
     public function edit($id)
     {
-
-        $in              = Instructor::find($id);
+        $dataInstructor  = Instructor::find($id);
         $instructor_type = Instructor_type::all();
         return view('instructors.edit')
-            ->with('in',$in)
-            ->with('instructor_type',$instructor_type);
+        ->with('dataInstructor', $dataInstructor)
+            ->with('instructor_type', $instructor_type);
     }
 
     /**
@@ -97,19 +99,19 @@ class InstructorController extends Controller
      */
     public function update(InstructorRequest $request, $id)
     {
-        $in = Instructor::find($id);
-        $in->nombre                 = $request->get('nombre');
-        $in->apellidos              = $request->get('apellidos');
-        $in->numero_documento       = $request->get('numero_documento');
-        $in->area                   = $request->get('area');
-        $in->ip                     = $request->get('ip');
-        $in->telefono               = $request->get('telefono');
-        $in->celular                = $request->get('celular');
-        $in->email                  = $request->get('email');
-        $in->instructor_type_id     = $request->get('instructor_type_id');
-        if ($in->save()){
-            return redirect('instructor')
-                ->with('status', 'El instructor fue modificado con éxito');
+        $ins = Instructor::find($id);
+        $ins->nombre                 = $request->get('nombre');
+        $ins->apellidos              = $request->get('apellidos');
+        $ins->numero_documento       = $request->get('numero_documento');
+        $ins->area                   = $request->get('area');
+        $ins->ip                     = $request->get('ip');
+        $ins->telefono               = $request->get('telefono');
+        $ins->celular                = $request->get('celular');
+        $ins->email                  = $request->get('email');
+        $ins->instructor_type_id     = $request->get('instructor_type_id');
+        if ($ins->save()){
+            return redirect('admin/instructor')
+                ->with('status', 'El instructor '.$ins->nombre.' '.$ins->apellidos.' fue modificado con éxito');
         }
     }
 
@@ -122,18 +124,13 @@ class InstructorController extends Controller
     public function destroy($id)
     {
         Instructor::destroy($id);
-        return redirect('instructor')
+        return redirect('/admin/instructor')
             ->with('status', 'El instructor fue eliminado con éxito');
     }
-     public function ajaxsearch(Request $request){
-        $query=Instructor::name($request->get('nombre'))->orderBy('id','ASC')->get();
-        return view('instructors.ajax', compact('query'));
-        
+
+    public function ajaxsearch(Request $request)
+    {
+        $query = Instructor::nombre_instructor($request->get('nombre_instructor'))->orderBy('id', 'ASC')->get();
+        return view('instructors.instructorajx', compact('query'));
     }
-    // public function ajaxsearch(Request $request)
-    // {
-    //     $query = Instructor::documento($request->get('documento'))->limit(1)->get();
-    //     return view('instructors.ajax')
-    //         ->with('data', $query);
-    // }
 }
