@@ -22,8 +22,7 @@ class InstructorController extends Controller
     public function index()
     {
         $dataInstructor = Instructor::orderBy('nombre', 'ASC')->paginate(10);
-        return view('instructors.index')
-            ->with('dataInstructor', $dataInstructor);
+        return view('instructors.index')->with('dataInstructor', $dataInstructor);
     }
 
     /**
