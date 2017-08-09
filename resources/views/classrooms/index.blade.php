@@ -3,7 +3,8 @@
 <div class="search-navbar-wrapper">
     {!! csrf_field() !!}
     <i class="fa fa-fw fa-search"></i>
-    <input type="search" class="form-control search-navbar" id="hnombre_ambiente" placeholder="Buscar ambiente" autocomplete="off">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Burcar por nombres.." class="form-control search-navbar">
+    <!-- <input type="search" class="form-control search-navbar" id="hnombre_ambiente" placeholder="Buscar ambiente" autocomplete="off" onkeyup="searchClassroom()"> -->
 </div>
 @endsection
 @section('big-content-desc')
@@ -34,14 +35,20 @@
         <table class="table table-full table-hover" data-form="deleteForm">
             <thead>
                 <tr>
-                    <th>Nombre Ambiente</th>
+                    <th>Nombre de ambiente</th>
+                    <th>Tipo de ambiente</th>
+                    <th>Estado</th>
+                    <th>Cupo</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody id="tclassrooms">
+            <tbody  id="myTable">
                 @foreach($dataClassroom as $clr)
                 <tr>
                     <td>{{ $clr->nombre_ambiente }}</td>
+                    <td>{{ $clr->tipo_ambiente }}</td>
+                    <td>{{ $clr->estado }}</td>
+                    <td>{{ $clr->cupo }}</td>
                     <td>
                         <a class="btn" href="{{ url('/admin/classroom/'.$clr->id) }}">
                             <i class="fa fa-fw fa-search"></i>
@@ -59,6 +66,7 @@
                     </td>
                 </tr>
                 @endforeach
+
             </tbody>
         </table>
     </div>

@@ -1,3 +1,20 @@
+function myFunction() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
 $(document).ready(function() {
     $.ajaxSetup(
     {
@@ -6,6 +23,7 @@ $(document).ready(function() {
             'X-CSRF-Token': $('input[name="_token"]').val()
         }
     });
+
     var bodyHeight = $('body').height();
     $('.right-content').css('height', bodyHeight);
 
@@ -16,14 +34,14 @@ $(document).ready(function() {
             $('#classroom-section').html(data);
         });
     });
-
-    $('#hnombre_instructor').keyup(function(event) {
-        $('.pagination').hide();
-        $nombre_instructor = $(this).val();
-        $.get('/findinstructor', {nombre_instructor: $nombre_instructor}, function(data, textStatus, xhr) {
-            $('#tinstructors').html(data);
-        });
-    });
+    //
+    // $('#hnombre_instructor').keyup(function(event) {
+    //     $('.pagination').hide();
+    //     $nombre_instructor = $(this).val();
+    //     $.get('/findinstructor', {nombre_instructor: $nombre_instructor}, function(data, textStatus, xhr) {
+    //         $('#tinstructors').html(data);
+    //     });
+    // });
 
     // Numero documento instructor Ajax
      $('#numero_documento').keyup(function(event) {
@@ -34,13 +52,13 @@ $(document).ready(function() {
     });
 
 
-    $('#hnombre_ambiente').keyup(function(event) {
-        $('.pagination').hide();
-        $nombre_ambiente = $(this).val();
-        $.get('/findclassroomtbl', {nombre_ambiente: $nombre_ambiente}, function(data, textStatus, xhr) {
-            $('#tclassrooms').html(data);
-        });
-    });
+    // $('#hnombre_ambiente').keyup(function(event) {
+    //     $('.pagination').hide();
+    //     $nombre_ambiente = $(this).val();
+    //     $.get('/findclassroomtbl', {nombre_ambiente: $nombre_ambiente}, function(data, textStatus, xhr) {
+    //         $('#tclassrooms').html(data);
+    //     });
+    // });
 
     // Guardar préstamo en el historial
     $('.save_entrie').click(function(event) {
