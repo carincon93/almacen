@@ -19,9 +19,16 @@ Auth::routes();
 
 Route::get('/', 'WelcomeController@index')->name('welcome');
 Route::get('/admin', 'AdminController@index')->name('admin');
+Route::get('/admin/historical', 'AdminController@historial_prestamos');
+
+
+
 
 // Welcome Ajaxsearch
 Route::get('/findclassroom', 'WelcomeController@ajaxsearch');
+Route::get('/documentoinstructorajax', 'WelcomeController@documentoajax');
+
+
 
 // Prestar Ambiente
 Route::get('/classroom_request/{id}', 'ClassroomController@request');

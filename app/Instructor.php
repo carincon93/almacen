@@ -22,8 +22,14 @@ class Instructor extends Model
 
     public function scopeNombre_instructor($query, $nombre_instructor)
     {
-        if (trim($nombre_instructor) != ' ') {
+        if (trim($nombre_instructor) != '') {
             $query->where('nombre', 'LIKE', "%$nombre_instructor%");
+        }
+    }
+      public function scopeNumero_documento($query, $numero_documento)
+    {
+        if (trim($numero_documento) != '') {
+            $query->where('numero_documento', 'LIKE', "%$numero_documento%");
         }
     }
 }

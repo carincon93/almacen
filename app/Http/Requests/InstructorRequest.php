@@ -23,7 +23,23 @@ class InstructorRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        if ($this->method()=='PUT') {
+
+            return [
+               'nombre'=>'required|max:64',
+               'apellidos'=>'required|max:64',
+               'numero_documento'=>'required|max:10',
+               'area'=>'required|max:128',
+               'ip'=>'required|max:5',
+               'telefono'=>'max:7',
+               'celular'=>'required|max:10',
+               'email'=>'required|unique:instructors,id,:id',
+               'instructor_type_id'=>'required'
+
+            ];
+        }
+        else {
+            return [
                'nombre'=>'required|max:64',
                'apellidos'=>'required|max:64',
                'numero_documento'=>'required|max:10',
@@ -35,6 +51,8 @@ class InstructorRequest extends FormRequest
                'instructor_type_id'=>'required'
 
             ];
+        }
+        
     }
     public function messages()
     {

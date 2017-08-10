@@ -20,12 +20,17 @@
                 </div>
                 <div class="modal-body">
                     <h3 class="text-capitalize"></h3>
+
+                    {!! csrf_field() !!}
+                    <input type="search" id="numero_documento" class="form-control" placeholder="Documento Instructor" autocomplete="off">
+                    <br><br>
+                    
                     <form action="" method="POST" id="form-request">
                         {!! csrf_field() !!}
                         <input name="id" type="hidden" value="" id="id">
                         <input name="borrowed_at" type="hidden" value="{{ date('Y-m-d H:i:s') }}">
                         <div class="form-group">
-                            <select name="instructor_id" class="form-control text-capitalize" required>
+                            <select name="instructor_id" class="form-control text-capitalize" id="docinstructor"  required>
                                 <option value>Seleccione un instructor</option>
                                 @foreach($dataInstructor as $ins)
                                 <option value="{{ $ins->id }}">{{ $ins->nombre.' '.$ins->apellidos }}</option>
