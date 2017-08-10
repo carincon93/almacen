@@ -47,7 +47,7 @@ $(document).ready(function() {
      $('#numero_documento').keyup(function(event) {
         $numero_documento = $(this).val();
         $.get('/documentoinstructorajax', {numero_documento: $numero_documento}, function(data, textStatus, xhr) {
-            $('#docinstructor').html(data);
+            $('#docInstructor').val(data);
         });
     });
 
@@ -63,12 +63,13 @@ $(document).ready(function() {
     // Guardar préstamo en el historial
     $('.save_entrie').click(function(event) {
         $formch = $('#form-request');
-        $sval = $formch.find('select').val();
+        $sval = $('#numero_documento').val();
+        // $iid  = $('#form-request').find('#nomInstructor').attr('data-id');
 
         if($sval > 0) {
             $token          = $('#form-request').find('input[name=_token]').val();
             $classroom_id   = $('#form-request').find('#id').val();
-            $instructor_id  = $('#form-request').find('select[name=instructor_id]').val();
+            $instructor_id  = $('#form-request').find('input[name=instructor_id]').val();
             $borrowed_at    = $('#form-request').find('input[name=borrowed_at]').val();
             $.post('/save_historical_record', {_token: $token, instructor_id: $instructor_id, classroom_id: $classroom_id, borrowed_at: $borrowed_at}, function(data, textStatus, xhr) {
                 /*optional stuff to do after success */
@@ -97,23 +98,26 @@ $(document).ready(function() {
 
     $('.big-content').on('click', '.clr-empty', function (e) {
         e.preventDefault();
-        $forme = $('#form-request');
-        $fid  = $(this).attr('data-id');
+        $nombclr = $(this).find('h5').attr('data-nombreclr');
 
-        $('#id').attr('value', $fid);
+        $forme = $('#form-request');
+        $fidclr  = $(this).attr('data-idclr');
+
+        $('#id').attr('value', $fidclr);
+        $('.modal-title').text($nombclr);
 
         // Construct the URL dynamically.
         var url = window.location.href.split("/");
         url = url[0] + "//" + url[2] + "/";
 
-        $('#form-request').attr('action', url + 'classroom_request/' + $fid + '/approved');
+        $('#form-request').attr('action', url + 'classroom_request/' + $fidclr + '/approved');
         $('#confirm').modal({
             backdrop: 'static',
             keyboard: false
         })
         .on('click', '#submit-request', function(event) {
-            $sval = $forme.find('select').val();
-            if($sval > 0) {
+            $sval = $forme.find('input[id=nomInstructor]').val();
+            if($sval != '') {
                 $forme.submit();
             }
             event.preventDefault();
@@ -148,7 +152,7 @@ $(document).ready(function() {
     });
     $('.modal').on('hidden.bs.modal', function (e) {
         $(this)
-            .find("input[name=id], textarea[name=novedad], select")
+            .find("input[name=id], input[type=search], input[id=nomInstructor],textarea[name=novedad], select")
                .val('')
                .end()
             .find("input[type=checkbox], input[type=radio]")

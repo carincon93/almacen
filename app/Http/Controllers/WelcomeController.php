@@ -30,7 +30,7 @@ class WelcomeController extends Controller
     public function documentoajax(Request $request)
     {
         $query = Instructor::numero_documento($request->get('numero_documento'))->orderBy('id', 'ASC')->get();
-        return view('instructordocajx', compact('query'));
+        return view('welcome', compact('query'));
     }
 
 }

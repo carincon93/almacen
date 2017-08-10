@@ -29,7 +29,7 @@ class Instructor extends Model
       public function scopeNumero_documento($query, $numero_documento)
     {
         if (trim($numero_documento) != '') {
-            $query->where('numero_documento', 'LIKE', "%$numero_documento%");
+            $query->where('numero_documento', '=', "$numero_documento");
         }
     }
 }

@@ -129,7 +129,7 @@ class InstructorController extends Controller
 
     public function ajaxsearch(Request $request)
     {
-        $query = Instructor::nombre_instructor($request->get('nombre_instructor'))->orderBy('id', 'ASC')->get();
+        $query = Instructor::nombre_instructor($request->get('nombre_instructor'))->first();
         return view('instructors.instructorajx', compact('query'));
     }
 }

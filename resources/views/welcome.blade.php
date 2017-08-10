@@ -16,28 +16,23 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <h4 class="modal-title text-capitalize" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
                     <h3 class="text-capitalize"></h3>
 
-                    {!! csrf_field() !!}
                     <input type="search" id="numero_documento" class="form-control" placeholder="Documento Instructor" autocomplete="off">
-                    <br><br>
+                    <br>
 
                     <form action="" method="POST" id="form-request">
                         {!! csrf_field() !!}
                         <input name="id" type="hidden" value="" id="id">
                         <input name="borrowed_at" type="hidden" value="{{ date('Y-m-d H:i:s') }}">
                         <div class="form-group">
-                            <select name="instructor_id" class="form-control text-capitalize" id="docinstructor"  required>
-                                <option value>Seleccione un instructor</option>
-                                @foreach($dataInstructor as $ins)
-                                <option value="{{ $ins->id }}">{{ $ins->nombre.' '.$ins->apellidos }}</option>
-                                @endforeach
-                            </select>
                         </div>
+                        <input type="text" id="docInstructor">
                     </form>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -101,8 +96,8 @@
                 </div>
                 @elseif($clr->disponibilidad == 'no disponible')
                 <div>
-                    <div class="classroom-card clr-borrowed card" data-id="{{ $clr->id }}" data-borrowed="{{ $clr->borrowed_at }}">
-                        <h5 class="text-capitalize">{{ $clr->nombre_ambiente }}</h5>
+                    <div class="classroom-card clr-borrowed card" data-idclr="{{ $clr->id }}" data-borrowed="{{ $clr->borrowed_at }}">
+                        <h5 class="text-capitalize" data-nombreclr="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
                         <hr>
                         <div class="text-capitalize"><i class="fa fa-fw fa-circle"></i>{{ $clr->instructor->nombre.' '.$clr->instructor->apellidos }}</div>
                         <span class="badge borrowed-info">{{ $clr->borrowed_at }}</span>
@@ -110,8 +105,8 @@
                 </div>
                 @else
                 <div>
-                    <div class="classroom-card clr-empty card" data-id="{{ $clr->id }}">
-                        <h5 class="text-capitalize">{{ $clr->nombre_ambiente }}</h5>
+                    <div class="classroom-card clr-empty card" data-idclr="{{ $clr->id }}">
+                        <h5 class="text-capitalize" data-nombreclr="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
                         <hr>
                     </div>
                 </div>
