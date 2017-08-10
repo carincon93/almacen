@@ -13,13 +13,13 @@ class WelcomeController extends Controller
     public function index()
     {
         $dataClassroom  = Classroom::all()->sortBy('nombre_ambiente');
-        // $dataHistorical = Historical_record::all()->sortByDesc('borrowed_at');
+
         $dataHistorical = Historical_record::orderByDesc('borrowed_at', 'DESC')->take(5)->get();
         $dataInstructor = Instructor::all()->sortBy('nombre');
         return view('welcome')
         ->with('dataClassroom', $dataClassroom)
             ->with('dataHistorical', $dataHistorical)
-                ->with('dataInstructor', $dataInstructor);
+            ->with('dataInstructor', $dataInstructor);
     }
 
     public function ajaxsearch(Request $request)

@@ -276,8 +276,21 @@ blockquote.note.success {
   .err404 div p {
     font-size: 1.8rem; }
 
+.floor-plan {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  .floor-plan div {
+    padding: 2rem;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1; }
+    .floor-plan div svg {
+      width: 60%; }
+
 @media (min-width: 993px) {
   .navbar-fixed-top.mleft {
     margin-left: 260px !important; } }
-
-/*# sourceMappingURL=master.css.map */

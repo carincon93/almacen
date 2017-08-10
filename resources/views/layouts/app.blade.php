@@ -20,7 +20,7 @@
     <aside id="sidebar">
         <div id="sidebar-logo">
             <h4 class="text-center">
-                <a href="{{ url('/') }}">ALMACÉN CPIC</a>
+                <a href="{{ url('/admin') }}">ALMACÉN CPIC</a>
             </h4>
         </div>
         <div id="sidebar-admin">

@@ -351,6 +351,19 @@ blockquote.note.success {
     }
 }
 
+.floor-plan {
+    display: flex;
+    justify-content: center;
+    div {
+        padding: 2rem;
+        flex: 1;
+
+        svg {
+            width: 60%;
+        }
+    }
+}
+
 @media (min-width: 993px) {
     .navbar-fixed-top.mleft {
         margin-left: 260px !important;

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use App\Classroom;
 use App\Historical_record;
 
 class AdminController extends Controller
@@ -19,7 +21,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin');
+        $dataClassr  = Classroom::all()->where('nombre_ambiente', 'sistemas 1')->first();
+        return view('admin')->with('dataClassr', $dataClassr);
     }
 
     public function historial_prestamos() {

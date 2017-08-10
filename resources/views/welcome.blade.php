@@ -24,7 +24,7 @@
                     {!! csrf_field() !!}
                     <input type="search" id="numero_documento" class="form-control" placeholder="Documento Instructor" autocomplete="off">
                     <br><br>
-                    
+
                     <form action="" method="POST" id="form-request">
                         {!! csrf_field() !!}
                         <input name="id" type="hidden" value="" id="id">
@@ -147,4 +147,5 @@
         </div>
     </div>
     @endif
+
 @endsection
