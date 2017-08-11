@@ -14,7 +14,7 @@ class ClassroomController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except('solicitud_prestamo', 'prestamo_aprobado', 'delivery', 'delivery_approved', 'save_historical_record', 'modify_historical_record');
+        $this->middleware('auth')->except('prestamo_aprobado', 'entrega_aprobado', 'save_historical_record', 'modify_historical_record');
     }
     /**
      * Display a listing of the resource.

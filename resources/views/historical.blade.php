@@ -8,8 +8,8 @@
                     <th>ID</th>
                     <th>Instructor</th>
                     <th>Ambiente</th>
-                    <th>Fecha Prestado:</th>
-                    <th>Fecha Entregado:</th>
+                    <th>Fecha Prestado</th>
+                    <th>Fecha Entregado</th>
                     <th>Novedad</th>
                 </tr>
             </thead>
