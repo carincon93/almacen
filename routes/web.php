@@ -33,7 +33,7 @@ Route::get('/documentoinstructorajax', 'WelcomeController@documentoajax');
 // Prestar Ambiente
 Route::post('/solicitar_prestamo/{id}/aprobado', 'ClassroomController@prestamo_aprobado');
 // Entregar Ambiente
-Route::post('/entregar_ambiente/{id}/approved', 'ClassroomController@entrega_aprobado');
+Route::post('/entregar_ambiente/{id}/aprobado', 'ClassroomController@entrega_aprobado');
 
 Route::post('/save_historical_record', 'ClassroomController@save_historical_record');
 Route::post('/modify_historical_record/{borrowed_at}', 'ClassroomController@modify_historical_record');

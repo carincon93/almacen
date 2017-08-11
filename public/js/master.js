@@ -156,7 +156,7 @@ $(document).ready(function() {
         var url = window.location.href.split("/");
         url = url[0] + "//" + url[2] + "/";
         //
-        $($formd).attr('action', url + 'entregar_ambiente/' + $eIdClr + '/approved');
+        $($formd).attr('action', url + 'entregar_ambiente/' + $eIdClr + '/aprobado');
         $('#entregar_ambiente').modal({
             backdrop: 'static',
             keyboard: false

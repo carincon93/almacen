@@ -32,7 +32,11 @@ class WelcomeController extends Controller
         // $query = Instructor::numero_documento($request->get('numero_documento'))->orderBy('id', 'ASC')->get();
         //return view('welcome', compact('query'));
         $query = Instructor::where('numero_documento', '=', $request->get('numero_documento'))->first();
-        echo $query->id.";".$query->nombre;
+
+        if($query){
+           echo $query->id.";".$query->nombre; 
+        }
+        
 
     }
 
