@@ -31,11 +31,9 @@ Route::get('/documentoinstructorajax', 'WelcomeController@documentoajax');
 
 
 // Prestar Ambiente
-Route::get('/classroom_request/{id}', 'ClassroomController@request');
-Route::post('/classroom_request/{id}/approved', 'ClassroomController@request_approved');
+Route::post('/solicitar_prestamo/{id}/aprobado', 'ClassroomController@prestamo_aprobado');
 // Entregar Ambiente
-Route::get('/classroom_delivery/{id}', 'ClassroomController@delivery');
-Route::post('/classroom_delivery/{id}/approved', 'ClassroomController@delivery_approved');
+Route::post('/entregar_ambiente/{id}/approved', 'ClassroomController@entrega_aprobado');
 
 Route::post('/save_historical_record', 'ClassroomController@save_historical_record');
 Route::post('/modify_historical_record/{borrowed_at}', 'ClassroomController@modify_historical_record');

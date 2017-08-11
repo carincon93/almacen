@@ -22,11 +22,15 @@ class AdminController extends Controller
     public function index()
     {
         $dataClassr  = Classroom::all()->where('nombre_ambiente', 'sistemas 1')->first();
-        return view('admin')->with('dataClassr', $dataClassr);
+        if($dataClassr != null) {
+            return view('admin')->with('dataClassr', $dataClassr);
+        } else {
+            return view('admin');
+        }
     }
 
     public function historial_prestamos() {
-        $Historical_record = Historical_record::orderBy('id', 'ASC')->paginate(10);
-        return view('historical')->with('Historical_record', $Historical_record);
+        $historical_record = Historical_record::orderBy('id', 'ASC')->paginate(10);
+        return view('historical')->with('historical_record', $historical_record);
     }
 }

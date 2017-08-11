@@ -14,7 +14,7 @@ class ClassroomController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except('request', 'request_approved', 'delivery', 'delivery_approved', 'save_historical_record', 'modify_historical_record');
+        $this->middleware('auth')->except('solicitud_prestamo', 'prestamo_aprobado', 'delivery', 'delivery_approved', 'save_historical_record', 'modify_historical_record');
     }
     /**
      * Display a listing of the resource.
@@ -119,24 +119,12 @@ class ClassroomController extends Controller
         return view('classrooms.classroomajx', compact('query'));
     }
 
-
-
-    // Prestar ambiente
-    public function request($id)
-    {
-        $dataClassroom  = Classroom::find($id);
-        $dataInstructor = Instructor::all()->sortBy('nombre');
-
-        return view('classrooms.classroom_request')
-            ->with('dataClassroom', $dataClassroom)
-                ->with('dataInstructor', $dataInstructor);
-    }
-
-    public function request_approved(Request $request)
+    // Aprobar préstamo y cambiar disponibilidad del ambiente
+    public function prestamo_aprobado(Request $request)
     {
         $dataClassroom = Classroom::find($request->id);
         $dataClassroom->disponibilidad = 'no disponible';
-        $dataClassroom->borrowed_at    = $request->get('borrowed_at');
+        $dataClassroom->prestado_en    = $request->get('prestado_en');
         $dataClassroom->instructor_id  = $request->get('instructor_id');
 
         if($dataClassroom->save()) {
@@ -144,14 +132,7 @@ class ClassroomController extends Controller
             return redirect('/');
         }
     }
-    public function delivery($id)
-    {
-        $dataClassroom  = Classroom::find($id);
-
-        return view('classrooms.classroom_delivery')
-            ->with('dataClassroom', $dataClassroom);
-    }
-    public function delivery_approved(Request $request)
+    public function entrega_aprobado(Request $request)
     {
         $dataClassroom = Classroom::find($request->id);
         $dataClassroom->disponibilidad = 'disponible';
@@ -168,15 +149,15 @@ class ClassroomController extends Controller
         $dataHistorical = new Historical_record();
         $dataHistorical->instructor_id  = $request->get('instructor_id');
         $dataHistorical->classroom_id   = $request->get('classroom_id');
-        $dataHistorical->borrowed_at    = $request->get('borrowed_at');
+        $dataHistorical->prestado_en    = $request->get('prestado_en');
 
         $dataHistorical->save();
     }
 
-    public function modify_historical_record(Request $request, $borrowed_at)
+    public function modify_historical_record(Request $request, $prestado_en)
     {
-        $dataHistorical = Historical_record::where('borrowed_at', '=', $borrowed_at)->first();
-        $dataHistorical->delivered_at = $request->get('delivered_at');
+        $dataHistorical = Historical_record::where('prestado_en', '=', $prestado_en)->first();
+        $dataHistorical->entregado_en = $request->get('entregado_en');
         $dataHistorical->novedad      = $request->get('novedad');
         $dataHistorical->save();
     }

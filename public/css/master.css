@@ -177,7 +177,7 @@ blockquote.note.success {
   border-radius: 2px;
   margin-bottom: 30px;
   position: relative; }
-  .card .borrowed-info {
+  .card .fecha-prestamo {
     font-size: 11px;
     padding: 3px 12px; }
 
@@ -232,9 +232,9 @@ blockquote.note.success {
   padding: 1.5rem;
   height: 15rem; }
 
-.clr-borrowed {
+.clr-entregar {
   background: lemonchiffon; }
-  .clr-borrowed hr {
+  .clr-entregar hr {
     border-top: 1px solid #ded476; }
 
 .clr-repair {
@@ -253,8 +253,8 @@ blockquote.note.success {
 .clr-repair:hover {
   cursor: not-allowed; }
 
-.clr-empty:hover,
-.clr-borrowed:hover {
+.clr-disponible:hover,
+.clr-entregar:hover {
   cursor: pointer; }
 
 .err404 {

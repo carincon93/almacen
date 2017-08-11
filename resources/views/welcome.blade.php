@@ -11,7 +11,7 @@
 @endsection
 @section('content')
     <!-- Modal -->
-    <div class="modal fade" id="confirm">
+    <div class="modal fade" id="solicitar_prestamo">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -21,28 +21,30 @@
                 <div class="modal-body">
                     <h3 class="text-capitalize"></h3>
 
+                    <!-- Input de búsqueda -->
                     <input type="search" id="numero_documento" class="form-control" placeholder="Documento Instructor" autocomplete="off">
                     <br>
-
-                    <form action="" method="POST" id="form-request">
+                    <!-- Formulario para préstamo -->
+                    <form action="" method="POST" id="form-solicitud">
                         {!! csrf_field() !!}
-                        <input name="id" type="hidden" value="" id="id">
-                        <input name="borrowed_at" type="hidden" value="{{ date('Y-m-d H:i:s') }}">
-                        <div class="form-group">
-                        </div>
-                        <input type="text" id="docInstructor">
+                        <input name="id" type="hidden" value="" id="id_clr">
+                        <input name="prestado_en" type="hidden" value="{{ date('Y-m-d H:i:s') }}">
+
+                        <input type="text" id="nomInstructor" class="form-control" readonly >
+                        <input type="hidden" id="idInstructor" name="instructor_id">
+
                     </form>
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary save_entrie" id="submit-request">Prestar Ambiente</button>
+                    <button type="button" class="btn btn-primary save_historical" id="submit-solicitud">Prestar Ambiente</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="delivery">
+    <div class="modal fade" id="entregar_ambiente">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -51,11 +53,12 @@
                 </div>
                 <div class="modal-body">
                     <h3 class="text-capitalize"></h3>
-                    <form action="" method="POST" id="form-delivery">
+                    <form action="" method="POST" id="form-entrega">
                         {!! csrf_field() !!}
-                        <input name="id" type="hidden" value="" id="id-clrdelivery">
-                        <input name="borrowed_at" type="hidden" value="" id="borrowed-clrdelivery">
-                        <input name="delivered_at" type="hidden" value="{{ date('Y-m-d H:i:s') }}">
+                        <input name="prestado_en" type="hidden" value="" id="prestado_en">
+
+                        <input name="id" type="hidden" value="" id="id-clrEntrega">
+                        <input name="entregado_en" type="hidden" value="{{ date('Y-m-d H:i:s') }}">
                         <div class="form-group">
                             <label class="label-control">Agregar novedad</label>
                             <textarea name="novedad" rows="8" cols="80" class="form-control"></textarea>
@@ -64,7 +67,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary modify_entrie" id="submit-delivery">Entregar Ambiente</button>
+                    <button type="button" class="btn btn-primary modify_historical" id="submit-entrega">Entregar Ambiente</button>
                 </div>
             </div>
         </div>
@@ -76,7 +79,7 @@
             <div class="col-md-4">
                 @if($clr->estado == 'inactivo')
                 <div>
-                    <div class="classroom-card clr-inactive card">
+                    <div class="classroom-card card clr-inactive">
                         <h5 class="text-capitalize">{{ $clr->nombre_ambiente }}</h5>
                         <hr>
                         <div>
@@ -86,7 +89,7 @@
                 </div>
                 @elseif($clr->estado == 'en reparacion')
                 <div>
-                    <div class="classroom-card clr-repair card">
+                    <div class="classroom-card card clr-repair">
                         <h5 class="text-capitalize">{{ $clr->nombre_ambiente }}</h5>
                         <hr class="hr-repair">
                         <div>
@@ -96,17 +99,17 @@
                 </div>
                 @elseif($clr->disponibilidad == 'no disponible')
                 <div>
-                    <div class="classroom-card clr-borrowed card" data-idclr="{{ $clr->id }}" data-borrowed="{{ $clr->borrowed_at }}">
-                        <h5 class="text-capitalize" data-nombreclr="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
+                    <div class="classroom-card card clr-entregar" data-idclr="{{ $clr->id }}" data-entregar="{{ $clr->prestado_en }}">
+                        <h5 class="text-capitalize" data-nombreClr="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
                         <hr>
                         <div class="text-capitalize"><i class="fa fa-fw fa-circle"></i>{{ $clr->instructor->nombre.' '.$clr->instructor->apellidos }}</div>
-                        <span class="badge borrowed-info">{{ $clr->borrowed_at }}</span>
+                        <span class="badge fecha-prestamo">{{ $clr->prestado_en }}</span>
                     </div>
                 </div>
                 @else
                 <div>
-                    <div class="classroom-card clr-empty card" data-idclr="{{ $clr->id }}">
-                        <h5 class="text-capitalize" data-nombreclr="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
+                    <div class="classroom-card card clr-disponible" data-idclr="{{ $clr->id }}">
+                        <h5 class="text-capitalize" data-nombreClr="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
                         <hr>
                     </div>
                 </div>
