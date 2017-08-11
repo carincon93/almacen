@@ -105,8 +105,8 @@ $(document).ready(function() {
         .on('click', '#submit-solicitud', function(event) {
             $idInstructor = $forme.find('input[id=nomInstructor]').val();
             if($idInstructor != '') {
-                $forme.submit();
                 save_historical();
+                $forme.submit();
             }
             event.preventDefault();
         });
@@ -164,8 +164,8 @@ $(document).ready(function() {
         .on('click', '#submit-entrega', function(event) {
             $novedad = $formd.find('textarea[name=novedad]').val();
             if($novedad != "") {
-                $formd.submit();
                 modify_historical();
+                $formd.submit();
             }
             event.preventDefault();
         });

@@ -14,8 +14,7 @@ input, .form-control {
 
 .has-error .form-control:focus,
 .form-control:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   outline: 0; }
 
 button:focus {
@@ -29,6 +28,7 @@ button:focus {
   -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   -webkit-transition: all 0.4s cubic-bezier(0, 0, 0.2, 1);
+  -o-transition: all 0.4s cubic-bezier(0, 0, 0.2, 1);
   transition: all 0.4s cubic-bezier(0, 0, 0.2, 1); }
 
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
@@ -119,20 +119,19 @@ blockquote.note.success {
           right: 0; }
 
 .search-navbar-wrapper {
-  width: 25%;
+  width: 20%;
   position: relative; }
   .search-navbar-wrapper i {
-    left: 0;
+    right: 0;
     position: absolute;
     top: 1.3rem; }
   .search-navbar-wrapper .search-navbar {
     border: none;
     border-bottom: 1px solid;
     border-radius: 0px;
-    -webkit-box-shadow: none;
-            box-shadow: none;
+    box-shadow: none;
     padding-bottom: 0;
-    padding-left: 2.4rem; }
+    padding-left: 0rem; }
 
 .table-small {
   margin: 0; }
@@ -177,22 +176,20 @@ blockquote.note.success {
   border-radius: 2px;
   margin-bottom: 30px;
   position: relative; }
-  .card .borrowed-info {
+  .card .fecha-prestamo {
     font-size: 11px;
     padding: 3px 12px; }
 
 .card-form {
   background: #fff;
-  -webkit-box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.07), 1px 2px 5px 0 rgba(0, 0, 0, 0.06);
-          box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.07), 1px 2px 5px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.07), 1px 2px 5px 0 rgba(0, 0, 0, 0.06);
   padding: 2rem; }
   .card-form .control-label {
     position: relative;
     top: 1rem; }
   .card-form .form-control {
     border: none;
-    -webkit-box-shadow: none;
-            box-shadow: none;
+    box-shadow: none;
     border-bottom: 1px solid #ddd;
     padding: 0; }
   .card-form .form-control:focus {
@@ -232,9 +229,9 @@ blockquote.note.success {
   padding: 1.5rem;
   height: 15rem; }
 
-.clr-borrowed {
+.clr-entregar {
   background: lemonchiffon; }
-  .clr-borrowed hr {
+  .clr-entregar hr {
     border-top: 1px solid #ded476; }
 
 .clr-repair {
@@ -253,21 +250,31 @@ blockquote.note.success {
 .clr-repair:hover {
   cursor: not-allowed; }
 
-.clr-empty:hover,
-.clr-borrowed:hover {
+.clr-disponible:hover,
+.clr-entregar:hover {
   cursor: pointer; }
 
 .err404 {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   height: 100vh; }
+  .err404 div div h1 {
+    margin-top: 0;
+    font-size: 7rem; }
+  .err404 div i {
+    font-size: 34rem; }
+  .err404 div p {
+    font-size: 1.8rem; }
+
+.floor-plan {
+  display: flex;
+  justify-content: center; }
+  .floor-plan div {
+    padding: 2rem;
+    flex: 1; }
+    .floor-plan div svg {
+      width: 60%; }
 
 @media (min-width: 993px) {
   .navbar-fixed-top.mleft {

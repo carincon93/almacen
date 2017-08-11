@@ -1,11 +1,5 @@
 @extends('layouts.app')
-@section('form-search')
-<div class="search-navbar-wrapper">
-    {!! csrf_field() !!}
-    <i class="fa fa-fw fa-search"></i>
-    <input type="search" id="wnombre_ambiente" class="form-control search-navbar" placeholder="Buscar ambiente" autocomplete="off">
-</div>
-@endsection
+
 @section('big-content-desc')
 <h4><i class="fa fa-fw fa-key"></i>Prestar ambiente</h4>
 @endsection
@@ -72,6 +66,11 @@
             </div>
         </div>
     </div>
+    <div class="search-navbar-wrapper">
+        {!! csrf_field() !!}
+        <i class="fa fa-fw fa-search"></i>
+        <input type="search" id="wnombre_ambiente" class="form-control search-navbar" placeholder="Buscar ambiente" autocomplete="off">
+    </div>
     <div id="classroom-section">
         @foreach($dataClassroom->chunk(3) as $chunk)
         <div class="row">
@@ -109,7 +108,12 @@
                 @else
                 <div>
                     <div class="classroom-card card clr-disponible" data-idclr="{{ $clr->id }}">
+                        <div class="clr-img">
+                            <img src="{{ asset('/images/techClassroomImg.jpg')}}" alt="" class="img-classroom">
+                        </div>
                         <h5 class="text-capitalize" data-nombreClr="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
+
+                        
                         <hr>
                     </div>
                 </div>
