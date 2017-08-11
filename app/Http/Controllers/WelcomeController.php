@@ -14,7 +14,7 @@ class WelcomeController extends Controller
     {
         $dataClassroom  = Classroom::all()->sortBy('nombre_ambiente');
 
-        $dataHistorical = Historical_record::orderByDesc('borrowed_at', 'DESC')->take(5)->get();
+        $dataHistorical = Historical_record::orderByDesc('prestado_en', 'DESC')->take(5)->get();
         $dataInstructor = Instructor::all()->sortBy('nombre');
         return view('welcome')
         ->with('dataClassroom', $dataClassroom)
@@ -32,7 +32,7 @@ class WelcomeController extends Controller
         // $query = Instructor::numero_documento($request->get('numero_documento'))->orderBy('id', 'ASC')->get();
         //return view('welcome', compact('query'));
         $query = Instructor::where('numero_documento', '=', $request->get('numero_documento'))->first();
-        echo $query->nombre;
+        echo $query->id.";".$query->nombre;
 
     }
 

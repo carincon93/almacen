@@ -225,7 +225,7 @@ blockquote.note.success {
     margin-bottom: 30px;
     position: relative;
 
-    .borrowed-info {
+    .fecha-prestamo {
         font-size: 11px;
         padding: 3px 12px;
     }
@@ -297,7 +297,7 @@ blockquote.note.success {
     height: 15rem;
 }
 
-.clr-borrowed {
+.clr-entregar {
     background: lemonchiffon;
 
     hr {
@@ -324,8 +324,8 @@ blockquote.note.success {
 .clr-repair:hover {
     cursor: not-allowed;
 }
-.clr-empty:hover,
-.clr-borrowed:hover {
+.clr-disponible:hover,
+.clr-entregar:hover {
     cursor: pointer;
 }
 

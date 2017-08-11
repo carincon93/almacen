@@ -14,21 +14,21 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach($Historical_record as $his)
+            @foreach($historical_record as $his)
                 <tr>
-                	<td>{{$his->id}}</td>
+                	<td>{{ $his->id }}</td>
                 	<td>{{$his->instructor->nombre.' '.$his->instructor->apellidos  }}</td>
-                	<td>{{$his->classroom->nombre_ambiente}}</td>
-                	<td>{{$his->borrowed_at}}</td>
-					
-					@if($his->delivered_at)
-					<td>{{$his->delivered_at}}</td>
+                	<td>{{ $his->classroom->nombre_ambiente}}</td>
+                	<td>{{ $his->prestado_en }}</td>
+
+					@if($his->entregado_en)
+					<td>{{$his->entregado_en}}</td>
                 	@else
                 	<td>Sin Entrega</td>
 					@endif
 
 					@if($his->novedad)
-                	<td>{{$his->novedad}}</td>
+                	<td>{{ $his->novedad }}</td>
 					@else
 					<td>Sin novedad</td>
 					@endif
@@ -38,7 +38,4 @@
         </table>
     </div>
 </div>
-
-
-
 @endsection
