@@ -42,10 +42,16 @@
             <ul class="list-unstyled">
                 <li>Administración</li>
                 <li>
+                    <a href="{{ url('/admin/user') }}"><i class="fa fa-fw fa-cog"></i>Administradores</a>
+                </li>
+                <li>
                     <a href="{{ url('/admin/instructor') }}"><i class="fa fa-fw fa-cog"></i>Administrar instructores</a>
                 </li>
                 <li>
                     <a href="{{ url('/admin/classroom') }}"><i class="fa fa-fw fa-cog"></i>Administrar ambientes</a>
+                </li>
+                <li>
+                    <a href="{{ url('/admin/file') }}"><i class="fa fa-fw fa-cog"></i>Administrar fichas</a>
                 </li>
                 <li>Acciones</li>
                 <li>
