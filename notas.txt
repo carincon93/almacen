@@ -1,0 +1,4 @@
+1. Un ambiente con un instructor asignado, si se elimina ese instructor el ambiente queda en "No disponible"
+y sin id de instructor. Error de laravel.
+
+* Evitar que se elimine un instructor mientras este tiene a cargo un ambiente *

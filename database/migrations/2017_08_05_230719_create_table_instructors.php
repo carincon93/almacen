@@ -23,6 +23,8 @@ class CreateTableInstructors extends Migration
             $table->integer('telefono')->nullable();
             $table->bigInteger('celular');
             $table->string('email', 64)->unique();
+            $table->string('imagen', 191)->default('/images/perdefault.png')->nullable();
+            $table->string('disponibilidad', 15)->default('disponible')->nullable();
             $table->integer('instructor_type_id')->unsigned();
             $table->foreign('instructor_type_id')->references('id')->on('instructor_types');
             $table->timestamps();

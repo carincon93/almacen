@@ -14,24 +14,17 @@
                 </tr>
             </thead>
             <tbody>
+            @php
+            $count = 1;
+            @endphp
             @foreach($historical_record as $his)
                 <tr>
-                	<td>{{ $his->id }}</td>
+                	<td>{{$count++}}</td>
                 	<td>{{$his->instructor->nombre.' '.$his->instructor->apellidos  }}</td>
                 	<td>{{ $his->classroom->nombre_ambiente}}</td>
                 	<td>{{ $his->prestado_en }}</td>
-
-					@if($his->entregado_en)
-					<td>{{$his->entregado_en}}</td>
-                	@else
-                	<td>Sin Entrega</td>
-					@endif
-
-					@if($his->novedad)
-                	<td>{{ $his->novedad }}</td>
-					@else
-					<td>Sin novedad</td>
-					@endif
+                    <td>{{ $his->entregado_en != '' ? $his->entregado_en : 'Sin entrega'}}</td>
+                    <td>{{ $his->novedad != '' ? $his->novedad : 'Sin novedad'}}</td>
                 </tr>
                @endforeach
             </tbody>

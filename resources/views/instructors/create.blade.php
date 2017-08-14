@@ -2,7 +2,7 @@
 
 @section('title','Adicionar instructor')
 
-@section('form-search')
+@section('navbar-top')
 <ul class="breadcrumb">
 	<li><a href="{{ url('/admin/instructor') }}" class="btn-link">Lista de instructores</a></li>
 	<li>Adicionar instructor</li>
@@ -19,7 +19,7 @@
 	</ul> -->
 	<div class="col-md-8">
 		<div class="card-form">
-			<form action="{{ url('admin/instructor') }}" method="POST">
+			<form action="{{ url('admin/instructor') }}" method="POST" enctype="multipart/form-data">
 				<div class="form-group">
 					{!! csrf_field()  !!}
 					<div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
@@ -78,12 +78,21 @@
 							</span>
 						@endif
 					</div>
-					<div class="form-group">
-						<label for="telefono" class="control-label">Télefono</label>
+					<div class="form-group{{ $errors->has('telefono') ? ' has-error' : '' }}">
+						<label for="telefono" class="control-label">
+							Número de télefono
+						</label>
 						<input type="number" name="telefono" class="form-control" value="{{ old('telefono') }}">
+						@if ($errors->has('telefono'))
+							<span class="help-block">
+								{{ $errors->first('telefono') }}
+							</span>
+						@endif
 					</div>
-					<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-						<label for="celular" class="control-label">No. Celular</label>
+					<div class="form-group{{ $errors->has('celular') ? ' has-error' : '' }}">
+						<label for="celular" class="control-label">
+							Número de celular *
+						</label>
 						<input type="number" name="celular" class="form-control" value="{{ old('celular') }}">
 						@if ($errors->has('celular'))
 							<span class="help-block">
@@ -92,7 +101,9 @@
 						@endif
 					</div>
 					<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-						<label for="email" class="control-label">Correo Electrónico *</label>
+						<label for="email" class="control-label">
+							Correo electrónico *
+						</label>
 						<input type="email" name="email" class="form-control" value="{{ old('email') }}">
 						@if ($errors->has('email'))
 							<span class="help-block">
@@ -100,8 +111,16 @@
 							</span>
 						@endif
 					</div>
+					<div class="form-group">
+						<label for="imagen">
+							Foto del instructor
+						</label>
+						<input type="file" class="form-control" name="imagen">
+					</div>
 					<div class="form-group{{ $errors->has('instructor_type_id') ? ' has-error' : '' }}">
-						<label for="instructor_type_id" class="control-label">Tipo de contrato *</label>
+						<label for="instructor_type_id" class="control-label">
+							Tipo de contrato *
+						</label>
 						<select name="instructor_type_id" class="form-control">
 							<option value="">Seleccione el tipo de contrato...</option>
 							@foreach($instructor_type as $it)
@@ -127,10 +146,11 @@
 	<div class="col-md-4">
 		<h3><i class="fa fa-fw fa-user-plus"></i> Adicionar Instructor</h3>
 		<p>
-			Diligencia este formulario para agregar un nuevo instructor.
+			Diligencie este formulario para agregar un nuevo instructor.
 		</p>
-		<blockquote class="note note-info">
-			Los campos que tienen * (asterisco) son obligatorios.
+		<blockquote class="note note-info {{ count($errors) > 0 ? 'note-danger animated shake' : '' }}">
+			Los campos que tienen asterisco <span class="btn">*</span> son obligatorios. <br>
+			{{ count($errors) > 0 ? 'Por favor echa un vistazo a los errores y asegurate de llenar bien cada campo.' : '' }}
 		</blockquote>
 	</div>
 @endsection

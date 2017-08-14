@@ -1,25 +1,11 @@
-function myFunction() {
-    var input, filter, table, tr, td, i;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-        }
-    }
-}
 $(document).ready(function() {
 
-    var bodyHeight = $('body').height();
-    $('.right-content').css('height', bodyHeight);
-
+    $('#solicitar_prestamo').on('shown.bs.modal', function() {
+	  	$(this).find('[autofocus]').focus();
+	  	$('.modal-body').click(function(event) {
+	  		$(this).find('[autofocus]').focus();
+	  	});
+	});
 
     $('#wnombre_ambiente').keyup(function(event) {
         $nombre_ambiente = $(this).val();
@@ -27,59 +13,24 @@ $(document).ready(function() {
             $('#classroom-section').html(data);
         });
     });
-    //
-    // $('#hnombre_instructor').keyup(function(event) {
-    //     $('.pagination').hide();
-    //     $nombre_instructor = $(this).val();
-    //     $.get('/findinstructor', {nombre_instructor: $nombre_instructor}, function(data, textStatus, xhr) {
-    //         $('#tinstructors').html(data);
-    //     });
-    // });
 
     // Numero documento instructor Ajax
-    //  $('body').on('keyup', '#numero_documento',function(event) {
-    //     $numero_documento = $(this).val();
-    //     $.get('/documentoinstructorajax', {numero_documento: $numero_documento}, function(data, textStatus, xhr) {
-    //         // $('#docInstructor').val(data);
-    //         var datos = data,
-    //             id = datos.split(';')[0],
-    //             nombre = datos.split(';')[1];
-    //             $('#idInstructor').val(id);
-    //             $('#nomInstructor').val(nombre);
-    //     });
-    // });
-
     var request = null;
-    function searchByDoc(docVal) {
-        if (request != null) request.abort();
+     $('body').on('keyup', '#numero_documento',function(event) {
+        $numero_documento = $(this).val();
+        console.log($numero_documento);
+        if ($numero_documento > 0) {
+            if (request != null) request.abort();
 
-        request = $.ajax({
-            url: '/documentoinstructorajax',
-            type: 'GET',
-            dataType: 'text',
-            data: { numero_documento: docVal },
-            success: function(msg) {
-                var datos = msg,
-                    id = datos.split(';')[0],
-                    nombre = datos.split(';')[1];
-                    $('#idInstructor').val(id);
-                    $('#nomInstructor').val(nombre);
-            }
-        });
-    }
-
-    $('#numero_documento').keyup(function(event) {
-        searchByDoc(this.value);
+            request = $.get('/documentoinstructorajax', {numero_documento: $numero_documento}, function(data, textStatus, xhr) {
+                $('#asd').html(data);
+            });
+        } else {
+            setTimeout(function() {
+                $('#asd').children().remove();
+            }, 500);
+        }
     });
-
-
-    // $('#hnombre_ambiente').keyup(function(event) {
-    //     $('.pagination').hide();
-    //     $nombre_ambiente = $(this).val();
-    //     $.get('/findclassroomtbl', {nombre_ambiente: $nombre_ambiente}, function(data, textStatus, xhr) {
-    //         $('#tclassrooms').html(data);
-    //     });
-    // });
 
     $('.big-content').on('click', '.clr-disponible', function(e) {
         e.preventDefault();
@@ -103,19 +54,37 @@ $(document).ready(function() {
             keyboard: false
         })
         .on('click', '#submit-solicitud', function(event) {
-            $idInstructor = $forme.find('input[id=nomInstructor]').val();
-            if($idInstructor != '') {
-                save_historical();
-                $forme.submit();
-            }
             event.preventDefault();
+
+            $idInstructor = $forme.find('input[name=instructor_id]').val();
+            if($idInstructor > 0) {
+                anadir_disponibilidadIns();
+                save_historical();
+                setTimeout(function() {
+                    $forme.submit();
+                }, 1000);
+            }
         });
     });
 
+    function anadir_disponibilidadIns() {
+        $formSoliPre = $('#form-solicitud');
+        $idInstructor = $('input[name=instructor_id]').val();
+        $.ajaxSetup({
+            headers:
+            {
+                'X-CSRF-Token': $('input[name="_token"]').val()
+            }
+        });
+        $token          = $formSoliPre.find('input[name=_token]').val();
+        $.post('/disponibilidad_instructor/'+$idInstructor, {_token: $token}, function(data, textStatus, xhr) {
+            /*optional stuff to do after success */
+        });
+    }
     // Guardar préstamo en el historial
     function save_historical() {
         $formSoliPre = $('#form-solicitud');
-        $idInstructorVal = $('#idInstructor').val();
+        $idInstructorVal = $('input[name=instructor_id]').val();
 
         if($idInstructorVal > 0) {
             $.ajaxSetup({
@@ -126,13 +95,11 @@ $(document).ready(function() {
             });
             $token          = $formSoliPre.find('input[name=_token]').val();
             $classroom_id   = $formSoliPre.find('#id_clr').val();
-            // $instructor_id  = $idInstructorVal;
             $prestado_en    = $formSoliPre.find('input[name=prestado_en]').val();
+
             $.post('/save_historical_record', {_token: $token, instructor_id: $idInstructorVal, classroom_id: $classroom_id, prestado_en: $prestado_en}, function(data, textStatus, xhr) {
                 /*optional stuff to do after success */
             });
-        } else {
-            event.preventDefault();
         }
     }
 
@@ -152,6 +119,10 @@ $(document).ready(function() {
         $fechaEntrega  = $(this).attr('data-entregar');
         $('#prestado_en').attr('value', $fechaEntrega);
 
+        $idIns  = $(this).attr('data-idIns');
+        $formd.find('input[name=instructor_id]').attr('value', $idIns);
+
+
         // Construct the URL dynamically.
         var url = window.location.href.split("/");
         url = url[0] + "//" + url[2] + "/";
@@ -162,14 +133,31 @@ $(document).ready(function() {
             keyboard: false
         })
         .on('click', '#submit-entrega', function(event) {
+            event.preventDefault();
             $novedad = $formd.find('textarea[name=novedad]').val();
             if($novedad != "") {
+                modificar_disponibilidadIns();
                 modify_historical();
-                $formd.submit();
+                setTimeout(function() {
+                    $formd.submit();
+                }, 1000);
             }
-            event.preventDefault();
         });
     });
+    function modificar_disponibilidadIns() {
+        $formmh = $('#form-entrega');
+        $idInstructor = $('input[name=instructor_id]').val();
+        $.ajaxSetup({
+            headers:
+            {
+                'X-CSRF-Token': $('input[name="_token"]').val()
+            }
+        });
+        $token          = $formmh.find('input[name=_token]').val();
+        $.post('/modificar_disponibilidad_ins/'+$idInstructor, {_token: $token}, function(data, textStatus, xhr) {
+            /*optional stuff to do after success */
+        });
+    }
     function modify_historical() {
         $formmh = $('#form-entrega');
         $novedad = $formmh.find('textarea').val();
@@ -187,8 +175,6 @@ $(document).ready(function() {
             $.post('/modify_historical_record/'+$prestado_en, {_token: $token, entregado_en: $entregado_en, novedad: $novedad}, function(data, textStatus, xhr) {
                 /*optional stuff to do after success */
             });
-        } else {
-            event.preventDefault();
         }
     }
 
@@ -199,25 +185,32 @@ $(document).ready(function() {
                .end()
             .find("input[type=checkbox], input[type=radio]")
                .prop("checked", "")
-               .end();
+               .end()
+            .find("#asd")
+                .children()
+                .remove();
     });
 
 
     // Eliminar Instructor
-    $('table[data-form="deleteForm"]').on('click', '.form-delete', function(e){
+    $('table[data-form="deleteForm"]').on('click', '.form-delete-ins', function(e){
         e.preventDefault();
         var $formdi = $(this);
-        $('#confirm').modal({ backdrop: 'static', keyboard: false })
+        var $nombIns = $formdi.find('.btn-delete').attr('data-nombre');
+        $('body').find('.modal-title').text('Nombre Instructor: '+$nombIns);
+        $('#confirm-delete').modal({ backdrop: 'static', keyboard: false })
             .on('click', '#delete-ins', function() {
                 $formdi.submit();
         });
     });
 
     // Eliminar Ambiente
-    $('table[data-form="deleteForm"]').on('click', '.form-delete', function(e){
+    $('table[data-form="deleteForm"]').on('click', '.form-delete-clr', function(e){
         e.preventDefault();
         var $formdc = $(this);
-        $('#confirm').modal({ backdrop: 'static', keyboard: false })
+        var $nombClr = $formdc.find('.btn-delete').attr('data-nombre');
+        $('body').find('.modal-title').text('Nombre Ambiente: '+$nombClr);
+        $('#confirm-delete').modal({ backdrop: 'static', keyboard: false })
             .on('click', '#delete-clr', function() {
                 $formdc.submit();
         });

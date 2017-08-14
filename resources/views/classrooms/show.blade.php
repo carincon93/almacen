@@ -2,9 +2,9 @@
 
 @section('title', 'Ver ambiente')
 
-@section('form-search')
+@section('navbar-top')
 <ul class="breadcrumb">
-	<li><a href="{{ url('/admin/instructor') }}" class="btn-link">Lista de ambientes</a></li>
+	<li><a href="{{ url('/admin/classroom') }}" class="btn-link">Lista de ambientes</a></li>
 	<li>Adicionar ambiente</li>
 </ul>
 @endsection

@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('css/master.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -39,16 +40,19 @@
         </div>
         <div id="sidebar-content">
             <ul class="list-unstyled">
-                <li></li>
-                <li></li>
+                <li>Administración</li>
                 <li>
                     <a href="{{ url('/admin/instructor') }}"><i class="fa fa-fw fa-cog"></i>Administrar instructores</a>
                 </li>
                 <li>
                     <a href="{{ url('/admin/classroom') }}"><i class="fa fa-fw fa-cog"></i>Administrar ambientes</a>
                 </li>
+                <li>Acciones</li>
                 <li>
-                    <a href="{{ url('/admin/historical') }}"><i class="fa fa-fw fa-cog"></i>Historial de préstamos</a>
+                    <a href="{{ url('/') }}"><i class="fa fa-fw fa-key"></i>Prestar ambiente</a>
+                </li>
+                <li>
+                    <a href="{{ url('/admin/historical') }}"><i class="fa fa-fw fa-line-chart"></i>Historial de préstamos</a>
                 </li>
             </ul>
         </div>
@@ -58,7 +62,7 @@
         <div class="{{ Auth::check() ? 'app-check' : ''}}">
             <nav class="navbar navbar-default navbar-fixed-top {{ Auth::check() ? 'mleft' : '' }}">
                 <div class="container">
-                    @yield('form-search')
+                    @yield('navbar-top')
                 </div>
             </nav>
         <div class="main-content">
@@ -83,7 +87,7 @@
                                     <label for="email" class="control-label">Correo electrónico</label>
 
                                     <div class="">
-                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                         @if ($errors->has('email'))
                                         <span class="help-block">
@@ -143,5 +147,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/master.js') }}"></script>
+    @stack('scripts')
 </body>
 </html>

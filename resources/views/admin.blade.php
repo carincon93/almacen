@@ -1,250 +1,217 @@
 @extends('layouts.app')
 
+@section('big-content-desc')
+<h2>Ambientes Activos </h2>
+<p>
+    <i class="fa fa-fw fa-square itm_quare"></i> Un ambiente con este color significa que esta en uso.
+</p>
+@endsection
+
 @section('content')
 <div class="card floor-plan">
-    <div>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1555 1574">
-            <title>Recurso 14</title>
-            <g>
-                <path d="M920.5,483v-1H876.2l.05-.55c1.24-13.29,6-23.38,14.27-30,6.73-5.41,14.59-7.49,20.66-8.24-31.78-5.35-34.9-36.33-34.93-36.67l0-.54h37.3v-1h-5.18V372h0V357h0V254h0V239h0V6.8H647.14V493.2h261.2V483Z" style="fill: #fff"/>
-                <path d="M528,965V954h10.08V738H528V721h10.08V584.29H482.25V574H526.7c-1.28-12.69-5.94-22.34-13.83-28.7-8.78-7.07-19.6-8.36-25.57-8.46q-2.2.16-4.55.16l-.06-1a36.57,36.57,0,0,1,4.55-.16c33.36-2.4,38.82-31.47,39.45-35.84H482.25V481H526.7c-1.28-12.69-5.94-22.34-13.83-28.7-8.78-7.07-19.6-8.36-25.57-8.46q-2.2.16-4.55.16l-.06-1a36.81,36.81,0,0,1,4.55-.16c33.36-2.4,38.82-31.47,39.45-35.84H482.25V395.71h55.83V255H528V238h10.08V17H528V7H317V17H300V7H17V17H5.29V238H17v17H5.29v92H17v17H1V483H17v17H1V644H6.29v77H17v17H6.29V954H17v11H300V954h17v11Z" style="fill: #fff"/>
-                <path d="M1408,1110h-10v-10H1149v10h-10v215h10v17h-10v79h269v-79h-10v-17h10v-93h-38l.05-.55c1.24-13.33,6-23.45,14.29-30.07,6.66-5.35,14.42-7.42,20.42-8.17-31.77-5.34-34.68-36.34-34.71-36.68l0-.54h38Z" style="fill: #fff"/>
-                @isset($dataClassr)
-                @if($dataClassr->disponibilidad == 'no disponible')
-                <path d="M1130,1100H882v10H872v129h59v7H886.06c.55,4.46,5.58,35,39,37.56a36.59,36.59,0,0,1,4.54.17l-.06,1q-2.35,0-4.54-.17c-5.73.11-15.94,1.4-24.44,8.22-8.28,6.64-13.14,17-14.47,30.72h38v1.5h6v7H882v10H872v40h47v7H886c-.06,3.12.68,21.92,26.6,30H919v93.13H872V1557h10v10h250V1100Z" style="fill: #fc0"/>
-                @else
-                <path d="M1130,1100H882v10H872v129h59v7H886.06c.55,4.46,5.58,35,39,37.56a36.59,36.59,0,0,1,4.54.17l-.06,1q-2.35,0-4.54-.17c-5.73.11-15.94,1.4-24.44,8.22-8.28,6.64-13.14,17-14.47,30.72h38v1.5h6v7H882v10H872v40h47v7H886c-.06,3.12.68,21.92,26.6,30H919v93.13H872V1557h10v10h250V1100Z" style="fill: #fff"/>
-                @endif
-                @endisset
-                <path d="M1027.08,965V954H1017V738h10.08V721H1017V584.29h55.83V574h-44.45c1.28-12.69,5.94-22.34,13.83-28.7,8.78-7.07,19.6-8.36,25.57-8.46q2.2.16,4.55.16l.06-1a36.57,36.57,0,0,0-4.55-.16c-33.36-2.4-38.82-31.47-39.45-35.84h44.43V481h-44.45c1.28-12.69,5.94-22.34,13.83-28.7,8.78-7.07,19.6-8.36,25.57-8.46q2.2.16,4.55.16l.06-1a36.81,36.81,0,0,0-4.55-.16c-33.36-2.4-38.82-31.47-39.45-35.84h44.43V395.71H1017V255h10.08V238H1017V17h10.08V7h211V17h17V7h283V17h11.71V238h-11.71v17h11.71v92h-11.71v17h16V483h-16v17h16V644h-5.29v77h-10.71v17h10.71V954h-10.71v11h-283V954h-17v11Z" style="fill: #fff"/>
-                <rect x="1132.5" y="1109.5" width="6" height="216" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1132.5" y="1325.5" width="16" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1132.5" y="1093.5" width="16" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1132.5" y="970.5" width="16" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1238.5" y="954.5" width="16" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1538.5" y="954.5" width="15.92" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1538.5" y="721.5" width="15.92" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1538.5" y="483.5" width="15.92" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1538.5" y="347.5" width="15.92" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1538.5" y="238.5" width="15.92" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1538.5" y="0.5" width="15.92" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1398.5" y="970.5" width="16" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <polygon points="1026.5 970.5 1010.5 970.5 1010.83 954.5 1026.5 954.5 1026.5 970.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1010.83" y="721.5" width="15.67" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1010.83" y="483.5" width="15.98" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="908.83" y="483.5" width="15.98" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="630.83" y="483.5" width="15.8" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="630.83" y="356.5" width="15.8" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="630.83" y="238.5" width="15.8" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="630.83" y="120.5" width="15.8" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="630.83" y="0.5" width="15.8" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1010.83" y="238.5" width="15.67" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="908.83" y="238.5" width="15.67" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1398.5" y="1093.5" width="16" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1408.5" y="1231" width="6" height="94.5" style="stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1408.5" y="1341.5" width="6" height="82" style="stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1398.5" y="1325.5" width="16" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1132.5" y="1557.5" width="16" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="866.5" y="1557.5" width="16" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1398.5" y="1557.5" width="16" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <path d="M1415,1156.5h-44.5s3,37,44,37c0,0-40-5-44,38h38" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <path d="M1415,1443.5h-44.5s3,37,44,37c0,0-40-5-44,38h38" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <path d="M931,1245.5H886.5s3,38.73,44,38.73c0,0-40-5.23-44,39.77h38" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="866.5" y="1093.5" width="16" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="866.5" y="1325.5" width="16" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <polygon points="872.5 1239.5 872.5 1109.5 866.5 1109.5 866.5 1239.5 866.5 1245.5 872.5 1245.5 931.5 1245.5 931.5 1239.5 872.5 1239.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1004.5" y="1445.5" width="6" height="250" transform="translate(2578 563) rotate(90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="903.5" y="1304.5" width="6" height="48" transform="translate(2235 422) rotate(90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="866.5" y="1511.63" width="6" height="45.87" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1270.5" y="1445.5" width="6" height="250" transform="translate(2844 297) rotate(90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <polygon points="1074.5 1093.5 1074.5 1016.5 1068.5 1016.5 1068.5 1093.5 1030.5 1093.5 1030.5 1016.5 1024.5 1016.5 1024.5 1093.5 882.5 1093.5 882.5 1099.5 1024.5 1099.5 1030.5 1099.5 1068.5 1099.5 1074.5 1099.5 1132.5 1099.5 1132.5 1093.5 1074.5 1093.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <polygon points="1391.5 1093.5 1391.5 976.5 1385.5 976.5 1385.5 1093.5 1347.5 1093.5 1347.5 1010 1341.5 1010 1341.5 1093.5 1294.5 1093.5 1294.5 1035.5 1288.5 1035.5 1288.5 1093.5 1242.5 1093.5 1242.5 1035.5 1236.5 1035.5 1236.5 1093.5 1156.5 1093.5 1156.5 1055.5 1150.5 1055.5 1150.5 1093.5 1148.5 1093.5 1148.5 1099.5 1150.5 1099.5 1156.5 1099.5 1236.5 1099.5 1242.5 1099.5 1288.5 1099.5 1294.5 1099.5 1341.5 1099.5 1347.5 1099.5 1385.5 1099.5 1391.5 1099.5 1398.5 1099.5 1398.5 1093.5 1391.5 1093.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <polygon points="919.5 1388.5 919.5 1382.5 872.5 1382.5 872.5 1341.5 866.5 1341.5 866.5 1382.5 814.5 1382.5 814.5 1388.5 814.5 1476.5 820.5 1476.5 832.5 1476.5 832.5 1494.75 838.67 1494.75 850.5 1494.75 850.5 1505.5 850.5 1511.63 856.75 1511.63 913.5 1511.63 919.5 1511.63 919.5 1505.5 919.5 1419.5 913.5 1419.5 913.5 1505.5 856.75 1505.5 856.75 1494.75 856.75 1488.5 856.75 1488.5 850.5 1488.5 850.5 1488.5 838.67 1488.5 838.67 1476.5 838.67 1470.5 838.67 1470.5 832.5 1470.5 832.5 1470.5 820.5 1470.5 820.5 1388.5 919.5 1388.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="407" y="1325.5" width="16" height="16" transform="translate(830 2667) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="407" y="1093.5" width="16" height="16" transform="translate(830 2203) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="141" y="1093.5" width="16" height="16" transform="translate(298 2203) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="141" y="1148" width="6" height="177.5" transform="translate(288 2473.5) rotate(-180)" style="stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="141" y="1109.5" width="6" height="39" transform="translate(288 2258) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="141.5" y="1518.5" width="6" height="39" transform="translate(289 3076) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="141" y="1325.5" width="16" height="16" transform="translate(298 2667) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="407" y="1557.5" width="16" height="16" transform="translate(830 3131) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="673" y="1557.5" width="16" height="16" transform="translate(1362 3131) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="141" y="1557.5" width="16" height="16" transform="translate(298 3131) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <path d="M624.5,1245.5H669s-3,38.73-44,38.73c0,0,40-5.23,44,39.77H631" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="673" y="1093.5" width="16" height="16" transform="translate(1362 2203) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="673.53" y="970.5" width="15.97" height="16" transform="translate(1363.03 1957) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="673" y="1325.5" width="16" height="16" transform="translate(1362 2667) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <polygon points="683 1239.5 683 1109.5 689 1109.5 689 1239.5 689 1245.5 683 1245.5 624 1245.5 624 1239.5 683 1239.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="545" y="1445.5" width="6" height="250" transform="translate(2118.5 1022.5) rotate(90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="646" y="1304.5" width="6" height="48" transform="translate(1977.5 679.5) rotate(90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="683" y="1511.63" width="6" height="45.87" transform="translate(1372 3069.13) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="279" y="1445.5" width="6" height="250" transform="translate(1852.5 1288.5) rotate(90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <polygon points="636 1388.5 636 1382.5 683 1382.5 683 1341.5 689 1341.5 689 1382.5 741 1382.5 741 1388.5 741 1476.5 735 1476.5 723 1476.5 723 1494.75 716.83 1494.75 705 1494.75 705 1505.5 705 1511.63 698.75 1511.63 642 1511.63 636 1511.63 636 1505.5 636 1419.5 642 1419.5 642 1505.5 698.75 1505.5 698.75 1494.75 698.75 1488.5 698.75 1488.5 705 1488.5 705 1488.5 716.83 1488.5 716.83 1476.5 716.83 1470.5 716.83 1470.5 723 1470.5 723 1470.5 735 1470.5 735 1388.5 636 1388.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="141.5" y1="1341.5" x2="141.5" y2="1518.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <polygon points="1414.5 1421.5 1138.5 1421.5 1138.5 1341.5 1132.5 1341.5 1132.5 1557.5 1138.5 1557.5 1138.5 1427.5 1409 1427.5 1409 1443.5 1414.5 1443.5 1414.5 1421.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1408.5" y="1518.5" width="6" height="39" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1408.5" y="1109.5" width="6" height="47" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1268" y="1533" width="6" height="75" transform="translate(-299.5 2841.5) rotate(-90)" style="stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1181" y="1535" width="6" height="71" transform="translate(-386.5 2754.5) rotate(-90)" style="stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1094" y="1535" width="6" height="71" transform="translate(-473.5 2667.5) rotate(-90)" style="stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1007" y="1534" width="6" height="73" transform="translate(-560.5 2580.5) rotate(-90)" style="stroke: #000;stroke-miterlimit: 10"/>
-                <path d="M886.5,1388.5s-2,22,27,31" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <path d="M669,1388.5s2,22-27.5,31" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1068.5" y="912.5" width="6" height="122" transform="translate(98 2045) rotate(-90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1270.5" y="848.5" width="6" height="250" transform="translate(300 2247) rotate(-90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="406.5" y="970.5" width="16" height="16" transform="translate(829 1957) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="673.53" y="970.5" width="15.97" height="16" transform="translate(1363.03 1957) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="140.5" y="970.5" width="16" height="16" transform="translate(297 1957) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="480.34" y="912.66" width="6" height="121.68" transform="translate(-490.16 1456.84) rotate(-90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="278.5" y="848.5" width="6" height="250" transform="translate(-692 1255) rotate(-90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1393.5" y="825.5" width="6" height="284" transform="translate(429 2364) rotate(-90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1129.5" y="861.5" width="6" height="212" transform="translate(165 2100) rotate(-90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1238.5" y="0.5" width="16" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1010.83" y="0.5" width="15.67" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1393.5" y="-138.5" width="6" height="284" transform="translate(1400 -1393) rotate(90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1129.5" y="-102.5" width="6" height="212" transform="translate(1136 -1129) rotate(90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1549.21" y="737.5" width="5.21" height="217" transform="translate(3103.62 1692) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1549.21" y="644.5" width="5.21" height="77" transform="translate(3103.62 1366) rotate(-180)" style="stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1550.21" y="254.5" width="4.21" height="93" transform="translate(3104.62 602) rotate(-180)" style="stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1550.21" y="16.5" width="4.21" height="222" transform="translate(3104.62 255) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="1554.5" y1="644.5" x2="1554.5" y2="364" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1010.83" y="16.5" width="5.58" height="222" transform="translate(2027.25 255) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1010.83" y="737.5" width="5.58" height="217" transform="translate(2027.25 1692) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1046.86" y="469.16" width="5.58" height="45.69" transform="translate(1541.66 -557.66) rotate(90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <polygon points="1016.42 396.21 1016.42 254.5 1010.83 254.5 1010.83 401.65 1011.5 401.65 1016.42 401.65 1072.5 401.65 1072.5 396.21 1016.42 396.21" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <polygon points="1017.5 578.35 1016.5 578.35 1010.83 578.35 1010.83 721.5 1016.42 721.5 1016.42 584 1016.5 583.57 1016.5 583.79 1072.5 583.79 1072.5 578.35 1017.5 578.35" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <path d="M1072,406.5h-44.25s3.25,37,44.25,37c0,0-40.25-5-44.25,38H1072" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <path d="M921,406.5H876.75s3.25,37,44.25,37c0,0-40.25-5-44.25,38H921" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <path d="M1072,499.5h-44.25s3.25,37,44.25,37c0,0-40.25-5-44.25,38H1072" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="300.5" y="954.5" width="16" height="16" transform="translate(617 1925) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="0.58" y="954.5" width="15.92" height="16" transform="translate(17.08 1925) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="0.58" y="721.5" width="15.92" height="16" transform="translate(17.08 1459) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="0.58" y="483.5" width="15.92" height="16" transform="translate(17.08 983) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="0.58" y="347.5" width="15.92" height="16" transform="translate(17.08 711) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="0.58" y="238.5" width="15.92" height="16" transform="translate(17.08 493) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="0.58" y="0.5" width="15.92" height="16" transform="translate(17.08 17) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="528.5" y="954.5" width="15.68" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="631.5" y="954.5" width="15.68" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="631.5" y="838.5" width="15.68" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="631.5" y="721.5" width="15.68" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="631.5" y="601.5" width="15.68" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="528.5" y="721.5" width="15.68" height="16" transform="translate(1072.68 1459) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="528.19" y="483.5" width="16" height="16" transform="translate(1072.37 983) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="528.5" y="238.5" width="15.68" height="16" transform="translate(1072.68 493) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="155.5" y="825.5" width="6" height="284" transform="translate(-809 1126) rotate(-90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="419.5" y="861.5" width="6" height="212" transform="translate(-545 1390) rotate(-90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="300.5" y="0.5" width="16" height="16" transform="translate(617 17) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="528.5" y="0.5" width="15.68" height="16" transform="translate(1072.68 17) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="155.5" y="-138.5" width="6" height="284" transform="translate(162 -155) rotate(90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="419.5" y="-102.5" width="6" height="212" transform="translate(426 -419) rotate(90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="0.58" y="737.5" width="5.21" height="217" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="0.58" y="644.5" width="5.21" height="77" style="stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="0.58" y="737.5" width="5.21" height="77" style="stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="0.58" y="254.5" width="4.21" height="93" style="stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="0.58" y="60.5" width="4.21" height="178" style="stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="0.58" y="16.5" width="4.21" height="44" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="0.5" y1="644.5" x2="0.5" y2="364" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="538.58" y="16.5" width="5.6" height="222" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="538.58" y="737.5" width="5.6" height="217" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="641.58" y="854.5" width="5.6" height="100" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="673.53" y="767.65" width="5.66" height="202.85" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="641.58" y="767.65" width="5.6" height="70.85" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="641.58" y="617.5" width="5.6" height="104" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="641.58" y="579.5" width="5.6" height="22" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="866.5" y="970.5" width="15.89" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="866.5" y="970.5" width="15.89" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="908.82" y="954.5" width="15.68" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="908.82" y="838.5" width="15.68" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="908.82" y="721.5" width="15.68" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="908.82" y="601.5" width="15.68" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="908.82" y="854.5" width="5.6" height="100" transform="translate(1823.23 1809) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="908.82" y="737.5" width="5.6" height="101" transform="translate(1823.23 1576) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="908.82" y="617.5" width="5.6" height="104" transform="translate(1823.23 1339) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="908.82" y="0.5" width="15.68" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="908.82" y="120.5" width="15.68" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="908.82" y="16.5" width="5.6" height="104" transform="translate(1823.23 137) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="640.82" y="16.5" width="5.82" height="104" transform="translate(1287.45 137) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="640.82" y="136.5" width="5.82" height="102" transform="translate(1287.45 375) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="640.82" y="254.5" width="5.82" height="102" transform="translate(1287.45 611) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="640.82" y="372.5" width="5.82" height="111" transform="translate(1287.45 856) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="908.82" y="136.5" width="5.6" height="102" transform="translate(1823.23 375) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="908.83" y="356.5" width="15.67" height="16" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="908.82" y="254.5" width="5.6" height="102" transform="translate(1823.23 611) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="908.82" y="372.5" width="5.6" height="32" transform="translate(1823.23 777) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="908.82" y="579.5" width="5.6" height="22" transform="translate(1823.23 1181) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="502.55" y="469.16" width="5.58" height="45.69" transform="translate(997.34 -13.34) rotate(90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <polygon points="538.58 396.21 538.58 254.5 544.18 254.5 544.18 401.65 544.18 401.65 538.58 401.65 482.5 401.65 482.5 396.21 538.58 396.21" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <polygon points="537.5 578.35 538.5 578.35 544.18 578.35 544.18 721.5 538.58 721.5 538.58 584 538.5 583.57 538.5 583.79 482.5 583.79 482.5 578.35 537.5 578.35" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <path d="M483,406.5h44.25s-3.25,37-44.25,37c0,0,40.25-5,44.25,38H483" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <path d="M483,499.5h44.25s-3.25,37-44.25,37c0,0,40.25-5,44.25,38H483" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <polygon points="880.99 767.65 876.58 767.65 702.5 767.65 702.5 773.91 876.58 773.91 876.58 970.5 882.39 970.5 882.39 767.65 880.99 767.65" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="647.5" y1="579.5" x2="908.5" y2="579.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="900.76" y="952.56" width="5.6" height="41.88" transform="translate(1877.06 69.94) rotate(90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="801.76" y="937.56" width="5.6" height="71.88" transform="translate(1778.06 168.94) rotate(90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <polygon points="876.5 864.7 768.42 864.7 766.5 864.7 762.82 864.7 762.82 976.5 768.42 976.5 768.42 870.3 876.5 870.3 876.5 864.7" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="649.76" y="952.56" width="5.6" height="41.88" transform="translate(1626.06 320.94) rotate(90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="774.76" y="365.44" width="5.6" height="262.12" transform="translate(1274.06 -281.06) rotate(90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="774.76" y="-127.56" width="5.6" height="262.12" transform="translate(781.06 -774.06) rotate(90)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1010.5" y="641.5" width="6" height="80"/>
-                <rect x="1011" y="738" width="6" height="80"/>
-                <rect x="1011" y="837" width="6" height="80"/>
-                <rect x="539" y="642" width="5" height="80"/>
-                <rect x="539" y="738" width="5" height="78"/>
-                <rect x="539" y="830" width="5" height="80"/>
-                <rect x="316.5" y="0.5" width="128" height="6" style="stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="146.5" y="0.5" width="154" height="6" style="stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1082.5" y="0.5" width="156" height="6" style="stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1254.5" y="0.5" width="249" height="6" style="stroke: #000;stroke-miterlimit: 10"/>
-                <rect x="1011" y="159.5" width="5.5" height="79"/>
-                <rect x="1011" y="254.5" width="5.5" height="79"/>
-                <rect x="1011" y="48.5" width="5.5" height="79"/>
-                <rect x="539" y="255" width="5" height="80"/>
-                <rect x="539" y="64" width="5" height="174"/>
-                <rect x="164" y="1002" width="6" height="81"/>
-                <rect x="1549" y="738" width="5" height="80"/>
-                <rect x="1549" y="839" width="5" height="81"/>
-                <rect x="1550.5" y="62.5" width="4" height="176"/>
-                <line x1="631" y1="957" x2="544" y2="957" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="1011" y1="957.5" x2="925" y2="957.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="642" y1="945.5" x2="544" y2="945.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="642" y1="934" x2="544" y2="934" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="642" y1="922.5" x2="544" y2="922.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="642" y1="911" x2="544" y2="911" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="642" y1="899.5" x2="544" y2="899.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="642" y1="888" x2="544" y2="888" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="642" y1="876.5" x2="544" y2="876.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="1011" y1="945.5" x2="914" y2="945.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="1011" y1="934" x2="914" y2="934" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="1011" y1="922.5" x2="914" y2="922.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="1011" y1="911" x2="914" y2="911" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="1011" y1="899.5" x2="914" y2="899.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="1011" y1="888" x2="914" y2="888" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="1011" y1="876.5" x2="914" y2="876.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="689.63" y1="976.5" x2="762.49" y2="976.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="679" y1="964.5" x2="763" y2="964.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="679" y1="952.5" x2="763" y2="952.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="679" y1="940.5" x2="763" y2="940.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="679" y1="928.5" x2="763" y2="928.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="679" y1="916.5" x2="763" y2="916.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="679" y1="904.5" x2="763" y2="904.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="679" y1="892.5" x2="763" y2="892.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="679" y1="880.5" x2="763" y2="880.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="679" y1="868.5" x2="763" y2="868.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="768" y1="964.5" x2="877" y2="964.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="768" y1="952.5" x2="877" y2="952.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="768" y1="940.5" x2="877" y2="940.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="768" y1="928.5" x2="877" y2="928.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="768" y1="916.5" x2="877" y2="916.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="768" y1="904.5" x2="877" y2="904.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="768" y1="892.5" x2="877" y2="892.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <line x1="768" y1="880.5" x2="877" y2="880.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <polygon points="405 1093.5 399 1093.5 398.5 1093.5 319 1093.5 319 1011.5 313 1011.5 313 1093.5 267 1093.5 267 1011.5 261 1011.5 261 1093.5 214 1093.5 214 1010 208 1010 208 1093.5 170 1093.5 170 977 164 977 164 1093.5 157 1093.5 157 1099.5 164 1099.5 170 1099.5 208 1099.5 214 1099.5 261 1099.5 267 1099.5 313 1099.5 319 1099.5 399 1099.5 405 1099.5 407 1099.5 407 1093.5 406.5 1093.5 405 1093.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-                <polygon points="533.5 1093.5 531 1093.5 525 1093.5 520.5 1093.5 487 1093.5 487 1014.5 525 1014.5 525 1066.5 531 1066.5 531 1014.5 531 1013.5 531 1008.5 472.5 1008.5 472.5 1014.5 481 1014.5 481 1093.5 445.42 1093.5 445.42 1008.5 439.82 1008.5 439.82 1093.5 423 1093.5 423 1099.5 481 1099.5 487 1099.5 525 1099.5 531 1099.5 673 1099.5 673 1093.5 533.5 1093.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
-            </g>
-        </svg>
+    <div class="cpic-floor1 clearfix">
+        <div class="col-md-8">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1561.5 1577">
+                <title>Recurso 9</title>
+                <g>
+                    <path d="M1024.5,249h8V234h-8V15h8V7h214.4v8h15V7h285.54v8h8V234h-8v15h8v96h-8v15h8V480h-8v15h8V719h-8v15h8V953h-8v8H1261.95v-8h-15v8h-214.4v-8h-8V734h8V719h-8V582h55.1V571h-41.08c.08-4,1.86-31.55,34.65-37l3-.49-3-.49c-32.81-5.46-34.57-33-34.65-37h41.08V476h-41.08c.08-4,1.86-31.55,34.65-37l3-.49-3-.49c-32.81-5.46-34.57-33-34.65-37h41.08V386h-55.1Z" style="fill: "/>
+                    <polygon points="1032 490.5 1079 490.5 1079 484.5 1032 484.5 1032 480.5 1018 480.5 1018 484.5 1018 490.5 1018 494.5 1032 494.5 1032 490.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <polygon points="1555 0.5 1547 0.5 1261 0.5 1247 0.5 1032 0.5 1024 0.5 1018 0.5 1018 6.5 1018 14.5 1018 234.5 1018 248.5 1018 386.5 1018 392.5 1024 392.5 1079 392.5 1079 386.5 1024 386.5 1024 248.5 1032 248.5 1032 234.5 1024 234.5 1024 14.5 1032 14.5 1032 6.5 1247 6.5 1247 14.5 1261 14.5 1261 6.5 1547 6.5 1547 14.5 1555 14.5 1555 234.5 1547 234.5 1547 248.5 1555 248.5 1555 345.5 1547 345.5 1547 359.5 1555 359.5 1555 424.5 1555 480.5 1547 480.5 1547 494.5 1555 494.5 1555 543.5 1555 719.5 1547 719.5 1547 733.5 1555 733.5 1555 953.5 1547 953.5 1547 961.5 1261 961.5 1261 953.5 1247 953.5 1247 961.5 1032 961.5 1032 953.5 1024 953.5 1024 733.5 1032 733.5 1032 719.5 1024 719.5 1024 581.5 1079 581.5 1079 575.5 1024 575.5 1018 575.5 1018 581.5 1018 719.5 1018 733.5 1018 953.5 1018 961.5 1018 967.5 1024 967.5 1032 967.5 1247 967.5 1261 967.5 1547 967.5 1555 967.5 1561 967.5 1561 961.5 1561 953.5 1561 733.5 1561 719.5 1561 543.5 1561 494.5 1561 480.5 1561 424.5 1561 359.5 1561 345.5 1561 248.5 1561 234.5 1561 14.5 1561 6.5 1561 0.5 1555 0.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <path d="M1079,393v7.5h-41s-1,32,35,38c-36,6-35,38-35,38h41v19h-41s-1,32,35,38c-36,6-35,38-35,38h41v4" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <rect x="1554.5" y="835" width="6" height="82"/>
+                    <rect x="1554.5" y="733" width="6" height="82"/>
+                    <rect x="1554.5" y="638" width="6" height="82"/>
+                    <rect x="1017.5" y="835" width="6" height="82"/>
+                    <rect x="1017.5" y="733" width="6" height="82"/>
+                    <rect x="1017.5" y="638" width="6" height="82"/>
+                    <rect x="1017.5" y="248" width="6" height="82"/>
+                    <rect x="1017.5" y="146" width="6" height="89"/>
+                    <rect x="1017.5" y="51" width="6" height="82"/>
+                    <rect x="1555.5" y="248" width="6" height="82"/>
+                    <rect x="1555.5" y="146" width="6" height="89"/>
+                    <rect x="1555.5" y="51" width="6" height="82"/>
+                    <rect x="1177.5" width="70" height="6"/>
+                    <rect x="1091.5" width="70" height="6"/>
+                    <rect x="1346.5" width="70" height="6"/>
+                    <rect x="1432.5" width="70" height="6"/>
+                    <rect x="1260.5" width="70" height="6"/>
+                    <text transform="translate(1129.86 487.76)" style="font-size: 32.720767974853516px;font-family: MicrosoftSansSerif, Microsoft Sans Serif">Text</text>
+                </g>
+                <g>
+                    <rect x="1075" y="1012.5" width="6" height="80" transform="translate(2156 2105) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <rect x="1158" y="1052.5" width="6" height="40" transform="translate(2322 2145) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <polygon points="1052 1012.5 1038 1012.5 1032 1012.5 1032 1018.5 1032 1092.5 1038 1092.5 1038 1018.5 1052 1018.5 1052 1012.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <rect x="1244" y="1032.5" width="6" height="60" transform="translate(2494 2125) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <polygon points="1297 1032.5 1296 1032.5 1275 1032.5 1275 1038.5 1296 1038.5 1296 1092.5 1302 1092.5 1302 1032.5 1297 1032.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <polygon points="1349 1012.5 1349 1032.5 1328 1032.5 1328 1038.5 1349 1038.5 1349 1092.5 1355 1092.5 1355 1012.5 1349 1012.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <polygon points="1408 967.5 1406 967.5 1399 967.5 1393 967.5 1155 967.5 1141 967.5 1018 967.5 1018 973.5 1141 973.5 1141 981.5 1155 981.5 1155 973.5 1393 973.5 1393 1092.5 1399 1092.5 1399 973.5 1406 973.5 1406 981.5 1420 981.5 1420 967.5 1408 967.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                </g>
+                <g>
+                    <path d="M894.5,1332v8h-8v38h41v7H894.79c3.43,30.63,31.92,31,32.21,31h.5v93h-41v53h8v8h248V1099h-248v8h-8v128h52v10h-41c.08,4,1.85,31.55,34.58,37l3,.49-3,.49c-32.75,5.46-34.5,33-34.58,37h41v12Z" style="fill: {{ ! empty($dataS1) ? '#93f793' : ''}}"/>
+                    <path d="M938,1237v7.5H897s-1,32,35,38c-36,6-35,38-35,38h41v8.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <polyline points="1159.5 1092.5 894 1092.5 886 1092.5 880 1092.5 880 1098.5 880 1106.5 880 1235.5 880 1241.5 886 1241.5 938 1241.5 938 1235.5 886 1235.5 886 1106.5 894 1106.5 894 1098.5 1143 1098.5 1143 1106.5 1143 1325.5 1143 1339.5 1143 1422.5 1143 1428.5 1143 1562.5 1143 1570.5 894 1570.5 894 1562.5 886 1562.5 886 1508.5 921 1508.5 927 1508.5 927 1502.5 927 1416.5 921 1416.5 921 1502.5 886 1502.5 880 1502.5 864 1502.5 864 1491.5 864 1485.5 858 1485.5 846 1485.5 846 1473.5 846 1467.5 840 1467.5 828 1467.5 828 1384.5 880 1384.5 886 1384.5 927 1384.5 927 1378.5 886 1378.5 886 1339.5 894 1339.5 894 1331.5 938 1331.5 938 1325.5 894 1325.5 886 1325.5 880 1325.5 880 1331.5 880 1339.5 880 1378.5 828 1378.5 822 1378.5 822 1384.5 822 1467.5 822 1473.5 828 1473.5 840 1473.5 840 1485.5 840 1491.5 846 1491.5 858 1491.5 858 1502.5 858 1508.5 864 1508.5 880 1508.5 880 1562.5 880 1570.5 880 1576.5 886 1576.5 894 1576.5 1157.5 1576.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <path d="M927,1416.5s-29.55,0-32.78-32" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <rect x="1099.5" y="1532" width="6" height="82" transform="translate(-470.5 2675.5) rotate(-90)"/>
+                    <rect x="997.5" y="1532" width="6" height="82" transform="translate(-572.5 2573.5) rotate(-90)"/>
+                    <text transform="translate(949.86 1338.76)" style="font-size: 32.720767974853516px;font-family: MicrosoftSansSerif, Microsoft Sans Serif">Sistemas 1</text>
+                </g>
+                <g>
+                    <path d="M1378.52,1151h35v-44h-8v-8h-248v8h-8v218h8v15h-8v82h264v-82h-8v-15h8v-97h-35l0-.48c0-.32-.57-30.93,32.81-38-33.37-7.08-32.82-37.7-32.81-38Z" style="fill: {{ ! empty($dataS3) ? '#93f793' : ''}}"/>
+                    <path d="M1420,1144v7.5h-41s-1,32,35,38c-36,6-35,38-35,38h41v8.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <path d="M1420,1433v7.5h-41s-1,32,35,38c-36,6-35,38-35,38h41v8.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <polyline points="1157 1576.5 1406 1576.5 1414 1576.5 1420 1576.5 1420 1570.5 1420 1562.5 1420 1517.5 1414 1517.5 1414 1562.5 1406 1562.5 1406 1570.5 1157 1570.5 1157 1562.5 1149 1562.5 1149 1428.5 1414 1428.5 1414 1439.5 1420 1439.5 1420 1428.5 1420 1422.5 1420 1339.5 1420 1325.5 1420 1228.5 1414 1228.5 1414 1325.5 1406 1325.5 1406 1339.5 1414 1339.5 1414 1422.5 1149 1422.5 1149 1339.5 1157 1339.5 1157 1325.5 1149 1325.5 1149 1106.5 1157 1106.5 1157 1098.5 1406 1098.5 1406 1106.5 1414 1106.5 1414 1151.5 1420 1151.5 1420 1106.5 1420 1098.5 1420 1092.5 1414 1092.5 1406 1092.5 1157 1092.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <rect x="1296.5" y="1532" width="6" height="82" transform="translate(-273.5 2872.5) rotate(-90)"/>
+                    <text transform="translate(1203.86 1278.76)" style="font-size: 32.720767974853516px;font-family: MicrosoftSansSerif, Microsoft Sans Serif">Sistemas 3</text>
+                    <rect x="1414.5" y="1244" width="6" height="82"/>
+                    <rect x="1414.5" y="1339" width="6" height="82"/>
+                    <rect x="1194.5" y="1532" width="6" height="82" transform="translate(-375.5 2770.5) rotate(-90)"/>
+                </g>
+                <g>
+                    <path d="M537.5,249h-8V234h8V15h-8V7H315.08v8h-15V7H14.52v8h-8V234h8v15h-8v96h8v15h-8V480h8v15h-8V719h8v15h-8V953h8v8H300.05v-8h15v8h214.4v-8h8V734h-8V719h8V582H482.4V571h41.08c-.08-4-1.86-31.55-34.65-37l-3-.49,3-.49c32.81-5.46,34.57-33,34.65-37H482.4V476h41.08c-.08-4-1.86-31.55-34.65-37l-3-.49,3-.49c32.81-5.46,34.57-33,34.65-37H482.4V386h55.1Z" style="fill: "/>
+                    <g>
+                        <polygon points="529.5 490.5 482.5 490.5 482.5 484.5 529.5 484.5 529.5 480.5 543.5 480.5 543.5 484.5 543.5 490.5 543.5 494.5 529.5 494.5 529.5 490.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                        <polygon points="6.5 0.5 14.5 0.5 300.5 0.5 314.5 0.5 529.5 0.5 537.5 0.5 543.5 0.5 543.5 6.5 543.5 14.5 543.5 234.5 543.5 248.5 543.5 386.5 543.5 392.5 537.5 392.5 482.5 392.5 482.5 386.5 537.5 386.5 537.5 248.5 529.5 248.5 529.5 234.5 537.5 234.5 537.5 14.5 529.5 14.5 529.5 6.5 314.5 6.5 314.5 14.5 300.5 14.5 300.5 6.5 14.5 6.5 14.5 14.5 6.5 14.5 6.5 234.5 14.5 234.5 14.5 248.5 6.5 248.5 6.5 345.5 14.5 345.5 14.5 359.5 6.5 359.5 6.5 424.5 6.5 480.5 14.5 480.5 14.5 494.5 6.5 494.5 6.5 543.5 6.5 719.5 14.5 719.5 14.5 733.5 6.5 733.5 6.5 953.5 14.5 953.5 14.5 961.5 300.5 961.5 300.5 953.5 314.5 953.5 314.5 961.5 529.5 961.5 529.5 953.5 537.5 953.5 537.5 733.5 529.5 733.5 529.5 719.5 537.5 719.5 537.5 581.5 482.5 581.5 482.5 575.5 537.5 575.5 543.5 575.5 543.5 581.5 543.5 719.5 543.5 733.5 543.5 953.5 543.5 961.5 543.5 967.5 537.5 967.5 529.5 967.5 314.5 967.5 300.5 967.5 14.5 967.5 6.5 967.5 0.5 967.5 0.5 961.5 0.5 953.5 0.5 733.5 0.5 719.5 0.5 543.5 0.5 494.5 0.5 480.5 0.5 424.5 0.5 359.5 0.5 345.5 0.5 248.5 0.5 234.5 0.5 14.5 0.5 6.5 0.5 0.5 6.5 0.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    </g>
+                    <path d="M482.5,393v7.5h41s1,32-35,38c36,6,35,38,35,38h-41v19h41s1,32-35,38c36,6,35,38,35,38h-41v4" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <rect x="1" y="835" width="6" height="82" transform="translate(8 1752) rotate(-180)"/>
+                    <rect x="1" y="733" width="6" height="82" transform="translate(8 1548) rotate(-180)"/>
+                    <rect x="1" y="638" width="6" height="82" transform="translate(8 1358) rotate(-180)"/>
+                    <rect x="538" y="835" width="6" height="82" transform="translate(1082 1752) rotate(-180)"/>
+                    <rect x="538" y="733" width="6" height="82" transform="translate(1082 1548) rotate(-180)"/>
+                    <rect x="538" y="638" width="6" height="82" transform="translate(1082 1358) rotate(-180)"/>
+                    <rect x="538" y="248" width="6" height="82" transform="translate(1082 578) rotate(-180)"/>
+                    <rect x="538" y="146" width="6" height="89" transform="translate(1082 381) rotate(-180)"/>
+                    <rect x="538" y="51" width="6" height="82" transform="translate(1082 184) rotate(-180)"/>
+                    <rect y="248" width="6" height="82" transform="translate(6 578) rotate(-180)"/>
+                    <rect y="146" width="6" height="89" transform="translate(6 381) rotate(-180)"/>
+                    <rect y="51" width="6" height="82" transform="translate(6 184) rotate(-180)"/>
+                    <rect x="314" width="70" height="6" transform="translate(698 6) rotate(-180)"/>
+                    <rect x="400" width="70" height="6" transform="translate(870 6) rotate(-180)"/>
+                    <rect x="145" width="70" height="6" transform="translate(360 6) rotate(-180)"/>
+                    <rect x="59" width="70" height="6" transform="translate(188 6) rotate(-180)"/>
+                    <rect x="231" width="70" height="6" transform="translate(532 6) rotate(-180)"/>
+                    <text transform="translate(79.86 487.76)" style="font-size: 32.720767974853516px;font-family: MicrosoftSansSerif, Microsoft Sans Serif">Text</text>
+                </g>
+                <g>
+                    <path d="M635,1242v2.5h41s1,32-35,38c36,6,35,38,35,38H635v4.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <path d="M404.5,1098.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <path d="M148.5,1228.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <path d="M142.5,1228.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <path d="M184.24,1399.08" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <path d="M441.24,1533.08" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <path d="M418.5,1098.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <polyline points="141.5 1151.5 141.5 1106.5 141.5 1098.5 141.5 1092.5 147.5 1092.5 155.5 1092.5 404.5 1092.5 418.5 1092.5 667.5 1092.5 675.5 1092.5 681.5 1092.5 681.5 1098.5 681.5 1106.5 681.5 1235.5 681.5 1241.5 675.5 1241.5 623.5 1241.5 623.5 1235.5 675.5 1235.5 675.5 1106.5 667.5 1106.5 667.5 1098.5 418.5 1098.5 404.5 1098.5 155.5 1098.5 155.5 1106.5 147.5 1106.5 147.5 1151.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <polyline points="147.5 1151.5 147.5 1228.5 147.5 1325.5 155.5 1325.5 155.5 1339.5 147.5 1339.5 147.5 1422.5 147.5 1428.5 147.5 1439.5 141.5 1439.5 141.5 1428.5 141.5 1422.5 141.5 1339.5 141.5 1325.5 141.5 1228.5 141.5 1151.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <path d="M634.5,1416.5s29.55,0,32.78-32" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <rect x="141" y="1244" width="6" height="82" transform="translate(288 2570) rotate(-180)"/>
+                    <rect x="141" y="1339" width="6" height="82" transform="translate(288 2760) rotate(-180)"/>
+                    <rect x="458.5" y="1532" width="6" height="82" transform="translate(-1111.5 2034.5) rotate(-90)"/>
+                    <rect x="560.5" y="1532" width="6" height="82" transform="translate(-1009.5 2136.5) rotate(-90)"/>
+                    <rect x="261.5" y="1532" width="6" height="82" transform="translate(-1308.5 1837.5) rotate(-90)"/>
+                    <rect x="363.5" y="1532" width="6" height="82" transform="translate(-1206.5 1939.5) rotate(-90)"/>
+                    <rect x="141.5" y="1146" width="6" height="77" transform="translate(289 2369) rotate(-180)"/>
+                    <rect x="407" y="1092.5" width="14" height="14" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <polygon points="733.5 1378.5 681.5 1378.5 681.5 1339.5 681.5 1331.5 681.5 1325.5 675.5 1325.5 667.5 1325.5 623.5 1325.5 623.5 1331.5 667.5 1331.5 667.5 1339.5 675.5 1339.5 675.5 1378.5 634.5 1378.5 634.5 1384.5 675.5 1384.5 681.5 1384.5 733.5 1384.5 733.5 1467.5 721.5 1467.5 715.5 1467.5 715.5 1473.5 715.5 1485.5 703.5 1485.5 697.5 1485.5 697.5 1491.5 697.5 1502.5 681.5 1502.5 675.5 1502.5 640.5 1502.5 640.5 1416.5 634.5 1416.5 634.5 1502.5 634.5 1508.5 640.5 1508.5 675.5 1508.5 675.5 1562.5 667.5 1562.5 667.5 1570.5 421 1570.5 421 1562.5 407 1562.5 407 1570.5 404.5 1570.5 155.5 1570.5 155.5 1562.5 147.5 1562.5 147.5 1517.5 141.5 1517.5 141.5 1562.5 141.5 1570.5 141.5 1576.5 147.5 1576.5 155.5 1576.5 404.5 1576.5 407 1576.5 418.5 1576.5 421 1576.5 667.5 1576.5 675.5 1576.5 681.5 1576.5 681.5 1570.5 681.5 1562.5 681.5 1508.5 697.5 1508.5 703.5 1508.5 703.5 1502.5 703.5 1491.5 715.5 1491.5 721.5 1491.5 721.5 1485.5 721.5 1473.5 733.5 1473.5 739.5 1473.5 739.5 1467.5 739.5 1384.5 739.5 1378.5 733.5 1378.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="147.5" y1="1439" x2="147.5" y2="1517" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                </g>
+                <g>
+                    <rect x="438" y="1006.5" width="6" height="86" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <polygon points="486.5 1006.5 481 1006.5 480.5 1006.5 480.5 1092.5 486.5 1092.5 486.5 1012.5 523.5 1012.5 523.5 1058.5 529.5 1058.5 529.5 1012.5 529.5 1006.5 523.5 1006.5 486.5 1006.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <rect x="311.5" y="1006.5" width="6" height="86" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <polygon points="264.5 1006.5 259.5 1006.5 259.5 1092.5 265.5 1092.5 265.5 1012.5 286.5 1012.5 286.5 1006.5 265.5 1006.5 264.5 1006.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <polygon points="420.5 967.5 406.5 967.5 168.5 967.5 162.5 967.5 155.5 967.5 153.5 967.5 141.5 967.5 141.5 981.5 155.5 981.5 155.5 973.5 162.5 973.5 162.5 1092.5 168.5 1092.5 168.5 973.5 406.5 973.5 406.5 981.5 420.5 981.5 420.5 973.5 543.5 973.5 543.5 967.5 420.5 967.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <polygon points="215.88 1006.5 212.5 1006.5 212.5 1006.5 206.5 1006.5 206.5 1092.5 212.5 1092.5 212.5 1032.5 212.5 1026.5 212.5 1012.5 242.5 1012.5 242.5 1006.5 218.54 1006.5 215.88 1006.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <rect x="162.5" y="1002" width="6" height="77" transform="translate(331 2081) rotate(-180)"/>
+                </g>
+                <g>
+                    <path d="M641,7V359h.5v15H641V484H926.5v-4h-41l0-.48c0-.32-.57-30.93,32.81-38-33.37-7.08-32.82-37.7-32.81-38l0-.48h35V7Z" style="fill: {{ ! empty($dataMeta) ? '#93f793' : ''}}"/>
+                    <path d="M927,401v2.5H886s-1,32,35,38c-36,6-35,38-35,38h41V484" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <polygon points="935 14.5 935 0.5 927 0.5 921 0.5 809.5 0.5 752 0.5 640.5 0.5 640 0.5 634.5 0.5 626 0.5 626 14.5 634.5 14.5 634.5 116.5 626 116.5 626 130.5 634.5 130.5 634.5 234.5 626 234.5 626 248.5 634.5 248.5 634.5 359.5 627 359.5 627 373.5 634.5 373.5 634.5 484.5 626 484.5 626 498.5 640 498.5 640 490.5 752 490.5 809.5 490.5 921 490.5 921 498.5 935 498.5 935 484.5 927 484.5 921 484.5 809.5 484.5 752 484.5 640.5 484.5 640.5 373.5 641 373.5 641 359.5 640.5 359.5 640.5 6.5 752 6.5 809.5 6.5 921 6.5 921 14.5 921 116.5 921 130.5 921 234.5 921 248.5 921 359.5 921 373.5 921 403.5 927 403.5 927 373.5 935 373.5 935 359.5 927 359.5 927 248.5 935 248.5 935 234.5 927 234.5 927 130.5 935 130.5 935 116.5 927 116.5 927 14.5 935 14.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <text transform="translate(699.86 234.76)" style="font-size: 32.720767974853516px;font-family: MicrosoftSansSerif, Microsoft Sans Serif">Metalografía</text>
+                </g>
+                <g>
+                    <g>
+                        <polygon points="640 733.5 640.5 733.5 640.5 576.5 634.5 576.5 634.5 599.5 626 599.5 626 613.5 634.5 613.5 634.5 719.5 626 719.5 626 733.5 634.5 733.5 640 733.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                        <polygon points="675 967.5 675 762.5 669 762.5 669 967.5 669 967.5 640.5 967.5 640.5 762.5 634.5 762.5 634.5 835.5 626 835.5 626 849.5 634.5 849.5 634.5 951.5 626 951.5 626 965.5 634.5 965.5 634.5 967.5 628.5 967.5 628.5 973.5 669 973.5 669 981.5 683 981.5 683 967.5 675 967.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    </g>
+                    <polygon points="927 967.5 927 965.5 935 965.5 935 951.5 927 951.5 927 849.5 935 849.5 935 835.5 927 835.5 927 733.5 935 733.5 935 719.5 927 719.5 927 613.5 935 613.5 935 599.5 927 599.5 927 576.5 921 576.5 921 599.5 921 613.5 921 719.5 921 733.5 921 835.5 921 849.5 921 951.5 921 965.5 921 967.5 895 967.5 895 967.5 894 967.5 894 768.5 894 762.5 894 762.5 888 762.5 888 762.5 710.5 762.5 710.5 768.5 888 768.5 888 862.5 776 862.5 770 862.5 770 868.5 770 967.5 770 973.5 776 973.5 847 973.5 847 967.5 776 967.5 776 868.5 888 868.5 888 967.5 881 967.5 881 981.5 895 981.5 895 973.5 935 973.5 935 967.5 927 967.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="921" y1="576.5" x2="640" y2="576.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                </g>
+                <g>
+                    <line x1="543" y1="953.5" x2="626" y2="953.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="543.5" y1="942.5" x2="634.5" y2="942.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="543.5" y1="930.5" x2="634.5" y2="930.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="543.5" y1="918.5" x2="634.5" y2="918.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="543.5" y1="906.5" x2="634.5" y2="906.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="543.5" y1="894.5" x2="634.5" y2="894.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="543.5" y1="882.5" x2="634.5" y2="882.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="543.5" y1="870.5" x2="634.5" y2="870.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="935.5" y1="953.5" x2="1018.5" y2="953.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="927.5" y1="942.5" x2="1018.5" y2="942.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="927.5" y1="930.5" x2="1018.5" y2="930.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="927.5" y1="918.5" x2="1018.5" y2="918.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="927.5" y1="906.5" x2="1018.5" y2="906.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="927.5" y1="894.5" x2="1018.5" y2="894.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="927.5" y1="882.5" x2="1018.5" y2="882.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="927.5" y1="870.5" x2="1018.5" y2="870.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="675" y1="960.5" x2="770.5" y2="960.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="683.5" y1="972.5" x2="770.5" y2="972.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="675" y1="948.5" x2="770.5" y2="948.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="675" y1="936.5" x2="770.5" y2="936.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="675" y1="924.5" x2="770.5" y2="924.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="675" y1="912.5" x2="770.5" y2="912.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="675" y1="900.5" x2="770.5" y2="900.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="675" y1="888.5" x2="770.5" y2="888.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="675" y1="876.5" x2="770.5" y2="876.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="776" y1="960.5" x2="887.5" y2="960.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="776" y1="948.5" x2="887.5" y2="948.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="776" y1="936.5" x2="887.5" y2="936.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="776" y1="924.5" x2="887.5" y2="924.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="776" y1="912.5" x2="887.5" y2="912.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="776" y1="900.5" x2="887.5" y2="900.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="776" y1="888.5" x2="887.5" y2="888.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="776" y1="876.5" x2="887.5" y2="876.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                    <line x1="675" y1="864.5" x2="770.5" y2="864.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
+                </g>
+            </svg>
+        </div>
+        <div class="col-md-4">
+            <table class="table text-capitalize table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre Instructor</th>
+                        <th>Ambiente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            {{ ! empty($dataS1) ? $dataS1->instructor->nombre.' '.$dataS1->instructor->apellidos : 'Sin instructor asignado'}}
+                        </td>
+                        <td>
+                            Sistemas 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{ ! empty($dataS3) ? $dataS3->instructor->nombre.' '.$dataS1->instructor->apellidos : 'Sin instructor asignado'}}
+                        </td>
+                        <td>
+                            Sistemas 3
+                        </td>
+                        <tr>
+                            <td>
+                                {{ ! empty($dataMeta) ? $dataMeta->instructor->nombre.' '.$dataS1->instructor->apellidos : 'Sin instructor asignado'}}
+                            </td>
+                            <td>
+                                Metalografía
+                            </td>
+                        </tr>
+                    </tr>
+                </tbody>
 
-
-
+            </table>
+        </div>
     </div>
 </div>
 @endsection

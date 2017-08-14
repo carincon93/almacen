@@ -2,7 +2,7 @@
 
 @section('title', 'Ver instructor')
 
-@section('form-search')
+@section('navbar-top')
 <ul class="breadcrumb">
 	<li><a href="{{ url('/admin/instructor') }}" class="btn-link">Lista de instructores</a></li>
 	<li>Ver instructor</li>

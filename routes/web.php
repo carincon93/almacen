@@ -21,17 +21,14 @@ Route::get('/', 'WelcomeController@index')->name('welcome');
 Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('/admin/historical', 'AdminController@historial_prestamos');
 
-
-
-
 // Welcome Ajaxsearch
 Route::get('/findclassroom', 'WelcomeController@ajaxsearch');
-Route::get('/documentoinstructorajax', 'WelcomeController@documentoajax');
-
-
+Route::get('/documentoinstructorajax', 'InstructorController@documentoajax');
 
 // Prestar Ambiente
 Route::post('/solicitar_prestamo/{id}/aprobado', 'ClassroomController@prestamo_aprobado');
+Route::post('/disponibilidad_instructor/{idInstructor}', 'InstructorController@disponibilidad_instructor');
+Route::post('/modificar_disponibilidad_ins/{idInstructor}', 'InstructorController@modificar_disponibilidad_ins');
 // Entregar Ambiente
 Route::post('/entregar_ambiente/{id}/aprobado', 'ClassroomController@entrega_aprobado');
 
@@ -40,14 +37,8 @@ Route::post('/modify_historical_record/{borrowed_at}', 'ClassroomController@modi
 
 // Instuctor
 Route::resource('/admin/instructor', 'InstructorController');
-// Ajax Instructor
-Route::get('/findinstructor', 'InstructorController@ajaxsearch');
-
-
 // Classroom
 Route::resource('/admin/classroom', 'ClassroomController');
-// Ajax Classroom
-Route::get('/findclassroomtbl', 'ClassroomController@ajaxsearch');
 
 
 // Redirección - Error 404

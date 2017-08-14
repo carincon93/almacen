@@ -1,4 +1,5 @@
 $mcolor: #272634;
+$dangerColor: #e02517;
 
 html {
     height: 100%;
@@ -33,6 +34,9 @@ button:focus {
     -o-transition: all .4s cubic-bezier(0,0,.2,1);
     transition: all .4s cubic-bezier(0,0,.2,1);
 }
+.btn-danger {
+    background: $dangerColor;
+}
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
     background-color: $mcolor;
     border-color: $mcolor;
@@ -54,8 +58,7 @@ button:focus {
 .row.no-gutter {
     margin: 0;
 }
-.btn-delete-classroom,
-.btn-delete-instructor {
+.btn-delete {
     background: transparent;
     border: none;
     padding: 0;
@@ -64,14 +67,41 @@ button:focus {
 .pwd-req {
     font-size: 12px;
 }
+.card {
+    -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,.07), 1px 2px 5px 0 rgba(0,0,0,.06);
+    box-shadow: 1px 1px 1px 0 rgba(0,0,0,.07), 1px 2px 5px 0 rgba(0,0,0,.06);
+}
+.card {
+    background-color: #fff;
+    border-radius: 2px;
+    margin-bottom: 30px;
+    position: relative;
+
+}
 blockquote.note {
     border-left: 0;
     border-radius: 3px;
+    color: #fff;
     display: inline-block;
+    font-size: 1.4rem;
+    line-height: 1.3;
     margin: 10px 0 20px;
     padding: 10px 15px;
 }
-blockquote.note.success {
+blockquote.note-info {
+    background: #35b8a0;
+
+    span {
+        background: #fff;
+        color: #333;
+        padding: 0 0.5rem;
+    }
+}
+blockquote.note-danger {
+    background: rgb(219, 44, 65);
+}
+
+blockquote.note-success {
     background: #86e44e;
 
     p {
@@ -139,29 +169,9 @@ blockquote.note.success {
         }
     }
 }
-.search-navbar-wrapper {
-    width: 100%;
-    position: relative;
-    i {
-        right: 0;
-        position: absolute;
-        top: 16%;
-        left: 0;
-        font-size: 6rem;
-        color: #b1b7ba;
-    }
-    .search-navbar {
-        border: none;
-        border-bottom: 1px solid;
-        border-radius: 0px;
-        box-shadow: none;
-        background: transparent;
-        font-size: 8rem;
-        padding: 0;
-        height: 10rem;
-        padding-left: 8rem;
-    }
-}
+
+
+
 .table-small {
     margin: 0;
     thead {
@@ -221,20 +231,10 @@ blockquote.note.success {
         padding: 3rem 0;
     }
 }
-.card {
-    -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,.07), 1px 2px 5px 0 rgba(0,0,0,.06);
-    box-shadow: 1px 1px 1px 0 rgba(0,0,0,.07), 1px 2px 5px 0 rgba(0,0,0,.06);
-}
-.card {
-    background-color: #fff;
-    border-radius: 2px;
-    margin-bottom: 30px;
-    position: relative;
 
-    .fecha-prestamo {
-        font-size: 11px;
-        padding: 3px 12px;
-    }
+.fecha-prestamo {
+    font-size: 11px;
+    padding: 3px 12px;
 }
 .card-form {
     background: #fff;
@@ -295,11 +295,50 @@ blockquote.note.success {
         font-size: 12px;
     }
 }
+.classroom-card.clr-entregar {
+    .clr-img {
+        &:after {
+            background: linear-gradient(to bottom, rgba(222, 255, 33, 0.1) 0%, rgba(255, 201, 33, 0.1) 5%, #5fd45f 100%);
+            content: '';
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 2;
+        }
+    }
+    hr {
+        border-top: 1px solid #5fd45f;
+    }
+    .info-clr {
+        bottom: 0.3rem;
+        color: #fff;
+        display: block;
+        height: 2.8rem;
+        left: 0;
+        padding: 0.3rem;
+        padding-left: 1rem;
+        position: absolute;
+        width: 100%;
+        z-index: 3;
+    }
+}
 .classroom-card {
     background: #fff;
     border-radius: 4px;
     display: block;
-    height: 17rem;
+    position: relative;
+
+    .clr-desc {
+        padding: 1rem;
+        position: relative;
+        z-index: 2;
+
+        h5::first-letter {
+            text-transform: uppercase;
+        }
+    }
 
     div.clr-img {
         position: relative;
@@ -313,8 +352,11 @@ blockquote.note.success {
             height: 100%;
             top: 0;
             left: 0;
-            background: rgba(119, 119, 119, 0.42); 
+            background: rgba(119, 119, 119, 0.42);
             z-index: 2;
+        }
+        .img-clrinactive {
+            filter: grayscale(100%);
         }
 
         img {
@@ -325,23 +367,28 @@ blockquote.note.success {
     }
     h5 {
         font-size: 1.7rem;
+        margin: 0;
         padding: 1rem;
         }
 }
-
-.clr-entregar {
-    background: lemonchiffon;
-
-    hr {
-        border-top: 1px solid #ded476;
-    }
-}
 .clr-repair {
     color: #fff;
-    background: #cd5c5c;
+    background: #5f4b4b;
+
+    &:after {
+        background: url(../images/warn-tape.png) no-repeat center;
+        content: '';
+        display: block;
+        height: 2.8rem;
+        left: 0;
+        position: absolute;
+        top: 27%;
+        width: 100%;
+        z-index: 2;
+    }
 
     .hr-repair {
-        border-top: 1px solid #ff8c8c;
+        border-top: 1px solid #ffdc16;
     }
 }
 .clr-inactive {
@@ -360,21 +407,67 @@ blockquote.note.success {
 .clr-entregar:hover {
     cursor: pointer;
 }
+i.itm_quare {
+    color: #93f793;
+}
 
-.floor-plan {
-    display: flex;
-    justify-content: center;
-    div {
+
+.modal-prestar {
+    blockquote {
+        display: block;
         padding: 2rem;
-        flex: 1;
 
-        svg {
-            width: 60%;
+        p {
+            margin-bottom: 3rem;
+        }
+
+        i {
+            font-size: 4rem;
+            vertical-align: middle;
+        }
+
+        input {
+            border: none;
+            display: inline-block;
+            width: 80%;
         }
     }
 }
 
+// Ajax search
+.panel-ins {
+    background: #f7f7f7;
+}
+form {
+    position: relative;
+    .img-instructor {
+        position: absolute;
+        top: -7rem;
+        right: 0;
+        width: 12rem;
+    }
+}
+.floor-plan {
+    padding: 4rem 0;
+    div {
+        h2 {
+            margin-bottom: 2rem;
+        }
 
+        svg {
+            width: 100%;
+        }
+    }
+}
+
+.cpic-floor1 {
+    path {
+        fill: #fff;
+        &:hover {
+            fill: #f7f7f7 !important;
+        }
+    }
+}
 
 
 

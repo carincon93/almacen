@@ -21,16 +21,14 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $dataClassr  = Classroom::all()->where('nombre_ambiente', 'sistemas 1')->first();
-        if($dataClassr != null) {
-            return view('admin')->with('dataClassr', $dataClassr);
-        } else {
-            return view('admin');
-        }
+        $dataS1  = Classroom::all()->where('nombre_ambiente', 'sistemas 1')->where('disponibilidad', '=', 'no disponible')->first();
+        $dataS3  = Classroom::all()->where('nombre_ambiente', 'sistemas 3')->where('disponibilidad', '=', 'no disponible')->first();
+        $dataMeta  = Classroom::all()->where('nombre_ambiente', 'metalografia')->where('disponibilidad', '=', 'no disponible')->first();
+        return view('admin', compact('dataS1', 'dataS3', 'dataMeta'));
     }
 
     public function historial_prestamos() {
-        $historical_record = Historical_record::orderBy('id', 'ASC')->paginate(10);
+        $historical_record = Historical_record::orderBy('prestado_en', 'DESC')->paginate(15);
         return view('historical')->with('historical_record', $historical_record);
     }
 }

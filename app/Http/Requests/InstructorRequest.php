@@ -52,7 +52,7 @@ class InstructorRequest extends FormRequest
 
             ];
         }
-        
+
     }
     public function messages()
     {
@@ -62,14 +62,14 @@ class InstructorRequest extends FormRequest
             'apellidos.required'=>'El campo apellidos es requerido',
             'apellidos.max'=>'El campo apellidos debe tener como máximo 64 caracteres',
             'numero_documento.required'=>'El campo documento es requerido',
-            'numero_documento.max'=>'El campo documento debe tener como máximo 10 numeros',
+            'numero_documento.max'=>'El campo documento debe tener como máximo 10 números',
             'area.required'=>'El campo área es requerido',
             'area.max'=>'El campo área debe tener como máximo 128 caracteres',
             'ip.required'=>'El campo IP es requerido',
-            'ip.max'=>'El campo IP debe tener como máximo 5 numeros',
-            'telefono.max'=>'El campo teléfono debe tener como máximo 7 numeros',
+            'ip.max'=>'El campo IP debe tener como máximo 5 números',
+            'telefono.max'=>'El campo teléfono debe tener como máximo 7 números',
             'celular.required'=>'El campo celular es requerido',
-            'celular.max'=>'El campo celular debe tener como máximo 10 numeros',
+            'celular.max'=>'El campo celular debe tener como máximo 10 números',
             'email.required'=>'El campo correo electrónico es requerido',
             'email.unique'=>'Este correo electrónico ya existe',
             'instructor_type_id.required'=>'El campo tipo de instructor es requerido'

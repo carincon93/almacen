@@ -27,17 +27,5 @@ class WelcomeController extends Controller
         $query = Classroom::nombre_ambiente($request->get('nombre_ambiente'))->orderBy('id', 'ASC')->get();
         return view('classroomajx', compact('query'));
     }
-    public function documentoajax(Request $request)
-    {
-        // $query = Instructor::numero_documento($request->get('numero_documento'))->orderBy('id', 'ASC')->get();
-        //return view('welcome', compact('query'));
-        $query = Instructor::where('numero_documento', '=', $request->get('numero_documento'))->first();
-
-        if($query){
-           echo $query->id.";".$query->nombre; 
-        }
-        
-
-    }
 
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('big-content-desc')
+@section('navbar-top')
 <h4><i class="fa fa-fw fa-key"></i>Prestar ambiente</h4>
 @endsection
 @section('content')
@@ -12,11 +12,14 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title text-capitalize" id="myModalLabel"></h4>
                 </div>
-                <div class="modal-body">
-                    <h3 class="text-capitalize"></h3>
+                <div class="modal-body modal-prestar">
 
                     <!-- Input de búsqueda -->
-                    <input type="search" id="numero_documento" class="form-control" placeholder="Documento Instructor" autocomplete="off">
+                    <blockquote class="note note-info">
+                        <p class="h4">Por favor introduzca el número de documento del instructor.</p>
+                        <i class="fa fa-fw fa-barcode"></i>
+                        <input type="search" id="numero_documento" class="form-control" placeholder="Documento Instructor" autocomplete="off" autofocus>
+                    </blockquote>
                     <br>
                     <!-- Formulario para préstamo -->
                     <form action="" method="POST" id="form-solicitud">
@@ -24,8 +27,7 @@
                         <input name="id" type="hidden" value="" id="id_clr">
                         <input name="prestado_en" type="hidden" value="{{ date('Y-m-d H:i:s') }}">
 
-                        <input type="text" id="nomInstructor" class="form-control" readonly >
-                        <input type="hidden" id="idInstructor" name="instructor_id">
+                        <div id="asd"></div>
 
                     </form>
 
@@ -43,16 +45,16 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <h4 class="modal-title text-capitalize" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
-                    <h3 class="text-capitalize"></h3>
                     <form action="" method="POST" id="form-entrega">
                         {!! csrf_field() !!}
                         <input name="prestado_en" type="hidden" value="" id="prestado_en">
 
                         <input name="id" type="hidden" value="" id="id-clrEntrega">
                         <input name="entregado_en" type="hidden" value="{{ date('Y-m-d H:i:s') }}">
+                        <input value="" name="instructor_id" class="hidden">
                         <div class="form-group">
                             <label class="label-control">Agregar novedad</label>
                             <textarea name="novedad" rows="8" cols="80" class="form-control"></textarea>
@@ -67,9 +69,8 @@
         </div>
     </div>
     <div class="search-navbar-wrapper">
-        {!! csrf_field() !!}
         <i class="fa fa-fw fa-search"></i>
-        <input type="search" id="wnombre_ambiente" class="form-control search-navbar" placeholder="Buscar ambiente" autocomplete="off">
+        <input type="search" id="wnombre_ambiente" class="form-control search-navbar" placeholder="Buscar ambiente" autocomplete="off" autofocus>
     </div>
     <div id="classroom-section">
         @foreach($dataClassroom->chunk(3) as $chunk)
@@ -79,42 +80,53 @@
                 @if($clr->estado == 'inactivo')
                 <div>
                     <div class="classroom-card card clr-inactive">
-                        <h5 class="text-capitalize">{{ $clr->nombre_ambiente }}</h5>
-                        <hr>
-                        <div>
-                            <p>El ambiente está inactivo</p>
+                        <div class="clr-img">
+                            <img src="{{ asset($clr->imagen) }}" alt="" class="img-classroom img-clrinactive img-responsive">
+                        </div>
+                        <div class="clr-desc">
+                            <h5 class="" data-nombreClr="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
+                            <hr>
+                            <p>El ambiente está inactivo.</p>
                         </div>
                     </div>
                 </div>
                 @elseif($clr->estado == 'en reparacion')
                 <div>
                     <div class="classroom-card card clr-repair">
-                        <h5 class="text-capitalize">{{ $clr->nombre_ambiente }}</h5>
-                        <hr class="hr-repair">
-                        <div>
+                        <div class="clr-img">
+                            <img src="{{ asset($clr->imagen) }}" alt="" class="img-classroom img-clrinactive img-responsive">
+                        </div>
+                        <div class="clr-desc">
+                            <h5 class="">{{ $clr->nombre_ambiente }}</h5>
+                            <hr class="hr-repair">
                             <p>El ambiente se encuentra en reparación</p>
                         </div>
                     </div>
                 </div>
                 @elseif($clr->disponibilidad == 'no disponible')
                 <div>
-                    <div class="classroom-card card clr-entregar" data-idclr="{{ $clr->id }}" data-entregar="{{ $clr->prestado_en }}">
-                        <h5 class="text-capitalize" data-nombreClr="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
-                        <hr>
-                        <div class="text-capitalize"><i class="fa fa-fw fa-circle"></i>{{ $clr->instructor->nombre.' '.$clr->instructor->apellidos }}</div>
-                        <span class="badge fecha-prestamo">{{ $clr->prestado_en }}</span>
+                    <div class="classroom-card card clr-entregar" data-idclr="{{ $clr->id }}" data-entregar="{{ $clr->prestado_en }}" data-idIns="{{ $clr->instructor->id }}">
+                        <div class="clr-img">
+                            <img src="{{ asset($clr->imagen) }}" alt="" class="img-classroom img-clrinactive img-responsive">
+                            <div class="info-clr">Ambiente en uso <span class="pull-right">{{ $clr->prestado_en }}</span></div>
+                        </div>
+                        <div class="clr-desc">
+                            <h5 class="" data-nombreClr="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
+                            <hr>
+                            <div class="text-capitalize">{{ $clr->instructor->nombre.' '.$clr->instructor->apellidos }}</div>
+                            <span class="badge fecha-prestamo"></span>
+                        </div>
                     </div>
                 </div>
                 @else
                 <div>
                     <div class="classroom-card card clr-disponible" data-idclr="{{ $clr->id }}">
                         <div class="clr-img">
-                            <img src="{{ asset('/images/techClassroomImg.jpg')}}" alt="" class="img-classroom">
+                            <img src="{{ asset($clr->imagen) }}" alt="" class="img-classroom img-responsive">
                         </div>
-                        <h5 class="text-capitalize" data-nombreClr="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
-
-                        
-                        <hr>
+                        <div class="clr-desc">
+                            <h5 class="" data-nombreClr="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
+                        </div>
                     </div>
                 </div>
                 @endif
