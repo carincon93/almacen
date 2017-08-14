@@ -39,6 +39,11 @@ Route::post('/modify_historical_record/{borrowed_at}', 'ClassroomController@modi
 Route::resource('/admin/instructor', 'InstructorController');
 // Classroom
 Route::resource('/admin/classroom', 'ClassroomController');
+//file
+Route::resource('/admin/file', 'FileController');
+//user
+Route::resource('/admin/user', 'UserController');
+
 
 
 // Redirección - Error 404

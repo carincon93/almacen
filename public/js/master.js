@@ -215,5 +215,26 @@ $(document).ready(function() {
                 $formdc.submit();
         });
     });
-
+    // Eliminar fichas
+    $('table[data-form="deleteForm"]').on('click', '.form-delete-file', function(e){
+        e.preventDefault();
+        var $formdf = $(this);
+        var $nombFile = $formdf.find('.btn-delete').attr('data-nombre');
+        $('body').find('.modal-title').text('Nombre Ficha: '+$nombFile);
+        $('#confirm-delete').modal({ backdrop: 'static', keyboard: false })
+            .on('click', '#delete-file', function() {
+                $formdf.submit();
+        });
+    });
+    // Eliminar admin
+    $('table[data-form="deleteForm"]').on('click', '.form-delete-admin', function(e){
+        e.preventDefault();
+        var $formdu = $(this);
+        var $nombUser = $formdu.find('.btn-delete').attr('data-nombre');
+        $('body').find('.modal-title').text('Nombre Admin: '+$nombUser);
+        $('#confirm-delete').modal({ backdrop: 'static', keyboard: false })
+            .on('click', '#delete-ad', function() {
+                $formdu.submit();
+        });
+    });
 });
