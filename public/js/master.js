@@ -226,7 +226,29 @@ $(document).ready(function() {
             .on('click', '#delete-ad', function() {
                 formDelAdm.submit();
         });
+    }); 
+    // Eliminar historical
+    $('table[data-form="deleteForm"]').on('click', '.form-delete-historical', function(e){
+        e.preventDefault();
+        var formh = $(this),
+            nomUser    = formh.find('.btn-delete').attr('data-nombre');
+        $('body').find('.modal-title').text('Nombre instructor: ' + nomUser);
+        $('#confirm-delete').modal({ backdrop: 'static', keyboard: false })
+            .on('click', '#delete-historical', function() {
+                formh.submit();
+        });
     });
+    // // editar novedad
+    // $('table[data-form="deleteForm"]').on('click', '.form-send-novedad', function(e){
+    //     e.preventDefault();
+    //     var formn = $(this),
+    //         nomUser    = formn.find('.btn-send').attr('data-nombre');
+    //     $('body').find('.modal-title').text('Nombre instructor: ' + nomUser);
+    //     $('#sendform').modal({ backdrop: 'static', keyboard: false })
+    //         .on('click', '#send-novedad', function() {
+    //             formn.submit();
+    //     });
+    // });
 
     $('#wnombre_ambiente').keyup(function(event) {
         var nombre_ambiente = $(this).val();

@@ -80,7 +80,9 @@ class HistoryRecordController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $no = History_record::find($id);
+        $no->novedad            = $request->get('novedad');
+        return redirect('/admin/history_record')->with('status', 'La novedad fue modificada con éxito');
     }
 
     /**
@@ -91,7 +93,8 @@ class HistoryRecordController extends Controller
      */
     public function destroy($id)
     {
-        //
+        History_record::destroy($id);
+        return redirect('/admin/history_record')->with('status', 'El historial fue eliminado con éxito');
     }
 
     public function update_history_record(Request $request, $prestado_en)
