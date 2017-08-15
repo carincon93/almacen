@@ -4,8 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+use App\History_record;
+
+class HistoryRecordController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('store', 'update_history_record');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $history_record = History_record::orderBy('prestado_en', 'DESC')->paginate(15);
+        return view('history_records.index')->with('history_record', $history_record);
     }
 
     /**
@@ -32,9 +39,14 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
-        //
+        $history_record = new History_record();
+        $history_record->instructor_id  = $request->get('instructor_id');
+        $history_record->classroom_id   = $request->get('classroom_id');
+        $history_record->prestado_en    = $request->get('prestado_en');
+
+        $history_record->save();
     }
 
     /**
@@ -66,9 +78,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -80,5 +92,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function update_history_record(Request $request, $prestado_en)
+    {
+        $history_record = History_record::where('prestado_en', '=', $prestado_en)->first();
+        $history_record->entregado_en = $request->get('entregado_en');
+        $history_record->novedad      = $request->get('novedad');
+        $history_record->save();
     }
 }

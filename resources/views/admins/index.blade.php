@@ -2,12 +2,11 @@
 @section('navbar-top')
 <div class="search-navbar-wrapper">
     <i class="fa fa-fw fa-search"></i>
-    <input type="text" id="myInput" onkeyup="filterTableClr()" placeholder="Buscar usuario" class="form-control search-navbar">
-    <!-- <input type="search" class="form-control search-navbar" id="hnombre_ambiente" placeholder="Buscar ambiente" autocomplete="off" onkeyup="searchClassroom()"> -->
+    <input type="text" id="myInputAdm" onkeyup="filterTableAdm()" placeholder="Buscar admin por nombre" class="form-control search-navbar">
 </div>
 @endsection
 @section('big-content-desc')
-<a href="{{ url('/admin/user/create') }}"><i class="fa fa-fw fa-plus"></i> Añadir un nuevo administrador</a>
+<a href="{{ url('/admin/admin/create') }}"><i class="fa fa-fw fa-plus"></i> Añadir un nuevo administrador</a>
 @endsection
 @section('content')
 <!-- Modal -->
@@ -35,26 +34,26 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>nombre</th>
+                    <th>Nombre</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody  id="myTable">
+            <tbody  id="myTableAdm">
                 @php
                 $count = 1;
                 @endphp
-                @foreach($dataUser as $ad)
+                @foreach($dataAdmin as $ad)
                 <tr>
                     <td>{{ $count++ }}</td>
                     <td>{{ $ad->name }}</td>
                     <td>
-                        <a class="btn" href="{{ url('/admin/user/'.$ad->id) }}">
+                        <a class="btn" href="{{ url('/admin/admin/'.$ad->id) }}">
                             <i class="fa fa-fw fa-search"></i>
                         </a>
-                        <a class="btn" href="{{ url('/admin/user/'.$ad->id.'/edit') }}">
+                        <a class="btn" href="{{ url('/admin/admin/'.$ad->id.'/edit') }}">
                             <i class="fa fa-fw fa-pencil"></i>
                         </a>
-                        <form action="{{ url('/admin/user/'.$ad->id) }}" method="POST" style="display: inline-block;" class="form-delete-admin btn">
+                        <form action="{{ url('/admin/admin/'.$ad->id) }}" method="POST" style="display: inline-block;" class="form-delete-admin btn btn-danger">
                             {{ method_field('delete') }}
                             {!! csrf_field()  !!}
 
@@ -73,11 +72,11 @@
 
 @push('scripts')
     <script>
-        function filterTableFile() {
+        function filterTableAdm() {
             var input, filter, table, tr, td, i;
-            input = document.getElementById("myInputUser");
+            input = document.getElementById("myInputAdm");
             filter = input.value.toUpperCase();
-            table = document.getElementById("myTableUser");
+            table = document.getElementById("myTableAdm");
             tr = table.getElementsByTagName("tr");
             for (i = 0; i < tr.length; i++) {
                 td = tr[i].getElementsByTagName("td")[1];

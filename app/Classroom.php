@@ -15,7 +15,7 @@ class Classroom extends Model
     	return $this->belongsTo('App\instructor');
     }
     public function Historial_classroom_loan() {
-    	return $this->hasMany('App\historical_record');
+    	return $this->hasMany('App\history_record');
     }
 
     public function scopeNombre_ambientetbl($query, $nombre_ambiente)

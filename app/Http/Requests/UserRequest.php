@@ -23,31 +23,6 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        if ($this->method()=='PUT') {
-            return [
-                'name' => 'required',
-                'email' => 'required|email|unique:users,id,:id',
-                'password' => 'required|min:6|confirmed',
-            ];
-        }
-        else{
-            return [
-                'name' => 'required',
-                'email' => 'required|email|unique:users',
-                'password' => 'required|min:6|confirmed',
-            ];
-        }
-    }
-    public function messages()
-    {
-        return [
-            'name.required'=>'El campo nombre es requerido',
-            'email.required'=>'El campo correo es requerido',
-            'email.email'=>'Este campo debe ser un correo valido',
-            'email.unique'=>'Este correo ya existe',
-            'password.required'=>'El campo contraseña es requerido',
-            'password.min'=>'El campo contraseña debe tener minimo 6 caracteres',
-            'password.confirmed'=>'debe confirmar la contraseña',
-        ];
+        // 
     }
 }

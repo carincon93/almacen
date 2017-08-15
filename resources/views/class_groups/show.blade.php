@@ -4,13 +4,13 @@
 
 @section('navbar-top')
 <ul class="breadcrumb">
-	<li><a href="{{ url('/admin/file') }}" class="btn-link">Lista de fichas</a></li>
+	<li><a href="{{ url('/admin/class_group') }}" class="btn-link">Lista de fichas</a></li>
 	<li>Adicionar ficha</li>
 </ul>
 @endsection
 
 @section('content')
-	<h1 class="text-uppercase">{{ $file->id_ficha }}</h1>
+	<h1 class="text-uppercase">{{ $dataGroup->id_ficha }}</h1>
 	<hr>
 	@if (session('status'))
 	<div class="alert alert-success alert-dismissible" role="alert">
@@ -22,19 +22,19 @@
 		<table class="table table-stripped table-bordered table-hover">
 			<tr>
 				<th>id</th>
-				<td>{{ $file->id }}</td>
+				<td>{{ $dataGroup->id }}</td>
 			</tr>
 			<tr>
 				<th>ID ficha</th>
-				<td>{{ $file->id_ficha }}</td>
+				<td>{{ $dataGroup->id_ficha }}</td>
 			</tr>
 			<tr>
 				<th>Nombre de la ficha</th>
-				<td>{{ $file->nombre_ficha }}</td>
+				<td>{{ $dataGroup->nombre_ficha }}</td>
 			</tr>
 			<tr>
 				<th>Tipo de formacion</th>
-				<td>{{ $file->tipo_formacion }}</td>
+				<td>{{ $dataGroup->tipo_formacion }}</td>
 			</tr>
 		</table>
 	</div>

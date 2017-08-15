@@ -7,14 +7,14 @@ use App\Http\Requests\ClassroomRequest;
 
 use App\Classroom;
 use App\Instructor;
-use App\Historical_record;
+use App\history_record;
 
 class ClassroomController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('auth')->except('prestamo_aprobado', 'entrega_aprobado', 'save_historical_record', 'modify_historical_record');
+        $this->middleware('auth')->except('prestamo_aprobado', 'entrega_aprobado', 'save_history_record', 'modify_history_record');
     }
     /**
      * Display a listing of the resource.
@@ -156,23 +156,4 @@ class ClassroomController extends Controller
             return redirect('/');
         }
     }
-
-    public function save_historical_record(Request $request)
-    {
-        $dataHistorical = new Historical_record();
-        $dataHistorical->instructor_id  = $request->get('instructor_id');
-        $dataHistorical->classroom_id   = $request->get('classroom_id');
-        $dataHistorical->prestado_en    = $request->get('prestado_en');
-
-        $dataHistorical->save();
-    }
-
-    public function modify_historical_record(Request $request, $prestado_en)
-    {
-        $dataHistorical = Historical_record::where('prestado_en', '=', $prestado_en)->first();
-        $dataHistorical->entregado_en = $request->get('entregado_en');
-        $dataHistorical->novedad      = $request->get('novedad');
-        $dataHistorical->save();
-    }
-
 }

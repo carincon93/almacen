@@ -26,7 +26,7 @@
         </div>
         <div id="sidebar-admin">
             <div>
-                {{ Auth::user()->name }}
+                <h4 class="text-capitalize">{{ Auth::user()->name }}</h4>
                 <div>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();" class="logout">
@@ -42,7 +42,7 @@
             <ul class="list-unstyled">
                 <li>Administración</li>
                 <li>
-                    <a href="{{ url('/admin/user') }}"><i class="fa fa-fw fa-cog"></i>Administradores</a>
+                    <a href="{{ url('/admin/admin') }}"><i class="fa fa-fw fa-cog"></i>Administradores</a>
                 </li>
                 <li>
                     <a href="{{ url('/admin/instructor') }}"><i class="fa fa-fw fa-cog"></i>Administrar instructores</a>
@@ -51,14 +51,14 @@
                     <a href="{{ url('/admin/classroom') }}"><i class="fa fa-fw fa-cog"></i>Administrar ambientes</a>
                 </li>
                 <li>
-                    <a href="{{ url('/admin/file') }}"><i class="fa fa-fw fa-cog"></i>Administrar fichas</a>
+                    <a href="{{ url('/admin/class_group') }}"><i class="fa fa-fw fa-cog"></i>Administrar fichas</a>
                 </li>
                 <li>Acciones</li>
                 <li>
                     <a href="{{ url('/') }}"><i class="fa fa-fw fa-key"></i>Prestar ambiente</a>
                 </li>
                 <li>
-                    <a href="{{ url('/admin/historical') }}"><i class="fa fa-fw fa-line-chart"></i>Historial de préstamos</a>
+                    <a href="{{ url('/admin/history_record') }}"><i class="fa fa-fw fa-line-chart"></i>Historial de préstamos</a>
                 </li>
             </ul>
         </div>

@@ -1,29 +1,30 @@
 @extends('layouts.app')
 
-@section('title','Adicionar ficha')
+@section('title','Editar administrador')
 
 @section('navbar-top')
 <ul class="breadcrumb">
-	<li><a href="{{ url('/admin/user') }}" class="btn-link">Lista de administradores</a></li>
-	<li>Adicionar administrador</li>
+	<li><a href="{{ url('/admin/admin') }}" class="btn-link">Lista de administradores</a></li>
+	<li>Editar administrador</li>
 </ul>
 @endsection
 
 @section('big-content-desc')
-<h4>Adicionar administrador</h4>
+<h4>Editar administrador</h4>
 @endsection
 
 @section('content')
 	<div class="col-md-8">
 		<div class="card-form">
-			<form action="{{ url('/admin/user') }}" method="POST">
+			<form action="{{ url('/admin/admin/'.$ad->id) }}" method="POST">
 				<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 					{!! csrf_field()  !!}
+					{{ method_field('PUT') }}
 					<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 						<label for="name" class="control-label">
 							Nombre
 						</label>
-						<input type="text" name="name" class="form-control" value="{{ old('name') }}">
+						<input type="text" name="name" class="form-control" value="{{ $ad->name }}">
 						@if ($errors->has('name'))
 							<span class="help-block">
 								{{ $errors->first('name') }}
@@ -34,7 +35,7 @@
 						<label for="email" class="control-label">
 							Correo
 						</label>
-						<input type="email" name="email" class="form-control" value="{{ old('email') }}">
+						<input type="email" name="email" class="form-control" value="{{ $ad->email }}">
 						@if ($errors->has('email'))
 							<span class="help-block">
 								{{ $errors->first('email') }}
@@ -45,18 +46,23 @@
 						<label for="password" class="control-label">
 							Contraseña
 						</label>
-						<input id="password" type="password" class="form-control" name="password">
+						<input id="password" type="password" class="form-control" name="password" value="{{ $ad->password }}">
 						@if ($errors->has('password'))
 							<span class="help-block">
 								{{ $errors->first('password') }}
 							</span>
 						@endif
 					</div>
-					<div class="form-group">
-						<label for="password-confirm" class="control-label">
+					<div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+						<label for="password_confirmation" class="control-label">
 							Confirmar Contraseña
 						</label>
-						<input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+						<input id="password_confirmation" type="password" class="form-control" name="password_confirmation">
+						@if ($errors->has('password_confirmation'))
+							<span class="help-block">
+								{{ $errors->first('password_confirmation') }}
+							</span>
+						@endif
 					</div>
 				</div>
 				<div class="form-group">
@@ -69,9 +75,9 @@
 		</div>
 	</div>
 	<div class="col-md-4">
-		<h3><i class="fa fa-fw fa-plus"></i> Adicionar Ficha</h3>
+		<h3><i class="fa fa-fw fa-plus"></i> Editar Administrador</h3>
 		<p>
-			Diligencie este formulario para agregar una nueva ficha.
+			Diligencie este formulario para agregar un nuevo administrador.
 		</p>
 		<blockquote class="note note-info {{ count($errors) > 0 ? 'note-danger animated shake' : '' }}">
 			Los campos que tienen asterisco <span class="btn">*</span> son obligatorios. <br>
