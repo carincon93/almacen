@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-08-2017 a las 03:10:35
--- Versión del servidor: 10.1.24-MariaDB
--- Versión de PHP: 7.1.6
+-- Tiempo de generación: 15-08-2017 a las 03:03:51
+-- Versión del servidor: 10.1.25-MariaDB
+-- Versión de PHP: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -52,7 +52,7 @@ INSERT INTO `classrooms` (`id`, `nombre_ambiente`, `tipo_ambiente`, `movilidad`,
 (2, 'sistemas 2', 'aula', 'fijo', 'activo', 40, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
 (3, 'ambiente lego', 'aula', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
 (4, 'auditorio procesos industriales y construccion', 'auditorio', 'fijo', 'activo', 200, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(5, 'autocad', 'laboratorio', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(5, 'autocad', 'laboratorio', 'fijo', 'activo', 50, NULL, 'no disponible', '2017-08-14 19:19:27', 57, NULL, '2017-08-15 00:20:10'),
 (6, 'automotriz', 'taller', 'fijo', 'activo', 90, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
 (7, 'confeccion', 'taller', 'fijo', 'activo', 60, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
 (8, 'diesel', 'taller', 'fijo', 'activo', 100, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
@@ -78,6 +78,31 @@ INSERT INTO `classrooms` (`id`, `nombre_ambiente`, `tipo_ambiente`, `movilidad`,
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `files`
+--
+
+CREATE TABLE `files` (
+  `id` int(11) NOT NULL,
+  `id_ficha` int(8) NOT NULL,
+  `nombre_ficha` varchar(50) COLLATE utf8_bin NOT NULL,
+  `tipo_formacion` varchar(50) COLLATE utf8_bin NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `files`
+--
+
+INSERT INTO `files` (`id`, `id_ficha`, `nombre_ficha`, `tipo_formacion`, `created_at`, `updated_at`) VALUES
+(1, 1132816, 'adsi', 'presencial', NULL, NULL),
+(3, 4441215, 'some', 'virtual', '2017-08-14 19:45:01', '2017-08-14 20:28:26'),
+(4, 85454454, 'lakdjdjidj', 'presencial', '2017-08-14 19:45:28', '2017-08-14 19:45:28'),
+(5, 12345678, 'jajiaja', 'presencial', '2017-08-14 20:20:37', '2017-08-14 20:20:37');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `historical_records`
 --
 
@@ -89,6 +114,13 @@ CREATE TABLE `historical_records` (
   `entregado_en` datetime DEFAULT NULL,
   `novedad` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `historical_records`
+--
+
+INSERT INTO `historical_records` (`id`, `instructor_id`, `classroom_id`, `prestado_en`, `entregado_en`, `novedad`) VALUES
+(1, 57, 5, '2017-08-14 19:19:27', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -174,7 +206,7 @@ INSERT INTO `instructors` (`id`, `nombre`, `apellidos`, `numero_documento`, `are
 (54, 'andres felipe ', 'jurado patino ', 1053770404, 'instructor topografia', 0, 8738457, 3015739296, 'afjurado40@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-07 23:27:32', NULL),
 (55, 'angela marcela', 'castellanos ortegon', 30398681, 'instructora ingles', 0, 8901383, 3008948200, 'amcastellanoso@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-07 23:27:32', NULL),
 (56, 'camilo andres', 'arango munoz', 16077061, 'instructor mobiliario y maderas', 0, 8760492, 3206845171, 'camiaramo@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-07 23:27:32', NULL),
-(57, 'yaneth', 'mejia rendon ', 1053811426, 'instructora sistemas', 0, 8854979, 3045458490, 'ymejia624@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-07 23:27:32', NULL),
+(57, 'yaneth', 'mejia rendon ', 1053811426, 'instructora sistemas', 0, 8854979, 3045458490, 'ymejia624@misena.edu.co', '/images/perdefault.png', 'no disponible', 2, '2017-08-07 23:27:32', '2017-08-15 00:20:09'),
 (58, 'daniel felipe ', 'moncada cardona ', 1053777708, 'instructor construccion', 0, 0, 3163159109, 'danielmoncada@gmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-07 23:27:32', NULL),
 (59, 'mario leandro', 'vanegas valencia', 1053807619, 'instructor electricidad', 0, 0, 3113005998, 'marlevan38@gmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-07 23:27:32', NULL),
 (60, 'victor hugo', 'arias saldarriaga', 10286879, 'instructor trabajo en alturas', 0, 8746838, 3117268025, 'victorari17@gmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-07 23:27:32', NULL),
@@ -289,7 +321,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'jaime palomino', 'jaime@mail.com', '$2y$10$sBo1iYBwX.4vXNaexrVMpOGBO4KJ5fPQQSEgGXrim8raezk37ik..', NULL, '2017-08-14 01:10:18', '2017-08-14 01:10:18');
+(1, 'jaime palomino', 'jaime@mail.com', '$2y$10$sBo1iYBwX.4vXNaexrVMpOGBO4KJ5fPQQSEgGXrim8raezk37ik..', 'oydfhba88tk71yXLQMnmwSp91k5sCJeWqS5GvwklAdNagSZfeS3q6JSl9wVX', '2017-08-14 01:10:18', '2017-08-14 01:10:18'),
+(3, 'algooli', 'algo@mail.com', '$2y$10$7ffsagtz0PJv1dAcTtZvhu1F28RRfBbRTXRODwiqBd856Clu7Q77G', NULL, '2017-08-14 22:49:23', '2017-08-14 23:15:05'),
+(4, 'kakashi', 'kakashi@mail.com', '$2y$10$QvbyV1pS1wUIBTtpqKyLHeDYnU6CFLEXbAMxA3dotU6D67PIVXaqq', NULL, '2017-08-15 00:02:55', '2017-08-15 00:16:07');
 
 --
 -- Índices para tablas volcadas
@@ -301,6 +335,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 ALTER TABLE `classrooms`
   ADD PRIMARY KEY (`id`),
   ADD KEY `classrooms_instructor_id_foreign` (`instructor_id`);
+
+--
+-- Indices de la tabla `files`
+--
+ALTER TABLE `files`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `historical_records`
@@ -353,10 +393,15 @@ ALTER TABLE `users`
 ALTER TABLE `classrooms`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
+-- AUTO_INCREMENT de la tabla `files`
+--
+ALTER TABLE `files`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT de la tabla `historical_records`
 --
 ALTER TABLE `historical_records`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `instructors`
 --
@@ -376,7 +421,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Restricciones para tablas volcadas
 --
