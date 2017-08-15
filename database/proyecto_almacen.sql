@@ -75,7 +75,7 @@ INSERT INTO `classrooms` (`id`, `nombre_ambiente`, `tipo_ambiente`, `movilidad`,
 (2, 'sistemas 2', 'aula', 'fijo', 'activo', 40, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
 (3, 'ambiente lego', 'aula', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
 (4, 'auditorio procesos industriales y construccion', 'auditorio', 'fijo', 'activo', 200, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(5, 'autocad', 'laboratorio', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(5, 'autocad', 'laboratorio', 'fijo', 'activo', 50, NULL, 'no disponible', '2017-08-14 19:19:27', 57, NULL, '2017-08-15 00:20:10'),
 (6, 'automotriz', 'taller', 'fijo', 'activo', 90, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
 (7, 'confeccion', 'taller', 'fijo', 'activo', 60, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
 (8, 'diesel', 'taller', 'fijo', 'activo', 100, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
@@ -113,6 +113,7 @@ CREATE TABLE `class_groups` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
 -- --------------------------------------------------------
 
 --
@@ -127,6 +128,13 @@ CREATE TABLE `history_records` (
   `entregado_en` datetime DEFAULT NULL,
   `novedad` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `historical_records`
+--
+
+INSERT INTO `historical_records` (`id`, `instructor_id`, `classroom_id`, `prestado_en`, `entregado_en`, `novedad`) VALUES
+(1, 57, 5, '2017-08-14 19:19:27', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -327,7 +335,6 @@ CREATE TABLE `users` (
 --
 -- Índices para tablas volcadas
 --
-
 --
 -- Indices de la tabla `admins`
 --
@@ -343,6 +350,7 @@ ALTER TABLE `classrooms`
   ADD KEY `classrooms_instructor_id_foreign` (`instructor_id`);
 
 --
+
 -- Indices de la tabla `class_groups`
 --
 ALTER TABLE `class_groups`
@@ -433,6 +441,7 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- Restricciones para tablas volcadas
 --
