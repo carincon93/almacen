@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Classroom;
 use App\Instructor;
-use App\Historical_record;
+use App\history_record;
 
 class WelcomeController extends Controller
 {
@@ -14,7 +14,7 @@ class WelcomeController extends Controller
     {
         $dataClassroom  = Classroom::all()->sortBy('nombre_ambiente');
 
-        $dataHistorical = Historical_record::orderByDesc('prestado_en', 'DESC')->take(5)->get();
+        $dataHistorical = history_record::orderByDesc('prestado_en', 'DESC')->take(5)->get();
         $dataInstructor = Instructor::all()->sortBy('nombre');
         return view('welcome')
         ->with('dataClassroom', $dataClassroom)

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AdminRequest;
 
+use App\Admin;
 use App\Classroom;
-use App\Historical_record;
 
 class AdminController extends Controller
 {
@@ -21,14 +22,97 @@ class AdminController extends Controller
      */
     public function index()
     {
+        $dataAdmin = Admin::all()->sortBy('name');
+        return view('admins.index')->with('dataAdmin', $dataAdmin);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admins.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(AdminRequest $request)
+    {
+        $ad = new Admin();
+        $ad->name = $request->get('name');
+        $ad->email = $request->get('email');
+        $ad->password = bcrypt($request->get('password'));
+        if ($ad->save()){
+            return redirect('/admin/admin')->with('status', 'El administrador fue adicionada con éxito');
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        return view('admins.show')->with('dataAdmin', Admin::find($id));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $ad = Admin::find($id);
+        return view('admins.edit')
+            ->with('ad', $ad);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(AdminRequest $request, $id)
+    {
+        $ad = Admin::find($id);
+        $ad->name = $request->get('name');
+        $ad->email = $request->get('email');
+        $ad->password = bcrypt($request->get('password'));
+        if ($ad->save()){
+            return redirect('/admin/admin')->with('status', 'El administrador fue modificado con éxito');
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        Admin::destroy($id);
+        return redirect('/admin/admin')->with('status', 'el administrador fue eliminado con éxito');
+    }
+
+
+    public function prestamos_plano()
+    {
         $dataS1  = Classroom::all()->where('nombre_ambiente', 'sistemas 1')->where('disponibilidad', '=', 'no disponible')->first();
         $dataS3  = Classroom::all()->where('nombre_ambiente', 'sistemas 3')->where('disponibilidad', '=', 'no disponible')->first();
         $dataMeta  = Classroom::all()->where('nombre_ambiente', 'metalografia')->where('disponibilidad', '=', 'no disponible')->first();
-        return view('admin', compact('dataS1', 'dataS3', 'dataMeta'));
-    }
-
-    public function historial_prestamos() {
-        $historical_record = Historical_record::orderBy('prestado_en', 'DESC')->paginate(15);
-        return view('historical')->with('historical_record', $historical_record);
+        return view('admins.admin', compact('dataS1', 'dataS3', 'dataMeta'));
     }
 }

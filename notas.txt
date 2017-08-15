@@ -1,4 +1,2 @@
-1. Un ambiente con un instructor asignado, si se elimina ese instructor el ambiente queda en "No disponible"
-y sin id de instructor. Error de laravel.
-
-* Evitar que se elimine un instructor mientras este tiene a cargo un ambiente *
+Si se envia un prestamo después de haber ejecutado varios modales, esa cantidad misma se crea en la tabla de historiales. jQuery
+Campo confirmar contraseña genera error en inglés, pasar a español.

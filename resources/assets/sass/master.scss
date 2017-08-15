@@ -56,6 +56,9 @@ button:focus {
 }
 // Custom Bootstrap
 .row.no-gutter {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
     margin: 0;
 }
 .btn-delete {
@@ -169,7 +172,20 @@ blockquote.note-success {
         }
     }
 }
-
+.search-navbar-wrapper {
+    margin-top: 0.64rem;
+    width: 22%;
+    i {
+        top: 34%;
+        position: absolute;
+    }
+    input {
+        border: none;
+        border-bottom: 1px solid;
+        box-shadow: none;
+        padding-left: 2rem;
+    }
+}
 
 
 .table-small {
@@ -295,17 +311,72 @@ blockquote.note-success {
         font-size: 12px;
     }
 }
+.classroom-card {
+    background: #fff;
+    border-radius: 4px;
+    display: block;
+    position: relative;
+
+    .clr-desc {
+        padding: 1rem;
+        position: relative;
+        transition: all .2s ease;
+        z-index: 2;
+
+        span.circle {
+            background: #fff;
+            border-radius: 50%;
+            content: '';
+            height: 4rem;
+            position: absolute;
+            right: 1rem;
+            top: -2rem;
+            width: 4rem;
+            z-index: 3;
+        }
+
+        h5 {
+            font-size: 1.7rem;
+            margin: 0;
+            padding: 1rem 0;
+        }
+        h5::first-letter {
+            text-transform: uppercase;
+        }
+        hr {
+            margin: 0 0 0.5rem 0;
+        }
+    }
+
+    div.clr-img {
+        position: relative;
+        width: 100%;
+        height: 10rem;
+
+        &:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+        .img-clrinactive {
+            filter: grayscale(100%);
+        }
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: inherit;
+        }
+    }
+}
 .classroom-card.clr-entregar {
     .clr-img {
         &:after {
             background: linear-gradient(to bottom, rgba(222, 255, 33, 0.1) 0%, rgba(255, 201, 33, 0.1) 5%, #5fd45f 100%);
-            content: '';
-            height: 100%;
-            left: 0;
-            position: absolute;
-            top: 0;
-            width: 100%;
-            z-index: 2;
         }
     }
     hr {
@@ -324,71 +395,27 @@ blockquote.note-success {
         z-index: 3;
     }
 }
-.classroom-card {
-    background: #fff;
-    border-radius: 4px;
-    display: block;
-    position: relative;
-
-    .clr-desc {
-        padding: 1rem;
-        position: relative;
-        z-index: 2;
-
-        h5::first-letter {
-            text-transform: uppercase;
-        }
-    }
-
-    div.clr-img {
-        position: relative;
-        width: 100%;
-        height: 10rem;
-
-        &:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: rgba(119, 119, 119, 0.42);
-            z-index: 2;
-        }
-        .img-clrinactive {
-            filter: grayscale(100%);
-        }
-
-        img {
-            object-fit: cover;
-            width: 100%;
-            height: inherit;
-        }
-    }
-    h5 {
-        font-size: 1.7rem;
-        margin: 0;
-        padding: 1rem;
-        }
-}
 .clr-repair {
-    color: #fff;
-    background: #5f4b4b;
-
-    &:after {
-        background: url(../images/warn-tape.png) no-repeat center;
-        content: '';
-        display: block;
-        height: 2.8rem;
-        left: 0;
-        position: absolute;
-        top: 27%;
-        width: 100%;
-        z-index: 2;
+    .clr-img {
+        &:after {
+            background: linear-gradient(to bottom, rgba(222, 255, 33, 0.1) 0%, rgba(255, 201, 33, 0.1) 5%, #d45f5f 100%);
+        }
     }
+
+    // &:after {
+    //     background: url(../images/warn-tape.png) no-repeat center;
+    //     content: '';
+    //     display: block;
+    //     height: 2.8rem;
+    //     left: 0;
+    //     position: absolute;
+    //     top: 27%;
+    //     width: 100%;
+    //     z-index: 2;
+    // }
 
     .hr-repair {
-        border-top: 1px solid #ffdc16;
+        border-top: 1px solid #d45f5f;
     }
 }
 .clr-inactive {
@@ -406,6 +433,10 @@ blockquote.note-success {
 .clr-disponible:hover,
 .clr-entregar:hover {
     cursor: pointer;
+
+    .clr-desc {
+        background: #ccc;
+    }
 }
 i.itm_quare {
     color: #93f793;

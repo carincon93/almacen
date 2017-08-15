@@ -11,13 +11,14 @@
                     <th>Fecha Prestado</th>
                     <th>Fecha Entregado</th>
                     <th>Novedad</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
             @php
             $count = 1;
             @endphp
-            @foreach($historical_record as $his)
+            @foreach($history_record as $his)
                 <tr>
                 	<td>{{$count++}}</td>
                 	<td>{{$his->instructor->nombre.' '.$his->instructor->apellidos  }}</td>
@@ -25,6 +26,7 @@
                 	<td>{{ $his->prestado_en }}</td>
                     <td>{{ $his->entregado_en != '' ? $his->entregado_en : 'Sin entrega'}}</td>
                     <td>{{ $his->novedad != '' ? $his->novedad : 'Sin novedad'}}</td>
+                    <td></td>
                 </tr>
                @endforeach
             </tbody>

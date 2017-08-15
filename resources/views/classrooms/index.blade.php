@@ -60,7 +60,7 @@
                         <a class="btn" href="{{ url('/admin/classroom/'.$clr->id.'/edit') }}">
                             <i class="fa fa-fw fa-pencil"></i>
                         </a>
-                        <form action="{{ url('/admin/classroom/'.$clr->id) }}" method="POST" style="display: inline-block;" class="form-delete-clr btn">
+                        <form action="{{ url('/admin/classroom/'.$clr->id) }}" method="POST" style="display: inline-block;" class="form-delete-clr btn btn-danger">
                             {{ method_field('delete') }}
                             {!! csrf_field()  !!}
 

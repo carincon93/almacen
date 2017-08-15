@@ -34,7 +34,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary save_historical" id="submit-solicitud">Prestar Ambiente</button>
+                    <button type="button" class="btn btn-primary" id="submit-solicitud">Prestar Ambiente</button>
                 </div>
             </div>
         </div>
@@ -97,6 +97,7 @@
                             <img src="{{ asset($clr->imagen) }}" alt="" class="img-classroom img-clrinactive img-responsive">
                         </div>
                         <div class="clr-desc">
+                            <span class="circle"></span>
                             <h5 class="">{{ $clr->nombre_ambiente }}</h5>
                             <hr class="hr-repair">
                             <p>El ambiente se encuentra en reparación</p>
@@ -107,7 +108,7 @@
                 <div>
                     <div class="classroom-card card clr-entregar" data-idclr="{{ $clr->id }}" data-entregar="{{ $clr->prestado_en }}" data-idIns="{{ $clr->instructor->id }}">
                         <div class="clr-img">
-                            <img src="{{ asset($clr->imagen) }}" alt="" class="img-classroom img-clrinactive img-responsive">
+                            <img src="{{ asset($clr->imagen) }}" alt="" class="img-classroom img-responsive">
                             <div class="info-clr">Ambiente en uso <span class="pull-right">{{ $clr->prestado_en }}</span></div>
                         </div>
                         <div class="clr-desc">
@@ -125,6 +126,7 @@
                             <img src="{{ asset($clr->imagen) }}" alt="" class="img-classroom img-responsive">
                         </div>
                         <div class="clr-desc">
+                            <span class="circle"></span>
                             <h5 class="" data-nombreClr="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
                         </div>
                     </div>

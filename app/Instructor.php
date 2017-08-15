@@ -17,7 +17,7 @@ class Instructor extends Model
     	return $this->hasOne('App\classroom');
     }
     public function historial_classroom_loan() {
-    	return $this->hasMany('App\historical_record');
+    	return $this->hasMany('App\history_record');
     }
 
     public function scopeNombre_instructor($query, $nombre_instructor)
