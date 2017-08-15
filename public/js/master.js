@@ -39,11 +39,14 @@ $(document).ready(function() {
         url = url[0] + "//" + url[2] + "/";
         $('#form-solicitud').attr('action', url + 'solicitar_prestamo/' + idClr + '/aprobado');
 
+
         $('#solicitar_prestamo').modal({
             backdrop: 'static',
             keyboard: false
-        })
-        .on('click', '#submit-solicitud', function(event) {
+        });
+
+    });
+        $('#solicitar_prestamo').on('click', '#submit-solicitud', function(event) {
             event.preventDefault();
             var formSolicitud = $('#form-solicitud');
             idInstructor = formSolicitud.find('input[name=instructor_id]').val();
@@ -55,7 +58,6 @@ $(document).ready(function() {
                 }, 1000);
             }
         });
-    });
 
     // Guardar préstamo en el historial
     function save_history_record() {

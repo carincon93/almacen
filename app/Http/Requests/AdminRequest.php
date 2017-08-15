@@ -27,8 +27,7 @@ class AdminRequest extends FormRequest
              return [
                  'name' => 'required',
                  'email' => 'required|email|unique:admins,id,:id',
-                 'password' => 'required|min:6',
-                 'password_confirmation' => 'required|min:6|confirmed',
+                 'password' => 'required|min:6|confirmed',
              ];
          }
          else{
@@ -36,7 +35,6 @@ class AdminRequest extends FormRequest
                  'name' => 'required',
                  'email' => 'required|email|unique:admins',
                  'password' => 'required|min:6|confirmed',
-                 'password_confirmation' => 'required|min:6|confirmed',
              ];
          }
      }
@@ -49,7 +47,7 @@ class AdminRequest extends FormRequest
              'email.unique'=>'Este correo ya existe',
              'password.required'=>'El campo contraseña es requerido',
              'password.min'=>'El campo contraseña debe tener mínimo 6 caracteres',
-             'password_confirmation.confirmed'=>'Debe confirmar la contraseña',
+             'password.confirmed'=>'Debe confirmar la contraseña y la confirmacion debe coincidir con la contraseña',
          ];
      }
 }

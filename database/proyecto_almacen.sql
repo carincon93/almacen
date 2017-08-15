@@ -131,10 +131,7 @@ CREATE TABLE `history_records` (
 
 --
 -- Volcado de datos para la tabla `historical_records`
---
 
-INSERT INTO `historical_records` (`id`, `instructor_id`, `classroom_id`, `prestado_en`, `entregado_en`, `novedad`) VALUES
-(1, 57, 5, '2017-08-14 19:19:27', NULL, NULL);
 
 -- --------------------------------------------------------
 
