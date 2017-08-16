@@ -1,2 +1,6 @@
-Si se envia un prestamo después de haber ejecutado varios modales, esa cantidad misma se crea en la tabla de historiales. jQuery
-Campo confirmar contraseña genera error en inglés, pasar a español.
+validacion de instructores,
+fotos ambientes y instructores,
+editar novedad con modal,
+modificar contrase�a,
+hacer busqueda de ficha con modal dentro de prestamo
+hacer el ingreso tipo de formacion

@@ -24,7 +24,7 @@ class WelcomeController extends Controller
 
     public function ajaxsearch(Request $request)
     {
-        $query = Classroom::nombre_ambiente($request->get('nombre_ambiente'))->orderBy('id', 'ASC')->get();
+        $query = Classroom::nombre_ambiente($request->get('nombre_ambiente'))->orderBy('nombre_ambiente', 'ASC')->get();
         return view('classroomajx', compact('query'));
     }
 

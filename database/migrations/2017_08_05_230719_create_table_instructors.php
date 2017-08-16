@@ -17,15 +17,22 @@ class CreateTableInstructors extends Migration
             $table->increments('id');
             $table->string('nombre', 64);
             $table->string('apellidos', 64);
-            $table->integer('numero_documento');
+            $table->string('especialidad', 64)->nullable();
+            $table->string('vinculacion1', 100)->nullable();
+            $table->string('tipoplanta', 100)->nullable();
+            $table->string('tipocontrato', 100)->nullable();
+            $table->string('cantidadhoras', 100)->nullable();
+            $table->string('actadministrativas', 50)->nullable();
             $table->string('area', 128);
+            $table->text('centro', 128)->nullable();
+            $table->integer('instructor_type_id')->unsigned();
+            $table->integer('numero_documento');
             $table->integer('ip');
-            $table->integer('telefono')->nullable();
             $table->bigInteger('celular');
             $table->string('email', 64)->unique();
             $table->string('imagen', 191)->default('/images/perdefault.png')->nullable();
             $table->string('disponibilidad', 15)->default('disponible')->nullable();
-            $table->integer('instructor_type_id')->unsigned();
+            
             $table->foreign('instructor_type_id')->references('id')->on('instructor_types');
             $table->timestamps();
         });

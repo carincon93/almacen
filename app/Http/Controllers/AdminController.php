@@ -113,6 +113,8 @@ class AdminController extends Controller
         $dataS1  = Classroom::all()->where('nombre_ambiente', 'sistemas 1')->where('disponibilidad', '=', 'no disponible')->first();
         $dataS3  = Classroom::all()->where('nombre_ambiente', 'sistemas 3')->where('disponibilidad', '=', 'no disponible')->first();
         $dataMeta  = Classroom::all()->where('nombre_ambiente', 'metalografia')->where('disponibilidad', '=', 'no disponible')->first();
+        $dataMante  = Classroom::all()->where('nombre_ambiente', 'mantenimiento')->where('disponibilidad', '=', 'no disponible')->first();
+        $dataMeca  = Classroom::all()->where('nombre_ambiente', 'mecanizado')->where('disponibilidad', '=', 'no disponible')->first();
         return view('admins.admin', compact('dataS1', 'dataS3', 'dataMeta'));
     }
 }

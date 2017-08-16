@@ -35,7 +35,7 @@
                     <rect x="1346.5" width="70" height="6"/>
                     <rect x="1432.5" width="70" height="6"/>
                     <rect x="1260.5" width="70" height="6"/>
-                    <text transform="translate(1129.86 487.76)" style="font-size: 32.720767974853516px;font-family: MicrosoftSansSerif, Microsoft Sans Serif">Text</text>
+                    <text transform="translate(1129.86 487.76)" style="font-size: 32.720767974853516px;font-family: MicrosoftSansSerif, Microsoft Sans Serif">Mantenimiento mecanico II</text>
                 </g>
                 <g>
                     <rect x="1075" y="1012.5" width="6" height="80" transform="translate(2156 2105) rotate(-180)" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
@@ -90,7 +90,7 @@
                     <rect x="145" width="70" height="6" transform="translate(360 6) rotate(-180)"/>
                     <rect x="59" width="70" height="6" transform="translate(188 6) rotate(-180)"/>
                     <rect x="231" width="70" height="6" transform="translate(532 6) rotate(-180)"/>
-                    <text transform="translate(79.86 487.76)" style="font-size: 32.720767974853516px;font-family: MicrosoftSansSerif, Microsoft Sans Serif">Text</text>
+                    <text transform="translate(79.86 487.76)" style="font-size: 32.720767974853516px;font-family: MicrosoftSansSerif, Microsoft Sans Serif">Mecanizado</text>
                 </g>
                 <g>
                     <path d="M635,1242v2.5h41s1,32-35,38c36,6,35,38,35,38H635v4.5" style="fill: none;stroke: #000;stroke-miterlimit: 10"/>
@@ -194,17 +194,33 @@
                     </tr>
                     <tr>
                         <td>
-                            {{ ! empty($dataS3) ? $dataS3->instructor->nombre.' '.$dataS1->instructor->apellidos : 'Sin instructor asignado'}}
+                            {{ ! empty($dataS3) ? $dataS3->instructor->nombre.' '.$dataS3->instructor->apellidos : 'Sin instructor asignado'}}
                         </td>
                         <td>
                             Sistemas 3
                         </td>
                         <tr>
                             <td>
-                                {{ ! empty($dataMeta) ? $dataMeta->instructor->nombre.' '.$dataS1->instructor->apellidos : 'Sin instructor asignado'}}
+                                {{ ! empty($dataMeta) ? $dataMeta->instructor->nombre.' '.$dataMeta->instructor->apellidos : 'Sin instructor asignado'}}
                             </td>
                             <td>
                                 Metalografía
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{ ! empty($dataMante) ? $dataMante->instructor->nombre.' '.$dataMante->instructor->apellidos : 'Sin instructor asignado'}}
+                            </td>
+                            <td>
+                                Mantenimiento Mecánico II
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                {{ ! empty($dataMeca) ? $dataMeca->instructor->nombre.' '.$dataMeca->instructor->apellidos : 'Sin instructor asignado'}}
+                            </td>
+                            <td>
+                                Mecanizado
                             </td>
                         </tr>
                     </tr>
