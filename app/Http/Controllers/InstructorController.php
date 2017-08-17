@@ -51,7 +51,6 @@ class InstructorController extends Controller
         $ins->numero_documento     = $request->get('numero_documento');
         $ins->area                 = $request->get('area');
         $ins->ip                   = $request->get('ip');
-        $ins->telefono             = $request->get('telefono');
         $ins->celular              = $request->get('celular');
         $ins->email                = $request->get('email');
         if ($request->hasFile('imagen')) {
@@ -109,7 +108,6 @@ class InstructorController extends Controller
         $ins->numero_documento       = $request->get('numero_documento');
         $ins->area                   = $request->get('area');
         $ins->ip                     = $request->get('ip');
-        $ins->telefono               = $request->get('telefono');
         $ins->celular                = $request->get('celular');
         $ins->email                  = $request->get('email');
         if ($request->hasFile('imagen')) {

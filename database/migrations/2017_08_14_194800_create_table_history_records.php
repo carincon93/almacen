@@ -22,6 +22,7 @@ class CreateTableHistoryRecords extends Migration
             $table->dateTime('prestado_en');
             $table->dateTime('entregado_en')->nullable();
             $table->text('novedad')->nullable();
+            $table->text('novedad_nueva')->nullable();
             $table->timestamps();
             $table->dropColumn(['created_at', 'updated_at']);
         });

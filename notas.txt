@@ -1,6 +1,4 @@
-validacion de instructores,
 fotos ambientes y instructores,
 editar novedad con modal,
-modificar contraseña,
 hacer busqueda de ficha con modal dentro de prestamo
 hacer el ingreso tipo de formacion

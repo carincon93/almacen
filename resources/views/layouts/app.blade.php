@@ -28,6 +28,7 @@
             <div>
                 <h4 class="text-capitalize">{{ Auth::user()->name }}</h4>
                 <div>
+                    <a href="{{url('admin/password')}}" style="font-size:13px;">Cambiar mi contraseña</a><br>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();" class="logout">
                         Cerrar Sesión

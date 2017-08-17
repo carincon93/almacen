@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-08-2017 a las 18:20:30
+-- Tiempo de generación: 17-08-2017 a las 21:11:24
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -38,6 +38,13 @@ CREATE TABLE `admins` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `admins`
+--
+
+INSERT INTO `admins` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'jaime palomino', 'jaime@mail.com', '$2y$10$u5cb2NbKWrLcjhrB6AS/V.zor8CwboOBG5Lg9rDvIabJn4hKgHmAS', 'Zn2FPTPI0R6tT3snoW2E3XDPUcDN4BF9Rtzwa9jaENedPAyx00454Rzoy9PJ', '2017-08-16 16:27:43', '2017-08-17 12:33:26');
+
 -- --------------------------------------------------------
 
 --
@@ -66,10 +73,10 @@ CREATE TABLE `classrooms` (
 --
 
 INSERT INTO `classrooms` (`id`, `nombre_ambiente`, `descripcion`, `disponibilidad`, `centro`, `tipo_ambiente`, `movilidad`, `estado`, `cupo`, `imagen`, `prestado_en`, `instructor_id`, `created_at`, `updated_at`) VALUES
-(1, 'sistemas 1', NULL, 'disponible', NULL, 'aula', 'fijo', 'activo', 60, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(1, 'sistemas 1', NULL, 'no disponible', NULL, 'aula', 'fijo', 'activo', 60, NULL, '2017-08-17 07:39:39', 40, NULL, '2017-08-17 12:40:11'),
 (2, 'sistemas 2', NULL, 'disponible', NULL, 'aula', 'fijo', 'activo', 40, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(3, 'ambiente lego', NULL, 'disponible', NULL, 'aula', 'fijo', 'activo', 50, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(4, 'auditorio procesos industriales y construccion', NULL, 'disponible', NULL, 'auditorio', 'fijo', 'activo', 200, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(3, 'ambiente lego', NULL, 'no disponible', NULL, 'aula', 'fijo', 'activo', 50, '/images/classrooms/1502973333.jpg', '2017-08-17 11:28:24', 57, NULL, '2017-08-17 16:29:04'),
+(4, 'auditorio procesos industriales y construccion', NULL, 'disponible', NULL, 'auditorio', 'fijo', 'activo', 200, NULL, '2017-08-16 17:16:56', NULL, NULL, '2017-08-17 12:21:26'),
 (5, 'autocad', NULL, 'disponible', NULL, 'laboratorio', 'fijo', 'activo', 50, NULL, '0000-00-00 00:00:00', NULL, NULL, '2017-08-15 05:20:10'),
 (6, 'automotriz', NULL, 'disponible', NULL, 'taller', 'fijo', 'activo', 90, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
 (7, 'confeccion', NULL, 'disponible', NULL, 'taller', 'fijo', 'activo', 60, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
@@ -109,59 +116,57 @@ CREATE TABLE `class_groups` (
   `fecha_lectiva` date DEFAULT NULL,
   `fecha_final` date DEFAULT NULL,
   `horario` text COLLATE utf8mb4_unicode_ci,
-  `tipo_formacion` varchar(91) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `tipo_formacion` varchar(91) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `class_groups`
 --
 
-INSERT INTO `class_groups` (`id`, `id_ficha`, `nombre_ficha`, `especialidad`, `instructor`, `fecha_inicio`, `fecha_lectiva`, `fecha_final`, `horario`, `tipo_formacion`, `created_at`, `updated_at`) VALUES
-(2, 1132816, 'Analisis y Desarrollo de Sistemas de Informacion', 'Informatica', 'Yaneth Mejia', '2016-04-11', '2017-10-12', '2018-04-11', 'Mixta', '', NULL, NULL),
-(3, 1323395, 'Analisis y Desarrollo de Sistemas de Informacion', 'Informatica', 'Yaneth Mejia', '2017-04-17', '0000-00-00', '2019-04-17', 'Diurna', '', NULL, NULL),
-(4, 1368665, 'ESPECIALIZACION TECNOLOGICA METODOLOÃAS DE CALIDAD PARA EL DESARROLLO DE SOFTWARE', 'Informatica', 'Yaneth Mejia', '2017-04-17', '0000-00-00', '0000-00-00', 'Diurna', '', NULL, NULL),
-(14, 1375843, 'AUX. TRABAJADOR DE LA MADERA', 'Construccion', 'CAMILO ANDRES ARANGO', '2017-04-17', '0000-00-00', '0000-00-00', 'Nocturna', '', NULL, NULL),
-(15, 1132770, 'DESARROLLO GRÃFICO DE PROYECTOS DE ARQUITECTURA E INGENIERÃA', 'Construccion', 'JORGE GUTIERREZ', '0001-01-01', '0000-00-00', '2017-10-17', 'Nocturna', '', NULL, NULL),
-(21, 1094381, 'TOPOGRAFÃA', 'Construccion', 'AndrÃ©s Felipe Jurado ', '0000-00-00', '0000-00-00', '2017-07-27', 'Diurna', '', NULL, NULL),
-(22, 1261608, 'TECNOLOGO EN CONSTRUCCION', 'Construccion', 'MARIO RAIGOSA ARANGO', '0000-00-00', '0000-00-00', '2018-08-26', 'Diurna', '', NULL, NULL),
-(23, 1261604, 'TGO  DESARROLLO GRAFICO DE PROYECTOS DE ARQUITECTURA E INGENIERIA', 'Construccion', 'APARICIO MEJIA ', '0000-00-00', '0000-00-00', '2018-04-26', 'Diurna', '', NULL, NULL),
-(24, 1301351, 'Mantenimiento y ReparaciÃ³n de Edificaciones', 'Construccion', 'MARIO RAIGOZA', '2016-10-10', '0000-00-00', '2017-12-11', 'Diurna', '', NULL, NULL),
-(25, 1368569, 'TGO  DESARROLLO GRAFICO DE PROYECTOS DE ARQUITECTURA E INGENIERIA', 'Construccion', 'JORGE ALBERTO TAMAYO GRISALES', '2017-04-17', '0000-00-00', '0000-00-00', 'Diurna', '', NULL, NULL),
-(26, 1075391, 'TOPOGRAFIA', 'Construccion', 'Andres Felipe Jurado', '0000-00-00', '0000-00-00', '2017-09-28', 'Diurna', '', NULL, NULL),
-(27, 1323382, 'TECNOLOGO EN TOPOGRAFIA', 'Construccion', 'FELIPE JURADO', '2017-01-23', '0000-00-00', '2019-07-23', 'Diurna', '', NULL, NULL),
-(28, 1368604, 'Tgo en Obras Civiles', 'Construccion', 'Aparicio Mejia', '2017-04-17', '0000-00-00', '0000-00-00', 'Diurna', '', NULL, NULL),
-(29, 1132795, 'MANTENIMIENTO MECANICO INDUSTRIAL', 'Mecanica', 'DIEGO ALEXANDER GRAJALES', '0000-00-00', '0000-00-00', '2017-10-11', 'Diurna', '', NULL, NULL),
-(30, 1132701, 'SOLDADURA DE PRODUCTOS METALICOS (PLATINA)', 'Eectricidad', 'Cristian Mauricio Toro', '0000-00-00', '0000-00-00', '0000-00-00', 'Nocturna', '', NULL, NULL),
-(31, 1182104, 'MECANIZADO DE PRODUCTOS METALMECANICOS ', 'Mecanica', ' JOSE FERNANDO VERGARA', '0000-00-00', '0000-00-00', '2017-07-11', 'Nocturna-Dual', '', NULL, NULL),
-(32, 1197616, 'MANTENIMIENTO MECANICO INDUSTRIAL', 'Mecanica', 'JHON FREDDY CORTES ', '2016-07-11', '0000-00-00', '2018-01-11', 'Mixta', '', NULL, NULL),
-(33, 1368653, 'MANTENIMIENTO MECANICO INDUSTRIAL', 'Mecanica', 'ADALBERTO ACEVEDO', '2017-04-17', '0000-00-00', '0000-00-00', 'Nocturna', '', NULL, NULL),
-(34, 1132756, 'TGO ELECTRICIDAD INDUSTRIAL', 'Seleccione una opcion...', 'Guillermo Antonio Valencia', '0000-00-00', '2017-10-12', '0000-00-00', 'Diurna', '', NULL, NULL),
-(35, 1197544, 'MANTENIMIENTO ELECTROMECANICO INDUSTRIAL', 'Eectricidad', 'MYRIAM CLAUDINA GARCIA NARANJO ', '0000-00-00', '0000-00-00', '2018-01-11', 'Mixta', '', NULL, NULL),
-(36, 1197576, 'ELCTRICIDAD INDUSTRIAL ', 'Eectricidad', 'JUAN CARLOS LOPEZ', '0000-00-00', '2018-01-11', '0000-00-00', 'Mixta', '', NULL, NULL),
-(37, 1368673, 'TECNOLOGO EN ELECTRICIDAD  INDUSTRIAL', 'Eectricidad', 'CLAUDIO ALBERTO VALENCIA SÃNCHEZ', '2017-04-17', '0000-00-00', '0000-00-00', 'Diurna', '', NULL, NULL),
-(38, 1368529, 'Tc En Electricidad Residencial', 'Eectricidad', 'CLAUDIO ALBERTO VALENCIA SÃNCHEZ', '2017-04-17', '0000-00-00', '0000-00-00', 'Nocturna', '', NULL, NULL),
-(39, 1323358, 'Tgo SupervisiÃ³n De Redes De DistribuciÃ³n De EnergÃ­a ElÃ©ctrica', 'Eectricidad', 'MELODY RAMOS GIRALDO', '2017-01-23', '2019-07-23', '0000-00-00', 'Diurna', '', NULL, NULL),
-(40, 1367722, 'MANTENIMIENTO ELECTROMECANICO INDUSTRIAL', 'Mecanica', 'MYRIAM CLAUDINA GARCIA NARANJO  ', '2017-04-13', '2018-09-13', '0000-00-00', 'Diurna', '', NULL, NULL),
-(41, 1114874, 'MANTENIMIENTO MECATRONICO DE AUTOMOTORES', 'Automotriz', 'ANDRES MAURICIO JARAMILLO', '0000-00-00', '0000-00-00', '2017-11-17', 'Mixta', '', NULL, NULL),
-(42, 1343933, 'TC MANTENIMIENTO DE LAS MOTOCICLETAS', 'Mecanica', 'Jaime Adolfo Fuentes', '0000-00-00', '2016-11-17', '2017-05-17', 'Diurna', '', NULL, NULL),
-(43, 1368501, 'Tco En Mantenimiento De Motores DiÃ©sel', 'Mecanica', 'LUIS CAMILO ESTRADA PATIÃ‘O', '2017-04-17', '0000-00-00', '0000-00-00', 'Diurna', '', NULL, NULL),
-(44, 1368642, 'Tgo En Mantenimiento MecatrÃ³nico De Automotores', 'Mecanica', 'VICTOR MAURICIO ACEVEDO CORREA', '2017-04-17', '0000-00-00', '0000-00-00', 'Diurna', '', NULL, NULL),
-(45, 1368642, 'Tgo En Mantenimiento MecatrÃ³nico De Automotores (B)', 'Seleccione una opcion...', 'VICTOR MAURICIO ACEVEDO CORREA', '2017-04-17', '0000-00-00', '0000-00-00', 'Diurna', '', NULL, NULL),
-(46, 1306630, 'Tc  EN SEGURIDAD VIAL, CONTROL DE TRANSITO Y TRANSPORTE', 'Automotriz', 'JHON KEVIN FLOREZ PEÃ‘A', '2017-10-03', '0000-00-00', '0000-00-00', 'Diurna', '', NULL, NULL),
-(47, 1368498, 'Tco En Mantenimiento De Motores DiÃ©sel', 'Mecanica', 'JHON KEVIN FLOREZ PEÃ‘A', '2017-04-17', '0000-00-00', '0000-00-00', 'Mixta', '', NULL, NULL),
-(48, 1197693, 'GESTION INTEGRADA DE SISTEMAS DE CALIDAD, AMBIENTAL, SEGURIDAD Y SALUD OCUPACIONAL  HSEQ', 'Ambiental', 'CARLOS VALENCIA ', '2016-07-11', '2018-01-11', '2018-07-11', 'Nocturna', '', NULL, NULL),
-(49, 1261575, 'TECNOLOGO EN GESTIÃ“N INTEGRADA DE LA CALIDAD, MEDIO AMBIENTE, SEGURIDAD Y SALUD OCUPACIONAL', 'Salud Ocupacionak', 'CARLOS ARTURO VALENCIA', '2016-09-11', '0000-00-00', '2018-03-26', 'Nocturna', '', NULL, NULL),
-(50, 1261575, 'ECNOLOGO EN GESTIÃ“N INTEGRADA DE LA CALIDAD, MEDIO AMBIENTE, SEGURIDAD Y SALUD OCUPACIONAL (B)', 'Salud Ocupacionak', 'CARLOS ARTURO VALENCIA', '2016-09-26', '2018-03-26', '2018-09-26', 'Nocturna', '', NULL, NULL),
-(51, 1369525, 'Tc PATRONAJE INDUSTRIAL DE PRENDAS DE VESTIR (A)', 'Confeccion', 'Gladys Francelly Cardona', '2017-04-17', '0000-00-00', '2018-06-17', 'Nocturna', '', NULL, NULL),
-(52, 1369525, 'Tc PATRONAJE INDUSTRIAL DE PRENDAS DE VESTIR (B)', 'Confeccion', 'Gladys Frencelli', '0000-00-00', '0000-00-00', '0000-00-00', 'Nocturna', '', NULL, NULL),
-(53, 1368558, 'Tgo En GestiÃ³n Integrada De La Calidad, Medio Ambiente, Seguridad Y Salud Ocupacional (A)', 'Salud Ocupacionak', 'FERNANDO ARCINIEGAS', '2017-04-17', '0000-00-00', '0000-00-00', 'Diurna', '', NULL, NULL),
-(54, 1368558, 'Tgo En GestiÃ³n Integrada De La Calidad, Medio Ambiente, Seguridad Y Salud Ocupacional (B)', 'Seleccione una opcion...', 'FERNANDO ARCINIEGAS', '2017-04-17', '0000-00-00', '0000-00-00', 'Diurna', '', NULL, NULL),
-(55, 1343983, 'MANTENIMIENTO ELÃ‰CTRICO Y ELECTRÃ“NICO EN AUTOMOTORES', 'Automotriz', 'ANDRES MAURICIO JARAMILLO', '0000-00-00', '0000-00-00', '2017-11-16', 'Mixta', '', NULL, NULL),
-(56, 1374264, 'Operario en Confeccion Industrial', 'Confeccion', 'Ruby Vargas', '2017-02-20', '2017-05-20', '2017-08-20', 'Diurna', '', NULL, NULL),
-(57, 1362328, 'Operario en Confeccion Industrial', 'Confeccion', 'Luz de Fatima Alvarez', '2017-02-06', '2017-05-06', '2017-08-06', 'Diurna', '', NULL, NULL),
-(58, 1343061, ' Tc Mantenimiento de Motocicletas', 'Mecanica', 'Diana Eugenia Henao', '2016-11-15', '2017-05-15', '2017-09-15', 'Diurna', '', NULL, NULL);
+INSERT INTO `class_groups` (`id`, `id_ficha`, `nombre_ficha`, `especialidad`, `instructor`, `fecha_inicio`, `fecha_lectiva`, `fecha_final`, `horario`, `tipo_formacion`) VALUES
+(2, 1132816, 'Analisis y Desarrollo de Sistemas de Informacion', 'Informatica', 'Yaneth Mejia', '2016-04-11', '2017-10-12', '2018-04-11', 'Mixta', ''),
+(3, 1323395, 'Analisis y Desarrollo de Sistemas de Informacion', 'Informatica', 'Yaneth Mejia', '2017-04-17', '0000-00-00', '2019-04-17', 'Diurna', ''),
+(4, 1368665, 'ESPECIALIZACION TECNOLOGICA METODOLOÃAS DE CALIDAD PARA EL DESARROLLO DE SOFTWARE', 'Informatica', 'Yaneth Mejia', '2017-04-17', '0000-00-00', '0000-00-00', 'Diurna', ''),
+(14, 1375843, 'AUX. TRABAJADOR DE LA MADERA', 'Construccion', 'CAMILO ANDRES ARANGO', '2017-04-17', '0000-00-00', '0000-00-00', 'Nocturna', ''),
+(15, 1132770, 'DESARROLLO GRÃFICO DE PROYECTOS DE ARQUITECTURA E INGENIERÃA', 'Construccion', 'JORGE GUTIERREZ', '0001-01-01', '0000-00-00', '2017-10-17', 'Nocturna', ''),
+(21, 1094381, 'TOPOGRAFÃA', 'Construccion', 'AndrÃ©s Felipe Jurado ', '0000-00-00', '0000-00-00', '2017-07-27', 'Diurna', ''),
+(22, 1261608, 'TECNOLOGO EN CONSTRUCCION', 'Construccion', 'MARIO RAIGOSA ARANGO', '0000-00-00', '0000-00-00', '2018-08-26', 'Diurna', ''),
+(23, 1261604, 'TGO  DESARROLLO GRAFICO DE PROYECTOS DE ARQUITECTURA E INGENIERIA', 'Construccion', 'APARICIO MEJIA ', '0000-00-00', '0000-00-00', '2018-04-26', 'Diurna', ''),
+(24, 1301351, 'Mantenimiento y ReparaciÃ³n de Edificaciones', 'Construccion', 'MARIO RAIGOZA', '2016-10-10', '0000-00-00', '2017-12-11', 'Diurna', ''),
+(25, 1368569, 'TGO  DESARROLLO GRAFICO DE PROYECTOS DE ARQUITECTURA E INGENIERIA', 'Construccion', 'JORGE ALBERTO TAMAYO GRISALES', '2017-04-17', '0000-00-00', '0000-00-00', 'Diurna', ''),
+(26, 1075391, 'TOPOGRAFIA', 'Construccion', 'Andres Felipe Jurado', '0000-00-00', '0000-00-00', '2017-09-28', 'Diurna', ''),
+(27, 1323382, 'TECNOLOGO EN TOPOGRAFIA', 'Construccion', 'FELIPE JURADO', '2017-01-23', '0000-00-00', '2019-07-23', 'Diurna', ''),
+(28, 1368604, 'Tgo en Obras Civiles', 'Construccion', 'Aparicio Mejia', '2017-04-17', '0000-00-00', '0000-00-00', 'Diurna', ''),
+(29, 1132795, 'MANTENIMIENTO MECANICO INDUSTRIAL', 'Mecanica', 'DIEGO ALEXANDER GRAJALES', '0000-00-00', '0000-00-00', '2017-10-11', 'Diurna', ''),
+(30, 1132701, 'SOLDADURA DE PRODUCTOS METALICOS (PLATINA)', 'Eectricidad', 'Cristian Mauricio Toro', '0000-00-00', '0000-00-00', '0000-00-00', 'Nocturna', ''),
+(31, 1182104, 'MECANIZADO DE PRODUCTOS METALMECANICOS ', 'Mecanica', ' JOSE FERNANDO VERGARA', '0000-00-00', '0000-00-00', '2017-07-11', 'Nocturna-Dual', ''),
+(32, 1197616, 'MANTENIMIENTO MECANICO INDUSTRIAL', 'Mecanica', 'JHON FREDDY CORTES ', '2016-07-11', '0000-00-00', '2018-01-11', 'Mixta', ''),
+(33, 1368653, 'MANTENIMIENTO MECANICO INDUSTRIAL', 'Mecanica', 'ADALBERTO ACEVEDO', '2017-04-17', '0000-00-00', '0000-00-00', 'Nocturna', ''),
+(34, 1132756, 'TGO ELECTRICIDAD INDUSTRIAL', 'Seleccione una opcion...', 'Guillermo Antonio Valencia', '0000-00-00', '2017-10-12', '0000-00-00', 'Diurna', ''),
+(35, 1197544, 'MANTENIMIENTO ELECTROMECANICO INDUSTRIAL', 'Eectricidad', 'MYRIAM CLAUDINA GARCIA NARANJO ', '0000-00-00', '0000-00-00', '2018-01-11', 'Mixta', ''),
+(36, 1197576, 'ELCTRICIDAD INDUSTRIAL ', 'Eectricidad', 'JUAN CARLOS LOPEZ', '0000-00-00', '2018-01-11', '0000-00-00', 'Mixta', ''),
+(37, 1368673, 'TECNOLOGO EN ELECTRICIDAD  INDUSTRIAL', 'Eectricidad', 'CLAUDIO ALBERTO VALENCIA SÃNCHEZ', '2017-04-17', '0000-00-00', '0000-00-00', 'Diurna', ''),
+(38, 1368529, 'Tc En Electricidad Residencial', 'Eectricidad', 'CLAUDIO ALBERTO VALENCIA SÃNCHEZ', '2017-04-17', '0000-00-00', '0000-00-00', 'Nocturna', ''),
+(39, 1323358, 'Tgo SupervisiÃ³n De Redes De DistribuciÃ³n De EnergÃ­a ElÃ©ctrica', 'Eectricidad', 'MELODY RAMOS GIRALDO', '2017-01-23', '2019-07-23', '0000-00-00', 'Diurna', ''),
+(40, 1367722, 'MANTENIMIENTO ELECTROMECANICO INDUSTRIAL', 'Mecanica', 'MYRIAM CLAUDINA GARCIA NARANJO  ', '2017-04-13', '2018-09-13', '0000-00-00', 'Diurna', ''),
+(41, 1114874, 'MANTENIMIENTO MECATRONICO DE AUTOMOTORES', 'Automotriz', 'ANDRES MAURICIO JARAMILLO', '0000-00-00', '0000-00-00', '2017-11-17', 'Mixta', ''),
+(42, 1343933, 'TC MANTENIMIENTO DE LAS MOTOCICLETAS', 'Mecanica', 'Jaime Adolfo Fuentes', '0000-00-00', '2016-11-17', '2017-05-17', 'Diurna', ''),
+(43, 1368501, 'Tco En Mantenimiento De Motores DiÃ©sel', 'Mecanica', 'LUIS CAMILO ESTRADA PATIÃ‘O', '2017-04-17', '0000-00-00', '0000-00-00', 'Diurna', ''),
+(44, 1368642, 'Tgo En Mantenimiento MecatrÃ³nico De Automotores', 'Mecanica', 'VICTOR MAURICIO ACEVEDO CORREA', '2017-04-17', '0000-00-00', '0000-00-00', 'Diurna', ''),
+(45, 1368642, 'Tgo En Mantenimiento MecatrÃ³nico De Automotores (B)', 'Seleccione una opcion...', 'VICTOR MAURICIO ACEVEDO CORREA', '2017-04-17', '0000-00-00', '0000-00-00', 'Diurna', ''),
+(46, 1306630, 'Tc  EN SEGURIDAD VIAL, CONTROL DE TRANSITO Y TRANSPORTE', 'Automotriz', 'JHON KEVIN FLOREZ PEÃ‘A', '2017-10-03', '0000-00-00', '0000-00-00', 'Diurna', ''),
+(47, 1368498, 'Tco En Mantenimiento De Motores DiÃ©sel', 'Mecanica', 'JHON KEVIN FLOREZ PEÃ‘A', '2017-04-17', '0000-00-00', '0000-00-00', 'Mixta', ''),
+(48, 1197693, 'GESTION INTEGRADA DE SISTEMAS DE CALIDAD, AMBIENTAL, SEGURIDAD Y SALUD OCUPACIONAL  HSEQ', 'Ambiental', 'CARLOS VALENCIA ', '2016-07-11', '2018-01-11', '2018-07-11', 'Nocturna', ''),
+(49, 1261575, 'TECNOLOGO EN GESTIÃ“N INTEGRADA DE LA CALIDAD, MEDIO AMBIENTE, SEGURIDAD Y SALUD OCUPACIONAL', 'Salud Ocupacionak', 'CARLOS ARTURO VALENCIA', '2016-09-11', '0000-00-00', '2018-03-26', 'Nocturna', ''),
+(50, 1261575, 'ECNOLOGO EN GESTIÃ“N INTEGRADA DE LA CALIDAD, MEDIO AMBIENTE, SEGURIDAD Y SALUD OCUPACIONAL (B)', 'Salud Ocupacionak', 'CARLOS ARTURO VALENCIA', '2016-09-26', '2018-03-26', '2018-09-26', 'Nocturna', ''),
+(51, 1369525, 'Tc PATRONAJE INDUSTRIAL DE PRENDAS DE VESTIR (A)', 'Confeccion', 'Gladys Francelly Cardona', '2017-04-17', '0000-00-00', '2018-06-17', 'Nocturna', ''),
+(52, 1369525, 'Tc PATRONAJE INDUSTRIAL DE PRENDAS DE VESTIR (B)', 'Confeccion', 'Gladys Frencelli', '0000-00-00', '0000-00-00', '0000-00-00', 'Nocturna', ''),
+(53, 1368558, 'Tgo En GestiÃ³n Integrada De La Calidad, Medio Ambiente, Seguridad Y Salud Ocupacional (A)', 'Salud Ocupacionak', 'FERNANDO ARCINIEGAS', '2017-04-17', '0000-00-00', '0000-00-00', 'Diurna', ''),
+(54, 1368558, 'Tgo En GestiÃ³n Integrada De La Calidad, Medio Ambiente, Seguridad Y Salud Ocupacional (B)', 'Seleccione una opcion...', 'FERNANDO ARCINIEGAS', '2017-04-17', '0000-00-00', '0000-00-00', 'Diurna', ''),
+(55, 1343983, 'MANTENIMIENTO ELÃ‰CTRICO Y ELECTRÃ“NICO EN AUTOMOTORES', 'Automotriz', 'ANDRES MAURICIO JARAMILLO', '0000-00-00', '0000-00-00', '2017-11-16', 'Mixta', ''),
+(56, 1374264, 'Operario en Confeccion Industrial', 'Confeccion', 'Ruby Vargas', '2017-02-20', '2017-05-20', '2017-08-20', 'Diurna', ''),
+(57, 1362328, 'Operario en Confeccion Industrial', 'Confeccion', 'Luz de Fatima Alvarez', '2017-02-06', '2017-05-06', '2017-08-06', 'Diurna', ''),
+(58, 1343061, ' Tc Mantenimiento de Motocicletas', 'Mecanica', 'Diana Eugenia Henao', '2016-11-15', '2017-05-15', '2017-09-15', 'Diurna', '');
 
 -- --------------------------------------------------------
 
@@ -175,8 +180,20 @@ CREATE TABLE `history_records` (
   `classroom_id` int(10) UNSIGNED NOT NULL,
   `prestado_en` datetime NOT NULL,
   `entregado_en` datetime DEFAULT NULL,
-  `novedad` text COLLATE utf8mb4_unicode_ci
+  `novedad` text COLLATE utf8mb4_unicode_ci,
+  `novedad_nueva` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `history_records`
+--
+
+INSERT INTO `history_records` (`id`, `instructor_id`, `classroom_id`, `prestado_en`, `entregado_en`, `novedad`, `novedad_nueva`) VALUES
+(1, 57, 3, '2017-08-16 16:39:44', '2017-08-17 07:21:46', 'jjsijsi', ''),
+(2, 57, 4, '2017-08-16 17:16:56', '2017-08-17 07:21:13', 'jsijd', ''),
+(3, 57, 3, '2017-08-17 07:23:18', '2017-08-17 08:20:50', 'se robo 1 mouse', ''),
+(4, 40, 1, '2017-08-17 07:39:39', NULL, NULL, ''),
+(5, 40, 1, '2017-08-17 07:39:39', NULL, NULL, '');
 
 -- --------------------------------------------------------
 
@@ -251,7 +268,7 @@ INSERT INTO `instructors` (`id`, `nombre`, `apellidos`, `especialidad`, `vincula
 (37, 'luisa fernanda', 'echeverri caballero', NULL, NULL, NULL, NULL, NULL, NULL, 'instructora comunicaciones', NULL, 2, 24335083, 0, 3146264428, 'lfecheverri38@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-08 19:27:32', NULL),
 (38, 'luisa fernanda', 'castano calvo', NULL, NULL, NULL, NULL, NULL, NULL, 'instructora cultura fisica', NULL, 2, 30396654, 0, 3104329906, 'lfcalvo@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-08 19:27:32', NULL),
 (39, 'german', 'rodriguez valencia', NULL, NULL, NULL, NULL, NULL, NULL, 'instructor construccion', NULL, 2, 10285068, 0, 3152735162, 'grodriguez86@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-08 19:27:32', NULL),
-(40, 'oscar fernando', 'aristizabal cardona', NULL, NULL, NULL, NULL, NULL, NULL, 'instructor sistemas', NULL, 2, 9859602, 0, 3103972370, 'ofac@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-08 19:27:32', NULL),
+(40, 'oscar fernando', 'aristizabal cardona', NULL, NULL, NULL, NULL, NULL, NULL, 'instructor sistemas', NULL, 2, 9859602, 0, 3103972370, 'ofac@misena.edu.co', '/images/instructors/1502973472.jpg', 'no disponible', '2017-08-08 19:27:32', '2017-08-17 12:40:10'),
 (41, 'andres mauricio', 'jaramillo gonzalez', NULL, NULL, NULL, NULL, NULL, NULL, 'instructor mecanica automotriz', NULL, 2, 75081636, 0, 3113837172, 'anmajago@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-08 19:27:32', NULL),
 (42, 'jorge alberto', 'tamayo grisales', NULL, NULL, NULL, NULL, NULL, NULL, 'instructor construccion', NULL, 2, 1053782472, 0, 3003267169, 'vabe9@hotmail.com', '/images/perdefault.png', 'disponible', '2017-08-08 19:27:32', NULL),
 (43, 'diego andres', 'serna velasquez', NULL, NULL, NULL, NULL, NULL, NULL, 'instructor diseno mecanico', NULL, 2, 75096299, 0, 3146504873, 'daserna99@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-08 19:27:32', NULL),
@@ -268,7 +285,7 @@ INSERT INTO `instructors` (`id`, `nombre`, `apellidos`, `especialidad`, `vincula
 (54, 'andres felipe ', 'jurado patino ', NULL, NULL, NULL, NULL, NULL, NULL, 'instructor topografia', NULL, 2, 1053770404, 0, 3015739296, 'afjurado40@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-08 19:27:32', NULL),
 (55, 'angela marcela', 'castellanos ortegon', NULL, NULL, NULL, NULL, NULL, NULL, 'instructora ingles', NULL, 2, 30398681, 0, 3008948200, 'amcastellanoso@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-08 19:27:32', NULL),
 (56, 'camilo andres', 'arango munoz', NULL, NULL, NULL, NULL, NULL, NULL, 'instructor mobiliario y maderas', NULL, 2, 16077061, 0, 3206845171, 'camiaramo@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-08 19:27:32', NULL),
-(57, 'yaneth', 'mejia rendon ', NULL, NULL, NULL, NULL, NULL, NULL, 'instructora sistemas', NULL, 2, 1053811426, 0, 3045458490, 'ymejia624@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-08 19:27:32', NULL),
+(57, 'yaneth', 'mejia rendon ', NULL, NULL, NULL, NULL, NULL, NULL, 'instructora sistemas', NULL, 2, 1053811426, 0, 3045458490, 'ymejia624@misena.edu.co', '/images/perdefault.png', 'no disponible', '2017-08-08 19:27:32', '2017-08-17 16:29:02'),
 (58, 'daniel felipe ', 'moncada cardona ', NULL, NULL, NULL, NULL, NULL, NULL, 'instructor construccion', NULL, 2, 1053777708, 0, 3163159109, 'danielmoncada@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-08 19:27:32', NULL),
 (59, 'mario leandro', 'vanegas valencia', NULL, NULL, NULL, NULL, NULL, NULL, 'instructor electricidad', NULL, 2, 1053807619, 0, 3113005998, 'marlevan38@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-08 19:27:32', NULL),
 (60, 'victor hugo', 'arias saldarriaga', NULL, NULL, NULL, NULL, NULL, NULL, 'instructor trabajo en alturas', NULL, 2, 10286879, 0, 3117268025, 'victorari17@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-08 19:27:32', NULL),
@@ -453,7 +470,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `classrooms`
 --
@@ -468,7 +485,7 @@ ALTER TABLE `class_groups`
 -- AUTO_INCREMENT de la tabla `history_records`
 --
 ALTER TABLE `history_records`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `instructors`
 --
