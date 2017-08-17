@@ -28,6 +28,11 @@
     </div>
 </div>
 @include('layouts.messages')
+<form action="{{ url('class_group/import') }}" enctype="multipart/form-data" method="POST">
+    {{ csrf_field() }}
+    <input type="file" name="imported-file" class="form-control">
+    <button type="submit">Importar</button>
+</form>
 <div class="card">
     <div class="table-responsive">
         <table class="table table-full table-hover" data-form="deleteForm">

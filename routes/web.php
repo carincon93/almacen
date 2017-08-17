@@ -60,6 +60,8 @@ Route::resource('/admin/history_record', 'HistoryRecordController');
 Route::resource('/admin/admin', 'AdminController');
 Route::get('/admin', 'AdminController@prestamos_plano');
 
+Route::post('class_group/import', 'ClassGroupController@import');
+
 
 
 // Redirección - Error 404

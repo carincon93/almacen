@@ -20,7 +20,7 @@ class ClassGroupController extends Controller
      */
     public function index()
     {
-        $dataGroup = Class_group::all()->sortBy('id_ficha');
+        $dataGroup = Class_group::all()->sortBy('nombre_ficha');
         return view('class_groups.index')->with('dataGroup', $dataGroup);
     }
 
@@ -103,5 +103,38 @@ class ClassGroupController extends Controller
     {
         Class_group::destroy($id);
         return redirect('/admin/class_group')->with('status', 'La ficha fue eliminada con éxito');
+    }
+
+    public function import(Request $request)
+    {
+        if($request->file('imported-file'))
+        {
+            $path = $request->file('imported-file')->getRealPath();
+            $data = \Excel::load($path, function($reader)
+            {})->get();
+
+            if(!empty($data) && $data->count())
+            {
+                foreach ($data->toArray() as $row)
+                {
+                    if(!empty($row))
+                    {
+                        $dataArray[] =
+                        [
+                            'id_ficha' => $row['id_ficha'],
+                            'nombre_ficha' => $row['nombre_ficha'],
+                            'fecha_inicio' => date('Y-m-d', strtotime($row['fecha_inicio'])),
+                            'tipo_formacion' => $row['tipo_formacion']
+
+                        ];
+                    }
+                }
+                if(!empty($dataArray))
+                {
+                    Class_group::insert($dataArray);
+                    return back();
+                }
+            }
+        }
     }
 }
