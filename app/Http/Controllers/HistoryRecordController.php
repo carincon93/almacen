@@ -79,10 +79,10 @@ class HistoryRecordController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        $no = History_record::find($id);
-        $no->novedad            = $request->get('novedad');
-        return redirect('/admin/history_record')->with('status', 'La novedad fue modificada con éxito');
+    { 
+        // $no = History_record::find($id);
+        // $no->novedad_nueva           = $request->get('novedad_nueva');
+        // return redirect('/admin/history_record')->with('status', 'La novedad fue modificada con éxito');
     }
 
     /**

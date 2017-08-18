@@ -59,6 +59,10 @@ Route::resource('/admin/history_record', 'HistoryRecordController');
 // Admin
 Route::resource('/admin/admin', 'AdminController');
 Route::get('/admin', 'AdminController@prestamos_plano');
+Route::get('admin/password', 'AdminController@password');
+Route::post('admin/updatepassword', 'AdminController@updatePassword');
+// Route::post('admin/modificar_novedad/{id}', 'HistoryRecordController@update');
+
 
 Route::post('class_group/import', 'ClassGroupController@import');
 

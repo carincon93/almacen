@@ -66,17 +66,6 @@
 						</span>
 					@endif
 				</div>
-				<div class="form-group{{ $errors->has('telefono') ? ' has-error' : '' }}">
-					<label for="telefono" class="control-label">
-						Número de télefono
-					</label>
-					<input type="number" name="telefono" class="form-control" value="{{ $dataInstructor->telefono }}">
-					@if ($errors->has('telefono'))
-						<span class="help-block">
-							{{ $errors->first('telefono') }}
-						</span>
-					@endif
-				</div>
 				<div class="form-group{{ $errors->has('celular') ? ' has-error' : '' }}">
 					<label for="celular" class="control-label">
 						Número de celular *

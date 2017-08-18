@@ -239,15 +239,22 @@ $(document).ready(function() {
         });
     });
     // // editar novedad
-    // $('table[data-form="deleteForm"]').on('click', '.form-send-novedad', function(e){
+    // $('.tablelol[data-form="sendForm"]').on('click', '.botonmodal', function(e) {
     //     e.preventDefault();
-    //     var formn = $(this),
-    //         nomUser    = formn.find('.btn-send').attr('data-nombre');
-    //     $('body').find('.modal-title').text('Nombre instructor: ' + nomUser);
-    //     $('#sendform').modal({ backdrop: 'static', keyboard: false })
-    //         .on('click', '#send-novedad', function() {
+    //     var idn  = $(this).attr('data-id'),
+    //     formn= $('#novedadform');
+
+
+
+
+    //     $('#confirm-novedad').modal({
+    //         backdrop: 'static',
+    //         keyboard: false
+    //     })
+    //     .on('click', '#botonsend', function() {
     //             formn.submit();
-    //     });
+    //         });
+
     // });
 
     $('#wnombre_ambiente').keyup(function(event) {

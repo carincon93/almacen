@@ -61,7 +61,14 @@
                 	<td>{{ $his->classroom->nombre_ambiente}}</td>
                 	<td>{{ $his->prestado_en }}</td>
                     <td>{{ $his->entregado_en != '' ? $his->entregado_en : 'Sin entrega'}}</td>
-                    <td>{{ $his->novedad != '' ? $his->novedad : 'Sin novedad'}}</td>
+                    <td>
+                        
+                            <button  type="button" class="btn botonmodal" data-id="{{ $his->id}}">
+                                <i class="fa fa-fw fa-pencil"></i>
+                            </button>
+                    </td>
+                        
+                        
                     <td>
                         <button type="button" data-target="#modalFormNovedad" data-toggle="modal"></button>
                         <form action="{{ url('/admin/history_record/'.$his->id) }}" method="POST" style="display: inline-block;" class="form-delete-historical btn btn-danger">
