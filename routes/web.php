@@ -64,6 +64,8 @@ Route::post('admin/updatepassword', 'AdminController@updatePassword');
 // Route::post('admin/modificar_novedad/{id}', 'HistoryRecordController@update');
 
 
+Route::post('class_group/import', 'ClassGroupController@import');
+
 
 
 // Redirección - Error 404
