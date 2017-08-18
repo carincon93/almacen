@@ -27,7 +27,7 @@ class AdminRequest extends FormRequest
              return [
                  'name' => 'required',
                  'email' => 'required|email|unique:admins,id,:id',
-                 'password' => 'required|min:6|confirmed',
+
              ];
          }
          else{

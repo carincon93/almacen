@@ -226,7 +226,7 @@ $(document).ready(function() {
             .on('click', '#delete-ad', function() {
                 formDelAdm.submit();
         });
-    }); 
+    });
     // Eliminar historical
     $('table[data-form="deleteForm"]').on('click', '.form-delete-historical', function(e){
         e.preventDefault();
@@ -238,24 +238,21 @@ $(document).ready(function() {
                 formh.submit();
         });
     });
-    // // editar novedad
-    // $('.tablelol[data-form="sendForm"]').on('click', '.botonmodal', function(e) {
-    //     e.preventDefault();
-    //     var idn  = $(this).attr('data-id'),
-    //     formn= $('#novedadform');
+    // editar novedad
+    $('.tablelol[data-form="sendForm"]').on('click', '.botonmodal', function(e) {
+        e.preventDefault();
+        var idn  = $(this).attr('data-id'),
+        formn= $('#novedadform');
 
+        $('#confirm-novedad').modal({
+            backdrop: 'static',
+            keyboard: false
+        })
+        .on('click', '#botonsend', function() {
+                formn.submit();
+            });
 
-
-
-    //     $('#confirm-novedad').modal({
-    //         backdrop: 'static',
-    //         keyboard: false
-    //     })
-    //     .on('click', '#botonsend', function() {
-    //             formn.submit();
-    //         });
-
-    // });
+    });
 
     $('#wnombre_ambiente').keyup(function(event) {
         var nombre_ambiente = $(this).val();

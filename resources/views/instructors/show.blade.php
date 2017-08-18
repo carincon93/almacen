@@ -59,7 +59,7 @@
 			</tr>
 			<tr>
 				<th>Tipo de contrato</th>
-				<td class="text-capitalize">{{ $dataInstructor->instructor_type->tipo_instructor}}</td>
+				<td class="text-capitalize">{{ $dataInstructor->vinculacion1 }}</td>
 			</tr>
 		</table>
 

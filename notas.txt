@@ -1,4 +1,5 @@
 fotos ambientes y instructores,
 editar novedad con modal,
 hacer busqueda de ficha con modal dentro de prestamo
-hacer el ingreso tipo de formacion
+Averiguar que fichas son virtuales y por horas
+editar instructor tipo de vinculacion
