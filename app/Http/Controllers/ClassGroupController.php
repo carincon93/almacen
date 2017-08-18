@@ -123,7 +123,8 @@ class ClassGroupController extends Controller
                         [
                             'id_ficha' => $row['id_ficha'],
                             'nombre_ficha' => $row['nombre_ficha'],
-                            'fecha_inicio' => date('Y-m-d', strtotime($row['fecha_inicio'])),
+                            'numero_documento' => $row['numero_documento'],
+                            // 'fecha_inicio' => date('Y-m-d', strtotime($row['fecha_inicio'])),
                             'tipo_formacion' => $row['tipo_formacion']
 
                         ];

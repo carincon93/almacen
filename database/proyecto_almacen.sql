@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-08-2017 a las 16:24:54
+-- Tiempo de generación: 19-08-2017 a las 00:04:53
 -- Versión del servidor: 10.1.24-MariaDB
 -- Versión de PHP: 7.1.6
 
@@ -43,7 +43,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'jaime palomino', 'jaime@mail.com', '$2y$10$1saTHEE7BJPDNWU4tnmAEedX1bmqpBpcgxBWb1ELd2KdDvhV63L/q', '1KC1jvbA8x9K8L8Vu2UXKBoylRlZ2ViVS7kP3dbAj9CVsn5ZEOnPrwJ0ZXIy', '2017-08-15 07:56:45', '2017-08-15 07:56:45');
+(1, 'jaime palomino', 'jaime@mail.com', '$2y$10$u5cb2NbKWrLcjhrB6AS/V.zor8CwboOBG5Lg9rDvIabJn4hKgHmAS', 'Zn2FPTPI0R6tT3snoW2E3XDPUcDN4BF9Rtzwa9jaENedPAyx00454Rzoy9PJ', '2017-08-16 21:27:43', '2017-08-17 17:33:26');
 
 -- --------------------------------------------------------
 
@@ -54,12 +54,14 @@ INSERT INTO `admins` (`id`, `name`, `email`, `password`, `remember_token`, `crea
 CREATE TABLE `classrooms` (
   `id` int(10) UNSIGNED NOT NULL,
   `nombre_ambiente` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `disponibilidad` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT 'disponible',
+  `centro` text COLLATE utf8mb4_unicode_ci,
   `tipo_ambiente` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `movilidad` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `estado` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'activo',
   `cupo` int(11) NOT NULL,
   `imagen` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `disponibilidad` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT 'disponible',
   `prestado_en` datetime DEFAULT NULL,
   `instructor_id` int(10) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -70,33 +72,33 @@ CREATE TABLE `classrooms` (
 -- Volcado de datos para la tabla `classrooms`
 --
 
-INSERT INTO `classrooms` (`id`, `nombre_ambiente`, `tipo_ambiente`, `movilidad`, `estado`, `cupo`, `imagen`, `disponibilidad`, `prestado_en`, `instructor_id`, `created_at`, `updated_at`) VALUES
-(1, 'sistemas 1', 'aula', 'fijo', 'activo', 60, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(2, 'sistemas 2', 'aula', 'fijo', 'activo', 40, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(3, 'ambiente lego', 'aula', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(4, 'auditorio procesos industriales y construccion', 'auditorio', 'fijo', 'activo', 200, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(5, 'autocad', 'laboratorio', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '2017-08-15 00:20:10'),
-(6, 'automotriz', 'taller', 'fijo', 'activo', 90, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(7, 'confeccion', 'taller', 'fijo', 'activo', 60, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(8, 'diesel', 'taller', 'fijo', 'activo', 100, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(9, 'electricidad 1 ', 'taller', 'fijo', 'activo', 60, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(10, 'electricidad 2', 'taller', 'fijo', 'activo', 70, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(11, 'electricidad 3', 'aula', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(12, 'electricidad 4', 'taller', 'fijo', 'activo', 30, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(13, 'espacio deportivo para la practica del futbol baloncesto voleibol', 'campo deportivo', 'fijo', 'activo', 300, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(14, 'espacio para trabajo en alturas', 'taller', 'fijo', 'activo', 350, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(15, 'gas', 'taller', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(16, 'gimnasio regional caldas', 'aula', 'fijo', 'activo', 1000, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(17, 'maderas', 'taller', 'fijo', 'activo', 35, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(18, 'mantenimiento', 'taller', 'fijo', 'activo', 105, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(19, 'mecanizado', 'taller', 'fijo', 'activo', 80, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(20, 'metalografia', 'taller', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(21, 'motos cpi', 'taller', 'fijo', 'activo', 60, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(22, 'refrigeracion', 'taller', 'fijo', 'activo', 60, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(23, 'sistemas 3', 'aula', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(24, 'salud ocupacional', 'aula', 'fijo', 'activo', 70, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(25, 'soldadura', 'taller', 'fijo', 'activo', 75, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
-(26, 'tecnoparque procesos industriales', 'taller', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00');
+INSERT INTO `classrooms` (`id`, `nombre_ambiente`, `descripcion`, `disponibilidad`, `centro`, `tipo_ambiente`, `movilidad`, `estado`, `cupo`, `imagen`, `prestado_en`, `instructor_id`, `created_at`, `updated_at`) VALUES
+(1, 'sistemas 1', NULL, 'disponible', NULL, 'aula', 'fijo', 'activo', 60, NULL, '2017-08-17 07:39:39', NULL, NULL, '2017-08-17 17:40:11'),
+(2, 'sistemas 2', NULL, 'disponible', NULL, 'aula', 'fijo', 'activo', 40, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(3, 'ambiente lego', NULL, 'disponible', NULL, 'aula', 'fijo', 'activo', 50, NULL, '2017-08-18 17:01:41', NULL, NULL, '2017-08-18 22:02:41'),
+(4, 'auditorio procesos industriales y construccion', NULL, 'disponible', NULL, 'auditorio', 'fijo', 'activo', 200, NULL, '2017-08-16 17:16:56', NULL, NULL, '2017-08-17 17:21:26'),
+(5, 'autocad', NULL, 'disponible', NULL, 'laboratorio', 'fijo', 'activo', 50, NULL, '0000-00-00 00:00:00', NULL, NULL, '2017-08-15 10:20:10'),
+(6, 'automotriz', NULL, 'disponible', NULL, 'taller', 'fijo', 'activo', 90, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(7, 'confeccion', NULL, 'disponible', NULL, 'taller', 'fijo', 'activo', 60, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(8, 'diesel', NULL, 'disponible', NULL, 'taller', 'fijo', 'activo', 100, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(9, 'electricidad 1 ', NULL, 'disponible', NULL, 'taller', 'fijo', 'activo', 60, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(10, 'electricidad 2', NULL, 'disponible', NULL, 'taller', 'fijo', 'activo', 70, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(11, 'electricidad 3', NULL, 'disponible', NULL, 'aula', 'fijo', 'activo', 50, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(12, 'electricidad 4', NULL, 'disponible', NULL, 'taller', 'fijo', 'activo', 30, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(13, 'espacio deportivo para la practica del futbol baloncesto voleibol', NULL, 'disponible', NULL, 'campo deportivo', 'fijo', 'activo', 300, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(14, 'espacio para trabajo en alturas', NULL, 'disponible', NULL, 'taller', 'fijo', 'activo', 350, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(15, 'gas', NULL, 'disponible', NULL, 'taller', 'fijo', 'activo', 50, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(16, 'gimnasio regional caldas', NULL, 'disponible', NULL, 'aula', 'fijo', 'activo', 1000, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(17, 'maderas', NULL, 'disponible', NULL, 'taller', 'fijo', 'activo', 35, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(18, 'mantenimiento', NULL, 'disponible', NULL, 'taller', 'fijo', 'activo', 105, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(19, 'mecanizado', NULL, 'disponible', NULL, 'taller', 'fijo', 'activo', 80, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(20, 'metalografia', NULL, 'disponible', NULL, 'taller', 'fijo', 'activo', 50, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(21, 'motos cpi', NULL, 'disponible', NULL, 'taller', 'fijo', 'activo', 60, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(22, 'refrigeracion', NULL, 'disponible', NULL, 'taller', 'fijo', 'activo', 60, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(23, 'sistemas 3', NULL, 'disponible', NULL, 'aula', 'fijo', 'activo', 50, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(24, 'salud ocupacional', NULL, 'disponible', NULL, 'aula', 'fijo', 'activo', 70, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(25, 'soldadura', NULL, 'disponible', NULL, 'taller', 'fijo', 'activo', 75, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00'),
+(26, 'tecnoparque procesos industriales', NULL, 'disponibe', NULL, 'taller', 'fijo', 'activo', 50, NULL, '0000-00-00 00:00:00', NULL, NULL, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -107,12 +109,63 @@ INSERT INTO `classrooms` (`id`, `nombre_ambiente`, `tipo_ambiente`, `movilidad`,
 CREATE TABLE `class_groups` (
   `id` int(10) UNSIGNED NOT NULL,
   `id_ficha` int(11) NOT NULL,
-  `nombre_ficha` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre_ficha` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `especialidad` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `instructor` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `numero_documento` int(10) UNSIGNED NOT NULL,
+  `fecha_inicio` date DEFAULT NULL,
+  `fecha_lectiva` date DEFAULT NULL,
+  `fecha_final` date DEFAULT NULL,
+  `horario` text COLLATE utf8mb4_unicode_ci,
   `tipo_formacion` varchar(91) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `class_groups`
+--
+
+INSERT INTO `class_groups` (`id`, `id_ficha`, `nombre_ficha`, `especialidad`, `instructor`, `numero_documento`, `fecha_inicio`, `fecha_lectiva`, `fecha_final`, `horario`, `tipo_formacion`, `created_at`, `updated_at`) VALUES
+(1, 1132816, 'analisis y desarrollo de sistemas de informacion', NULL, NULL, 1053811426, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(2, 1323395, 'analisis y desarrollo de sistemas de informacion', NULL, NULL, 1053811426, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(3, 1368665, 'especializacion tecnologica metodologias de calidad para el desarrollo de software', NULL, NULL, 1053811426, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(4, 1375843, 'aux. trabajador de la madera', NULL, NULL, 75091293, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(5, 1094381, 'topografia', NULL, NULL, 1053770404, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(6, 1261608, 'tecnologo en construccion', NULL, NULL, 10245454, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(7, 1261604, 'tgo  desarrollo grafico de proyectos de arquitectura e ingenieria', NULL, NULL, 75091846, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(8, 1301351, 'mantenimiento y reparacion de edificaciones', NULL, NULL, 10245454, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(9, 1368569, 'tgo  desarrollo grafico de proyectos de arquitectura e ingenieria', NULL, NULL, 1053782472, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(10, 1075391, 'topografia', NULL, NULL, 1053770404, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(11, 1323382, 'tecnologo en topografia', NULL, NULL, 1053770404, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(12, 1368604, 'tgo en obras civiles', NULL, NULL, 75091846, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(13, 1132795, 'mantenimiento mecanico industrial', NULL, NULL, 75096903, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(14, 1132701, 'soldadura de productos metalicos (platina)', NULL, NULL, 16071103, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(15, 1182104, 'mecanizado de productos metalmecanicos ', NULL, NULL, 10271981, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(16, 1197616, 'mantenimiento mecanico industrial', NULL, NULL, 10279373, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(17, 1368653, 'mantenimiento mecanico industrial', NULL, NULL, 75091293, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(18, 1132756, 'tgo electricidad industrial', NULL, NULL, 10279010, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(19, 1197544, 'mantenimiento electromecanico industrial', NULL, NULL, 30287195, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(20, 1197576, 'elctricidad industrial ', NULL, NULL, 94283555, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(21, 1368673, 'tecnologo en electricidad  industrial', NULL, NULL, 75073330, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(22, 1368529, 'tc en electricidad residencial', NULL, NULL, 75073330, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(23, 1323358, 'tgo supervision de redes de distribucion de energia electrica', NULL, NULL, 30397958, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(24, 1367722, 'mantenimiento electromecanico industrial', NULL, NULL, 30287195, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(25, 1114874, 'mantenimiento mecatronico de automotores', NULL, NULL, 75081636, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(26, 1343933, 'tc mantenimiento de las motocicletas', NULL, NULL, 11224476, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(27, 1368501, 'tco en mantenimiento de motores diesel', NULL, NULL, 1085297027, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(28, 1368642, 'tgo en mantenimiento mecatronico de automotores', NULL, NULL, 9817289, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(29, 1368642, 'tgo en mantenimiento mecatronico de automotores (b)', NULL, NULL, 9817289, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(30, 1306630, 'tc  en seguridad vial control de transito y transporte', NULL, NULL, 16073677, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(31, 1368498, 'tco en mantenimiento de motores diesel', NULL, NULL, 16073677, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(32, 1369525, 'tc patronaje industrial de prendas de vestir (a)', NULL, NULL, 30307343, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(33, 1369525, 'tc patronaje industrial de prendas de vestir (b)', NULL, NULL, 30307343, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(34, 1368558, 'tgo en gestion integrada de la calidad medio ambiente seguridad y salud ocupacional (a)', NULL, NULL, 98392877, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(35, 1368558, 'tgo en gestion integrada de la calidad medio ambiente seguridad y salud ocupacional (b)', NULL, NULL, 98392877, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(36, 1343983, 'mantenimiento electrico y electromecanico en automotores', NULL, NULL, 75081636, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(37, 1374264, 'operario en confeccion industrial', NULL, NULL, 30292725, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(38, 1362328, 'operario en confeccion industrial', NULL, NULL, 25232397, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL),
+(39, 1343061, 'tc mantenimiento de motocicletas', NULL, NULL, 1110506666, NULL, NULL, NULL, NULL, 'presencial', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -126,12 +179,9 @@ CREATE TABLE `history_records` (
   `classroom_id` int(10) UNSIGNED NOT NULL,
   `prestado_en` datetime NOT NULL,
   `entregado_en` datetime DEFAULT NULL,
-  `novedad` text COLLATE utf8mb4_unicode_ci
+  `novedad` text COLLATE utf8mb4_unicode_ci,
+  `novedad_nueva` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `historical_records`
-
 
 -- --------------------------------------------------------
 
@@ -143,15 +193,20 @@ CREATE TABLE `instructors` (
   `id` int(10) UNSIGNED NOT NULL,
   `nombre` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `apellidos` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `numero_documento` int(11) NOT NULL,
+  `especialidad` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vinculacion1` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tipoplanta` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tipocontrato` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cantidadhoras` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `actadministrativas` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `area` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `centro` text COLLATE utf8mb4_unicode_ci,
+  `numero_documento` int(10) UNSIGNED NOT NULL,
   `ip` int(11) NOT NULL,
-  `telefono` int(11) DEFAULT NULL,
   `celular` bigint(20) NOT NULL,
   `email` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `imagen` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT '/images/perdefault.png',
   `disponibilidad` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT 'disponible',
-  `instructor_type_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -160,120 +215,99 @@ CREATE TABLE `instructors` (
 -- Volcado de datos para la tabla `instructors`
 --
 
-INSERT INTO `instructors` (`id`, `nombre`, `apellidos`, `numero_documento`, `area`, `ip`, `telefono`, `celular`, `email`, `imagen`, `disponibilidad`, `instructor_type_id`, `created_at`, `updated_at`) VALUES
-(1, 'alexander ', 'garcia vasquez', 7684828, 'instructor  g-19 mantenimiento', 62500, 0, 3148515827, 'agarciavasquez@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(2, 'aparicio', 'mejia rendon', 75091846, 'instructor g-16 construccion', 0, 0, 3014160504, 'apariciomejia@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(3, 'consuelo', 'garcia escobar ', 24318223, 'instructora  g-20 emprendimiento', 0, 0, 3113076751, 'cgarciae@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(4, 'cristian mauricio', 'toro', 16071103, 'instructor g-6 soldadura', 0, 0, 3136501532, 'mtorov@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(5, 'diego alexander', 'grajales perez', 75096903, 'instructor g-11 mantenimiento', 0, 0, 3163965678, 'dagrajales@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(6, 'elver', 'valencia', 75064699, 'instructor g- 14 soldadura', 0, 0, 3117385100, 'elvervalencia@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(7, 'fernando', 'rodriguez valencia ', 10232014, 'equipo tecnico pedagogico instructor g-20', 62263, 0, 3122588689, 'ferrodriguezv@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(8, 'francisco javier', 'vargas   ', 10243995, 'instructor g-16 mantenimiento', 0, 0, 3104707065, 'fjvargas@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(9, 'guillermo antonio', 'valencia velasquez', 10279010, 'instructor g-13 electricidad', 0, 0, 3137656579, 'guivalen@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(10, 'jaime', 'giraldo orrego', 10286761, 'instructor g-19 electricidad', 0, 0, 3136443404, 'jagio13@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(11, 'jaime', 'trejos londono', 10274114, 'instructor g-16 electricidad', 0, 0, 3147392470, 'jtrejos@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(12, 'jhon fredy', 'cortes soto', 10279373, 'instructor g-11 mantenimiento', 0, 0, 3103598404, 'jfrecos@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(13, 'jhon jairo', 'cardenas romero', 10279651, 'instructor g-20 -gestor red de conocimiento automotor\n', 62093, 0, 3117784659, 'jotajota@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(14, 'jose alirio', 'londono rivera ', 10241219, 'instructor g-13 mantenimiento', 0, 0, 3122972801, 'alonri@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(15, 'jose fernando', 'vergara gallego ', 10271981, 'instructor g-17 metalmecanica', 0, 0, 3217068789, 'jfvergara@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(16, 'juan carlos', 'arango arbelaez', 79274609, 'instructor g-12 automotriz', 0, 0, 3137169379, 'jcarango@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(17, 'juan carlos', 'lopez morales', 94283555, 'instructor g-10 electricidad', 0, 0, 3122430542, 'juanclopez10@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(18, 'juan carlos', 'ruge osorio', 10286847, 'instructor g-20 calidad- evaluador competencias laborales', 62097, 0, 3108326255, 'juanruge@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(19, 'luis enrique', 'bravo cardona', 15903478, 'instructor g-20 saludo ocupacional', 0, 0, 3137485587, 'lebravocardona@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(20, 'luz de fatima', 'alvarez osorio ', 25232397, 'instructora g-20 confeccion', 0, 0, 3113851917, 'lfalvarez@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(21, 'miriam claudina', 'garcia naranjo ', 30287195, 'instructora  g-20 electricidad', 0, 0, 3104931245, 'mcgarcian@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(22, 'roberto', 'estrada herrera ', 10248388, 'instructor g-12 sistemas', 0, 0, 3002024140, 'restradah@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(23, 'ruby ', 'vargas ruiz', 30292725, 'instructora g-14 confeccion', 0, 0, 3168756222, 'ruvaruiz@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(24, 'victor mauricio', 'acevedo correa', 9817289, 'instructor mecanica automotriz', 0, 0, 3137086769, 'vmacevedo@misena.edu.co ', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(25, 'paula andrea', 'londono', 30394952, 'instructora g-11 sistemas', 0, 0, 3105312798, 'palondono25@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(26, 'dairo de jesus', 'ganan gallo', 75089861, 'instructor diseno mecanico', 0, 0, 3108223340, 'dairog@misena.edu.co', '/images/perdefault.png', 'disponible', 1, '2017-08-08 14:27:32', NULL),
-(27, 'roland', 'roth echeverry', 75103320, 'instructor ingles', 0, 8916865, 3217369989, 'rolyroth@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(28, 'sandra milena', 'trujillo ortiz', 30336710, 'instructora confeccion', 0, 8844865, 3108491154, 'smtrujillo@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(29, 'diego  ', 'giraldo ramirez', 10250071, 'instructor electricidad virtual', 0, 0, 3206307217, 'dgr555@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(30, 'monica eugenia', 'montoya arias', 30392935, 'instructora seguridad ocupacional', 0, 8909366, 3003108170, 'memontoya53@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(31, 'natalia', 'erazo becerra', 24334576, 'instructora electricidad virtual', 0, 0, 3134623938, 'nata_erazo@hotmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(32, 'claudia sonia', 'serna granada', 30322042, 'instructora ingles', 0, 8924439, 3116827825, 'cls0230@my.londonmet.ac.uk', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(33, 'carmen elena', 'hernandez rincon', 24340753, 'instructora etica', 0, 8913001, 3147917762, 'carelena@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(34, 'alexander', 'romero moreno', 9975428, 'instructor trabajo en alturas', 0, 0, 3113681557, 'aromero824@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(35, 'paula andrea ', 'cruz mejia ', 30396241, 'instructora calidad', 0, 8833661, 3176547111, 'paulaandreacruz@yahoo.es', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(36, 'maria beatriz', 'pava hurtado', 30270825, 'instructora ingles', 0, 8863858, 3162559047, 'bpava@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(37, 'luisa fernanda', 'echeverri caballero', 24335083, 'instructora comunicaciones', 0, 8908320, 3146264428, 'lfecheverri38@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(38, 'luisa fernanda', 'castano calvo', 30396654, 'instructora cultura fisica', 0, 8922916, 3104329906, 'lfcalvo@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(39, 'german', 'rodriguez valencia', 10285068, 'instructor construccion', 0, 8761933, 3152735162, 'grodriguez86@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(40, 'oscar fernando', 'aristizabal cardona', 9859602, 'instructor sistemas', 0, 8748350, 3103972370, 'ofac@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(41, 'andres mauricio', 'jaramillo gonzalez', 75081636, 'instructor mecanica automotriz', 0, 8746175, 3113837172, 'anmajago@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(42, 'jorge alberto', 'tamayo grisales', 1053782472, 'instructor construccion', 0, 8901584, 3003267169, 'vabe9@hotmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(43, 'diego andres', 'serna velasquez', 75096299, 'instructor diseno mecanico', 0, 0, 3146504873, 'daserna99@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(44, 'stharling melody', 'ramos giraldo', 30397958, 'instructora electricidad', 0, 0, 3163244180, 'smelodyrg@gmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(45, 'luis camilo', 'estrada patino', 1085297027, 'instructor mecanica automotriz', 0, 0, 3128488679, 'luis.23513230762@ucaldas.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(46, 'olga clemencia', 'marin henao', 30395126, 'instructora seguridad ocupacional', 0, 8770270, 3147694939, 'ocmarinh@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(47, 'andres felipe', 'lopez chica', 75090879, 'instructor ambiental', 0, 0, 3206874025, 'felopez11@gmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(48, 'gladys francelly', 'cardona franco', 30307343, 'instructora confeccion', 0, 8876390, 3113364387, 'gladys.francelly@gmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(49, 'javier', 'ariza useche', 79836769, 'instructor trabajo en alturas', 0, 8911282, 3185272465, 'javier.ariza@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(50, 'jaime adolfo', 'fuentes sanchez', 11224476, 'instructor motos', 0, 0, 3008115106, 'adolfofuentes@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(51, 'lorena patricia', 'valencia', 30338297, 'instructora seguridad ocupacional', 0, 8887450, 3176171144, 'valencia.lp@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(52, 'fernando', 'arciniegas cordoba', 98392877, 'instructor calidad', 0, 8914167, 3162860686, 'fernandoac@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(53, 'jhon fredy', 'duque gallego', 1053782759, 'instructor construccion', 0, 0, 3128850805, 'johnzegath@gmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(54, 'andres felipe ', 'jurado patino ', 1053770404, 'instructor topografia', 0, 8738457, 3015739296, 'afjurado40@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(55, 'angela marcela', 'castellanos ortegon', 30398681, 'instructora ingles', 0, 8901383, 3008948200, 'amcastellanoso@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(56, 'camilo andres', 'arango munoz', 16077061, 'instructor mobiliario y maderas', 0, 8760492, 3206845171, 'camiaramo@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(57, 'yaneth', 'mejia rendon ', 1053811426, 'instructora sistemas', 0, 8854979, 3045458490, 'ymejia624@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(58, 'daniel felipe ', 'moncada cardona ', 1053777708, 'instructor construccion', 0, 0, 3163159109, 'danielmoncada@gmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(59, 'mario leandro', 'vanegas valencia', 1053807619, 'instructor electricidad', 0, 0, 3113005998, 'marlevan38@gmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(60, 'victor hugo', 'arias saldarriaga', 10286879, 'instructor trabajo en alturas', 0, 8746838, 3117268025, 'victorari17@gmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(61, 'mario', 'raigosa arango', 10245454, 'instructor construccion', 0, 0, 3117581159, 'marioraigosaarango@gmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(62, 'jhonatan', 'franco arias', 1053784021, 'instructor soldadura', 0, 0, 3117848943, 'eltaja1053@hotmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(63, 'yamileth', 'erazo becerra', 24333588, 'instructora sistemas', 0, 8892523, 3103898510, 'yamierazo@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(64, 'andrea del pilar', 'alvarez camargo', 30405204, 'instructora trabajo alturas', 0, 0, 3146611226, 'aalvarez40@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(65, 'alexandra ', 'naranjo cardona ', 30321612, 'instructora ingles', 0, 0, 3135217056, 'alexa_nc@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(66, 'adalberto', 'acevedo telles', 75091293, 'instructor mecanica industrial', 0, 8739185, 3206585210, 'bettoa0202@hotmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(67, 'lucila', 'norena arias', 30310215, 'instructora confeccion', 0, 0, 3176422121, 'lucilanorarias@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(68, 'jorge hernan', 'alzate buitrago', 6108160, 'instructor construccion', 0, 0, 3122011383, 'pizcali1979@gmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(69, 'john alexander', 'arenas noriega', 75003878, 'instructor construccion', 0, 0, 3104681193, 'jaan821@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(70, 'diana eugenia', 'henao barragan', 1110506666, 'instructora motocicletas', 0, 0, 3115183802, 'dehenaob@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(71, 'andres julian', 'hoyos caicedo', 75097575, 'instructor sistemas', 0, 8780047, 3107324131, 'ajhoyos@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(72, 'fernando', 'mejia lopez ', 75096659, 'instructor trabajo en alturas', 0, 0, 3207585520, 'fmejia@umanizales.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(73, 'claudio alberto', 'valencia sanchez', 75073330, 'instructor electricidad', 0, 0, 3148856871, 'cavalencia033@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(74, 'cesar augusto', 'ramirez ocampo', 10262514, 'instructor maderas', 0, 0, 3117733406, 'cauramirez@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(75, 'juan pablo', 'mejia ramirez', 75088893, 'instructor ambiental', 0, 0, 3127917880, 'jpmejiar@hotmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(76, 'angela maria ', 'alzate ', 30395470, 'instructora etica', 0, 0, 3117157455, 'alegnateza2@gmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(77, 'jhon kevin', 'florez pena', 16073677, 'instructor automotriz', 0, 0, 3105488749, 'lucas062@gmial.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(78, 'lina rocio', 'ospina duque', 42114871, 'instructora salud ocupacional', 0, 0, 3216265294, 'lirosduque@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(79, 'junsun', 'sunico consistente', 281463, 'instructor ingles', 0, 0, 3016877061, 'jsunico@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(80, 'andres felipe', 'henao lopez', 75107712, 'instructor cultura fisica', 0, 0, 3117423635, 'andres_henao_03@hotmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(81, 'sara maria', 'clavijo arrubla ', 1053806513, 'instructora construccion', 0, 0, 3166098393, 'sarah12340@gmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(82, 'nestor mauricio', 'pinto norena', 75072443, 'instructor electricidad', 0, 8926627, 3115858811, 'mauricioelectricista@gmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(83, 'karen viviana ', 'lemos ceballos ', 31570114, 'instructora confeccion', 0, 0, 3123042862, 'kvlemus@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(84, 'jorge augusto ', 'villada suaza ', 7534711, 'instructor sistemas', 0, 0, 3164494488, 'jovisu@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(85, 'diana cristina ', 'montoya hoyos ', 24347071, 'instructora sistemas', 0, 0, 3113756986, 'crismajo10@gmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(86, 'luisa fernanda', 'callejas orrego ', 30232108, 'instructora sistemas', 0, 0, 3007736768, 'lcallejaso@gmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(87, 'carlos andres', 'henao lema ', 75096428, 'instructor ambiental', 0, 0, 3214514010, 'cahlema@hotmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(88, 'emilce silvana ', 'ceron rosero ', 27451978, 'instructora salud ocupacional', 0, 0, 3113684029, 'esilcero@hotmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(89, 'paola natalia ', 'orozco orozco ', 1053780547, 'instructora ingles', 0, 0, 3108406371, 'pa.na.oro19@hotmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(90, 'asdrubal ', 'gomez galeano ', 1053800692, 'instructor ingles', 0, 8721220, 3128820955, 'asdmax@hotmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(91, 'javier mauricio', 'cortes moreno', 80870811, 'instructor joyeria', 0, 0, 3103209980, ' maoco72@hotmail.com', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL),
-(92, 'jose uriel', 'gallego bernal', 75034645, 'instructor redes de gas', 0, 8825684, 3205245495, 'jurielg@misena.edu.co', '/images/perdefault.png', 'disponible', 2, '2017-08-08 14:27:32', NULL);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `instructor_types`
---
-
-CREATE TABLE `instructor_types` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tipo_instructor` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `instructor_types`
---
-
-INSERT INTO `instructor_types` (`id`, `tipo_instructor`, `created_at`, `updated_at`) VALUES
-(1, 'planta', NULL, NULL),
-(2, 'contratista', NULL, NULL);
+INSERT INTO `instructors` (`id`, `nombre`, `apellidos`, `especialidad`, `vinculacion1`, `tipoplanta`, `tipocontrato`, `cantidadhoras`, `actadministrativas`, `area`, `centro`, `numero_documento`, `ip`, `celular`, `email`, `imagen`, `disponibilidad`, `created_at`, `updated_at`) VALUES
+(1, 'alexander ', 'garcia vasquez', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor  g-19 mantenimiento', NULL, 7684828, 62500, 3148515827, 'agarciavasquez@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(2, 'aparicio', 'mejia rendon', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-16 construccion', NULL, 75091846, 0, 3014160504, 'apariciomejia@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(3, 'consuelo', 'garcia escobar ', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora  g-20 emprendimiento', NULL, 24318223, 0, 3113076751, 'cgarciae@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(4, 'cristian mauricio', 'toro', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-6 soldadura', NULL, 16071103, 0, 3136501532, 'mtorov@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(5, 'diego alexander', 'grajales perez', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-11 mantenimiento', NULL, 75096903, 0, 3163965678, 'dagrajales@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(6, 'elver', 'valencia', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g- 14 soldadura', NULL, 75064699, 0, 3117385100, 'elvervalencia@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(7, 'fernando', 'rodriguez valencia ', NULL, 'planta', NULL, NULL, NULL, NULL, 'equipo tecnico pedagogico instructor g-20', NULL, 10232014, 62263, 3122588689, 'ferrodriguezv@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(8, 'francisco javier', 'vargas   ', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-16 mantenimiento', NULL, 10243995, 0, 3104707065, 'fjvargas@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(9, 'guillermo antonio', 'valencia velasquez', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-13 electricidad', NULL, 10279010, 0, 3137656579, 'guivalen@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(10, 'jaime', 'giraldo orrego', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-19 electricidad', NULL, 10286761, 0, 3136443404, 'jagio13@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(11, 'jaime', 'trejos londono', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-16 electricidad', NULL, 10274114, 0, 3147392470, 'jtrejos@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(12, 'jhon fredy', 'cortes soto', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-11 mantenimiento', NULL, 10279373, 0, 3103598404, 'jfrecos@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(13, 'jhon jairo', 'cardenas romero', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-20 -gestor red de conocimiento automotor\n', NULL, 10279651, 62093, 3117784659, 'jotajota@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(14, 'jose alirio', 'londono rivera ', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-13 mantenimiento', NULL, 10241219, 0, 3122972801, 'alonri@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(15, 'jose fernando', 'vergara gallego ', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-17 metalmecanica', NULL, 10271981, 0, 3217068789, 'jfvergara@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(16, 'juan carlos', 'arango arbelaez', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-12 automotriz', NULL, 79274609, 0, 3137169379, 'jcarango@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(17, 'juan carlos', 'lopez morales', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-10 electricidad', NULL, 94283555, 0, 3122430542, 'juanclopez10@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(18, 'juan carlos', 'ruge osorio', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-20 calidad- evaluador competencias laborales', NULL, 10286847, 62097, 3108326255, 'juanruge@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(19, 'luis enrique', 'bravo cardona', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-20 saludo ocupacional', NULL, 15903478, 0, 3137485587, 'lebravocardona@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(20, 'luz de fatima', 'alvarez osorio ', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora g-20 confeccion', NULL, 25232397, 0, 3113851917, 'lfalvarez@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(21, 'miriam claudina', 'garcia naranjo ', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora  g-20 electricidad', NULL, 30287195, 0, 3104931245, 'mcgarcian@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(22, 'roberto', 'estrada herrera ', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-12 sistemas', NULL, 10248388, 0, 3002024140, 'restradah@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(23, 'ruby ', 'vargas ruiz', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora g-14 confeccion', NULL, 30292725, 0, 3168756222, 'ruvaruiz@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(24, 'victor mauricio', 'acevedo correa', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor mecanica automotriz', NULL, 9817289, 0, 3137086769, 'vmacevedo@misena.edu.co ', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(25, 'paula andrea', 'londono', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora g-11 sistemas', NULL, 30394952, 0, 3105312798, 'palondono25@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(26, 'dairo de jesus', 'ganan gallo', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor diseno mecanico', NULL, 75089861, 0, 3108223340, 'dairog@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(27, 'roland', 'roth echeverry', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor ingles', NULL, 75103320, 0, 3217369989, 'rolyroth@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(28, 'sandra milena', 'trujillo ortiz', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora confeccion', NULL, 30336710, 0, 3108491154, 'smtrujillo@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(29, 'diego  ', 'giraldo ramirez', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor electricidad virtual', NULL, 10250071, 0, 3206307217, 'dgr555@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(30, 'monica eugenia', 'montoya arias', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora seguridad ocupacional', NULL, 30392935, 0, 3003108170, 'memontoya53@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(31, 'natalia', 'erazo becerra', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora electricidad virtual', NULL, 24334576, 0, 3134623938, 'nata_erazo@hotmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(32, 'claudia sonia', 'serna granada', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora ingles', NULL, 30322042, 0, 3116827825, 'cls0230@my.londonmet.ac.uk', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(33, 'carmen elena', 'hernandez rincon', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora etica', NULL, 24340753, 0, 3147917762, 'carelena@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(34, 'alexander', 'romero moreno', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor trabajo en alturas', NULL, 9975428, 0, 3113681557, 'aromero824@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(35, 'paula andrea ', 'cruz mejia ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora calidad', NULL, 30396241, 0, 3176547111, 'paulaandreacruz@yahoo.es', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(36, 'maria beatriz', 'pava hurtado', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora ingles', NULL, 30270825, 0, 3162559047, 'bpava@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(37, 'luisa fernanda', 'echeverri caballero', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora comunicaciones', NULL, 24335083, 0, 3146264428, 'lfecheverri38@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(38, 'luisa fernanda', 'castano calvo', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora cultura fisica', NULL, 30396654, 0, 3104329906, 'lfcalvo@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(39, 'german', 'rodriguez valencia', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor construccion', NULL, 10285068, 0, 3152735162, 'grodriguez86@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(40, 'oscar fernando', 'aristizabal cardona', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor sistemas', NULL, 9859602, 0, 3103972370, 'ofac@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(41, 'andres mauricio', 'jaramillo gonzalez', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor mecanica automotriz', NULL, 75081636, 0, 3113837172, 'anmajago@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(42, 'jorge alberto', 'tamayo grisales', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor construccion', NULL, 1053782472, 0, 3003267169, 'vabe9@hotmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(43, 'diego andres', 'serna velasquez', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor diseno mecanico', NULL, 75096299, 0, 3146504873, 'daserna99@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(44, 'stharling melody', 'ramos giraldo', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora electricidad', NULL, 30397958, 0, 3163244180, 'smelodyrg@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(45, 'luis camilo', 'estrada patino', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor mecanica automotriz', NULL, 1085297027, 0, 3128488679, 'luis.23513230762@ucaldas.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(46, 'olga clemencia', 'marin henao', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora seguridad ocupacional', NULL, 30395126, 0, 3147694939, 'ocmarinh@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(47, 'andres felipe', 'lopez chica', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor ambiental', NULL, 75090879, 0, 3206874025, 'felopez11@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(48, 'gladys francelly', 'cardona franco', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora confeccion', NULL, 30307343, 0, 3113364387, 'gladys.francelly@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(49, 'javier', 'ariza useche', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor trabajo en alturas', NULL, 79836769, 0, 3185272465, 'javier.ariza@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(50, 'jaime adolfo', 'fuentes sanchez', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor motos', NULL, 11224476, 0, 3008115106, 'adolfofuentes@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(51, 'lorena patricia', 'valencia', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora seguridad ocupacional', NULL, 30338297, 0, 3176171144, 'valencia.lp@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(52, 'fernando', 'arciniegas cordoba', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor calidad', NULL, 98392877, 0, 3162860686, 'fernandoac@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(53, 'jhon fredy', 'duque gallego', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor construccion', NULL, 1053782759, 0, 3128850805, 'johnzegath@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(54, 'andres felipe ', 'jurado patino ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor topografia', NULL, 1053770404, 0, 3015739296, 'afjurado40@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(55, 'angela marcela', 'castellanos ortegon', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora ingles', NULL, 30398681, 0, 3008948200, 'amcastellanoso@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(56, 'camilo andres', 'arango munoz', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor mobiliario y maderas', NULL, 16077061, 0, 3206845171, 'camiaramo@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(57, 'yaneth', 'mejia rendon ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora sistemas', NULL, 1053811426, 0, 3045458490, 'ymejia624@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', '2017-08-18 22:02:41'),
+(58, 'daniel felipe ', 'moncada cardona ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor construccion', NULL, 1053777708, 0, 3163159109, 'danielmoncada@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(59, 'mario leandro', 'vanegas valencia', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor electricidad', NULL, 1053807619, 0, 3113005998, 'marlevan38@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(60, 'victor hugo', 'arias saldarriaga', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor trabajo en alturas', NULL, 10286879, 0, 3117268025, 'victorari17@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(61, 'mario', 'raigosa arango', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor construccion', NULL, 10245454, 0, 3117581159, 'marioraigosaarango@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(62, 'jhonatan', 'franco arias', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor soldadura', NULL, 1053784021, 0, 3117848943, 'eltaja1053@hotmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(63, 'yamileth', 'erazo becerra', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora sistemas', NULL, 24333588, 0, 3103898510, 'yamierazo@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(64, 'andrea del pilar', 'alvarez camargo', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora trabajo alturas', NULL, 30405204, 0, 3146611226, 'aalvarez40@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(65, 'alexandra ', 'naranjo cardona ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora ingles', NULL, 30321612, 0, 3135217056, 'alexa_nc@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(66, 'adalberto', 'acevedo telles', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor mecanica industrial', NULL, 75091293, 0, 3206585210, 'bettoa0202@hotmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(67, 'lucila', 'norena arias', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora confeccion', NULL, 30310215, 0, 3176422121, 'lucilanorarias@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(68, 'jorge hernan', 'alzate buitrago', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor construccion', NULL, 6108160, 0, 3122011383, 'pizcali1979@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(69, 'john alexander', 'arenas noriega', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor construccion', NULL, 75003878, 0, 3104681193, 'jaan821@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(70, 'diana eugenia', 'henao barragan', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora motocicletas', NULL, 1110506666, 0, 3115183802, 'dehenaob@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(71, 'andres julian', 'hoyos caicedo', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor sistemas', NULL, 75097575, 0, 3107324131, 'ajhoyos@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(72, 'fernando', 'mejia lopez ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor trabajo en alturas', NULL, 75096659, 0, 3207585520, 'fmejia@umanizales.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(73, 'claudio alberto', 'valencia sanchez', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor electricidad', NULL, 75073330, 0, 3148856871, 'cavalencia033@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(74, 'cesar augusto', 'ramirez ocampo', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor maderas', NULL, 10262514, 0, 3117733406, 'cauramirez@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(75, 'juan pablo', 'mejia ramirez', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor ambiental', NULL, 75088893, 0, 3127917880, 'jpmejiar@hotmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(76, 'angela maria ', 'alzate ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora etica', NULL, 30395470, 0, 3117157455, 'alegnateza2@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(77, 'jhon kevin', 'florez pena', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor automotriz', NULL, 16073677, 0, 3105488749, 'lucas062@gmial.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(78, 'lina rocio', 'ospina duque', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora salud ocupacional', NULL, 42114871, 0, 3216265294, 'lirosduque@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(79, 'junsun', 'sunico consistente', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor ingles', NULL, 281463, 0, 3016877061, 'jsunico@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(80, 'andres felipe', 'henao lopez', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor cultura fisica', NULL, 75107712, 0, 3117423635, 'andres_henao_03@hotmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(81, 'sara maria', 'clavijo arrubla ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora construccion', NULL, 1053806513, 0, 3166098393, 'sarah12340@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(82, 'nestor mauricio', 'pinto norena', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor electricidad', NULL, 75072443, 0, 3115858811, 'mauricioelectricista@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(83, 'karen viviana ', 'lemos ceballos ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora confeccion', NULL, 31570114, 0, 3123042862, 'kvlemus@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(84, 'jorge augusto ', 'villada suaza ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor sistemas', NULL, 7534711, 0, 3164494488, 'jovisu@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(85, 'diana cristina ', 'montoya hoyos ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora sistemas', NULL, 24347071, 0, 3113756986, 'crismajo10@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(86, 'luisa fernanda', 'callejas orrego ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora sistemas', NULL, 30232108, 0, 3007736768, 'lcallejaso@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(87, 'carlos andres', 'henao lema ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor ambiental', NULL, 75096428, 0, 3214514010, 'cahlema@hotmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(88, 'emilce silvana ', 'ceron rosero ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora salud ocupacional', NULL, 27451978, 0, 3113684029, 'esilcero@hotmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(89, 'paola natalia ', 'orozco orozco ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora ingles', NULL, 1053780547, 0, 3108406371, 'pa.na.oro19@hotmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(90, 'asdrubal ', 'gomez galeano ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor ingles', NULL, 1053800692, 0, 3128820955, 'asdmax@hotmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(91, 'javier mauricio', 'cortes moreno', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor joyeria', NULL, 80870811, 0, 3103209980, ' maoco72@hotmail.com', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL),
+(92, 'jose uriel', 'gallego bernal', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor redes de gas', NULL, 75034645, 0, 3205245495, 'jurielg@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-09 00:27:32', NULL);
 
 -- --------------------------------------------------------
 
@@ -294,12 +328,11 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2017_08_05_230526_create_table_instructor_types', 1),
-(4, '2017_08_05_230719_create_table_instructors', 1),
-(5, '2017_08_05_230736_create_table_classrooms', 1),
-(6, '2017_08_14_194800_create_table_history_records', 2),
-(7, '2017_08_14_200817_create_table_class_groups', 2),
-(8, '2017_08_14_215344_create_table_admins', 2);
+(3, '2017_08_05_230719_create_table_instructors', 1),
+(4, '2017_08_05_230736_create_table_classrooms', 1),
+(5, '2017_08_14_194800_create_table_history_records', 1),
+(6, '2017_08_14_200817_create_table_class_groups', 1),
+(7, '2017_08_14_215344_create_table_admins', 1);
 
 -- --------------------------------------------------------
 
@@ -332,6 +365,7 @@ CREATE TABLE `users` (
 --
 -- Índices para tablas volcadas
 --
+
 --
 -- Indices de la tabla `admins`
 --
@@ -347,11 +381,11 @@ ALTER TABLE `classrooms`
   ADD KEY `classrooms_instructor_id_foreign` (`instructor_id`);
 
 --
-
 -- Indices de la tabla `class_groups`
 --
 ALTER TABLE `class_groups`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `class_groups_numero_documento_foreign` (`numero_documento`);
 
 --
 -- Indices de la tabla `history_records`
@@ -366,14 +400,8 @@ ALTER TABLE `history_records`
 --
 ALTER TABLE `instructors`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `instructors_email_unique` (`email`),
-  ADD KEY `instructors_instructor_type_id_foreign` (`instructor_type_id`);
-
---
--- Indices de la tabla `instructor_types`
---
-ALTER TABLE `instructor_types`
-  ADD PRIMARY KEY (`id`);
+  ADD UNIQUE KEY `instructors_numero_documento_unique` (`numero_documento`),
+  ADD UNIQUE KEY `instructors_email_unique` (`email`);
 
 --
 -- Indices de la tabla `migrations`
@@ -412,7 +440,7 @@ ALTER TABLE `classrooms`
 -- AUTO_INCREMENT de la tabla `class_groups`
 --
 ALTER TABLE `class_groups`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT de la tabla `history_records`
 --
@@ -424,21 +452,15 @@ ALTER TABLE `history_records`
 ALTER TABLE `instructors`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 --
--- AUTO_INCREMENT de la tabla `instructor_types`
---
-ALTER TABLE `instructor_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
 --
 -- Restricciones para tablas volcadas
 --
@@ -450,17 +472,17 @@ ALTER TABLE `classrooms`
   ADD CONSTRAINT `classrooms_instructor_id_foreign` FOREIGN KEY (`instructor_id`) REFERENCES `instructors` (`id`);
 
 --
+-- Filtros para la tabla `class_groups`
+--
+ALTER TABLE `class_groups`
+  ADD CONSTRAINT `class_groups_numero_documento_foreign` FOREIGN KEY (`numero_documento`) REFERENCES `instructors` (`numero_documento`);
+
+--
 -- Filtros para la tabla `history_records`
 --
 ALTER TABLE `history_records`
   ADD CONSTRAINT `history_records_classroom_id_foreign` FOREIGN KEY (`classroom_id`) REFERENCES `classrooms` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `history_records_instructor_id_foreign` FOREIGN KEY (`instructor_id`) REFERENCES `instructors` (`id`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `instructors`
---
-ALTER TABLE `instructors`
-  ADD CONSTRAINT `instructors_instructor_type_id_foreign` FOREIGN KEY (`instructor_type_id`) REFERENCES `instructor_types` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
