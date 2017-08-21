@@ -1,72 +1,122 @@
 @extends('layouts.app')
+
 @section('title','Adicionar ambiente')
 
+@section('navbar-top')
+<ul class="breadcrumb">
+	<li><a href="{{ url('/admin/classroom') }}" class="btn-link">Lista de ambientes</a></li>
+	<li>Adicionar ambiente</li>
+</ul>
+@endsection
+
+@section('big-content-desc')
+<h4>Adicionar ambiente</h4>
+@endsection
+
 @section('content')
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<h1>Adicionar ambiente</h1>
-			<hr>
-			<ul class="breadcrumb">
-				<li><a href="{{ url('classroom') }}">Lista de ambientes</a></li>
-				<li>Adicionar ambiente</li>
-			</ul>
-
-			@if (count($errors)>0)
-
-			<div class="alert alert-danger alert-dismissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
-				@foreach($errors->all() as $message)
-				<li>{{ $message }}</li>
-				@endforeach
-			</div>
-
-			@endif
-			<hr>
-
-
-			<form action="{{ url('classroom') }}" method="POST">
-				<div class="form-group">
+	<div class="col-md-8">
+		<div class="card-form">
+			<form action="{{ url('/admin/classroom') }}" method="POST" enctype="multipart/form-data">
+				<div class="form-group{{ $errors->has('nombre_ambiente') ? ' has-error' : '' }}">
 					{!! csrf_field()  !!}
-					<div class="form-group">
-						<input type="text" name="nombre_ambiente" class="form-control" placeholder="Nombre del ambiente">
+					<div class="form-group{{ $errors->has('nombre_ambiente') ? ' has-error' : '' }}">
+						<label for="nombre_ambiente" class="control-label">
+							Nombre del ambiente *
+						</label>
+						<input type="text" name="nombre_ambiente" class="form-control" value="{{ old('nombre_ambiente') }}">
+						@if ($errors->has('nombre_ambiente'))
+							<span class="help-block">
+								{{ $errors->first('nombre_ambiente') }}
+							</span>
+						@endif
 					</div>
-					<div class="form-group">
+					<div class="form-group{{ $errors->has('tipo_ambiente') ? ' has-error' : '' }}">
+						<label for="tipo_ambiente" class="control-label">
+							Tipo de ambiente *
+						</label>
 						<select name="tipo_ambiente" class="form-control">
 							<option value="">Seleccione el tipo de ambiente..</option>
-							<option value="aula">Aula</option>
-							<option value="taller">Taller</option>
-							<option value="auditorio">Auditorio</option>
-							<option value="campo deportivo">Campo deportivo</option>
-							<option value="laboratorio">Laboratorio</option>
+							<option value="aula" {{ (old("tipo_ambiente") == 'aula' ? "selected" : "")}}>Aula</option>
+							<option value="taller" {{ (old("tipo_ambiente") == 'taller' ? "selected" : "")}}>Taller</option>
+							<option value="auditorio" {{ (old("tipo_ambiente") == 'auditorio' ? "selected" : "")}}>Auditorio</option>
+							<option value="campo deportivo" {{ (old("tipo_ambiente") == 'campo deportivo' ? "selected" : "")}}>Campo deportivo</option>
+							<option value="laboratorio" {{ (old("tipo_ambiente") == 'laboratorio' ? "selected" : "")}}>Laboratorio</option>
 						</select>
+						@if ($errors->has('tipo_ambiente'))
+							<span class="help-block">
+								{{ $errors->first('tipo_ambiente') }}
+							</span>
+						@endif
 					</div>
-					<div class="form-group">
+					<div class="form-group{{ $errors->has('movilidad') ? ' has-error' : '' }}">
+						<label for="movilidad" class="control-label">
+							Movilidad *
+						</label>
+
 						<select name="movilidad" class="form-control">
 							<option value="">Seleccione el tipo de movilidad del ambiente..</option>
-							<option value="fijo">Fijo</option>
-							<option value="movil">Móvil</option>
+							<option value="fijo" {{ (old("movilidad") == 'fijo' ? "selected" : "")}}>Fijo</option>
+							<option value="movil" {{ (old("movilidad") == 'movil' ? "selected" : "")}}>Móvil</option>
 						</select>
+						@if ($errors->has('movilidad'))
+							<span class="help-block">
+								{{ $errors->first('movilidad') }}
+							</span>
+						@endif
 					</div>
-					<div class="form-group">
+					<div class="form-group{{ $errors->has('estado') ? ' has-error' : '' }}">
+						<label for="estado" class="control-label">
+							Estado *
+						</label>
+
 						<select name="estado" class="form-control">
 							<option value="">Seleccione el estado en que se encuentra el ambiente..</option>
-							<option value="activo">Activo</option>
-							<option value="inactivo">Inactivo</option>
-							<option value="en reparacion">En reparación</option>
+							<option value="activo" {{ (old("estado") == 'activo' ? "selected" : "")}}>Activo</option>
+							<option value="inactivo" {{ (old("estado") == 'inactivo' ? "selected" : "")}}>Inactivo</option>
+							<option value="en reparacion" {{ (old("estado") == 'en reparacion' ? "selected" : "")}}>En reparación</option>
 						</select>
+						@if ($errors->has('estado'))
+							<span class="help-block">
+								{{ $errors->first('estado') }}
+							</span>
+						@endif
+					</div>
+					<div class="form-group{{ $errors->has('cupo') ? ' has-error' : '' }}">
+						<label for="cupo" class="control-label">
+							Cupo *
+						</label>
+
+						<input type="text" name="cupo" class="form-control" value="{{ old('cupo') }}">
+						@if ($errors->has('cupo'))
+							<span class="help-block">
+								{{ $errors->first('cupo') }}
+							</span>
+						@endif
 					</div>
 					<div class="form-group">
-						<input type="text" name="cupo" class="form-control" placeholder="Cupo del ambiente">
+						<label for="imagen">
+							Foto del ambiente
+						</label>
+						<input type="file" name="imagen" class="form-control">
 					</div>
 				</div>
 				<div class="form-group">
 					<button class="btn btn-success" type="submit">
-						<i class="fa fa-fw fa-paper-plane"></i>
+						<i class="fa fa-fw fa-floppy-o"></i>
 						Guardar
 					</button>
 				</div>
-
 			</form>
 		</div>
+	</div>
+	<div class="col-md-4">
+		<h3><i class="fa fa-fw fa-plus"></i> Adicionar Ambiente</h3>
+		<p>
+			Diligencie este formulario para agregar un nuevo ambiente.
+		</p>
+		<blockquote class="note note-info {{ count($errors) > 0 ? 'note-danger animated shake' : '' }}">
+			Los campos que tienen asterisco <span class="btn">*</span> son obligatorios. <br>
+			{{ count($errors) > 0 ? 'Por favor echa un vistazo a los errores y asegurate de llenar bien cada campo.' : '' }}
+		</blockquote>
 	</div>
 @endsection

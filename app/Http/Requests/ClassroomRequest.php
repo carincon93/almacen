@@ -28,7 +28,7 @@ class ClassroomRequest extends FormRequest
             'tipo_ambiente'=>'required',
             'movilidad'=>'required',
             'estado'=>'required',
-            'cupo'=>'required|max:3',
+            'cupo'=>'required|max:4',
         ];
     }
     public function messages()
@@ -40,7 +40,7 @@ class ClassroomRequest extends FormRequest
             'movilidad.required'=>'El campo movilidad es requerido',
             'estado.required'=>'El campo estado es requerido',
             'cupo.required'=>'El campo cupo es requerido',
-            'cupo.max'=>'El campo cupo debe tener como máximo 3 caracteres',
+            'cupo.max'=>'El campo cupo debe tener como máximo 4 caracteres',
         ];
     }
 }
