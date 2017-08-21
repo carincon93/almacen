@@ -34,20 +34,21 @@
 				<td class="text-capitalize">{{ $dataInstructor->apellidos }}</td>
 			</tr>
 			<tr>
-				<th>Documento</th>
-				<td>{{ $dataInstructor->numero_documento }}</td>
+				<th>Tipo de contrato</th>
+				<td class="text-capitalize">{{ $dataInstructor->vinculacion1 }}</td>
 			</tr>
+			
 			<tr>
 				<th>Area</th>
 				<td class="text-capitalize">{{ $dataInstructor->area }}</td>
 			</tr>
 			<tr>
-				<th>IP</th>
-				<td>{{ $dataInstructor->ip }}</td>
+				<th>Documento</th>
+				<td>{{ $dataInstructor->numero_documento }}</td>
 			</tr>
 			<tr>
-				<th>Teléfono</th>
-				<td>{{ $dataInstructor->telefono }}</td>
+				<th>IP</th>
+				<td>{{ $dataInstructor->ip }}</td>
 			</tr>
 			<tr>
 				<th>Celular</th>
@@ -57,10 +58,7 @@
 				<th>Correo Electrónico</th>
 				<td>{{ $dataInstructor->email }}</td>
 			</tr>
-			<tr>
-				<th>Tipo de contrato</th>
-				<td class="text-capitalize">{{ $dataInstructor->vinculacion1 }}</td>
-			</tr>
+			
 		</table>
 
 	</div>

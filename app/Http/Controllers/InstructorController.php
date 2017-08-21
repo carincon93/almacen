@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\InstructorRequest;
 
 use App\Instructor;
-use App\Instructor_type;
 
 class InstructorController extends Controller
 {
@@ -32,9 +31,7 @@ class InstructorController extends Controller
      */
     public function create()
     {
-        $instructor_type = Instructor_type::all();
-        return view('instructors.create')
-            ->with('instructor_type', $instructor_type);
+        return view('instructors.create');
     }
 
     /**
@@ -48,8 +45,9 @@ class InstructorController extends Controller
         $ins = new Instructor();
         $ins->nombre               = $request->get('nombre');
         $ins->apellidos            = $request->get('apellidos');
-        $ins->numero_documento     = $request->get('numero_documento');
+        $ins->vinculacion1         = $request->get('vinculacion1');
         $ins->area                 = $request->get('area');
+        $ins->numero_documento     = $request->get('numero_documento');
         $ins->ip                   = $request->get('ip');
         $ins->celular              = $request->get('celular');
         $ins->email                = $request->get('email');
@@ -58,7 +56,7 @@ class InstructorController extends Controller
             $request->imagen->move(public_path('/images/instructors/'), $file);
             $ins->imagen = '/images/instructors/'.$file;
         }
-        $ins->instructor_type_id   = $request->get('instructor_type_id');
+        
         if ($ins->save()){
             return redirect('/admin/instructor')
                 ->with('status', 'El instructor '.$ins->nombre.' '.$ins->apellidos.' fue adicionado con éxito');
@@ -87,10 +85,8 @@ class InstructorController extends Controller
     public function edit($id)
     {
         $dataInstructor  = Instructor::find($id);
-        $instructor_type = Instructor_type::all();
         return view('instructors.edit')
-        ->with('dataInstructor', $dataInstructor)
-            ->with('instructor_type', $instructor_type);
+        ->with('dataInstructor', $dataInstructor);
     }
 
     /**
@@ -103,20 +99,19 @@ class InstructorController extends Controller
     public function update(InstructorRequest $request, $id)
     {
         $ins = Instructor::find($id);
-        $ins->nombre                 = $request->get('nombre');
-        $ins->apellidos              = $request->get('apellidos');
-        $ins->numero_documento       = $request->get('numero_documento');
-        $ins->area                   = $request->get('area');
-        $ins->ip                     = $request->get('ip');
-        $ins->celular                = $request->get('celular');
-        $ins->email                  = $request->get('email');
+        $ins->nombre               = $request->get('nombre');
+        $ins->apellidos            = $request->get('apellidos');
+        $ins->vinculacion1         = $request->get('vinculacion1');
+        $ins->area                 = $request->get('area');
+        $ins->numero_documento     = $request->get('numero_documento');
+        $ins->ip                   = $request->get('ip');
+        $ins->celular              = $request->get('celular');
+        $ins->email                = $request->get('email');
         if ($request->hasFile('imagen')) {
-            \File::delete(public_path($ins->imagen));
             $file = time().'.'.$request->imagen->getClientOriginalExtension();
             $request->imagen->move(public_path('/images/instructors/'), $file);
             $ins->imagen = '/images/instructors/'.$file;
         }
-        $ins->instructor_type_id     = $request->get('instructor_type_id');
         if ($ins->save()){
             return redirect('admin/instructor')
                 ->with('status', 'El instructor '.$ins->nombre.' '.$ins->apellidos.' fue modificado con éxito');
