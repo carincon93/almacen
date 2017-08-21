@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\InstructorRequest;
 use App\Instructor;
-use App\Instructor_type;
 
 class InstructorController extends Controller
 {
@@ -30,8 +29,7 @@ class InstructorController extends Controller
     public function create()
     {
         $instructor_type = Instructor_type::all();
-        return view('instructors.create')
-            ->with('instructor_type', $instructor_type);
+        return view('instructors.create');
     }
 
     /**
@@ -45,13 +43,13 @@ class InstructorController extends Controller
         $in = new Instructor();
         $in->nombre               = $request->get('nombre');
         $in->apellidos            = $request->get('apellidos');
-        $in->numero_documento     = $request->get('numero_documento');
+        $in->vinculacion1         = $request->get('vinculacion1');
         $in->area                 = $request->get('area');
+        $in->numero_documento     = $request->get('numero_documento');
         $in->ip                   = $request->get('ip');
-        $in->telefono             = $request->get('telefono');
         $in->celular              = $request->get('celular');
         $in->email                = $request->get('email');
-        $in->instructor_type_id   = $request->get('instructor_type_id');
+
         if ($in->save()){
             return redirect('instructor')
                 ->with('status', 'El instructor fue adicionado con éxito');
@@ -68,8 +66,7 @@ class InstructorController extends Controller
     {
         $instructor_type = Instructor_type::all();
         return view('instructors.show')
-            ->with('instructor', Instructor::find($id))
-            ->with('instructor_type', $instructor_type);
+            ->with('instructor', Instructor::find($id));
     }
 
     /**
@@ -82,10 +79,8 @@ class InstructorController extends Controller
     {
 
         $in              = Instructor::find($id);
-        $instructor_type = Instructor_type::all();
         return view('instructors.edit')
-            ->with('in',$in)
-            ->with('instructor_type',$instructor_type);
+            ->with('in',$in);
     }
 
     /**
@@ -98,15 +93,14 @@ class InstructorController extends Controller
     public function update(InstructorRequest $request, $id)
     {
         $in = Instructor::find($id);
-        $in->nombre                 = $request->get('nombre');
-        $in->apellidos              = $request->get('apellidos');
-        $in->numero_documento       = $request->get('numero_documento');
-        $in->area                   = $request->get('area');
-        $in->ip                     = $request->get('ip');
-        $in->telefono               = $request->get('telefono');
-        $in->celular                = $request->get('celular');
-        $in->email                  = $request->get('email');
-        $in->instructor_type_id     = $request->get('instructor_type_id');
+        $in->nombre               = $request->get('nombre');
+        $in->apellidos            = $request->get('apellidos');
+        $in->vinculacion1         = $request->get('vinculacion1');
+        $in->area                 = $request->get('area');
+        $in->numero_documento     = $request->get('numero_documento');
+        $in->ip                   = $request->get('ip');
+        $in->celular              = $request->get('celular');
+        $in->email                = $request->get('email');
         if ($in->save()){
             return redirect('instructor')
                 ->with('status', 'El instructor fue modificado con éxito');
