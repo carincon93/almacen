@@ -51,6 +51,7 @@
 						</label>
 						<select name="vinculacion1" class="form-control">
 							<option value="">Seleccione el tipo de contrato...</option>
+
 							<option value="planta" class="text-capitalize" {{ (old("vinculacion1"))}}>Planta</option>
 							<option value="contratista" class="text-capitalize" {{ (old("vinculacion1"))}}>Contratista</option>
 						</select>
@@ -60,7 +61,6 @@
 							</span>
 						@endif
 					</div>
-
 					<div class="form-group{{ $errors->has('area') ? ' has-error' : '' }}">
 						<label for="area" class="control-label">
 							Área/Especialidad *
@@ -122,7 +122,6 @@
 						</label>
 						<input type="file" class="form-control" name="imagen">
 					</div>
-
 				</div>
 				<button class="btn btn-success" type="submit">
 					<i class="fa fa-fw fa-floppy-o"></i>

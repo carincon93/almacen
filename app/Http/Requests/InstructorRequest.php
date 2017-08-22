@@ -32,7 +32,6 @@ class InstructorRequest extends FormRequest
               'ip'=>'required|max:5',
               'celular'=>'required|max:10',
               'email'=>'required|unique:instructors,id,:id',
-
            ];
        }
        else {

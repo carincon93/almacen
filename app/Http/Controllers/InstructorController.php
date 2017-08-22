@@ -55,6 +55,7 @@ class InstructorController extends Controller
         $dataInstructor->ip                = $request->get('ip');
         $dataInstructor->celular           = $request->get('celular');
         $dataInstructor->email             = $request->get('email');
+
         if ($request->hasFile('imagen')) {
             $file = time().'.'.$request->imagen->getClientOriginalExtension();
             $request->imagen->move(public_path('/images/instructors/'), $file);

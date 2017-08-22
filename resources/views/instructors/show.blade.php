@@ -31,7 +31,6 @@
 				<th>Tipo de contrato</th>
 				<td class="text-capitalize">{{ $dataInstructor->vinculacion1 }}</td>
 			</tr>
-
 			<tr>
 				<th>Area</th>
 				<td class="text-capitalize">{{ $dataInstructor->area }}</td>
@@ -52,7 +51,6 @@
 				<th>Correo Electrónico</th>
 				<td>{{ $dataInstructor->email }}</td>
 			</tr>
-
 		</table>
 
 	</div>
