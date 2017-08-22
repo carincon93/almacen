@@ -86,7 +86,7 @@
 							Cupo *
 						</label>
 
-						<input type="text" name="cupo" class="form-control" value="{{ old('cupo') }}">
+						<input type="number" name="cupo"  min="0" class="form-control" value="{{ old('cupo') }}">
 						@if ($errors->has('cupo'))
 							<span class="help-block">
 								{{ $errors->first('cupo') }}

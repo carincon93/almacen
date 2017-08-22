@@ -32,6 +32,7 @@ class CreateTableInstructors extends Migration
             $table->string('imagen', 191)->default('/images/perdefault.png')->nullable();
             $table->string('disponibilidad', 15)->default('disponible')->nullable();
             $table->timestamps();
+            
         });
     }
 
@@ -43,5 +44,6 @@ class CreateTableInstructors extends Migration
     public function down()
     {
         Schema::dropIfExists('instructors');
+
     }
 }

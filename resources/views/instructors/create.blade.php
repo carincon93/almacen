@@ -76,7 +76,7 @@
 						<label for="numero_documento" class="control-label">
 							Número de documento *
 						</label>
-						<input type="number" name="numero_documento" class="form-control" value="{{ old('numero_documento') }}">
+						<input type="number" name="numero_documento"  min="0" class="form-control" value="{{ old('numero_documento') }}">
 						@if ($errors->has('numero_documento'))
 							<span class="help-block">
 								{{ $errors->first('numero_documento') }}
@@ -87,7 +87,7 @@
 						<label for="ip" class="control-label">
 							IP *
 						</label>
-						<input type="number" name="ip" class="form-control" value="{{ old('ip') }}">
+						<input type="number" name="ip" min="0" class="form-control" value="{{ old('ip') }}">
 						@if ($errors->has('ip'))
 							<span class="help-block">
 								{{ $errors->first('ip') }}
@@ -98,7 +98,7 @@
 						<label for="celular" class="control-label">
 							Número de celular *
 						</label>
-						<input type="number" name="celular" class="form-control" value="{{ old('celular') }}">
+						<input type="number" name="celular" min="0" class="form-control" value="{{ old('celular') }}">
 						@if ($errors->has('celular'))
 							<span class="help-block">
 								{{ $errors->first('celular') }}

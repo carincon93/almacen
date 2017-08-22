@@ -11,6 +11,6 @@ class ClassGroup extends Model
     ];
 
     public function instructor() {
-    	return $this->belongsTo('App\Instructor');
+    	return $this->belongsTo('App\Instructor', 'numero_documento');
     }
 }

@@ -29,7 +29,7 @@ class InstructorRequest extends FormRequest
               'vinculacion1'=>'required',
               'area'=>'required|max:128',
               'numero_documento'=>'required|max:10',
-              'ip'=>'required|max:5',
+              'ip'=>'max:5',
               'celular'=>'required|max:10',
               'email'=>'required|unique:instructors,id,:id',
            ];
@@ -41,7 +41,7 @@ class InstructorRequest extends FormRequest
               'vinculacion1'=>'required',
               'area'=>'required|max:128',
               'numero_documento'=>'required|max:10',
-              'ip'=>'required|max:5',
+              'ip'=>'max:5',
               'celular'=>'required|max:10',
               'email'=>'required|unique:instructors',
 
@@ -60,7 +60,6 @@ class InstructorRequest extends FormRequest
            'area.max'=>'El campo área debe tener como máximo 128 caracteres',
            'numero_documento.required'=>'El campo documento es requerido',
            'numero_documento.max'=>'El campo documento debe tener como máximo 10 números',
-           'ip.required'=>'El campo IP es requerido',
            'ip.max'=>'El campo IP debe tener como máximo 5 números',
            'celular.required'=>'El campo celular es requerido',
            'celular.max'=>'El campo celular debe tener como máximo 10 números',

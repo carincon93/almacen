@@ -20,7 +20,7 @@ class Instructor extends Model
     ];
 
     public function classgroups() {
-    	return $this->hasMany('App\ClassGroup');
+    	return $this->hasMany('App\ClassGroup','numero_documento');
     }
     public function classroom() {
     	return $this->hasOne('App\Classroom');

@@ -63,8 +63,8 @@
 					@endif
 				</div>
 				<div class="form-group{{ $errors->has('numero_documento') ? ' has-error' : '' }}">
-					<label for="numero_documento" class="control-label">Número de documento *</label>
-					<input type="number" name="numero_documento" class="form-control" value="{{ $dataInstructor->numero_documento }}">
+					<label for="numero_documento"  class="control-label">Número de documento *</label>
+					<input type="number" name="numero_documento" min="0" class="form-control" value="{{ $dataInstructor->numero_documento }}">
 					@if ($errors->has('numero_documento'))
 						<span class="help-block">
 							{{ $errors->first('numero_documento') }}
@@ -73,7 +73,7 @@
 				</div>
 				<div class="form-group{{ $errors->has('ip') ? ' has-error' : '' }}">
 					<label for="ip" class="control-label">IP *</label>
-					<input type="number" name="ip" class="form-control" value="{{ $dataInstructor->ip }}">
+					<input type="number" name="ip" min="0" class="form-control" value="{{ $dataInstructor->ip }}">
 					@if ($errors->has('ip'))
 						<span class="help-block">
 							{{ $errors->first('ip') }}
@@ -84,7 +84,7 @@
 					<label for="celular" class="control-label">
 						Número de celular *
 					</label>
-					<input type="number" name="celular" class="form-control" value="{{ $dataInstructor->celular }}">
+					<input type="number" name="celular" min="0" class="form-control" value="{{ $dataInstructor->celular }}">
 					@if ($errors->has('celular'))
 						<span class="help-block">
 							{{ $errors->first('celular') }}

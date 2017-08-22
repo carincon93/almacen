@@ -34,7 +34,7 @@
 			</tr>
 			<tr>
 				<th>Nombre instructor</th>
-				<td>{{ $dataClassGroup->instructor->id }}</td>
+				<td>{{ $dataClassGroup->instructor->nombre }}</td>
 			</tr>
 			<tr>
 				<th>Tipo de formacion</th>

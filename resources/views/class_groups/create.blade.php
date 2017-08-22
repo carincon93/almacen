@@ -22,7 +22,7 @@
 					<label for="id_ficha" class="control-label">
 						ID de ficha *
 					</label>
-					<input type="number" name="id_ficha" class="form-control" value="{{ old('id_ficha') }}">
+					<input type="number" name="id_ficha" class="form-control" min="0" value="{{ old('id_ficha') }}">
 					@if ($errors->has('id_ficha'))
 						<span class="help-block">
 							{{ $errors->first('id_ficha') }}

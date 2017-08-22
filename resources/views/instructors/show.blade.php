@@ -51,6 +51,12 @@
 				<th>Correo Electrónico</th>
 				<td>{{ $dataInstructor->email }}</td>
 			</tr>
+			<tr>
+				<th>fichas asignadas</th>
+				<td>
+					{{ $dataInstructor->classGroup->nombre_ficha }}
+				</td>
+			</tr>
 		</table>
 
 	</div>

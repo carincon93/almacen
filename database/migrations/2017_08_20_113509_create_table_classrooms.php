@@ -23,7 +23,6 @@ class CreateTableClassrooms extends Migration
             $table->string('estado', 15)->default('activo');
             $table->integer('cupo');
             $table->string('imagen', 191)->default(null)->nullable();
-
             $table->string('disponibilidad', 15)->default('disponible')->nullable();
             $table->dateTime('prestado_en')->nullable();
             $table->integer('instructor_id')->nullable()->unsigned();

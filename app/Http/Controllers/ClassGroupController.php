@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ClassGroupRequest;
 
 use App\ClassGroup;
-use App\instructor;
+use App\Instructor;
 
 class ClassGroupController extends Controller
 {
@@ -65,6 +65,7 @@ class ClassGroupController extends Controller
      */
     public function show($id)
     {
+        
         return view('class_groups.show')->with('dataClassGroup', ClassGroup::find($id));
     }
 
