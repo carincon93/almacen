@@ -8,6 +8,11 @@
 @endsection
 
 @section('content')
+<form action="{{ url('admin/dashboard/import') }}" enctype="multipart/form-data" method="POST">
+    {{ csrf_field() }}
+    <input type="file" name="imported-file" class="form-control" accept=".xlsx">
+    <button type="submit">Importar</button>
+</form>
 <div class="card floor-plan">
     <div class="cpic-floor1 clearfix">
         <div class="col-md-8">

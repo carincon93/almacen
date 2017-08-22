@@ -25,17 +25,17 @@ class PasswordRequest extends FormRequest
     {
         return [
             'mypassword' => 'required',
-            'password' => 'required|confirmed|min:6|max:18',
+            'password'   => 'required|confirmed|min:6|max:18',
         ];
     }
     public function messages()
     {
         return [
-            'mypassword.required' => 'El campo es requerido',
-            'password.required' => 'El campo es requerido',
-            'password.confirmed' => 'Los passwords no coinciden',
-            'password.min' => 'El mínimo permitido son 6 caracteres',
-            'password.max' => 'El máximo permitido son 18 caracteres',
+            'mypassword.required'  => 'El campo es requerido',
+            'password.required'    => 'El campo es requerido',
+            'password.confirmed'   => 'Los contraseñas no coinciden',
+            'password.min'         => 'El mínimo permitido son 6 caracteres',
+            'password.max'         => 'El máximo permitido son 18 caracteres',
         ];
     }
 }

@@ -14,9 +14,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/master.css') }}" rel="stylesheet">
 </head>
 <body>
+    @include('layouts.modal')
     @if (Auth::check())
     <aside id="sidebar">
         <div id="sidebar-logo">
@@ -31,6 +31,7 @@
                     <a href="{{url('admin/password')}}" style="font-size:13px;">Cambiar mi contraseña</a><br>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();" class="logout">
+                        <i class="fa fa-fw fa-sign-out"></i>
                         Cerrar Sesión
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -40,19 +41,19 @@
             </div>
         </div>
         <div id="sidebar-content">
-            <ul class="list-unstyled">
+            <ul class="sidebar-menu list-unstyled">
                 <li>Administración</li>
                 <li>
-                    <a href="{{ url('/admin/admin') }}"><i class="fa fa-fw fa-cog"></i>Administradores</a>
+                    <a href="{{ url('/admin/collaborator') }}"><i class="fa fa-fw fa-cog"></i>Administradores</a>
                 </li>
                 <li>
-                    <a href="{{ url('/admin/instructor') }}"><i class="fa fa-fw fa-cog"></i>Administrar instructores</a>
+                    <a href="{{ url('/admin/instructor') }}"><i class="fa fa-fw fa-cog"></i>Instructores</a>
                 </li>
                 <li>
-                    <a href="{{ url('/admin/classroom') }}"><i class="fa fa-fw fa-cog"></i>Administrar ambientes</a>
+                    <a href="{{ url('/admin/classroom') }}"><i class="fa fa-fw fa-cog"></i>Ambientes</a>
                 </li>
                 <li>
-                    <a href="{{ url('/admin/class_group') }}"><i class="fa fa-fw fa-cog"></i>Administrar fichas</a>
+                    <a href="{{ url('/admin/class_group') }}"><i class="fa fa-fw fa-cog"></i>Fichas</a>
                 </li>
                 <li>Acciones</li>
                 <li>
@@ -60,6 +61,13 @@
                 </li>
                 <li>
                     <a href="{{ url('/admin/history_record') }}"><i class="fa fa-fw fa-line-chart"></i>Historial de préstamos</a>
+                </li>
+                <li>
+                    <form action="{{ url('/admin/all_entries/truncate') }}" method="POST" style="display: inline-block;" class="form-truncate-ficha btn">
+                        {!! csrf_field()  !!}
+                        <i class="fa fa-fw fa-trash"></i>
+                        Eliminar todos los registros
+                    </form>
                 </li>
             </ul>
         </div>
@@ -153,7 +161,27 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/master.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            // =========================== Active Links =================================
+            var current_url = "{{ Request::fullUrl() }}";
+            var full_url = current_url+location.search;
+            var $navLinks = $("ul.sidebar-menu li a");
+            // First look for an exact match including the search string
+            var $curentPageLink = $navLinks.filter(
+                function() { return $(this).attr('href') === full_url; }
+            );
+            // If not found, look for the link that starts with the url
+            if(!$curentPageLink.length > 0){
+                $curentPageLink = $navLinks.filter(
+                    function() { return $(this).attr('href').startsWith(current_url) || current_url.startsWith($(this).attr('href')); }
+                );
+            }
+
+            $curentPageLink.parents('li').addClass('active');
+        });
+    </script>
+    <!-- <script src="{{ asset('js/master.js') }}"></script> -->
     @stack('scripts')
 </body>
 </html>

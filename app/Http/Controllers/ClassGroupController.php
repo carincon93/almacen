@@ -5,14 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClassGroupRequest;
 
-use App\Class_group;
+use App\ClassGroup;
+use App\instructor;
 
 class ClassGroupController extends Controller
 {
+    protected $dataClassGroup = [];
+
     public function __construct()
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,8 +24,8 @@ class ClassGroupController extends Controller
      */
     public function index()
     {
-        $dataGroup = Class_group::all()->sortBy('nombre_ficha');
-        return view('class_groups.index')->with('dataGroup', $dataGroup);
+        $dataClassGroup  = ClassGroup::all()->sortBy('nombre_ficha');
+        return view('class_groups.index')->with('dataClassGroup', $dataClassGroup );
     }
 
     /**
@@ -31,7 +35,8 @@ class ClassGroupController extends Controller
      */
     public function create()
     {
-        return view('class_groups.create');
+        $dataInstructor = Instructor::all()->sortBy('nombre');
+        return view('class_groups.create')->with('dataInstructor', $dataInstructor);
     }
 
     /**
@@ -42,12 +47,13 @@ class ClassGroupController extends Controller
      */
     public function store(ClassGroupRequest $request)
     {
-        $cg = new Class_group();
-        $cg->id_ficha       = $request->get('id_ficha');
-        $cg->nombre_ficha   = $request->get('nombre_ficha');
-        $cg->tipo_formacion = $request->get('tipo_formacion');
-        if ($cg->save()){
-            return redirect('/admin/class_group')->with('status', 'La ficha '.$cg->nombre_ficha.' fue adicionada con éxito');
+        $dataClassGroup = new ClassGroup();
+        $dataClassGroup->id_ficha       = $request->get('id_ficha');
+        $dataClassGroup->nombre_ficha   = $request->get('nombre_ficha');
+        $dataClassGroup->numero_documento  = $request->get('numero_documento');
+        $dataClassGroup->tipo_formacion = $request->get('tipo_formacion');
+        if ($dataClassGroup->save()){
+            return redirect('/admin/class_group')->with('status', 'La ficha '.$dataClassGroup->nombre_ficha.' fue adicionada con éxito');
         }
     }
 
@@ -59,7 +65,7 @@ class ClassGroupController extends Controller
      */
     public function show($id)
     {
-        return view('class_groups.show')->with('dataGroup', Class_group::find($id));
+        return view('class_groups.show')->with('dataClassGroup', ClassGroup::find($id));
     }
 
     /**
@@ -70,9 +76,9 @@ class ClassGroupController extends Controller
      */
     public function edit($id)
     {
-        $dataGroup = Class_group::find($id);
+        $dataClassGroup = ClassGroup::find($id);
         return view('class_groups.edit')
-            ->with('dataGroup', $dataGroup);
+            ->with('dataClassGroup', $dataClassGroup);
     }
 
     /**
@@ -84,12 +90,13 @@ class ClassGroupController extends Controller
      */
     public function update(ClassGroupRequest $request, $id)
     {
-        $cg = Class_group::find($id);
-        $cg->id_ficha       = $request->get('id_ficha');
-        $cg->nombre_ficha   = $request->get('nombre_ficha');
-        $cg->tipo_formacion = $request->get('tipo_formacion');
-        if ($cg->save()){
-            return redirect('/admin/class_group')->with('status', 'La ficha '.$cg->nombre_ficha.' fue modificado con éxito');
+        $dataClassGroup = ClassGroup::find($id);
+        $dataClassGroup->id_ficha       = $request->get('id_ficha');
+        $dataClassGroup->nombre_ficha   = $request->get('nombre_ficha');
+        $dataClassGroup->numero_documento  = $request->get('numero_documento');
+        $dataClassGroup->tipo_formacion = $request->get('tipo_formacion');
+        if ($dataClassGroup->save()){
+            return redirect('/admin/class_group')->with('status', 'La ficha '.$dataClassGroup->nombre_ficha.' fue modificado con éxito');
         }
     }
 
@@ -101,41 +108,13 @@ class ClassGroupController extends Controller
      */
     public function destroy($id)
     {
-        Class_group::destroy($id);
+        ClassGroup::destroy($id);
         return redirect('/admin/class_group')->with('status', 'La ficha fue eliminada con éxito');
     }
 
-    public function import(Request $request)
+    public function truncate()
     {
-        if($request->file('imported-file'))
-        {
-            $path = $request->file('imported-file')->getRealPath();
-            $data = \Excel::load($path, function($reader)
-            {})->get();
-
-            if(!empty($data) && $data->count())
-            {
-                foreach ($data->toArray() as $row)
-                {
-                    if(!empty($row))
-                    {
-                        $dataArray[] =
-                        [
-                            'id_ficha' => $row['id_ficha'],
-                            'nombre_ficha' => $row['nombre_ficha'],
-                            'numero_documento' => $row['numero_documento'],
-                            // 'fecha_inicio' => date('Y-m-d', strtotime($row['fecha_inicio'])),
-                            'tipo_formacion' => $row['tipo_formacion']
-
-                        ];
-                    }
-                }
-                if(!empty($dataArray))
-                {
-                    Class_group::insert($dataArray);
-                    return back();
-                }
-            }
-        }
+        ClassGroup::truncate();
+        return redirect('/admin/class_group')->with('status', 'Todos los registros de las fichas fueron eliminadas con éxito!');
     }
 }

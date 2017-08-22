@@ -6,26 +6,24 @@ use Illuminate\Http\Request;
 
 use App\Classroom;
 use App\Instructor;
-use App\history_record;
+use App\HistoryRecord;
 
 class WelcomeController extends Controller
 {
+    protected $dataClassroom = [];
+    protected $dataHistoryR = [];
+    protected $dataInstructor = [];
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $dataClassroom  = Classroom::all()->sortBy('nombre_ambiente');
-
-        $dataHistorical = history_record::orderByDesc('prestado_en', 'DESC')->take(5)->get();
+        $dataClassroom  = Classroom::orderByDesc('disponibilidad')->get();
+        $dataHistoryR   = HistoryRecord::orderByDesc('prestado_en', 'DESC')->take(5)->get();
         $dataInstructor = Instructor::all()->sortBy('nombre');
-        return view('welcome')
-        ->with('dataClassroom', $dataClassroom)
-            ->with('dataHistorical', $dataHistorical)
-            ->with('dataInstructor', $dataInstructor);
-    }
 
-    public function ajaxsearch(Request $request)
-    {
-        $query = Classroom::nombre_ambiente($request->get('nombre_ambiente'))->orderBy('nombre_ambiente', 'ASC')->get();
-        return view('classroomajx', compact('query'));
+        return view('welcome', compact('dataClassroom', 'dataHistoryR', 'dataInstructor'));
     }
-
 }

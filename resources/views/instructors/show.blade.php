@@ -12,12 +12,6 @@
 @section('content')
 	<h1 class="text-uppercase">{{ $dataInstructor->nombre.' '.$dataInstructor->apellidos }}</h1>
 	<hr>
-	@if (session('status'))
-	<div class="alert alert-success alert-dismissible" role="alert">
-		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
-		{!!  html_entity_decode(session('status')) !!}
-	</div>
-	@endif
 	<div class="table-responsive">
 		<table class="table table-stripped table-bordered table-hover">
 			<tr>
@@ -37,7 +31,6 @@
 				<th>Tipo de contrato</th>
 				<td class="text-capitalize">{{ $dataInstructor->vinculacion1 }}</td>
 			</tr>
-			
 			<tr>
 				<th>Area</th>
 				<td class="text-capitalize">{{ $dataInstructor->area }}</td>
@@ -58,7 +51,6 @@
 				<th>Correo Electrónico</th>
 				<td>{{ $dataInstructor->email }}</td>
 			</tr>
-			
 		</table>
 
 	</div>

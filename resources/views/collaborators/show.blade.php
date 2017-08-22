@@ -4,13 +4,13 @@
 
 @section('navbar-top')
 <ul class="breadcrumb">
-	<li><a href="{{ url('/admin/admin') }}" class="btn-link">Lista de administradores</a></li>
+	<li><a href="{{ url('/admin/collaborator') }}" class="btn-link">Lista de administradores</a></li>
 	<li>Ver administrador</li>
 </ul>
 @endsection
 
 @section('content')
-	<h1 class="text-uppercase">{{ $dataAdmin->name }}</h1>
+	<h1 class="text-uppercase">{{ $dataCollaborator->name }}</h1>
 	<hr>
 	@if (session('status'))
 	<div class="alert alert-success alert-dismissible" role="alert">
@@ -22,15 +22,15 @@
 		<table class="table table-stripped table-bordered table-hover">
 			<tr>
 				<th>id</th>
-				<td>{{ $dataAdmin->id }}</td>
+				<td>{{ $dataCollaborator->id }}</td>
 			</tr>
 			<tr>
 				<th>Nombre</th>
-				<td>{{ $dataAdmin->name }}</td>
+				<td>{{ $dataCollaborator->name }}</td>
 			</tr>
 			<tr>
 				<th>Correo</th>
-				<td>{{ $dataAdmin->email }}</td>
+				<td>{{ $dataCollaborator->email }}</td>
 			</tr>
 		</table>
 	</div>

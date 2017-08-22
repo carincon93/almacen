@@ -6,31 +6,14 @@
 </div>
 @endsection
 @section('big-content-desc')
-<a href="{{ url('/admin/admin/create') }}"><i class="fa fa-fw fa-plus"></i> Añadir un nuevo administrador</a>
+<a href="{{ url('/admin/collaborator/create') }}"><i class="fa fa-fw fa-plus"></i> Añadir un nuevo administrador</a>
 @endsection
 @section('content')
-<!-- Modal -->
-<div class="modal fade" id="confirm-delete">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title text-capitalize" id="myModalLabel"></h4>
-            </div>
-            <div class="modal-body">
-                Está seguro que desea eliminar este administrador?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-danger" id="delete-ad">Eliminar Administrador</button>
-            </div>
-        </div>
-    </div>
-</div>
+@include('layouts.modal')
 @include('layouts.messages')
 <div class="card">
     <div class="table-responsive">
-        <table class="table table-full table-hover" data-form="deleteForm">
+        <table class="table table-full table-hover">
             <thead>
                 <tr>
                     <th>#</th>
@@ -42,24 +25,24 @@
                 @php
                 $count = 1;
                 @endphp
-                @foreach($dataAdmin as $ad)
+                @foreach($dataCollaborator as $adm)
                 <tr>
                     <td>{{ $count++ }}</td>
-                    <td>{{ $ad->name }}</td>
+                    <td>{{ $adm->name }}</td>
                     <td>
-                        <a class="btn" href="{{ url('/admin/admin/'.$ad->id) }}">
+                        <a class="btn btn-action" href="{{ url('/admin/collaborator/'.$adm->id) }}">
                             <i class="fa fa-fw fa-search"></i>
                         </a>
-                        <a class="btn" href="{{ url('/admin/admin/'.$ad->id.'/edit') }}">
-                            <i class="fa fa-fw fa-pencil"></i>
+                        <a class="btn btn-action" href="{{ url('/admin/collaborator/'.$adm->id.'/edit') }}">
+                            <i class="fa fa-fw fa-edit"></i>
+                            Editar
                         </a>
-                        <form action="{{ url('/admin/admin/'.$ad->id) }}" method="POST" style="display: inline-block;" class="form-delete-admin btn btn-danger">
+                        <form action="{{ url('/admin/collaborator/'.$adm->id) }}" data-nombre="{{ $adm->name }}" method="POST" style="display: inline-block;" class="btn-delete-tbl btn-action btn">
                             {{ method_field('delete') }}
                             {!! csrf_field()  !!}
 
-                            <button type="button" class="btn-delete" data-nombre="{{ $ad->name }}">
-                                <i class="fa fa-fw fa-trash"></i>
-                            </button>
+                            <i class="fa fa-fw fa-trash"></i>
+                            Eliminar
                         </form>
                     </td>
                 </tr>

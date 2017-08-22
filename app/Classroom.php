@@ -7,22 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 class Classroom extends Model
 {
     protected $fillable = [
-        'nombre_ambiente', 'tipo_ambiente', 'movilidad', 'estado', 'cupo', 'imagen', 'disponibilidad',  'prestado_en', 'instructor_id',
+        'nombre_ambiente',
+        'tipo_ambiente',
+        'movilidad',
+        'estado',
+        'cupo',
+        'imagen',
+        'disponibilidad',
+        'prestado_en',
+        'instructor_id',
     ];
 
 
     public function instructor() {
-    	return $this->belongsTo('App\instructor');
+    	return $this->belongsTo('App\Instructor');
     }
-    public function Historial_classroom_loan() {
-    	return $this->hasMany('App\history_record');
-    }
-
-    public function scopeNombre_ambientetbl($query, $nombre_ambiente)
-    {
-        if (trim($nombre_ambiente) != ' ') {
-            $query->where('nombre_ambiente', 'LIKE', "%$nombre_ambiente%");
-        }
+    public function historyrecords() {
+    	return $this->hasMany('App\HistoryRecord');
     }
 
     public function scopeNombre_ambiente($query, $nombre_ambiente)

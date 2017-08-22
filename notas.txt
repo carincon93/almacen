@@ -1,5 +1,11 @@
 fotos ambientes y instructores,
-editar novedad con modal,
 hacer busqueda de ficha con modal dentro de prestamo
 Averiguar que fichas son virtuales y por horas
-editar instructor tipo de vinculacion
+default novedad (sin novedad)
+las fichas no muestran el nombre del instructor asociado - falla en la relación de los modelos
+verificar si el ip de los instructores es obligatorio
+evitar números negativos en los inputs númericos
+busqueda en el historial por fechas ajax
+preguntar si el historial se puede borrar cada trimestre o debe perdurar por los siglos
+error. un instructor no se puede borrar si tiene fichas asignadas, primero se debe borrar las fichas para poder eliminar un instructor
+si algun ambiente y/o instructor se borra y estan en el historial, la vista del historial saca error (solucion: historial sin fk's)

@@ -13,14 +13,14 @@
 	<div class="col-md-8">
 		<div class="card-form">
 			<form action="{{ url('/admin/instructor/'.$dataInstructor->id) }}" method="POST" enctype="multipart/form-data">
+                {!! csrf_field()  !!}
+                {{ method_field('put') }}
 				@if(!empty($dataInstructor->imagen))
 				<img src="{{ asset($dataInstructor->imagen) }}" alt="" class="img-responsive img-instructor">
 				@else
 				<img src="{{ asset('/images/instructors/perdefault.png') }}" alt="" class="img-responsive img-instructor">
 				@endif
 
-				{!! csrf_field()  !!}
-				{{ method_field('put') }}
 				<div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
 					<label for="nombre" class="control-label">Nombre *</label>
 					<input type="text" name="nombre" class="form-control" value="{{ $dataInstructor->nombre }}">
@@ -44,8 +44,8 @@
 							Tipo de contrato *
 						</label>
 						<select name="vinculacion1" class="form-control">
-							<option value="planta {{ $dataInstructor->vinculacion1 == 'planta' ? 'selected="selected"' : '' }}" class="text-capitalize">planta</option>
-							<option value="contratista {{ $dataInstructor->vinculacion1 == 'contratista' ? 'selected="selected"' : '' }}" class="text-capitalize">contratista</option>
+							<option value="planta {{ $dataInstructor->vinculacion1 == 'planta' ? 'selected="selected"' : '' }}" class="text-capitalize">Planta</option>
+							<option value="contratista {{ $dataInstructor->vinculacion1 == 'contratista' ? 'selected="selected"' : '' }}" class="text-capitalize">Contratista</option>
 						</select>
 						@if ($errors->has('vinculacion1'))
 							<span class="help-block">

@@ -5,14 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\InstructorRequest;
 
+
 use App\Instructor;
 
 class InstructorController extends Controller
 {
+    protected $dataInstructor = [];
+
     public function __construct()
     {
-        $this->middleware('auth')->except('documentoajax', 'disponibilidad_instructor', 'modificar_disponibilidad_ins');
+        $this->middleware('auth')->except('disponibilidad_instructor', 'modificar_disponibilidad', 'ajax');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -42,24 +46,25 @@ class InstructorController extends Controller
      */
     public function store(InstructorRequest $request)
     {
-        $ins = new Instructor();
-        $ins->nombre               = $request->get('nombre');
-        $ins->apellidos            = $request->get('apellidos');
-        $ins->vinculacion1         = $request->get('vinculacion1');
-        $ins->area                 = $request->get('area');
-        $ins->numero_documento     = $request->get('numero_documento');
-        $ins->ip                   = $request->get('ip');
-        $ins->celular              = $request->get('celular');
-        $ins->email                = $request->get('email');
+        $dataInstructor = new Instructor();
+        $dataInstructor->nombre            = $request->get('nombre');
+        $dataInstructor->apellidos         = $request->get('apellidos');
+        $dataInstructor->vinculacion1      = $request->get('vinculacion1');
+        $dataInstructor->numero_documento  = $request->get('numero_documento');
+        $dataInstructor->area              = $request->get('area');
+        $dataInstructor->ip                = $request->get('ip');
+        $dataInstructor->celular           = $request->get('celular');
+        $dataInstructor->email             = $request->get('email');
+
         if ($request->hasFile('imagen')) {
             $file = time().'.'.$request->imagen->getClientOriginalExtension();
             $request->imagen->move(public_path('/images/instructors/'), $file);
-            $ins->imagen = '/images/instructors/'.$file;
+            $dataInstructor->imagen = '/images/instructors/'.$file;
         }
-        
-        if ($ins->save()){
+
+        if ($dataInstructor->save()){
             return redirect('/admin/instructor')
-                ->with('status', 'El instructor '.$ins->nombre.' '.$ins->apellidos.' fue adicionado con éxito');
+                ->with('status', 'El instructor '.$dataInstructor->nombre.' '.$dataInstructor->apellidos.' fue adicionado con éxito');
         }
     }
 
@@ -73,7 +78,7 @@ class InstructorController extends Controller
     {
         $dataInstructor  = Instructor::find($id);
         return view('instructors.show')
-        ->with('dataInstructor', $dataInstructor);
+            ->with('dataInstructor', $dataInstructor);
     }
 
     /**
@@ -85,8 +90,8 @@ class InstructorController extends Controller
     public function edit($id)
     {
         $dataInstructor  = Instructor::find($id);
-        return view('instructors.edit')
-        ->with('dataInstructor', $dataInstructor);
+       return view('instructors.edit')
+           ->with('dataInstructor', $dataInstructor);
     }
 
     /**
@@ -98,23 +103,23 @@ class InstructorController extends Controller
      */
     public function update(InstructorRequest $request, $id)
     {
-        $ins = Instructor::find($id);
-        $ins->nombre               = $request->get('nombre');
-        $ins->apellidos            = $request->get('apellidos');
-        $ins->vinculacion1         = $request->get('vinculacion1');
-        $ins->area                 = $request->get('area');
-        $ins->numero_documento     = $request->get('numero_documento');
-        $ins->ip                   = $request->get('ip');
-        $ins->celular              = $request->get('celular');
-        $ins->email                = $request->get('email');
+        $dataInstructor = Instructor::find($id);
+        $dataInstructor->nombre               = $request->get('nombre');
+        $dataInstructor->apellidos            = $request->get('apellidos');
+        $dataInstructor->vinculacion1         = $request->get('vinculacion1');
+        $dataInstructor->area                 = $request->get('area');
+        $dataInstructor->numero_documento     = $request->get('numero_documento');
+        $dataInstructor->ip                   = $request->get('ip');
+        $dataInstructor->celular              = $request->get('celular');
+        $dataInstructor->email                = $request->get('email');
         if ($request->hasFile('imagen')) {
             $file = time().'.'.$request->imagen->getClientOriginalExtension();
             $request->imagen->move(public_path('/images/instructors/'), $file);
-            $ins->imagen = '/images/instructors/'.$file;
+            $dataInstructor->imagen = '/images/instructors/'.$file;
         }
-        if ($ins->save()){
+        if ($dataInstructor->save()){
             return redirect('admin/instructor')
-                ->with('status', 'El instructor '.$ins->nombre.' '.$ins->apellidos.' fue modificado con éxito');
+                ->with('status', 'El instructor '.$dataInstructor->nombre.' '.$dataInstructor->apellidos.' fue modificado con éxito');
         }
     }
 
@@ -131,23 +136,29 @@ class InstructorController extends Controller
             ->with('status', 'El instructor fue eliminado con éxito');
     }
 
-    public function disponibilidad_instructor(Request $request, $idInstructor)
+    public function truncate()
     {
-        $dataInstructor = Instructor::where('id', '=', $idInstructor)->first();
+        Instructor::truncate();
+        return redirect('/admin/instructor')->with('status', 'Todos los registros de las fichas fueron eliminadas con éxito!');
+    }
+
+    public function disponibilidad_instructor(Request $request, $id_instructor)
+    {
+        $dataInstructor = Instructor::where('id', '=', $id_instructor)->first();
         $dataInstructor->disponibilidad = "no disponible";
         $dataInstructor->save();
     }
 
-    public function modificar_disponibilidad_ins(Request $request, $idInstructor)
+    public function modificar_disponibilidad(Request $request, $id_instructor)
     {
-        $dataInstructor = Instructor::where('id', '=', $idInstructor)->first();
+        $dataInstructor = Instructor::where('id', '=', $id_instructor)->first();
         $dataInstructor->disponibilidad = "disponible";
         $dataInstructor->save();
     }
 
-    public function documentoajax(Request $request)
+    public function ajax(Request $request)
     {
         $query = Instructor::numero_documento($request->get('numero_documento'))->get();
-        return view('instructordocajx', compact('query'));
+        return view('ajax.instructors', compact('query'));
     }
 }
