@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Classroom;
 use App\Instructor;
 use App\HistoryRecord;
+use App\ClassGroup;
 
 class WelcomeController extends Controller
 {
@@ -23,7 +24,8 @@ class WelcomeController extends Controller
         $dataClassroom  = Classroom::orderByDesc('disponibilidad')->get();
         $dataHistoryR   = HistoryRecord::orderByDesc('prestado_en', 'DESC')->take(5)->get();
         $dataInstructor = Instructor::all()->sortBy('nombre');
+        $ficha=ClassGroup::all();
 
-        return view('welcome', compact('dataClassroom', 'dataHistoryR', 'dataInstructor'));
+        return view('welcome', compact('dataClassroom', 'dataHistoryR', 'dataInstructor', 'ficha'));
     }
 }

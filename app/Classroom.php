@@ -16,6 +16,7 @@ class Classroom extends Model
         'disponibilidad',
         'prestado_en',
         'instructor_id',
+        'classgroup_id',
     ];
 
 

@@ -13,10 +13,23 @@
             <img src="{{ asset($ins->imagen) }}" alt="" class="img-responsive">
         </div>
     </div>
+    <div class="row">
+           
+                <select name="classgroup_id" class="form-control">
+                    <option value="">Seleccione una ficha...</option>
+                    @foreach($ficha as $fi)
+                        <option value="{{ $fi->id_ficha }}">{{ $fi->id_ficha.' '.$fi->nombre_ficha }}</option>
+                    @endforeach
+                </select>
+                     
+
+    </div>
 </div>
+
 @else
 <h3>Este instructor ya tiene un ambiente asignado: <br>
 {{ $ins->classroom->nombre_ambiente }}
 </h3>
 @endif
 @endforeach
+

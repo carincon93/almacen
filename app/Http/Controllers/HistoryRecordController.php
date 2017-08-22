@@ -49,6 +49,7 @@ class HistoryRecordController extends Controller
         $dataHistoryR->instructor_id  = $request->get('instructor_id');
         $dataHistoryR->classroom_id   = $request->get('classroom_id');
         $dataHistoryR->prestado_en    = $request->get('prestado_en');
+        $dataHistoryR->classgroup_id      = $request->get('classgroup_id');
 
         $dataHistoryR->save();
     }

@@ -830,9 +830,9 @@ $(document).ready(function () {
     // Autofocus del input al abrir el modal de préstamo
     $('.modal').on('shown.bs.modal', function () {
         $(this).find('[autofocus]').focus();
-        $('.modal-body').click(function (event) {
-            $(this).find('[autofocus]').focus();
-        });
+        // $('.modal-busqueda').click(function (event) {
+        //     $(this).find('[autofocus]').focus();
+        // });
     });
     // Búsqueda mediante ajax - Número de documento del instructor
     var request = null;
@@ -876,10 +876,10 @@ $(document).ready(function () {
     $('.modal').on('click', '#btn-prestar-ambiente', function (event) {
         event.preventDefault();
         var $form_prestamo = $('#form-prestamo');
-        $classroom_id = $form_prestamo.find('#id_ambiente').val(), $prestado_en = $form_prestamo.find('input[name=prestado_en]').val(), $id_instructor = $form_prestamo.find('input[name=instructor_id]').val(), $token = $form_prestamo.find('input[name=_token]').val();
+        $classroom_id = $form_prestamo.find('#id_ambiente').val(), $prestado_en = $form_prestamo.find('input[name=prestado_en]').val(), $id_instructor = $form_prestamo.find('input[name=instructor_id]').val(), $token = $form_prestamo.find('input[name=_token]').val(), $classgroup_id=$form_prestamo.find('select[name=classgroup_id]').val();
         if ($id_instructor > 0) {
             disponibilidad_instructor($id_instructor, $token);
-            guardar_historial($token, $id_instructor, $classroom_id, $prestado_en);
+            guardar_historial($token, $id_instructor,$classgroup_id,$classroom_id, $prestado_en);
             setTimeout(function () {
                 $form_prestamo.submit();
             }, 1000);
@@ -897,7 +897,7 @@ $(document).ready(function () {
         });
     }
 
-    function guardar_historial($token, $id_instructor, $classroom_id, $prestado_en) {
+    function guardar_historial($token, $id_instructor,$classgroup_id, $classroom_id, $prestado_en) {
         if ($id_instructor > 0) {
             $.ajaxSetup({
                 headers: {
@@ -905,7 +905,7 @@ $(document).ready(function () {
                 }
             });
 
-            $.post('/guardar_historial', { _token: $token, instructor_id: $id_instructor, classroom_id: $classroom_id, prestado_en: $prestado_en }, function (data, textStatus, xhr) {
+            $.post('/guardar_historial', { _token: $token, instructor_id: $id_instructor, classgroup_id: $classgroup_id, classroom_id: $classroom_id, prestado_en: $prestado_en }, function (data, textStatus, xhr) {
                 /*optional stuff to do after success */
             });
         }

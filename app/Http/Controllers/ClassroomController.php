@@ -140,6 +140,7 @@ class ClassroomController extends Controller
         $dataClassroom->disponibilidad = 'no disponible';
         $dataClassroom->prestado_en    = $request->get('prestado_en');
         $dataClassroom->instructor_id  = $request->get('instructor_id');
+        $dataClassroom->classgroup_id  = $request->get('classgroup_id');
 
         if($dataClassroom->save()) {
             session()->flash('status', 'El ambiente '.$dataClassroom->nombre_ambiente.' fue asignado con éxtio!');
@@ -152,9 +153,10 @@ class ClassroomController extends Controller
         $dataClassroom = Classroom::find($request->id);
         $dataClassroom->disponibilidad = 'disponible';
         $dataClassroom->instructor_id  = NULL;
+        $dataClassroom->classgroup_id  = NULL;
 
         if($dataClassroom->save()) {
-            $request->session()->flash('statusd', 'El ambiente '.$dataClassroom->nombre_ambiente.' está disponible nuevamente!');
+            $request->session()->flash('status', 'El ambiente '.$dataClassroom->nombre_ambiente.' está disponible nuevamente!');
             return redirect('/');
         }
     }

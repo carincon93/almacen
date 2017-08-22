@@ -1,3 +1,4 @@
+campo id_ficha es unico request,
 fotos ambientes y instructores,
 hacer busqueda de ficha con modal dentro de prestamo
 Averiguar que fichas son virtuales y por horas

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class HistoryRecord extends Model
 {
     protected $fillable = [
-        'instructor_id', 'classroom_id', 'prestado_en', 'entregado_en', 'novedad', 'novedad_nueva',
+        'instructor_id', 'classgroup_id','classroom_id', 'prestado_en', 'entregado_en', 'novedad', 'novedad_nueva',
     ];
 
     public function instructor() {

@@ -15,14 +15,15 @@ class CreateTableHistoryRecords extends Migration
     {
         Schema::create('history_records', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('instructor_num_doc');
+            $table->integer('instructor_id')->unsigned();
+            $table->integer('classgroup_id')->unsigned();
             $table->integer('classroom_id')->unsigned();
             $table->dateTime('prestado_en');
             $table->dateTime('entregado_en')->nullable();
             $table->longText('novedad')->nullable();
             $table->longText('novedad_nueva')->nullable();
-            $table->foreign('instructor_num_doc')->references('numero_documento')->on('instructors')->onDelete('cascade');
-            $table->foreign('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
+            $table->foreign('instructor_id')->references('id')->on('instructors')->onDelete('cascade');
+            $table->foreign('classgroup_id')->references('id_ficha')->on('class_groups')->onDelete('cascade');
             $table->timestamps();
             $table->dropColumn(['created_at', 'updated_at']);
         });

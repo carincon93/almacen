@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\InstructorRequest;
-
+use App\ClassGroup;
 
 use App\Instructor;
 
@@ -158,7 +158,9 @@ class InstructorController extends Controller
 
     public function ajax(Request $request)
     {
+        $ficha=ClassGroup::all();
         $query = Instructor::numero_documento($request->get('numero_documento'))->get();
-        return view('ajax.instructors', compact('query'));
+        return view('ajax.instructors', compact('query','ficha'));
+
     }
 }

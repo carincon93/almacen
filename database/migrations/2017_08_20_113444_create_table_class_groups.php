@@ -15,7 +15,7 @@ class CreateTableClassGroups extends Migration
     {
         Schema::create('class_groups', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_ficha');
+            $table->integer('id_ficha')->unique()->unsigned();
             $table->string('nombre_ficha', 100);
             $table->string('especialidad', 100)->nullable();
             $table->string('instructor', 100)->nullable();
@@ -25,6 +25,7 @@ class CreateTableClassGroups extends Migration
             $table->date('fecha_final')->nullable();
             $table->text('horario')->nullable();
             $table->string('tipo_formacion', 91);
+            $table->string('disponibilidad', 15)->default('disponible')->nullable();
             $table->foreign('numero_documento')->references('numero_documento')->on('instructors');
             $table->timestamps();
         });
