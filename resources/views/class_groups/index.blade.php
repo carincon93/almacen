@@ -6,36 +6,27 @@
 </div>
 @endsection
 @section('big-content-desc')
-<a href="{{ url('/admin/class_group/create') }}"><i class="fa fa-fw fa-plus"></i> Añadir una nueva ficha</a>
 @endsection
 @section('content')
-<!-- Modal -->
-<div class="modal fade" id="confirm-delete">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title text-capitalize" id="myModalLabel"></h4>
-            </div>
-            <div class="modal-body">
-                Está seguro que desea eliminar esta ficha?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-danger" id="delete-ficha">Eliminar Ficha</button>
-            </div>
-        </div>
-    </div>
-</div>
+
 @include('layouts.messages')
-<form action="{{ url('class_group/import') }}" enctype="multipart/form-data" method="POST">
+<!-- <blockquote class="">
+    <p>Si desea realizar una importación de un archivo de excel, por favor primero elimine todos los registros de esta tabla</p>
+    <form action="{{ url('/admin/class_group/truncate') }}" method="POST" style="display: inline-block;" class="form-truncate-ficha btn">
+        {!! csrf_field()  !!}
+        <i class="fa fa-fw fa-trash"></i>
+        Eliminar todos los registros
+    </form>
+</blockquote>
+<form action="{{ url('admin/class_group/import') }}" enctype="multipart/form-data" method="POST">
     {{ csrf_field() }}
     <input type="file" name="imported-file" class="form-control" accept=".xlsx">
     <button type="submit">Importar</button>
-</form>
+</form> -->
 <div class="card">
+    <a href="{{ url('/admin/class_group/create') }}"><i class="fa fa-fw fa-plus"></i> Añadir una nueva ficha</a>
     <div class="table-responsive">
-        <table class="table table-full table-hover" data-form="deleteForm">
+        <table class="table table-full table-hover">
             <thead>
                 <tr>
                     <th>#</th>
@@ -49,25 +40,25 @@
                 @php
                 $count = 1;
                 @endphp
-                @foreach($dataGroup as $dg)
+                @foreach($dataClassGroup as $dg)
                 <tr>
                     <td>{{ $count++ }}</td>
                     <td>{{ $dg->id_ficha }}</td>
                     <td>{{ $dg->nombre_ficha }}</td>
                     <td>{{ $dg->tipo_formacion }}</td>
-                    <td>
-                        <a class="btn" href="{{ url('/admin/class_group/'.$dg->id) }}">
+                    <td class="td-actions">
+                        <a class="btn btn-action" href="{{ url('/admin/class_group/'.$dg->id) }}">
                             <i class="fa fa-fw fa-search"></i>
                         </a>
-                        <a class="btn" href="{{ url('/admin/class_group/'.$dg->id.'/edit') }}">
+                        <a class="btn btn-action" href="{{ url('/admin/class_group/'.$dg->id.'/edit') }}">
                             <i class="fa fa-fw fa-pencil"></i>
+                            Editar
                         </a>
-                        <form action="{{ url('/admin/class_group/'.$dg->id) }}" method="POST" style="display: inline-block;" class="form-delete-ficha btn btn-danger">
+                        <form action="{{ url('/admin/class_group/'.$dg->id) }}" style="display: inline-block;"data-nombre="{{ $dg->nombre_ficha }}"  method="POST" class="btn-delete-tbl btn btn-action">
                             {{ method_field('delete') }}
                             {!! csrf_field()  !!}
-                            <button type="button" class="btn-delete" data-nombre="{{ $dg->nombre_ficha }}">
-                                <i class="fa fa-fw fa-trash"></i>
-                            </button>
+                            <i class="fa fa-fw fa-trash"></i>
+                            Eliminar
                         </form>
                     </td>
                 </tr>

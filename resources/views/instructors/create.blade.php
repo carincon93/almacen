@@ -45,17 +45,22 @@
 						@endif
 
 					</div>
-					<div class="form-group{{ $errors->has('numero_documento') ? ' has-error' : '' }}">
-						<label for="numero_documento" class="control-label">
-							Número de documento *
+					<div class="form-group{{ $errors->has('vinculacion1') ? ' has-error' : '' }}">
+						<label for="vinculacion1" class="control-label">
+							Tipo de contrato *
 						</label>
-						<input type="number" name="numero_documento" class="form-control" value="{{ old('numero_documento') }}">
-						@if ($errors->has('numero_documento'))
+						<select name="vinculacion1" class="form-control">
+							<option value="">Seleccione el tipo de contrato...</option>
+							<option value="planta" class="text-capitalize" {{ (old("vinculacion1"))}}>Planta</option>
+							<option value="contratista" class="text-capitalize" {{ (old("vinculacion1"))}}>Contratista</option>
+						</select>
+						@if ($errors->has('vinculacion1'))
 							<span class="help-block">
-								{{ $errors->first('numero_documento') }}
+								{{ $errors->first('vinculacion1') }}
 							</span>
 						@endif
 					</div>
+
 					<div class="form-group{{ $errors->has('area') ? ' has-error' : '' }}">
 						<label for="area" class="control-label">
 							Área/Especialidad *
@@ -64,6 +69,17 @@
 						@if ($errors->has('area'))
 							<span class="help-block">
 								{{ $errors->first('area') }}
+							</span>
+						@endif
+					</div>
+					<div class="form-group{{ $errors->has('numero_documento') ? ' has-error' : '' }}">
+						<label for="numero_documento" class="control-label">
+							Número de documento *
+						</label>
+						<input type="number" name="numero_documento" class="form-control" value="{{ old('numero_documento') }}">
+						@if ($errors->has('numero_documento'))
+							<span class="help-block">
+								{{ $errors->first('numero_documento') }}
 							</span>
 						@endif
 					</div>
@@ -106,22 +122,7 @@
 						</label>
 						<input type="file" class="form-control" name="imagen">
 					</div>
-					<div class="form-group{{ $errors->has('instructor_type_id') ? ' has-error' : '' }}">
-						<label for="instructor_type_id" class="control-label">
-							Tipo de contrato *
-						</label>
-						<select name="instructor_type_id" class="form-control">
-							<option value="">Seleccione el tipo de contrato...</option>
-							@foreach($instructor_type as $it)
-							<option value="{{ $it->id }}" class="text-capitalize" {{ (old("instructor_type_id") == $it->id ? "selected" : "")}}>{{ $it->tipo_instructor }}</option>
-							@endforeach
-						</select>
-						@if ($errors->has('instructor_type_id'))
-							<span class="help-block">
-								{{ $errors->first('instructor_type_id') }}
-							</span>
-						@endif
-					</div>
+
 				</div>
 				<button class="btn btn-success" type="submit">
 					<i class="fa fa-fw fa-floppy-o"></i>

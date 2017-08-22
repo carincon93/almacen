@@ -11,34 +11,24 @@
 @endsection
 
 @section('content')
-<!-- Modal -->
-<div class="modal fade" id="confirm-delete">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title text-capitalize" id="myModalLabel"></h4>
-            </div>
-            <div class="modal-body">
-                Está seguro que desea eliminar este instructor?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-danger" id="delete-ins">Eliminar Instructor</button>
-            </div>
-        </div>
-    </div>
-</div>
 @include('layouts.messages')
+<!-- <blockquote class="">
+    <p>Si desea realizar una importación de un archivo de excel, por favor primero elimine todos los registros de esta tabla</p>
+    <form action="{{ url('/admin/classroom/truncate') }}" method="POST" style="display: inline-block;" class="form-truncate-ficha btn">
+        {!! csrf_field()  !!}
+        <i class="fa fa-fw fa-trash"></i>
+        Eliminar todos los registros
+    </form>
+</blockquote>
+<form action="{{ url('admin/instructor/import') }}" enctype="multipart/form-data" method="POST">
+    {{ csrf_field() }}
+    <input type="file" name="imported-file" class="form-control" accept=".xlsx">
+    <button type="submit">Importar</button>
+</form> -->
 <a href="{{ url('/admin/instructor/create') }}" class="btn"><i class="fa fa-fw fa-user-plus"></i> Añadir</a>
-<!-- <blockquote class="note success">
-    <p>
-        Si quieres añadir un nuevo instructor por favor da clic en 'Añadir'
-    </p>
-</blockquote> -->
 <div class="card">
     <div class="table-responsive">
-        <table class="table table-full table-hover" data-form="deleteForm">
+        <table class="table table-full table-hover">
             <thead>
                 <tr>
                     <th>#</th>
@@ -58,24 +48,25 @@
                     <td>{{ $ins->nombre.' '.$ins->apellidos }}</td>
                     <td>{{ $ins->area }}</td>
                     <td>{{ $ins->celular }}</td>
-                    <td>
-                        <a class="btn" href="{{ url('/admin/instructor/'.$ins->id) }}">
+                    <td class="td-actions">
+                        <a class="btn btn-action" href="{{ url('/admin/instructor/'.$ins->id) }}">
                             <i class="fa fa-fw fa-search"></i>
                         </a>
-                        <a class="btn" href="{{ url('/admin/instructor/'.$ins->id.'/edit') }}">
-                            <i class="fa fa-fw fa-pencil"></i>
+                        <a class="btn btn-action" href="{{ url('/admin/instructor/'.$ins->id.'/edit') }}">
+                            <i class="fa fa-fw fa-edit"></i>
+                            Editar
                         </a>
                         @if($ins->disponibilidad == 'disponible')
-                        <form action="{{ url('/admin/instructor/'.$ins->id) }}" method="POST" style="display:inline-block;" class="form-delete-ins btn-danger btn">
+                        <form action="{{ url('/admin/instructor/'.$ins->id) }}" method="POST" class="btn-action btn-delete-tbl btn"  data-nombre="{{ $ins->nombre.' '.$ins->apellidos }}">
                             {{ method_field('delete') }}
                             {!! csrf_field()  !!}
-                            <button class="btn-delete" data-nombre="{{ $ins->nombre.' '.$ins->apellidos }}">
-                                <i class="fa fa-fw fa-trash"></i>
-                            </button>
+                            <i class="fa fa-fw fa-trash"></i>
+                            Eliminar
                         </form>
                         @else
-                        <a href="{{ url('/') }}" class="btn" title="El instructor tiene un ambiente a cargo, para poder eliminarlo primero debe hacer la entrega del ambiente. Haga clic en este elemento para direccionarte al préstamo de ambientes">
+                        <a href="{{ url('/') }}" class="btn btn-action btn-not-delete" title="El instructor tiene un ambiente a cargo, para poder eliminarlo primero debe hacer la entrega del ambiente. Haga clic en este elemento para direccionarte al préstamo de ambientes">
                             <i class="fa fa-fw fa-trash"></i>
+                            Eliminar
                         </a>
                         @endif
                     </td>

@@ -15,16 +15,15 @@
 //     return view('welcome');
 // });
 
-// Auth::routes();
-
+	Auth::routes();
 // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::post('login', 'Auth\LoginController@login');
     Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
     // Registration Routes...
-    Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-    Route::post('register', 'Auth\RegisterController@register');
+    // Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+    // Route::post('register', 'Auth\RegisterController@register');
 
     // Password Reset Routes...
     Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
@@ -33,39 +32,46 @@
     Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/', 'WelcomeController@index')->name('welcome');
+Route::get('/admin', 'AdminController@redirect');
+Route::get('/admin/dashboard', 'AdminController@dashboard');
+Route::post('/admin/dashboard/import', 'AdminController@import');
 
-// Welcome Ajaxsearch
-Route::get('/findclassroom', 'WelcomeController@ajaxsearch');
-Route::get('/documentoinstructorajax', 'InstructorController@documentoajax');
+Route::get('/instructorajax', 'InstructorController@ajax');
 
 // Prestar Ambiente
 Route::post('/solicitar_prestamo/{id}/aprobado', 'ClassroomController@prestamo_aprobado');
-Route::post('/disponibilidad_instructor/{idInstructor}', 'InstructorController@disponibilidad_instructor');
-Route::post('/modificar_disponibilidad_ins/{idInstructor}', 'InstructorController@modificar_disponibilidad_ins');
+Route::post('/disponibilidad_instructor/{id_instructor}', 'InstructorController@disponibilidad_instructor');
+Route::post('/guardar_historial', 'HistoryRecordController@store');
+
 // Entregar Ambiente
 Route::post('/entregar_ambiente/{id}/aprobado', 'ClassroomController@entrega_aprobado');
+Route::post('/modificar_disponibilidad_ins/{id_instructor}', 'InstructorController@modificar_disponibilidad');
+Route::post('/agregar_novedad/{fecha_prestamo}', 'HistoryRecordController@agregar_novedad');
 
-Route::post('/save_history_record', 'HistoryRecordController@store');
-Route::post('/update_history_record/{prestado_en}', 'HistoryRecordController@update_history_record');
+//
+Route::resource('/admin/instructor','InstructorController');
+Route::post('/admin/instructor/truncate', 'InstructorController@truncate');
 
-// Instuctor
-Route::resource('/admin/instructor', 'InstructorController');
-// Classroom
-Route::resource('/admin/classroom', 'ClassroomController');
-// Classgroup
-Route::resource('/admin/class_group', 'ClassGroupController');
-// History record
-Route::resource('/admin/history_record', 'HistoryRecordController');
-// Admin
-Route::resource('/admin/admin', 'AdminController');
-Route::get('/admin', 'AdminController@prestamos_plano');
+//
+Route::resource('/admin/class_group','ClassGroupController');
+Route::post('/admin/class_group/truncate', 'ClassGroupController@truncate');
+Route::post('/admin/class_group/import','ClassGroupController@import');
+
+//
+Route::resource('/admin/classroom','ClassroomController');
+Route::post('/admin/classroom/truncate', 'ClassroomController@truncate');
+
+//
+Route::resource('/admin/history_record','HistoryRecordController');
+Route::post('/admin/history_record/{id}/novedad_nueva','HistoryRecordController@agregar_nueva_novedad');
+Route::get('/obtener_novedad','HistoryRecordController@obtener_novedad');
+
+//
 Route::get('admin/password', 'AdminController@password');
 Route::post('admin/updatepassword', 'AdminController@updatePassword');
-// Route::post('admin/modificar_novedad/{id}', 'HistoryRecordController@update');
+Route::post('/admin/all_entries/truncate', 'AdminController@truncateAll');
 
-
-Route::post('class_group/import', 'ClassGroupController@import');
-
+Route::resource('/admin/collaborator', 'CollaboratorController');
 
 
 // Redirección - Error 404

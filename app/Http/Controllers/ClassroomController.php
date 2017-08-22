@@ -5,17 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClassroomRequest;
 
+use Illuminate\Support\Facades\Schema;
+
 use App\Classroom;
-use App\Instructor;
-use App\history_record;
 
 class ClassroomController extends Controller
 {
+    protected $dataClassroom = [];
 
     public function __construct()
     {
-        $this->middleware('auth')->except('prestamo_aprobado', 'entrega_aprobado', 'save_history_record', 'modify_history_record');
+        $this->middleware('auth')->except('prestamo_aprobado', 'entrega_aprobado');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,21 +48,19 @@ class ClassroomController extends Controller
      */
     public function store(ClassroomRequest $request)
     {
-
-
-        $clr = new Classroom();
-        $clr->nombre_ambiente   = $request->get('nombre_ambiente');
-        $clr->tipo_ambiente     = $request->get('tipo_ambiente');
-        $clr->movilidad         = $request->get('movilidad');
-        $clr->estado            = $request->get('estado');
-        $clr->cupo              = $request->get('cupo');
+        $dataClassroom = new Classroom();
+        $dataClassroom->nombre_ambiente   = $request->get('nombre_ambiente');
+        $dataClassroom->tipo_ambiente     = $request->get('tipo_ambiente');
+        $dataClassroom->movilidad         = $request->get('movilidad');
+        $dataClassroom->estado            = $request->get('estado');
+        $dataClassroom->cupo              = $request->get('cupo');
         if ($request->hasFile('imagen')) {
             $file = time().'.'.$request->imagen->getClientOriginalExtension();
             $request->imagen->move(public_path('/images/classrooms/'), $file);
-            $clr->imagen = '/images/classrooms/'.$file;
+            $dataClassroom->imagen = '/images/classrooms/'.$file;
         }
-        if ($clr->save()){
-            return redirect('/admin/classroom')->with('status', 'El ambiente '.$clr->nombre_ambiente.' fue adicionado con éxito');
+        if ($dataClassroom->save()){
+            return redirect('/admin/classroom')->with('status', 'El ambiente '.$dataClassroom->nombre_ambiente.' fue adicionado con éxito');
         }
     }
 
@@ -83,9 +83,8 @@ class ClassroomController extends Controller
      */
     public function edit($id)
     {
-        $clr = Classroom::find($id);
-        return view('classrooms.edit')
-            ->with('clr', $clr);
+        $dataClassroom = Classroom::find($id);
+            return view('classrooms.edit')->with('clr', $dataClassroom);
     }
 
     /**
@@ -97,20 +96,20 @@ class ClassroomController extends Controller
      */
     public function update(ClassroomRequest $request, $id)
     {
-        $clr = Classroom::find($id);
-        $clr->nombre_ambiente = $request->get('nombre_ambiente');
-        $clr->tipo_ambiente   = $request->get('tipo_ambiente');
-        $clr->movilidad       = $request->get('movilidad');
-        $clr->estado          = $request->get('estado');
-        $clr->cupo            = $request->get('cupo');
+        $dataClassroom = Classroom::find($id);
+        $dataClassroom->nombre_ambiente = $request->get('nombre_ambiente');
+        $dataClassroom->tipo_ambiente   = $request->get('tipo_ambiente');
+        $dataClassroom->movilidad       = $request->get('movilidad');
+        $dataClassroom->estado          = $request->get('estado');
+        $dataClassroom->cupo            = $request->get('cupo');
         if ($request->hasFile('imagen')) {
-            \File::delete(public_path($clr->imagen));
+            \File::delete(public_path($dataClassroom->imagen));
             $file = time().'.'.$request->imagen->getClientOriginalExtension();
             $request->imagen->move(public_path('/images/classrooms/'), $file);
-            $clr->imagen = '/images/classrooms/'.$file;
+            $dataClassroom->imagen = '/images/classrooms/'.$file;
         }
-        if ($clr->save()) {
-            return redirect('/admin/classroom')->with('status', 'El ambiente '.$clr->nombre_ambiente.' fue modificado con éxito!');
+        if ($dataClassroom->save()) {
+            return redirect('/admin/classroom')->with('status', 'El ambiente '.$dataClassroom->nombre_ambiente.' fue modificado con éxito!');
         }
     }
 
@@ -126,10 +125,12 @@ class ClassroomController extends Controller
         return redirect('/admin/classroom')->with('status', 'El ambiente fue eliminado con éxito');
     }
 
-    public function ajaxsearch(Request $request)
+    public function truncate()
     {
-        $query = Classroom::nombre_ambientetbl($request->get('nombre_ambiente'))->orderBy('id', 'ASC')->get();
-        return view('classrooms.classroomajx', compact('query'));
+        Schema::disableForeignKeyConstraints();
+        Classroom::truncate();
+        Schema::enableForeignKeyConstraints();
+        return redirect('/admin/classroom')->with('status', 'Todos los registros de las fichas fueron eliminadas con éxito!');
     }
 
     // Aprobar préstamo y cambiar disponibilidad del ambiente
@@ -141,10 +142,11 @@ class ClassroomController extends Controller
         $dataClassroom->instructor_id  = $request->get('instructor_id');
 
         if($dataClassroom->save()) {
-            session()->flash('statusr', 'El ambiente '.$dataClassroom->nombre_ambiente.' fue asignado con éxtio!');
+            session()->flash('status', 'El ambiente '.$dataClassroom->nombre_ambiente.' fue asignado con éxtio!');
             return redirect('/');
         }
     }
+
     public function entrega_aprobado(Request $request)
     {
         $dataClassroom = Classroom::find($request->id);

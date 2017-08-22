@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-	<h1 class="text-uppercase">{{ $dataGroup->id_ficha }}</h1>
+	<h1 class="text-uppercase">{{ $dataClassGroup->id_ficha }}</h1>
 	<hr>
 	@if (session('status'))
 	<div class="alert alert-success alert-dismissible" role="alert">
@@ -22,19 +22,23 @@
 		<table class="table table-stripped table-bordered table-hover">
 			<tr>
 				<th>id</th>
-				<td>{{ $dataGroup->id }}</td>
+				<td>{{ $dataClassGroup->id }}</td>
 			</tr>
 			<tr>
 				<th>ID ficha</th>
-				<td>{{ $dataGroup->id_ficha }}</td>
+				<td>{{ $dataClassGroup->id_ficha }}</td>
 			</tr>
 			<tr>
 				<th>Nombre de la ficha</th>
-				<td>{{ $dataGroup->nombre_ficha }}</td>
+				<td>{{ $dataClassGroup->nombre_ficha }}</td>
+			</tr>
+			<tr>
+				<th>Nombre instructor</th>
+				<td>{{ $dataClassGroup->instructor->id }}</td>
 			</tr>
 			<tr>
 				<th>Tipo de formacion</th>
-				<td>{{ $dataGroup->tipo_formacion }}</td>
+				<td>{{ $dataClassGroup->tipo_formacion }}</td>
 			</tr>
 		</table>
 	</div>

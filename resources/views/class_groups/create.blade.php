@@ -40,6 +40,22 @@
 						</span>
 					@endif
 				</div>
+				<div class="form-group{{ $errors->has('numero_documento') ? ' has-error' : '' }}">
+					<label for="numero_documento" class="control-label">
+						Instructor *
+					</label>
+					<select name="numero_documento" class="form-control">
+						<option value="">Seleccione un instructor...</option>
+						@foreach($dataInstructor as $ins)
+						<option value="{{ $ins->numero_documento }}" {{ (old("numero_documento") == $ins->numero_documento ? "selected" : "")}}>{{ $ins->nombre.' '.$ins->apellidos }}</option>
+						@endforeach
+					</select>
+					@if ($errors->has('numero_documento'))
+						<span class="help-block">
+							{{ $errors->first('numero_documento') }}
+						</span>
+					@endif
+				</div>
 				<div class="form-group{{ $errors->has('tipo_formacion') ? ' has-error' : '' }}">
 					<label for="tipo_formacion" class="control-label">
 						Tipo de formación *

@@ -4,23 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\History_record;
+use App\HistoryRecord;
 
 class HistoryRecordController extends Controller
 {
+    protected $dataHistoryR = [];
+
     public function __construct()
     {
-        $this->middleware('auth')->except('store', 'update_history_record');
+        $this->middleware('auth')->except('store', 'agregar_novedad');
     }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        $history_record = History_record::orderBy('prestado_en', 'DESC')->paginate(15);
-        return view('history_records.index')->with('history_record', $history_record);
+        $dataHistoryR = HistoryRecord::orderBy('prestado_en', 'DESC')->paginate(15);
+        return view('history_records.index')->with('dataHistoryR', $dataHistoryR);
     }
 
     /**
@@ -41,12 +45,12 @@ class HistoryRecordController extends Controller
      */
     public function store(Request $request)
     {
-        $history_record = new History_record();
-        $history_record->instructor_id  = $request->get('instructor_id');
-        $history_record->classroom_id   = $request->get('classroom_id');
-        $history_record->prestado_en    = $request->get('prestado_en');
+        $dataHistoryR = new HistoryRecord();
+        $dataHistoryR->instructor_id  = $request->get('instructor_id');
+        $dataHistoryR->classroom_id   = $request->get('classroom_id');
+        $dataHistoryR->prestado_en    = $request->get('prestado_en');
 
-        $history_record->save();
+        $dataHistoryR->save();
     }
 
     /**
@@ -79,10 +83,8 @@ class HistoryRecordController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    { 
-        // $no = History_record::find($id);
-        // $no->novedad_nueva           = $request->get('novedad_nueva');
-        // return redirect('/admin/history_record')->with('status', 'La novedad fue modificada con éxito');
+    {
+        //
     }
 
     /**
@@ -93,15 +95,30 @@ class HistoryRecordController extends Controller
      */
     public function destroy($id)
     {
-        History_record::destroy($id);
-        return redirect('/admin/history_record')->with('status', 'El historial fue eliminado con éxito');
+        HistoryRecord::destroy($id);
+        return redirect('/admin/history_record')->with('status', 'Este registro fue eliminado del historial con éxito');
     }
 
-    public function update_history_record(Request $request, $prestado_en)
+    public function agregar_novedad(Request $request, $fecha_prestamo)
     {
-        $history_record = History_record::where('prestado_en', '=', $prestado_en)->first();
-        $history_record->entregado_en = $request->get('entregado_en');
-        $history_record->novedad      = $request->get('novedad');
-        $history_record->save();
+        $dataHistoryR = HistoryRecord::where('prestado_en', '=', $fecha_prestamo)->first();
+        $dataHistoryR->entregado_en = date('Y-m-d H:i:s');
+        $dataHistoryR->novedad      = $request->get('novedad');
+        $dataHistoryR->save();
+    }
+
+    public function agregar_nueva_novedad(Request $request, $id)
+    {
+        $dataHistoryR = HistoryRecord::where('id', '=', $id)->first();
+        $dataHistoryR->novedad_nueva = $request->get('novedad_nueva');
+        if ($dataHistoryR->save()){
+            return redirect('/admin/history_record')->with('status', 'La nueva novedad fue adicionada con éxito');
+        }
+    }
+
+    public function obtener_novedad(Request $request)
+    {
+        $query = HistoryRecord::id($request->get('id'))->get();
+            return view('history_records.novedadajax')->with('query', $query);
     }
 }

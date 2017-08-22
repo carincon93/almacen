@@ -7,29 +7,29 @@ use Illuminate\Database\Eloquent\Model;
 class Instructor extends Model
 {
     protected $fillable = [
-        'nombre', 'apellidos', 'numero_documento', 'area', 'ip', 'telefono', 'celular', 'email', 'imagen', 'disponibilidad', 'instructor_type_id',
+        'nombre',
+        'apellidos',
+        'numero_documento',
+        'area',
+        'ip',
+        'telefono',
+        'celular',
+        'email',
+        'imagen',
+        'disponibilidad',
     ];
 
-    public function instructor_type() {
-    	return $this->belongsTo('App\instructor_type');
+    public function classgroups() {
+    	return $this->hasMany('App\ClassGroup');
     }
     public function classroom() {
-    	return $this->hasOne('App\classroom');
+    	return $this->hasOne('App\Classroom');
     }
-    public function history_record() {
-    	return $this->hasMany('App\history_record');
-    }
-    public function class_group() {
-    	return $this->hasMany('App\class_group');
+    public function historyrecords() {
+    	return $this->hasMany('App\HistoryRecord');
     }
 
-    public function scopeNombre_instructor($query, $nombre_instructor)
-    {
-        if (trim($nombre_instructor) != '') {
-            $query->where('nombre', 'LIKE', "%$nombre_instructor%");
-        }
-    }
-      public function scopeNumero_documento($query, $numero_documento)
+    public function scopeNumero_documento($query, $numero_documento)
     {
         if (trim($numero_documento) != '') {
             $query->where('numero_documento', '=', "$numero_documento");

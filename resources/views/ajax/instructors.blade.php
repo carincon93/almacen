@@ -1,5 +1,6 @@
 @foreach($query as $ins)
-@if($ins->disponibilidad=="disponible")
+@if($ins->disponibilidad == "disponible")
+<input value="{{ $ins-> id}}" name="instructor_id" class="hidden">
 <div class="panel panel-ins">
     <div class="row">
         <div class="col-md-8">
@@ -13,7 +14,6 @@
         </div>
     </div>
 </div>
-<input value="{{ $ins-> id}}" name="instructor_id" class="hidden">
 @else
 <h3>Este instructor ya tiene un ambiente asignado: <br>
 {{ $ins->classroom->nombre_ambiente }}

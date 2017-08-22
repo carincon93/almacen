@@ -1,46 +1,39 @@
 @extends('layouts.app')
 
-@section('navbar-top')
-<h4><i class="fa fa-fw fa-key"></i>Prestar ambiente</h4>
-@endsection
 @section('content')
     <!-- Modal -->
-    <div class="modal fade" id="solicitar_prestamo">
+    <div class="modal fade" id="modal_solicitar_prestamo">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title text-capitalize" id="myModalLabel"></h4>
+                    <h4 class="modal-title text-capitalize"></h4>
                 </div>
                 <div class="modal-body modal-prestar">
-
-                    <!-- Input de búsqueda -->
-                    <blockquote class="note note-info">
+                    <!-- Input de búsqueda de instructor -->
+                    <div class="">
                         <p class="h4">Por favor introduzca el número de documento del instructor.</p>
                         <i class="fa fa-fw fa-barcode"></i>
-                        <input type="search" id="numero_documento" class="form-control" placeholder="Documento Instructor" autocomplete="off" autofocus>
-                    </blockquote>
-                    <br>
+                        <input type="search" id="buscar_instructor" class="form-control" placeholder="Documento Instructor" autocomplete="off" autofocus>
+                    </div>
                     <!-- Formulario para préstamo -->
-                    <form action="" method="POST" id="form-solicitud">
+                    <form action="" method="POST" id="form-prestamo">
                         {!! csrf_field() !!}
-                        <input name="id" type="hidden" value="" id="id_clr">
-                        <input name="prestado_en" type="hidden" value="{{ date('Y-m-d H:i:s') }}">
 
-                        <div id="asd"></div>
-
+                        <input name="id" type="hidden" value="" id="id_ambiente">
+                        <input name="prestado_en" type="hidden" value="">
+                        <div id="resultado_instructor"></div>
                     </form>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="submit-solicitud">Prestar Ambiente</button>
+                    <button type="button" class="btn btn-primary" id="btn-prestar-ambiente">Prestar Ambiente</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="entregar_ambiente">
+    <div class="modal fade" id="modal_entregar_ambiente">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -53,25 +46,25 @@
                         <input name="prestado_en" type="hidden" value="" id="prestado_en">
 
                         <input name="id" type="hidden" value="" id="id-clrEntrega">
-                        <input name="entregado_en" type="hidden" value="{{ date('Y-m-d H:i:s') }}">
                         <input value="" name="instructor_id" class="hidden">
                         <div class="form-group">
                             <label class="label-control">Agregar novedad</label>
-                            <textarea name="novedad" rows="8" cols="80" class="form-control"></textarea>
+                            <textarea name="novedad" rows="4" cols="80" class="form-control" autofocus></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary modify_historical" id="submit-entrega">Entregar Ambiente</button>
+                    <button type="button" class="btn btn-primary modify_historical" id="btn-entregar-ambiente">Entregar Ambiente</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="search-navbar-wrapper">
+
+    <!-- <div class="col-md-8">
         <i class="fa fa-fw fa-search"></i>
         <input type="search" id="wnombre_ambiente" class="form-control search-navbar" placeholder="Buscar ambiente" autocomplete="off" autofocus>
-    </div>
+    </div> -->
     <div id="classroom-section">
         @foreach($dataClassroom->chunk(3) as $chunk)
         <div class="row">
@@ -106,13 +99,13 @@
                 </div>
                 @elseif($clr->disponibilidad == 'no disponible')
                 <div>
-                    <div class="classroom-card card clr-entregar" data-idclr="{{ $clr->id }}" data-entregar="{{ $clr->prestado_en }}" data-idIns="{{ $clr->instructor->id }}">
+                    <div class="classroom-card card clr-entregar" data-toggle="modal" data-target="#modal_entregar_ambiente" data-id-ambiente="{{ $clr->id }}" data-prestamo="{{ $clr->prestado_en }}" data-id-instructor="{{ $clr->instructor->id }}">
                         <div class="clr-img">
                             <img src="{{ asset($clr->imagen) }}" alt="" class="img-classroom img-responsive">
                             <div class="info-clr">Ambiente en uso <span class="pull-right">{{ $clr->prestado_en }}</span></div>
                         </div>
                         <div class="clr-desc">
-                            <h5 class="" data-nombreClr="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
+                            <h5 class="" data-nombre-ambiente="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
                             <hr>
                             <div class="text-capitalize">{{ $clr->instructor->nombre.' '.$clr->instructor->apellidos }}</div>
                             <span class="badge fecha-prestamo"></span>
@@ -121,13 +114,13 @@
                 </div>
                 @else
                 <div>
-                    <div class="classroom-card card clr-disponible" data-idclr="{{ $clr->id }}">
+                    <div class="classroom-card card amb-disponible" data-id-ambiente="{{ $clr->id }}" data-toggle="modal" data-target="#modal_solicitar_prestamo">
                         <div class="clr-img">
                             <img src="{{ asset($clr->imagen) }}" alt="" class="img-classroom img-responsive">
                         </div>
                         <div class="clr-desc">
                             <span class="circle"></span>
-                            <h5 class="" data-nombreClr="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
+                            <h5 class="" data-nombre-ambiente="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
                         </div>
                     </div>
                 </div>
@@ -152,7 +145,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($dataHistorical as $his)
+                    @foreach($dataHistoryR as $his)
                     <tr class="text-capitalize">
                         <td>{{ $his->instructor->nombre }}</td>
                         <td>{{ $his->classroom->nombre_ambiente }}</td>
