@@ -15,7 +15,7 @@ class CreateTableClassGroups extends Migration
     {
         Schema::create('class_groups', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_ficha')->index()->unsigned();
+            $table->integer('id_ficha')->unsigned();
             $table->string('nombre_ficha', 100);
             $table->string('especialidad', 100)->nullable();
             $table->string('instructor', 100)->nullable();

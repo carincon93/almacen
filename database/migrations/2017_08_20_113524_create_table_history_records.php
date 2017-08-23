@@ -23,7 +23,7 @@ class CreateTableHistoryRecords extends Migration
             $table->longText('novedad')->nullable();
             $table->longText('novedad_nueva')->nullable();
             $table->foreign('instructor_id')->references('id')->on('instructors')->onDelete('cascade');
-            $table->foreign('classgroup_id')->references('id_ficha')->on('class_groups')->onDelete('cascade');
+            $table->foreign('classgroup_id')->references('id')->on('class_groups')->onDelete('cascade');
             $table->timestamps();
             $table->dropColumn(['created_at', 'updated_at']);
         });

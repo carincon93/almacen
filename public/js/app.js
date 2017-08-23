@@ -887,9 +887,7 @@ $(document).ready(function () {
           }else{
             $('#mensaje').text('*Debe seleccionar una ficha');
           }
-        }else{
-            $('#mensajeins').text('*Debe seleccionar un instructor');
-          }
+        }
     });
 
     function disponibilidad_instructor($id_instructor, $token) {
