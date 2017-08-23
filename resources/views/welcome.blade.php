@@ -50,6 +50,8 @@
                         <div class="form-group">
                             <label class="label-control">Agregar novedad</label>
                             <textarea name="novedad" rows="4" cols="80" class="form-control" autofocus></textarea>
+                            {{-- <input name="novedad" value="sin novedad" type="hidden"> --}}
+
                         </div>
                     </form>
                 </div>
@@ -149,6 +151,7 @@
                     <tr class="text-capitalize">
                         <td>{{ $his->instructor->nombre }}</td>
                         <td>{{ $his->classroom->nombre_ambiente }}</td>
+
                     </tr>
                     @endforeach
                 </tbody>

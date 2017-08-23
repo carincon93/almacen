@@ -31,6 +31,7 @@
             <thead>
                 <tr>
                     <th>#</th>
+                    {{-- <th>Ficha</th> --}}
                     <th>Instructor</th>
                     <th>Ambiente</th>
                     <th>Fecha Prestado</th>
@@ -47,6 +48,7 @@
             @foreach($dataHistoryR as $his)
                 <tr>
                 	<td>{{$count++}}</td>
+                    {{-- <td>{{ $his->cLassgroup->id_ficha.' '.$his->nombre_ficha }}</td> --}}
                 	<td>{{ $his->instructor->nombre.' '.$his->instructor->apellidos }}</td>
                 	<td>{{ $his->classroom->nombre_ambiente}}</td>
                 	<td>{{ $his->prestado_en }}</td>

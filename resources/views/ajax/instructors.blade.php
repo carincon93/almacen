@@ -14,15 +14,15 @@
         </div>
     </div>
     <div class="row">
-           
-                <select name="classgroup_id" class="form-control">
-                    <option value="">Seleccione una ficha...</option>
-                    @foreach($ficha as $fi)
-                        <option value="{{ $fi->id_ficha }}">{{ $fi->id_ficha.' '.$fi->nombre_ficha }}</option>
-                    @endforeach
-                </select>
-                     
-
+        <div class="col-md-8"> 
+            <h4>Fichas</h4>
+            <select name="classgroup_id" class="form-control">
+                <option value="">Seleccione una ficha...</option>
+                @foreach($ficha as $fi)
+                <option value="{{ $fi->id_ficha }}">{{ $fi->id_ficha.' '.$fi->nombre_ficha }}</option>
+                @endforeach
+            </select>  
+        </div>         
     </div>
 </div>
 
