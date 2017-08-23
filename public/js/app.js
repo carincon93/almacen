@@ -878,12 +878,18 @@ $(document).ready(function () {
         var $form_prestamo = $('#form-prestamo');
         $classroom_id = $form_prestamo.find('#id_ambiente').val(), $prestado_en = $form_prestamo.find('input[name=prestado_en]').val(), $id_instructor = $form_prestamo.find('input[name=instructor_id]').val(), $token = $form_prestamo.find('input[name=_token]').val(), $classgroup_id=$form_prestamo.find('select[name=classgroup_id]').val();
         if ($id_instructor > 0) {
+          if ($classgroup_id > 0) {
             disponibilidad_instructor($id_instructor, $token);
             guardar_historial($token, $id_instructor,$classgroup_id,$classroom_id, $prestado_en);
             setTimeout(function () {
                 $form_prestamo.submit();
             }, 1000);
-        }
+          }else{
+            $('#mensaje').text('*Debe seleccionar una ficha');
+          }
+        }else{
+            $('#mensajeins').text('*Debe seleccionar un instructor');
+          }
     });
 
     function disponibilidad_instructor($id_instructor, $token) {

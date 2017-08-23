@@ -13,6 +13,7 @@
             <img src="{{ asset($ins->imagen) }}" alt="" class="img-responsive">
         </div>
     </div>
+    
     <div class="row">
         <div class="col-md-8"> 
             <h4>Fichas</h4>
@@ -21,7 +22,8 @@
                 @foreach($ficha as $fi)
                 <option value="{{ $fi->id_ficha }}">{{ $fi->id_ficha.' '.$fi->nombre_ficha }}</option>
                 @endforeach
-            </select>  
+            </select>
+            <span id="mensaje" class="help-block" style="color:#a94442"></span>  
         </div>         
     </div>
 </div>

@@ -1,5 +1,4 @@
 fotos ambientes y instructores,
-validar que seleccionen siempre ficha,
 default novedad (sin novedad)
 las fichas no muestran el nombre del instructor asociado - falla en la relación de los modelos
 busqueda en el historial por fechas ajax

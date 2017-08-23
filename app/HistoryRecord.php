@@ -9,7 +9,9 @@ class HistoryRecord extends Model
     protected $fillable = [
         'instructor_id', 'classgroup_id','classroom_id', 'prestado_en', 'entregado_en', 'novedad', 'novedad_nueva',
     ];
-
+    public function classgroup() {
+        return $this->belongsTo('App\ClassGroup');
+    }
     public function instructor() {
     	return $this->belongsTo('App\Instructor');
     }
