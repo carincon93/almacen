@@ -2,5 +2,4 @@ fotos ambientes y instructores,
 default novedad (sin novedad)
 las fichas no muestran el nombre del instructor asociado - falla en la relación de los modelos
 busqueda en el historial por fechas ajax
-error. un instructor no se puede borrar si tiene fichas asignadas, primero se debe borrar las fichas para poder eliminar un instructor
 
