@@ -58,7 +58,7 @@
 
                     <td class="td-actions">
                         <button class="btn btn-action novedad_nueva" type="button" data-target="#modalFormNovedad" data-toggle="modal" data-id-historial="{{$his->id}}"><i class="fa fa-fw fa-edit"></i>Editar</button>
-                        <form action="{{ url('/admin/history_record/'.$his->id) }}" data-nombre="{{ $his->instructor->nombre }}" method="POST" style="display: inline-block;" class="btn btn-action btn-delete-tbl">
+                        <form action="{{ url('/admin/history_record/'.$his->id) }}" data-nombre="{{ $his->classgroup->id_ficha }}" method="POST" style="display: inline-block;" class="btn btn-action btn-delete-tbl">
                             {{ method_field('delete') }}
                             {!! csrf_field()  !!}
                             <i class="fa fa-fw fa-trash"></i>

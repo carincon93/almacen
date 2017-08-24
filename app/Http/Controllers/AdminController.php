@@ -61,8 +61,9 @@ class AdminController extends Controller
         Classroom::truncate();
         Instructor::truncate();
         ClassGroup::truncate();
+        HistoryRecord::truncate();
         Schema::enableForeignKeyConstraints();
-        // HistoryRecord::truncate();
+        
         return redirect('/admin/dashboard')->with('status', 'Todos los registros de las fichas fueron eliminadas con éxito!');
     }
     public function import(Request $request)

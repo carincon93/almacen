@@ -14,7 +14,7 @@ class ClassGroupController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('disponibilidad_classgroup', 'modificar_disponibilidad');
     }
 
     /**
@@ -117,5 +117,18 @@ class ClassGroupController extends Controller
     {
         ClassGroup::truncate();
         return redirect('/admin/class_group')->with('status', 'Todos los registros de las fichas fueron eliminadas con éxito!');
+    }
+    public function disponibilidad_classgroup(Request $request, $classgroup_id)
+    {
+        $dataClassGroup = ClassGroup::where('id', '=', $classgroup_id)->first();
+        $dataClassGroup->disponibilidad = "no disponible";
+        $dataClassGroup->save();
+    }
+
+    public function modificar_disponibilidad(Request $request, $classgroup_id)
+    {
+        $dataClassGroup = ClassGroup::where('id', '=', $classgroup_id)->first();
+        $dataClassGroup->disponibilidad = "disponible";
+        $dataClassGroup->save();
     }
 }

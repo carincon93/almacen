@@ -26,6 +26,9 @@ class Classroom extends Model
     public function historyrecords() {
     	return $this->hasMany('App\HistoryRecord');
     }
+    public function classgroup() {
+        return $this->hasMany('App\ClassGroup');
+    }
 
     public function scopeNombre_ambiente($query, $nombre_ambiente)
     {

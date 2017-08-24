@@ -41,11 +41,13 @@ Route::get('/instructorajax', 'InstructorController@ajax');
 // Prestar Ambiente
 Route::post('/solicitar_prestamo/{id}/aprobado', 'ClassroomController@prestamo_aprobado');
 Route::post('/disponibilidad_instructor/{id_instructor}', 'InstructorController@disponibilidad_instructor');
+Route::post('/disponibilidad_classgroup/{classgroup_id}', 'ClassGroupController@disponibilidad_classgroup');
 Route::post('/guardar_historial', 'HistoryRecordController@store');
 
 // Entregar Ambiente
 Route::post('/entregar_ambiente/{id}/aprobado', 'ClassroomController@entrega_aprobado');
 Route::post('/modificar_disponibilidad_ins/{id_instructor}', 'InstructorController@modificar_disponibilidad');
+Route::post('/modificar_disponibilidad_cg/{classgroup_id}', 'ClassGroupController@modificar_disponibilidad');
 Route::post('/agregar_novedad/{fecha_prestamo}', 'HistoryRecordController@agregar_novedad');
 
 //

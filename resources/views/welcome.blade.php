@@ -47,6 +47,7 @@
 
                         <input name="id" type="hidden" value="" id="id-clrEntrega">
                         <input value="" name="instructor_id" class="hidden">
+                        <input value="" name="classgroup_id" class="hidden">
                         <div class="form-group">
                             <label class="label-control">Agregar novedad</label>
                             <textarea name="novedad" rows="4" cols="80" class="form-control" autofocus></textarea>
@@ -101,7 +102,7 @@
                 </div>
                 @elseif($clr->disponibilidad == 'no disponible')
                 <div>
-                    <div class="classroom-card card clr-entregar" data-toggle="modal" data-target="#modal_entregar_ambiente" data-id-ambiente="{{ $clr->id }}" data-prestamo="{{ $clr->prestado_en }}" data-id-instructor="{{ $clr->instructor->id }}">
+                    <div class="classroom-card card clr-entregar" data-toggle="modal" data-target="#modal_entregar_ambiente" data-id-ambiente="{{ $clr->id }}" data-prestamo="{{ $clr->prestado_en }}" data-id-instructor="{{ $clr->instructor->id }}" data-id-classgroup="{{ $clr->classgroup_id }}">
                         <div class="clr-img">
                             <img src="{{ asset($clr->imagen) }}" alt="" class="img-classroom img-responsive">
                             <div class="info-clr">Ambiente en uso <span class="pull-right">{{ $clr->prestado_en }}</span></div>

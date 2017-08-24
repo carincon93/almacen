@@ -20,7 +20,7 @@
             <select name="classgroup_id" class="form-control">
                 <option value="">Seleccione una ficha...</option>
                 @foreach($ficha as $fi)
-                <option value="{{ $fi->id_ficha }}">{{ $fi->id_ficha.' '.$fi->nombre_ficha }}</option>
+                <option value="{{ $fi->id }}">{{ $fi->id_ficha.' '.$fi->nombre_ficha }}</option>
                 @endforeach
             </select>
             <span id="mensaje" class="help-block" style="color:#a94442"></span>  

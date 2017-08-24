@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-08-2017 a las 19:04:38
+-- Tiempo de generación: 24-08-2017 a las 15:06:50
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -51,7 +51,7 @@ CREATE TABLE `classrooms` (
 --
 
 INSERT INTO `classrooms` (`id`, `nombre_ambiente`, `descripcion`, `centro`, `tipo_ambiente`, `movilidad`, `estado`, `cupo`, `imagen`, `disponibilidad`, `prestado_en`, `instructor_id`, `classgroup_id`, `created_at`, `updated_at`) VALUES
-(1, 'sistemas 1', NULL, NULL, 'aula', 'fijo', 'activo', 60, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
+(1, 'sistemas 1', NULL, NULL, 'aula', 'fijo', 'activo', 60, NULL, 'disponible', '2017-08-24 07:59:54', NULL, NULL, NULL, '2017-08-24 13:00:37'),
 (2, 'sistemas 2', NULL, NULL, 'aula', 'fijo', 'activo', 40, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (3, 'ambiente lego', NULL, NULL, 'aula', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (4, 'auditorio procesos industriales y construccion', NULL, NULL, 'auditorio', 'fijo', 'activo', 200, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
@@ -154,21 +154,14 @@ INSERT INTO `class_groups` (`id`, `id_ficha`, `nombre_ficha`, `especialidad`, `i
 
 CREATE TABLE `history_records` (
   `id` int(10) UNSIGNED NOT NULL,
-  `instructor_id` int(10) UNSIGNED NOT NULL,
   `classgroup_id` int(10) UNSIGNED NOT NULL,
+  `instructor_id` int(10) UNSIGNED NOT NULL,
   `classroom_id` int(10) UNSIGNED NOT NULL,
   `prestado_en` datetime NOT NULL,
   `entregado_en` datetime DEFAULT NULL,
   `novedad` longtext COLLATE utf8mb4_unicode_ci,
   `novedad_nueva` longtext COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `history_records`
---
-
-INSERT INTO `history_records` (`id`, `instructor_id`, `classgroup_id`, `classroom_id`, `prestado_en`, `entregado_en`, `novedad`, `novedad_nueva`) VALUES
-(1, 80, 1, 1, '2017-08-22 12:14:13', '2017-08-23 10:17:24', 'oye', NULL);
 
 -- --------------------------------------------------------
 
@@ -249,7 +242,7 @@ INSERT INTO `instructors` (`id`, `nombre`, `apellidos`, `especialidad`, `vincula
 (44, 'stharling melody', 'ramos giraldo', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora electricidad', NULL, 30397958, 0, 3163244180, 'smelodyrg@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-10 01:27:32', NULL),
 (45, 'luis camilo', 'estrada patino', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor mecanica automotriz', NULL, 1085297027, 0, 3128488679, 'luis.23513230762@ucaldas.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 01:27:32', NULL),
 (46, 'olga clemencia', 'marin henao', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora seguridad ocupacional', NULL, 30395126, 0, 3147694939, 'ocmarinh@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 01:27:32', NULL),
-(47, 'andres felipe', 'lopez chica', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor ambiental', NULL, 75090879, 0, 3206874025, 'felopez11@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-10 01:27:32', NULL),
+(47, 'andres felipe', 'lopez chica', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor ambiental', NULL, 75090879, 0, 3206874025, 'felopez11@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-10 01:27:32', '2017-08-23 18:04:44'),
 (48, 'gladys francelly', 'cardona franco', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora confeccion', NULL, 30307343, 0, 3113364387, 'gladys.francelly@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-10 01:27:32', NULL),
 (49, 'javier', 'ariza useche', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor trabajo en alturas', NULL, 79836769, 0, 3185272465, 'javier.ariza@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 01:27:32', NULL),
 (50, 'jaime adolfo', 'fuentes sanchez', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor motos', NULL, 11224476, 0, 3008115106, 'adolfofuentes@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 01:27:32', NULL),
@@ -259,7 +252,7 @@ INSERT INTO `instructors` (`id`, `nombre`, `apellidos`, `especialidad`, `vincula
 (54, 'andres felipe ', 'jurado patino ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor topografia', NULL, 1053770404, 0, 3015739296, 'afjurado40@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 01:27:32', NULL),
 (55, 'angela marcela', 'castellanos ortegon', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora ingles', NULL, 30398681, 0, 3008948200, 'amcastellanoso@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 01:27:32', NULL),
 (56, 'camilo andres', 'arango munoz', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor mobiliario y maderas', NULL, 16077061, 0, 3206845171, 'camiaramo@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 01:27:32', NULL),
-(57, 'yaneth', 'mejia rendon ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora sistemas', NULL, 1053811426, 0, 3045458490, 'ymejia624@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 01:27:32', '2017-08-23 16:57:43'),
+(57, 'yaneth', 'mejia rendon ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora sistemas', NULL, 1053811426, 0, 3045458490, 'ymejia624@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 01:27:32', '2017-08-24 13:00:36'),
 (58, 'daniel felipe ', 'moncada cardona ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor construccion', NULL, 1053777708, 0, 3163159109, 'danielmoncada@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-10 01:27:32', NULL),
 (59, 'mario leandro', 'vanegas valencia', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor electricidad', NULL, 1053807619, 0, 3113005998, 'marlevan38@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-10 01:27:32', NULL),
 (60, 'victor hugo', 'arias saldarriaga', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor trabajo en alturas', NULL, 10286879, 0, 3117268025, 'victorari17@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-10 01:27:32', NULL),
@@ -352,7 +345,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'jaime palomino', 'jaime@mail.com', '$2y$10$u5cb2NbKWrLcjhrB6AS/V.zor8CwboOBG5Lg9rDvIabJn4hKgHmAS', 'Zn2FPTPI0R6tT3snoW2E3XDPUcDN4BF9Rtzwa9jaENedPAyx00454Rzoy9PJ', '2017-08-17 22:27:43', '2017-08-18 18:33:26');
+(1, 'jaime palomino', 'jaime@mail.com', '$2y$10$u5cb2NbKWrLcjhrB6AS/V.zor8CwboOBG5Lg9rDvIabJn4hKgHmAS', '2gKXxVep7P5SJv5OspQii2g8gb0i4dqfeUXc7pnY2CZ5UFsOkLTirAic4npE', '2017-08-17 22:27:43', '2017-08-18 18:33:26');
 
 --
 -- Índices para tablas volcadas
@@ -378,7 +371,7 @@ ALTER TABLE `class_groups`
 ALTER TABLE `history_records`
   ADD PRIMARY KEY (`id`),
   ADD KEY `history_records_instructor_id_foreign` (`instructor_id`),
-  ADD KEY `history_records_classgroup_id_foreign` (`classgroup_id`);
+  ADD KEY `classgroup_id` (`classgroup_id`);
 
 --
 -- Indices de la tabla `instructors`
@@ -425,7 +418,7 @@ ALTER TABLE `class_groups`
 -- AUTO_INCREMENT de la tabla `history_records`
 --
 ALTER TABLE `history_records`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `instructors`
 --
@@ -456,7 +449,7 @@ ALTER TABLE `classrooms`
 -- Filtros para la tabla `history_records`
 --
 ALTER TABLE `history_records`
-  ADD CONSTRAINT `history_records_classgroup_id_foreign` FOREIGN KEY (`classgroup_id`) REFERENCES `class_groups` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `history_records_ibfk_1` FOREIGN KEY (`classgroup_id`) REFERENCES `class_groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `history_records_instructor_id_foreign` FOREIGN KEY (`instructor_id`) REFERENCES `instructors` (`id`) ON DELETE CASCADE;
 COMMIT;
 

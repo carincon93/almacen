@@ -139,8 +139,9 @@ class ClassroomController extends Controller
         $dataClassroom = Classroom::find($request->id);
         $dataClassroom->disponibilidad = 'no disponible';
         $dataClassroom->prestado_en    = $request->get('prestado_en');
-        $dataClassroom->instructor_id  = $request->get('instructor_id');
         $dataClassroom->classgroup_id  = $request->get('classgroup_id');
+        $dataClassroom->instructor_id  = $request->get('instructor_id');
+        
 
         if($dataClassroom->save()) {
             session()->flash('status', 'El ambiente '.$dataClassroom->nombre_ambiente.' fue asignado con éxtio!');
