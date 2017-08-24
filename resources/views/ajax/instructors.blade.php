@@ -1,3 +1,4 @@
+<link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
 @foreach($query as $ins)
 @if($ins->disponibilidad == "disponible")
 <input value="{{ $ins-> id}}" name="instructor_id" class="hidden">
@@ -17,7 +18,7 @@
     <div class="row">
         <div class="col-md-8"> 
             <h4>Fichas</h4>
-            <select name="classgroup_id" class="form-control">
+            <select name="classgroup_id" class="form-control select">
                 <option value="">Seleccione una ficha...</option>
                 @foreach($ficha as $fi)
                 <option value="{{ $fi->id }}">{{ $fi->id_ficha.' '.$fi->nombre_ficha }}</option>
@@ -34,4 +35,6 @@
 </h3>
 @endif
 @endforeach
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/select2.min.js') }}"></script>
 

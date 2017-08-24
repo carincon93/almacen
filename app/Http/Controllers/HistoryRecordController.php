@@ -103,9 +103,14 @@ class HistoryRecordController extends Controller
 
     public function agregar_novedad(Request $request, $fecha_prestamo)
     {
+        if ($request->has('novedad')) {
+            $novedad=$request->get('novedad');
+        }else{
+            $novedad='no hay ningun registro de novedad';
+        }
         $dataHistoryR = HistoryRecord::where('prestado_en', '=', $fecha_prestamo)->first();
         $dataHistoryR->entregado_en = date('Y-m-d H:i:s');
-        $dataHistoryR->novedad      = $request->get('novedad');
+        $dataHistoryR->novedad      = $novedad;
         $dataHistoryR->save();
     }
 

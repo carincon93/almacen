@@ -77,9 +77,10 @@ class ClassGroupController extends Controller
      */
     public function edit($id)
     {
+        $dataInstructor = Instructor::all()->sortBy('nombre');
         $dataClassGroup = ClassGroup::find($id);
         return view('class_groups.edit')
-            ->with('dataClassGroup', $dataClassGroup);
+            ->with('dataClassGroup', $dataClassGroup)->with('dataInstructor', $dataInstructor);
     }
 
     /**

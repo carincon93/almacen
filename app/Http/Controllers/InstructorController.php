@@ -158,7 +158,7 @@ class InstructorController extends Controller
 
     public function ajax(Request $request)
     {
-        $ficha=ClassGroup::all();
+        $ficha=ClassGroup::where('disponibilidad', '=', 'disponible')->get();
         $query = Instructor::numero_documento($request->get('numero_documento'))->get();
         return view('ajax.instructors', compact('query','ficha'));
 

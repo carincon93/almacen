@@ -1,4 +1,3 @@
 fotos ambientes y instructores,
-default novedad (sin novedad)
 busqueda en el historial por fechas ajax
-
+hacer backup

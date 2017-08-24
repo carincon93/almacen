@@ -44,7 +44,7 @@
 					<label for="numero_documento" class="control-label">
 						Instructor *
 					</label>
-					<select name="numero_documento" class="form-control">
+					<select name="numero_documento" class="form-control select">
 						<option value="">Seleccione un instructor...</option>
 						@foreach($dataInstructor as $ins)
 						<option value="{{ $ins->numero_documento }}" {{ (old("numero_documento") == $ins->numero_documento ? "selected" : "")}}>{{ $ins->nombre.' '.$ins->apellidos }}</option>
