@@ -33,10 +33,6 @@
 				<td>{{ $dataClassGroup->nombre_ficha }}</td>
 			</tr>
 			<tr>
-				<th>Nombre instructor</th>
-				<td>{{ $dataClassGroup->instructor->nombre }}</td>
-			</tr>
-			<tr>
 				<th>Tipo de formacion</th>
 				<td>{{ $dataClassGroup->tipo_formacion }}</td>
 			</tr>

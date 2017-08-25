@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-08-2017 a las 21:40:38
--- Versión del servidor: 10.1.25-MariaDB
--- Versión de PHP: 7.1.7
+-- Tiempo de generación: 25-08-2017 a las 23:50:42
+-- Versión del servidor: 10.1.24-MariaDB
+-- Versión de PHP: 7.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -51,7 +51,7 @@ CREATE TABLE `classrooms` (
 --
 
 INSERT INTO `classrooms` (`id`, `nombre_ambiente`, `descripcion`, `centro`, `tipo_ambiente`, `movilidad`, `estado`, `cupo`, `imagen`, `disponibilidad`, `prestado_en`, `instructor_id`, `classgroup_id`, `created_at`, `updated_at`) VALUES
-(1, 'sistemas 1', NULL, NULL, 'aula', 'fijo', 'activo', 60, NULL, 'disponible', '2017-08-25 14:30:59', NULL, NULL, NULL, '2017-08-25 19:31:33'),
+(1, 'sistemas 1', NULL, NULL, 'aula', 'fijo', 'activo', 60, NULL, 'disponible', '2017-08-25 14:30:59', NULL, NULL, NULL, NULL),
 (2, 'sistemas 2', NULL, NULL, 'aula', 'fijo', 'activo', 40, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (3, 'ambiente lego', NULL, NULL, 'aula', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (4, 'auditorio procesos industriales y construccion', NULL, NULL, 'auditorio', 'fijo', 'activo', 200, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
@@ -90,7 +90,7 @@ CREATE TABLE `class_groups` (
   `nombre_ficha` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `especialidad` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `instructor` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `numero_documento` int(10) UNSIGNED NOT NULL,
+  `instructor_id` int(10) UNSIGNED DEFAULT NULL,
   `fecha_inicio` date DEFAULT NULL,
   `fecha_lectiva` date DEFAULT NULL,
   `fecha_final` date DEFAULT NULL,
@@ -105,46 +105,47 @@ CREATE TABLE `class_groups` (
 -- Volcado de datos para la tabla `class_groups`
 --
 
-INSERT INTO `class_groups` (`id`, `id_ficha`, `nombre_ficha`, `especialidad`, `instructor`, `numero_documento`, `fecha_inicio`, `fecha_lectiva`, `fecha_final`, `horario`, `tipo_formacion`, `disponibilidad`, `created_at`, `updated_at`) VALUES
-(1, 1132816, 'analisis y desarrollo de sistemas de informacion', NULL, NULL, 1053811426, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, '2017-08-25 19:31:32'),
-(2, 1323395, 'analisis y desarrollo de sistemas de informacion', NULL, NULL, 1053811426, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(3, 1368665, 'especializacion tecnologica metodologias de calidad para el desarrollo de software', NULL, NULL, 1053811426, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(4, 1375843, 'aux. trabajador de la madera', NULL, NULL, 16077061, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(5, 1094381, 'topografia', NULL, NULL, 1053770404, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(6, 1261608, 'tecnologo en construccion', NULL, NULL, 10245454, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(7, 1261604, 'tgo  desarrollo grafico de proyectos de arquitectura e ingenieria', NULL, NULL, 75091846, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(8, 1301351, 'mantenimiento y reparacion de edificaciones', NULL, NULL, 10245454, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(9, 1368569, 'tgo  desarrollo grafico de proyectos de arquitectura e ingenieria', NULL, NULL, 1053782472, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(10, 1075391, 'topografia', NULL, NULL, 1053770404, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(11, 1323382, 'tecnologo en topografia', NULL, NULL, 1053770404, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(12, 1368604, 'tgo en obras civiles', NULL, NULL, 75091846, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(13, 1132795, 'mantenimiento mecanico industrial', NULL, NULL, 75096903, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(14, 1132701, 'soldadura de productos metalicos (platina)', NULL, NULL, 16071103, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(15, 1182104, 'mecanizado de productos metalmecanicos ', NULL, NULL, 10271981, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(16, 1197616, 'mantenimiento mecanico industrial', NULL, NULL, 10279373, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(17, 1368653, 'mantenimiento mecanico industrial', NULL, NULL, 75091293, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(18, 1132756, 'tgo electricidad industrial', NULL, NULL, 10279010, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(19, 1197544, 'mantenimiento electromecanico industrial', NULL, NULL, 30287195, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(20, 1197576, 'elctricidad industrial ', NULL, NULL, 94283555, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(21, 1368673, 'tecnologo en electricidad  industrial', NULL, NULL, 75073330, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(22, 1368529, 'tc en electricidad residencial', NULL, NULL, 75073330, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(23, 1323358, 'tgo supervision de redes de distribucion de energia electrica', NULL, NULL, 30397958, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(24, 1367722, 'mantenimiento electromecanico industrial', NULL, NULL, 30287195, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(25, 1114874, 'mantenimiento mecatronico de automotores', NULL, NULL, 75081636, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(26, 1343933, 'tc mantenimiento de las motocicletas', NULL, NULL, 11224476, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(27, 1368501, 'tco en mantenimiento de motores diesel', NULL, NULL, 1085297027, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(28, 1368642, 'tgo en mantenimiento mecatronico de automotores', NULL, NULL, 9817289, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(29, 1368642, 'tgo en mantenimiento mecatronico de automotores (b)', NULL, NULL, 9817289, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(30, 1306630, 'tc  en seguridad vial control de transito y transporte', NULL, NULL, 16073677, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(31, 1368498, 'tco en mantenimiento de motores diesel', NULL, NULL, 16073677, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(32, 1369525, 'tc patronaje industrial de prendas de vestir (a)', NULL, NULL, 30307343, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(33, 1369525, 'tc patronaje industrial de prendas de vestir (b)', NULL, NULL, 30307343, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(34, 1368558, 'tgo en gestion integrada de la calidad medio ambiente seguridad y salud ocupacional (a)', NULL, NULL, 98392877, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(35, 1368558, 'tgo en gestion integrada de la calidad medio ambiente seguridad y salud ocupacional (b)', NULL, NULL, 98392877, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(36, 1343983, 'mantenimiento electrico y electromecanico en automotores', NULL, NULL, 75081636, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(37, 1374264, 'operario en confeccion industrial', NULL, NULL, 30292725, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(38, 1362328, 'operario en confeccion industrial', NULL, NULL, 25232397, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
-(39, 1343061, 'tc mantenimiento de motocicletas', NULL, NULL, 1110506666, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL);
+INSERT INTO `class_groups` (`id`, `id_ficha`, `nombre_ficha`, `especialidad`, `instructor`, `instructor_id`, `fecha_inicio`, `fecha_lectiva`, `fecha_final`, `horario`, `tipo_formacion`, `disponibilidad`, `created_at`, `updated_at`) VALUES
+(1, 1132816, 'analisis y desarrollo de sistemas de informacion', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(2, 1323395, 'analisis y desarrollo de sistemas de informacion', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(3, 1368665, 'especializacion tecnologica metodologias de calidad para el desarrollo de software', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(4, 1375843, 'aux. trabajador de la madera', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(5, 1094381, 'topografia', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(6, 1261608, 'tecnologo en construccion', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(7, 1261604, 'tgo  desarrollo grafico de proyectos de arquitectura e ingenieria', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(8, 1301351, 'mantenimiento y reparacion de edificaciones', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(9, 1368569, 'tgo  desarrollo grafico de proyectos de arquitectura e ingenieria', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(10, 1075391, 'topografia', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(11, 1323382, 'tecnologo en topografia', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(12, 1368604, 'tgo en obras civiles', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(13, 1132795, 'mantenimiento mecanico industrial', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(14, 1132701, 'soldadura de productos metalicos (platina)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(15, 1182104, 'mecanizado de productos metalmecanicos ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(16, 1197616, 'mantenimiento mecanico industrial', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(17, 1368653, 'mantenimiento mecanico industrial', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(18, 1132756, 'tgo electricidad industrial', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(19, 1197544, 'mantenimiento electromecanico industrial', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(20, 1197576, 'elctricidad industrial ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(21, 1368673, 'tecnologo en electricidad  industrial', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(22, 1368529, 'tc en electricidad residencial', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(23, 1323358, 'tgo supervision de redes de distribucion de energia electrica', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(24, 1367722, 'mantenimiento electromecanico industrial', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(25, 1114874, 'mantenimiento mecatronico de automotores', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(26, 1343933, 'tc mantenimiento de las motocicletas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(27, 1368501, 'tco en mantenimiento de motores diesel', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(28, 1368642, 'tgo en mantenimiento mecatronico de automotores', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(29, 1368642, 'tgo en mantenimiento mecatronico de automotores (b)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(30, 1306630, 'tc  en seguridad vial control de transito y transporte', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(31, 1368498, 'tco en mantenimiento de motores diesel', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(32, 1369525, 'tc patronaje industrial de prendas de vestir (a)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(33, 1369525, 'tc patronaje industrial de prendas de vestir (b)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(34, 1368558, 'tgo en gestion integrada de la calidad medio ambiente seguridad y salud ocupacional (a)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(35, 1368558, 'tgo en gestion integrada de la calidad medio ambiente seguridad y salud ocupacional (b)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(36, 1343983, 'mantenimiento electrico y electromecanico en automotores', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(37, 1374264, 'operario en confeccion industrial', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(38, 1362328, 'operario en confeccion industrial', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
+(39, 1343061, 'tc mantenimiento de motocicletas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL);
+
 
 -- --------------------------------------------------------
 
@@ -352,7 +353,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'jaime palomino', 'jaime@mail.com', '$2y$10$u5cb2NbKWrLcjhrB6AS/V.zor8CwboOBG5Lg9rDvIabJn4hKgHmAS', '2gKXxVep7P5SJv5OspQii2g8gb0i4dqfeUXc7pnY2CZ5UFsOkLTirAic4npE', '2017-08-18 03:27:43', '2017-08-18 23:33:26');
+(1, 'jaime palomino', 'jaime@mail.com', '$2y$10$u5cb2NbKWrLcjhrB6AS/V.zor8CwboOBG5Lg9rDvIabJn4hKgHmAS', '2gKXxVep7P5SJv5OspQii2g8gb0i4dqfeUXc7pnY2CZ5UFsOkLTirAic4npE', '2017-08-18 08:27:43', '2017-08-19 04:33:26');
 
 --
 -- Índices para tablas volcadas
@@ -370,7 +371,8 @@ ALTER TABLE `classrooms`
 -- Indices de la tabla `class_groups`
 --
 ALTER TABLE `class_groups`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `class_groups_instructor_id_foreign` (`instructor_id`);
 
 --
 -- Indices de la tabla `history_records`
@@ -451,6 +453,12 @@ ALTER TABLE `users`
 ALTER TABLE `classrooms`
   ADD CONSTRAINT `classrooms_classgroup_id_foreign` FOREIGN KEY (`classgroup_id`) REFERENCES `class_groups` (`id`),
   ADD CONSTRAINT `classrooms_instructor_id_foreign` FOREIGN KEY (`instructor_id`) REFERENCES `instructors` (`id`);
+
+--
+-- Filtros para la tabla `class_groups`
+--
+ALTER TABLE `class_groups`
+  ADD CONSTRAINT `class_groups_instructor_id_foreign` FOREIGN KEY (`instructor_id`) REFERENCES `instructors` (`id`);
 
 --
 -- Filtros para la tabla `history_records`

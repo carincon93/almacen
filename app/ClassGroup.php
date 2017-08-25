@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ClassGroup extends Model
 {
     protected $fillable = [
-        'id_ficha', 'nombre_ficha', 'numero_documento', 'tipo_formacion','disponibilidad',
+        'id_ficha', 'nombre_ficha', 'instructor_id', 'tipo_formacion','disponibilidad',
     ];
 
     public function instructor() {

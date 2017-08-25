@@ -54,7 +54,11 @@
 			<tr>
 				<th>fichas asignadas</th>
 				<td>
-					{{ $dataInstructor->classGroup->nombre_ficha }}
+					<ul>
+						@foreach($dataInstructor->classgroups as $classgroup)
+						<li>{{ $classgroup->nombre_ficha }}</li>
+						@endforeach						
+					</ul>
 				</td>
 			</tr>
 		</table>
