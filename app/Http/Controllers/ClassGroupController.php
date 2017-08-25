@@ -50,7 +50,7 @@ class ClassGroupController extends Controller
         $dataClassGroup = new ClassGroup();
         $dataClassGroup->id_ficha       = $request->get('id_ficha');
         $dataClassGroup->nombre_ficha   = $request->get('nombre_ficha');
-        $dataClassGroup->numero_documento  = $request->get('numero_documento');
+        $dataClassGroup->instructor_id  = $request->get('instructor_id');
         $dataClassGroup->tipo_formacion = $request->get('tipo_formacion');
         if ($dataClassGroup->save()){
             return redirect('/admin/class_group')->with('status', 'La ficha '.$dataClassGroup->nombre_ficha.' fue adicionada con éxito');
@@ -65,7 +65,7 @@ class ClassGroupController extends Controller
      */
     public function show($id)
     {
-        
+
         return view('class_groups.show')->with('dataClassGroup', ClassGroup::find($id));
     }
 
@@ -95,7 +95,7 @@ class ClassGroupController extends Controller
         $dataClassGroup = ClassGroup::find($id);
         $dataClassGroup->id_ficha       = $request->get('id_ficha');
         $dataClassGroup->nombre_ficha   = $request->get('nombre_ficha');
-        $dataClassGroup->numero_documento  = $request->get('numero_documento');
+        $dataClassGroup->instructor_id  = $request->get('instructor_id');
         $dataClassGroup->tipo_formacion = $request->get('tipo_formacion');
         if ($dataClassGroup->save()){
             return redirect('/admin/class_group')->with('status', 'La ficha '.$dataClassGroup->nombre_ficha.' fue modificado con éxito');

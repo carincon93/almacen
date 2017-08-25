@@ -84,7 +84,6 @@ class AdminController extends Controller
                         [
                             'id_ficha' => $row['ficha'],
                             'nombre_ficha' => $row['nombre_ficha'],
-                            'numero_documento' => $row['numero_documento'],
                             'tipo_formacion' => $row['tipo_formacion'],
                         ];
                     }

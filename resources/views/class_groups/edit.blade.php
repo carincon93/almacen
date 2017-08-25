@@ -43,7 +43,7 @@
 				</div>
 				<div class="form-group{{ $errors->has('instructor') ? ' has-error' : '' }}">
 					<label for="numero_documento" class="control-label">Instructor *</label>
-					<select name="numero_documento" class="form-control select">
+					<select name="instructor_id" class="form-control select">
 						<option value="">Seleccione un instructor...</option>
 						@foreach($dataInstructor as $ins)
 						<option value="{{ $ins->id }}" {{ $ins->id==$dataClassGroup->instructor_id ? 'selected="selected"' : '' }}>{{ $ins->nombre.' '.$ins->apellidos }}</option>

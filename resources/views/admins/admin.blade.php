@@ -8,6 +8,7 @@
 @endsection
 
 @section('content')
+@include('layouts.messages')
 <form action="{{ url('admin/dashboard/import') }}" enctype="multipart/form-data" method="POST">
     {{ csrf_field() }}
     <input type="file" name="imported-file" class="form-control" accept=".xlsx">
