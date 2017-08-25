@@ -128,4 +128,13 @@ class HistoryRecordController extends Controller
         $query = HistoryRecord::id($request->get('id'))->get();
             return view('history_records.novedadajax')->with('query', $query);
     }
+    public function excel()
+    {
+     \Excel:: create('Listahistoriales' , function($excel) {
+     $excel->sheet('Historial' , function($sheet) {
+     $his = HistoryRecord:: all();
+     $sheet->loadView('history_records.excel' , array('his' => $his));
+     });
+     })->download('xls' );
+    }
 }
