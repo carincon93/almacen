@@ -26,7 +26,7 @@ class ClassGroupRequest extends FormRequest
         return [
             'id_ficha' => 'required|max:8',
             'nombre_ficha'=>'required|max:100',
-            'numero_documento'=>'required',
+            'instructor_id'=>'required',
             'tipo_formacion'=>'required',
         ];
     }
@@ -38,7 +38,7 @@ class ClassGroupRequest extends FormRequest
             'id_ficha.max'=>'El campo ID de ficha debe tener como máximo 8 caracteres',
             'nombre_ficha.required'=>'El campo nombre de ficha es requerido',
             'nombre_ficha.max'=>'El campo nombre de ficha debe tener como máximo 100 caracteres',
-            'numero_documento.required'=>'El campo instructor es requerido',
+            'instructor_id.required'=>'El campo instructor es requerido',
 
             'tipo_formacion.required'=>'El campo tipo de formacion es requerido',
         ];

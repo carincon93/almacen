@@ -19,13 +19,14 @@ class CreateTableClassGroups extends Migration
             $table->string('nombre_ficha', 100);
             $table->string('especialidad', 100)->nullable();
             $table->string('instructor', 100)->nullable();
-            $table->integer('numero_documento')->unsigned();
+            $table->integer('instructor_id')->nullable()->unsigned();
             $table->date('fecha_inicio')->nullable();
             $table->date('fecha_lectiva')->nullable();
             $table->date('fecha_final')->nullable();
             $table->text('horario')->nullable();
             $table->string('tipo_formacion', 91);
             $table->string('disponibilidad', 15)->default('disponible')->nullable();
+            $table->foreign('instructor_id')->references('id')->on('instructors');
             $table->timestamps();
         });
     }

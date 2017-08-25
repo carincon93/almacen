@@ -46,12 +46,12 @@
 					<select name="numero_documento" class="form-control select">
 						<option value="">Seleccione un instructor...</option>
 						@foreach($dataInstructor as $ins)
-						<option value="{{ $ins->numero_documento }}" {{ $ins->numero_documento==$dataClassGroup->numero_documento ? 'selected="selected"' : '' }}>{{ $ins->nombre.' '.$ins->apellidos }}</option>
+						<option value="{{ $ins->id }}" {{ $ins->id==$dataClassGroup->instructor_id ? 'selected="selected"' : '' }}>{{ $ins->nombre.' '.$ins->apellidos }}</option>
 						@endforeach
 					</select>
-					@if ($errors->has('instructor'))
+					@if ($errors->has('instructor_id'))
 						<span class="help-block">
-							{{ $errors->first('instructor') }}
+							{{ $errors->first('instructor_id') }}
 						</span>
 					@endif
 				</div>

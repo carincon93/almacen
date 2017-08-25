@@ -44,15 +44,15 @@
 					<label for="numero_documento" class="control-label">
 						Instructor *
 					</label>
-					<select name="numero_documento" class="form-control select">
+					<select name="instructor_id" class="form-control select">
 						<option value="">Seleccione un instructor...</option>
 						@foreach($dataInstructor as $ins)
-						<option value="{{ $ins->numero_documento }}" {{ (old("numero_documento") == $ins->numero_documento ? "selected" : "")}}>{{ $ins->nombre.' '.$ins->apellidos }}</option>
+						<option value="{{ $ins->id }}" {{ (old("id") == $ins->numero_documento ? "selected" : "")}}>{{ $ins->nombre.' '.$ins->apellidos }}</option>
 						@endforeach
 					</select>
-					@if ($errors->has('numero_documento'))
+					@if ($errors->has('instructor_id'))
 						<span class="help-block">
-							{{ $errors->first('numero_documento') }}
+							{{ $errors->first('instructor_id') }}
 						</span>
 					@endif
 				</div>
