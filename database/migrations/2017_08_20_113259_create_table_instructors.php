@@ -26,13 +26,13 @@ class CreateTableInstructors extends Migration
             $table->string('area', 128);
             $table->text('centro', 128)->nullable();
             $table->integer('numero_documento')->unique()->unsigned();
-            $table->integer('ip');
+            $table->integer('ip')->nullable();
             $table->bigInteger('celular');
             $table->string('email', 64)->unique();
             $table->string('imagen', 191)->default('/images/perdefault.png')->nullable();
             $table->string('disponibilidad', 15)->default('disponible')->nullable();
             $table->timestamps();
-            
+
         });
     }
 
