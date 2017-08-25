@@ -25,6 +25,7 @@
         </div>
     </div>
 </div>
+<a href="{{ url('history_record/excel') }}" class="btn btn-success"><i class="fa fa-cloud-download"></i> Exportar Historial a Excel</a>
 <div class="card">
     <div class="table-responsive">
         <table class="table table-full table-hover">
