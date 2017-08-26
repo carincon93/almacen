@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-08-2017 a las 00:10:00
--- Versión del servidor: 10.1.24-MariaDB
--- Versión de PHP: 7.1.6
+-- Tiempo de generación: 26-08-2017 a las 19:46:57
+-- Versión del servidor: 10.1.25-MariaDB
+-- Versión de PHP: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -230,7 +230,7 @@ INSERT INTO `instructors` (`id`, `nombre`, `apellidos`, `especialidad`, `vincula
 (32, 'claudia sonia', 'serna granada', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora ingles', NULL, 30322042, 0, 3116827825, 'cls0230@my.londonmet.ac.uk', '/images/instructors/1503633852.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 04:04:12'),
 (33, 'carmen elena', 'hernandez rincon', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora etica', NULL, 24340753, 0, 3147917762, 'carelena@misena.edu.co', '/images/instructors/1503632862.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 03:47:42'),
 (34, 'alexander', 'romero moreno', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor trabajo en alturas', NULL, 9975428, 0, 3113681557, 'aromero824@misena.edu.co', '/images/instructors/1503631625.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 03:27:05'),
-(35, 'paula andrea', 'cruz mejia', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora calidad', NULL, 30396241, 0, 3176547111, 'paulaandreacruz@yahoo.es', '/images/instructors/1503687420.pdf', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:57:00'),
+(35, 'paula andrea', 'cruz mejia', NULL, 'planta selected=\"selected\"', NULL, NULL, NULL, NULL, 'instructora calidad', NULL, 30396241, 0, 3176547111, 'paulaandreacruz@yahoo.es', '/images/instructors/1503769423.PNG', 'disponible', '2017-08-10 06:27:32', '2017-08-26 17:43:43'),
 (36, 'maria beatriz', 'pava hurtado', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora ingles', NULL, 30270825, 0, 3162559047, 'bpava@misena.edu.co', '/images/instructors/1503687128.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:52:08'),
 (37, 'luisa fernanda', 'echeverri caballero', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora comunicaciones', NULL, 24335083, 0, 3146264428, 'lfecheverri38@misena.edu.co', '/images/instructors/1503687084.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:51:24'),
 (38, 'luisa fernanda', 'castano calvo', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora cultura fisica', NULL, 30396654, 0, 3104329906, 'lfcalvo@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 06:27:32', NULL),
@@ -243,7 +243,7 @@ INSERT INTO `instructors` (`id`, `nombre`, `apellidos`, `especialidad`, `vincula
 (45, 'luis camilo', 'estrada patino', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor mecanica automotriz', NULL, 1085297027, 0, 3128488679, 'luis.23513230762@ucaldas.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 06:27:32', NULL),
 (46, 'olga clemencia', 'marin henao', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora seguridad ocupacional', NULL, 30395126, 0, 3147694939, 'ocmarinh@misena.edu.co', '/images/instructors/1503687338.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:55:38'),
 (47, 'andres felipe', 'lopez chica', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor ambiental', NULL, 75090879, 0, 3206874025, 'felopez11@gmail.com', '/images/instructors/1503631781.png', 'disponible', '2017-08-10 06:27:32', '2017-08-25 03:29:41'),
-(48, 'gladys francelly', 'cardona franco', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora confeccion', NULL, 30307343, 0, 3113364387, 'gladys.francelly@gmail.com', '/images/instructors/1503685647.png', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:27:27'),
+(48, 'gladys francelly', 'cardona franco', NULL, 'planta selected=\"selected\"', NULL, NULL, NULL, NULL, 'instructora confeccion', NULL, 30307343, 0, 3113364387, 'gladys.francelly@gmail.com', '/images/instructors/1503768558.png', 'disponible', '2017-08-10 06:27:32', '2017-08-26 17:29:18'),
 (49, 'javier', 'ariza useche', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor trabajo en alturas', NULL, 79836769, 0, 3185272465, 'javier.ariza@misena.edu.co', '/images/instructors/1503685938.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:32:18'),
 (50, 'jaime adolfo', 'fuentes sanchez', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor motos', NULL, 11224476, 0, 3008115106, 'adolfofuentes@misena.edu.co', '/images/instructors/1503685825.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:30:25'),
 (51, 'lorena patricia', 'valencia', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora seguridad ocupacional', NULL, 30338297, 0, 3176171144, 'valencia.lp@misena.edu.co', '/images/instructors/1503686726.png', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:45:26'),
@@ -269,10 +269,10 @@ INSERT INTO `instructors` (`id`, `nombre`, `apellidos`, `especialidad`, `vincula
 (72, 'fernando', 'mejia lopez', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor trabajo en alturas', NULL, 75096659, 0, 3207585520, 'fmejia@umanizales.edu.co', '/images/instructors/1503634275.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 04:11:15'),
 (73, 'claudio alberto', 'valencia sanchez', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor electricidad', NULL, 75073330, 0, 3148856871, 'cavalencia033@misena.edu.co', '/images/instructors/1503633873.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 04:04:33'),
 (74, 'cesar augusto', 'ramirez ocampo', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor maderas', NULL, 10262514, 0, 3117733406, 'cauramirez@misena.edu.co', '/images/instructors/1503633756.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 04:02:36'),
-(75, 'juan pablo', 'mejia ramirez', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor ambiental', NULL, 75088893, 0, 3127917880, 'jpmejiar@hotmail.com', '/images/instructors/1503686572.JPG', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:42:52'),
+(75, 'juan pablo', 'mejia ramirez', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor ambiental', NULL, 75088893, 0, 3127917880, 'jpmejiar@hotmail.com', '/images/instructors/1503769147.JPG', 'disponible', '2017-08-10 06:27:32', '2017-08-26 17:39:07'),
 (76, 'angela maria ', 'alzate ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora etica', NULL, 30395470, 0, 3117157455, 'alegnateza2@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-10 06:27:32', NULL),
 (77, 'jhon kevin', 'florez pena', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor automotriz', NULL, 16073677, 0, 3105488749, 'lucas062@gmial.com', '/images/instructors/1503686137.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:35:37'),
-(78, 'lina rocio', 'ospina duque', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora salud ocupacional', NULL, 42114871, 0, 3216265294, 'lirosduque@misena.edu.co', '/images/instructors/1503686710.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:45:10'),
+(78, 'lina rocio', 'ospina duque', NULL, 'planta selected=\"selected\"', NULL, NULL, NULL, NULL, 'instructora salud ocupacional', NULL, 42114871, 0, 3216265294, 'lirosduque@misena.edu.co', '/images/instructors/1503769191.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-26 17:39:51'),
 (79, 'junsun', 'sunico consistente', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor ingles', NULL, 281463, 0, 3016877061, 'jsunico@misena.edu.co', '/images/instructors/1503686604.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:43:24'),
 (80, 'andres felipe', 'henao lopez', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor cultura fisica', NULL, 75107712, 0, 3117423635, 'andres_henao_03@hotmail.com', '/images/instructors/1503631936.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 03:32:16'),
 (81, 'sara maria', 'clavijo arrubla', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora construccion', NULL, 1053806513, 0, 3166098393, 'sarah12340@gmail.com', '/images/instructors/1503687499.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:58:19'),
