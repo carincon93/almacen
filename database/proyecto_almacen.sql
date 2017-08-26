@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-08-2017 a las 23:50:42
+-- Tiempo de generación: 26-08-2017 a las 00:10:00
 -- Versión del servidor: 10.1.24-MariaDB
 -- Versión de PHP: 7.1.6
 
@@ -146,7 +146,6 @@ INSERT INTO `class_groups` (`id`, `id_ficha`, `nombre_ficha`, `especialidad`, `i
 (38, 1362328, 'operario en confeccion industrial', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL),
 (39, 1343061, 'tc mantenimiento de motocicletas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'presencial', 'disponible', NULL, NULL);
 
-
 -- --------------------------------------------------------
 
 --
@@ -163,13 +162,6 @@ CREATE TABLE `history_records` (
   `novedad` longtext COLLATE utf8mb4_unicode_ci,
   `novedad_nueva` longtext COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `history_records`
---
-
-INSERT INTO `history_records` (`id`, `instructor_id`, `classgroup_id`, `classroom_id`, `prestado_en`, `entregado_en`, `novedad`, `novedad_nueva`) VALUES
-(1, 57, 1, 1, '2017-08-25 14:30:59', '2017-08-25 14:31:33', 'se robo mouse', 'entrego mouse');
 
 -- --------------------------------------------------------
 
@@ -235,7 +227,7 @@ INSERT INTO `instructors` (`id`, `nombre`, `apellidos`, `especialidad`, `vincula
 (29, 'diego', 'giraldo ramirez', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor electricidad virtual', NULL, 10250071, 0, 3206307217, 'dgr555@misena.edu.co', '/images/instructors/1503634106.png', 'disponible', '2017-08-10 06:27:32', '2017-08-25 04:08:26'),
 (30, 'monica eugenia', 'montoya arias', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora seguridad ocupacional', NULL, 30392935, 0, 3003108170, 'memontoya53@misena.edu.co', '/images/instructors/1503687293.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:54:53'),
 (31, 'natalia', 'erazo becerra', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora electricidad virtual', NULL, 24334576, 0, 3134623938, 'nata_erazo@hotmail.com', '/images/instructors/1503687309.png', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:55:09'),
-(32, 'claudia sonia', 'serna granada', NULL, 'planta selected=\"selected\"', NULL, NULL, NULL, NULL, 'instructora ingles', NULL, 30322042, 0, 3116827825, 'cls0230@my.londonmet.ac.uk', '/images/instructors/1503633852.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 04:04:12'),
+(32, 'claudia sonia', 'serna granada', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora ingles', NULL, 30322042, 0, 3116827825, 'cls0230@my.londonmet.ac.uk', '/images/instructors/1503633852.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 04:04:12'),
 (33, 'carmen elena', 'hernandez rincon', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora etica', NULL, 24340753, 0, 3147917762, 'carelena@misena.edu.co', '/images/instructors/1503632862.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 03:47:42'),
 (34, 'alexander', 'romero moreno', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor trabajo en alturas', NULL, 9975428, 0, 3113681557, 'aromero824@misena.edu.co', '/images/instructors/1503631625.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 03:27:05'),
 (35, 'paula andrea', 'cruz mejia', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora calidad', NULL, 30396241, 0, 3176547111, 'paulaandreacruz@yahoo.es', '/images/instructors/1503687420.pdf', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:57:00'),
@@ -273,7 +265,7 @@ INSERT INTO `instructors` (`id`, `nombre`, `apellidos`, `especialidad`, `vincula
 (68, 'jorge hernan', 'alzate buitrago', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor construccion', NULL, 6108160, 0, 3122011383, 'pizcali1979@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:38:27'),
 (69, 'john alexander', 'arenas noriega', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor construccion', NULL, 75003878, 0, 3104681193, 'jaan821@misena.edu.co', '/images/instructors/1503686216.pdf', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:36:56'),
 (70, 'diana eugenia', 'henao barragan', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructora motocicletas', NULL, 1110506666, 0, 3115183802, 'dehenaob@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 06:27:32', NULL),
-(71, 'andres julian', 'hoyos caicedo', NULL, 'planta selected=\"selected\"', NULL, NULL, NULL, NULL, 'instructor sistemas', NULL, 75097575, 0, 3107324131, 'ajhoyos@misena.edu.co', '/images/instructors/1503632072.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 03:34:32'),
+(71, 'andres julian', 'hoyos caicedo', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor sistemas', NULL, 75097575, 0, 3107324131, 'ajhoyos@misena.edu.co', '/images/instructors/1503632072.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 03:34:32'),
 (72, 'fernando', 'mejia lopez', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor trabajo en alturas', NULL, 75096659, 0, 3207585520, 'fmejia@umanizales.edu.co', '/images/instructors/1503634275.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 04:11:15'),
 (73, 'claudio alberto', 'valencia sanchez', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor electricidad', NULL, 75073330, 0, 3148856871, 'cavalencia033@misena.edu.co', '/images/instructors/1503633873.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 04:04:33'),
 (74, 'cesar augusto', 'ramirez ocampo', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor maderas', NULL, 10262514, 0, 3117733406, 'cauramirez@misena.edu.co', '/images/instructors/1503633756.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 04:02:36'),
@@ -289,7 +281,7 @@ INSERT INTO `instructors` (`id`, `nombre`, `apellidos`, `especialidad`, `vincula
 (84, 'jorge augusto ', 'villada suaza ', NULL, 'contratista', NULL, NULL, NULL, NULL, 'instructor sistemas', NULL, 7534711, 0, 3164494488, 'jovisu@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 06:27:32', NULL),
 (85, 'diana cristina', 'montoya hoyos', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora sistemas', NULL, 24347071, 0, 3113756986, 'crismajo10@gmail.com', '/images/instructors/1503634065.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 04:07:45'),
 (86, 'luisa fernanda', 'callejas orrego', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora sistemas', NULL, 30232108, 0, 3007736768, 'lcallejaso@gmail.com', '/images/perdefault.png', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:50:05'),
-(87, 'carlos andres', 'henao lema', NULL, 'planta selected=\"selected\"', NULL, NULL, NULL, NULL, 'instructor ambiental', NULL, 75096428, 0, 3214514010, 'cahlema@hotmail.com', '/images/instructors/1503632761.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 03:46:01'),
+(87, 'carlos andres', 'henao lema', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor ambiental', NULL, 75096428, 0, 3214514010, 'cahlema@hotmail.com', '/images/instructors/1503632761.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 03:46:01'),
 (88, 'emilce silvana', 'ceron rosero', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora salud ocupacional', NULL, 27451978, 0, 3113684029, 'esilcero@hotmail.com', '/images/instructors/1503634220.JPG', 'disponible', '2017-08-10 06:27:32', '2017-08-25 04:10:20'),
 (89, 'paola natalia', 'orozco orozco', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora ingles', NULL, 1053780547, 0, 3108406371, 'pa.na.oro19@hotmail.com', '/images/instructors/1503687382.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 18:56:22'),
 (90, 'asdrubal', 'gomez galeano', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor ingles', NULL, 1053800692, 0, 3128820955, 'asdmax@hotmail.com', '/images/instructors/1503632218.jpg', 'disponible', '2017-08-10 06:27:32', '2017-08-25 03:36:58'),
@@ -427,7 +419,7 @@ ALTER TABLE `class_groups`
 -- AUTO_INCREMENT de la tabla `history_records`
 --
 ALTER TABLE `history_records`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `instructors`
 --
