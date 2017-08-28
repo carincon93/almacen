@@ -51,7 +51,7 @@ CREATE TABLE `classrooms` (
 --
 
 INSERT INTO `classrooms` (`id`, `nombre_ambiente`, `descripcion`, `centro`, `tipo_ambiente`, `movilidad`, `estado`, `cupo`, `imagen`, `disponibilidad`, `prestado_en`, `instructor_id`, `classgroup_id`, `created_at`, `updated_at`) VALUES
-(1, 'sistemas 1', NULL, NULL, 'aula', 'fijo', 'activo', 60, NULL, 'disponible', '2017-08-25 14:30:59', NULL, NULL, NULL, NULL),
+(1, 'sistemas 1', NULL, NULL, 'aula', 'fijo', 'activo', 60, NULL, 'disponible', '2017-08-25 14:30:59', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (2, 'sistemas 2', NULL, NULL, 'aula', 'fijo', 'activo', 40, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (3, 'ambiente lego', NULL, NULL, 'aula', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (4, 'auditorio procesos industriales y construccion', NULL, NULL, 'auditorio', 'fijo', 'activo', 200, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
@@ -76,7 +76,7 @@ INSERT INTO `classrooms` (`id`, `nombre_ambiente`, `descripcion`, `centro`, `tip
 (23, 'sistemas 3', NULL, NULL, 'aula', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (24, 'salud ocupacional', NULL, NULL, 'aula', 'fijo', 'activo', 70, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (25, 'soldadura', NULL, NULL, 'taller', 'fijo', 'activo', 75, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
-(26, 'tecnoparque procesos industriales', NULL, NULL, 'taller', 'fijo', 'activo', 50, NULL, 'disponibe', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00');
+(26, 'tecnoparque procesos industriales', NULL, NULL, 'taller', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
