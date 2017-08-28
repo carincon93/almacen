@@ -13,19 +13,6 @@
             <img src="{{ asset($ins->imagen) }}" alt="" class="img-responsive">
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-md-8">
-            <h4>Fichas</h4>
-            <select name="classgroup_id" class="form-control select">
-                <option value="">Seleccione una ficha...</option>
-                @foreach($ficha as $fi)
-                <option value="{{ $fi->id }}">{{ $fi->id_ficha.' '.$fi->nombre_ficha }}</option>
-                @endforeach
-            </select>
-            <span id="mensaje" class="help-block" style="color:#a94442"></span>
-        </div>
-    </div>
 </div>
 
 @else

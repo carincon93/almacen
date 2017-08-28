@@ -12,7 +12,6 @@ class Instructor extends Model
         'numero_documento',
         'area',
         'ip',
-        'telefono',
         'celular',
         'email',
         'imagen',
