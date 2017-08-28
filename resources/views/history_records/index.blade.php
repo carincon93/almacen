@@ -54,8 +54,8 @@
                 	<td>{{ $his->classroom->nombre_ambiente}}</td>
                 	<td>{{ $his->prestado_en }}</td>
                     <td>{{ $his->entregado_en != '' ? $his->entregado_en : 'Sin entrega'}}</td>
-                    <td>{{ $his->entregado_en != '' ? $his->novedad : 'Sin novedad'}}</td>
-                    <td>{{ $his->entregado_en != '' ? $his->novedad_nueva : ''}}</td>
+                    <td>{{ $his->novedad != '' ? $his->novedad : 'Sin novedad'}}</td>
+                    <td>{{ $his->novedad_nueva != '' ? $his->novedad_nueva : ''}}</td>
 
                     <td class="td-actions">
                         <button class="btn btn-action novedad_nueva" type="button" data-target="#modalFormNovedad" data-toggle="modal" data-id-historial="{{$his->id}}"><i class="fa fa-fw fa-edit"></i>Editar</button>
