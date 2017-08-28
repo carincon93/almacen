@@ -182,6 +182,7 @@
 
             $curentPageLink.parents('li').addClass('active');
         });
+        $('.select').select2();
     </script>
     <!-- <script src="{{ asset('js/master.js') }}"></script> -->
     @stack('scripts')

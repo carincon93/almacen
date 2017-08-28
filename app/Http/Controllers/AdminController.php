@@ -41,6 +41,7 @@ class AdminController extends Controller
     public function password(){
         return View('admins.password');
     }
+
     public function updatePassword(PasswordRequest $request){
         $admin = Auth::User();
         if (Hash::check($request->mypassword, $admin->password)){
@@ -66,6 +67,7 @@ class AdminController extends Controller
 
         return redirect('/admin/dashboard')->with('status', 'Todos los registros de las fichas fueron eliminadas con éxito!');
     }
+    
     public function import(Request $request)
     {
         if($request->file('imported-file'))

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\InstructorRequest;
-use App\ClassGroup;
 
 use App\Instructor;
 
@@ -136,12 +135,6 @@ class InstructorController extends Controller
             ->with('status', 'El instructor fue eliminado con éxito');
     }
 
-    public function truncate()
-    {
-        Instructor::truncate();
-        return redirect('/admin/instructor')->with('status', 'Todos los registros de las fichas fueron eliminadas con éxito!');
-    }
-
     public function disponibilidad_instructor(Request $request, $id_instructor)
     {
         $dataInstructor = Instructor::where('id', '=', $id_instructor)->first();
@@ -158,9 +151,8 @@ class InstructorController extends Controller
 
     public function ajax(Request $request)
     {
-        $ficha=ClassGroup::where('disponibilidad', '=', 'disponible')->get();
         $query = Instructor::numero_documento($request->get('numero_documento'))->get();
-        return view('ajax.instructors', compact('query','ficha'));
+        return view('ajax.instructors', compact('query'));
 
     }
 }

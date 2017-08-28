@@ -23,6 +23,13 @@
                         <input name="id" type="hidden" value="" id="id_ambiente">
                         <input name="prestado_en" type="hidden" value="">
                         <div id="resultado_instructor"></div>
+                        <select name="classgroup_id" class="select">
+                            <option value="">Seleccione una ficha...</option>
+                            @foreach($dataFicha as $ficha)
+                            <option value="{{ $ficha->id }}">{{ $ficha->id_ficha.' '.$ficha->nombre_ficha }}</option>
+                            @endforeach
+                        </select>
+                        <span id="mensaje" class="help-block" style="color:#a94442"></span>
                     </form>
                 </div>
                 <div class="modal-footer">

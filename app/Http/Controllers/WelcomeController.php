@@ -14,6 +14,7 @@ class WelcomeController extends Controller
     protected $dataClassroom = [];
     protected $dataHistoryR = [];
     protected $dataInstructor = [];
+    protected $dataFicha = [];
     /**
      * Display a listing of the resource.
      *
@@ -24,8 +25,8 @@ class WelcomeController extends Controller
         $dataClassroom  = Classroom::orderByDesc('disponibilidad')->get();
         $dataHistoryR   = HistoryRecord::orderByDesc('prestado_en', 'DESC')->take(5)->get();
         $dataInstructor = Instructor::all()->sortBy('nombre');
-        $ficha=ClassGroup::all();
+        $dataFicha          = ClassGroup::where('disponibilidad', '=', 'disponible')->get();
 
-        return view('welcome', compact('dataClassroom', 'dataHistoryR', 'dataInstructor', 'ficha'));
+        return view('welcome', compact('dataClassroom', 'dataHistoryR', 'dataInstructor', 'dataFicha'));
     }
 }

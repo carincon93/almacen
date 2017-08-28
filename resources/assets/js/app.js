@@ -93,18 +93,18 @@ $('body').on('click', '.amb-disponible', function (e) {
 $('.modal').on('click', '#btn-prestar-ambiente', function (event) {
     event.preventDefault();
     var $form_prestamo = $('#form-prestamo');
-    $classroom_id = $form_prestamo.find('#id_ambiente').val(), $prestado_en = $form_prestamo.find('input[name=prestado_en]').val(), $id_instructor = $form_prestamo.find('input[name=instructor_id]').val(), $token = $form_prestamo.find('input[name=_token]').val(), $classgroup_id=$form_prestamo.find('select[name=classgroup_id]').val();
+    $classroom_id = $form_prestamo.find('#id_ambiente').val(), $prestado_en = $form_prestamo.find('input[name=prestado_en]').val(), $id_instructor = $form_prestamo.find('input[name=instructor_id]').val(), $token = $form_prestamo.find('input[name=_token]').val(), $classgroup_id = $form_prestamo.find('select[name=classgroup_id]').val();
     if ($id_instructor > 0) {
-      if ($classgroup_id > 0) {
-        disponibilidad_instructor($id_instructor, $token);
-        disponibilidad_classgroup($classgroup_id, $token);
-        guardar_historial($token, $classgroup_id,$id_instructor,$classroom_id, $prestado_en);
-        setTimeout(function () {
-            $form_prestamo.submit();
-        }, 1000);
-      }else{
-        $('#mensaje').text('*Debe seleccionar una ficha');
-      }
+        if ($classgroup_id > 0) {
+            disponibilidad_instructor($id_instructor, $token);
+            disponibilidad_classgroup($classgroup_id, $token);
+            guardar_historial($token, $classgroup_id, $id_instructor, $classroom_id, $prestado_en);
+            setTimeout(function () {
+                $form_prestamo.submit();
+            }, 1000);
+        } else {
+            $('#mensaje').text('*Debe seleccionar una ficha');
+        }
     }
 });
 
@@ -129,7 +129,7 @@ function disponibilidad_classgroup($classgroup_id, $token) {
     });
 }
 
-function guardar_historial($token, $classgroup_id,$id_instructor, $classroom_id, $prestado_en) {
+function guardar_historial($token, $classgroup_id, $id_instructor, $classroom_id, $prestado_en) {
     if ($id_instructor > 0) {
         $.ajaxSetup({
             headers: {
@@ -137,7 +137,7 @@ function guardar_historial($token, $classgroup_id,$id_instructor, $classroom_id,
             }
         });
 
-        $.post('/guardar_historial', { _token: $token, classgroup_id: $classgroup_id,instructor_id: $id_instructor,  classroom_id: $classroom_id, prestado_en: $prestado_en }, function (data, textStatus, xhr) {
+        $.post('/guardar_historial', { _token: $token, classgroup_id: $classgroup_id, instructor_id: $id_instructor, classroom_id: $classroom_id, prestado_en: $prestado_en }, function (data, textStatus, xhr) {
             /*optional stuff to do after success */
         });
     }
@@ -152,7 +152,7 @@ $('body').on('click', '.clr-entregar', function (e) {
         $id_ambiente = $(this).attr('data-id-ambiente'),
         $fecha_prestamo = $(this).attr('data-prestamo'),
         $id_instructor = $(this).attr('data-id-instructor');
-        $classgroup_id = $(this).attr('data-id-classgroup');
+    $classgroup_id = $(this).attr('data-id-classgroup');
 
     // Set Titulo modal con nombre de ambiente
     $('.modal-title').text($nombre_ambiente);
@@ -261,4 +261,3 @@ $('.table-full').on('click', '.novedad_nueva', function (e) {
 $('.modal').on('hidden.bs.modal', function (e) {
     $(this).find("input[type=search], input[name=id], input[name=prestado_en], input[id=nomInstructor], textarea[name=novedad], select").val('').end().find("input[type=checkbox], input[type=radio]").prop("checked", "").end().find("#resultado_instructor").children().remove();
 });
-// $('.select').select2();
