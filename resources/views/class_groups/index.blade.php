@@ -54,12 +54,19 @@
                             <i class="fa fa-fw fa-pencil"></i>
                             Editar
                         </a>
+                        @if($dg->disponibilidad == 'disponible')
                         <form action="{{ url('/admin/class_group/'.$dg->id) }}" style="display: inline-block;"data-nombre="{{ $dg->nombre_ficha }}"  method="POST" class="btn-delete-tbl btn btn-action">
                             {{ method_field('delete') }}
                             {!! csrf_field()  !!}
                             <i class="fa fa-fw fa-trash"></i>
                             Eliminar
                         </form>
+                        @else
+                        <a href="{{ url('/') }}" class="btn btn-action btn-not-delete" title="La ficha aun esta en uso, para poder eliminarlo primero debe hacer la entrega del ambiente. Haga clic en este elemento para direccionarte al préstamo de ambientes">
+                            <i class="fa fa-fw fa-trash"></i>
+                            Eliminar
+                        </a>
+                        @endif
                     </td>
                 </tr>
                 @endforeach
