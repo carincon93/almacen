@@ -31,39 +31,29 @@
         <table class="table table-full table-hover">
             <thead>
                 <tr>
-                    <th>#</th>
                     <th>Ficha</th>
                     <th>Instructor</th>
                     <th>Ambiente</th>
-                    <th>Fecha Prestado</th>
-                    <th>Fecha Entregado</th>
                     <th>Novedad</th>
                     <th>Novedad nueva</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody>
-            @php
-            $count = 1;
-            @endphp
+            <tbody class="history">
             @foreach($dataHistoryR as $his)
                 <tr>
-                	<td>{{$count++}}</td>
-                    <td>{{ $his->cLassgroup->id_ficha.' '.$his->nombre_ficha }}</td>
-                	<td>{{ $his->instructor->nombre.' '.$his->instructor->apellidos }}</td>
-                	<td>{{ $his->classroom->nombre_ambiente}}</td>
-                	<td>{{ $his->prestado_en }}</td>
-                    <td>{{ $his->entregado_en != '' ? $his->entregado_en : 'Sin entrega'}}</td>
+                    <td class="text-capitalize">{{ $his->cLassgroup->id_ficha.' '.$his->nombre_ficha }}</td>
+                	<td class="text-capitalize">{{ $his->instructor->nombre.' '.$his->instructor->apellidos }}</td>
+                	<td class="text-capitalize">{{ $his->classroom->nombre_ambiente}}</td>
                     <td>{{ $his->novedad != '' ? $his->novedad : 'Sin novedad'}}</td>
-                    <td>{{ $his->novedad_nueva != '' ? $his->novedad_nueva : ''}}</td>
+                    <td class="novedad_nueva" data-target="#modalFormNovedad" data-toggle="modal" data-id-historial="{{$his->id}}">{{ $his->novedad_nueva != '' ? $his->novedad_nueva : ''}}</td>
 
                     <td class="td-actions">
-                        <button class="btn btn-action novedad_nueva" type="button" data-target="#modalFormNovedad" data-toggle="modal" data-id-historial="{{$his->id}}"><i class="fa fa-fw fa-edit"></i>Editar</button>
-                        <form action="{{ url('/admin/history_record/'.$his->id) }}" data-nombre="{{ $his->classgroup->id_ficha }}" method="POST" style="display: inline-block;" class="btn btn-action btn-delete-tbl">
+                        <i class="fa fa-fw fa-calendar-o btn btn-round"></i>
+                        <form action="{{ url('/admin/history_record/'.$his->id) }}" data-nombre="{{ $his->classgroup->id_ficha }}" method="POST" style="display: inline-block;" class="btn btn-round btn-delete-tbl">
                             {{ method_field('delete') }}
                             {!! csrf_field()  !!}
                             <i class="fa fa-fw fa-trash"></i>
-                            Eliminar
                         </form>
                     </td>
                 </tr>
