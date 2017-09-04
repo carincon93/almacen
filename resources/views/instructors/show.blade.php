@@ -36,7 +36,7 @@
 				<td class="text-capitalize">{{ $dataInstructor->area }}</td>
 			</tr>
 			<tr>
-				<th>Documento</th>
+				<th>Número de documento</th>
 				<td>{{ $dataInstructor->numero_documento }}</td>
 			</tr>
 			<tr>
@@ -48,16 +48,16 @@
 				<td>{{ $dataInstructor->celular }}</td>
 			</tr>
 			<tr>
-				<th>Correo Electrónico</th>
+				<th>Correo electrónico</th>
 				<td>{{ $dataInstructor->email }}</td>
 			</tr>
 			<tr>
-				<th>fichas asignadas</th>
+				<th>Fichas asignadas</th>
 				<td>
 					<ul>
 						@foreach($dataInstructor->classgroups as $classgroup)
 						<li>{{ $classgroup->nombre_ficha }}</li>
-						@endforeach						
+						@endforeach
 					</ul>
 				</td>
 			</tr>

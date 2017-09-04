@@ -56,6 +56,10 @@ class AdminController extends Controller
         }
     }
 
+    public function update_system_index(){
+        return view('admins.update_system');
+    }
+
     public function truncateAll()
     {
         Schema::disableForeignKeyConstraints();
@@ -65,9 +69,9 @@ class AdminController extends Controller
         HistoryRecord::truncate();
         Schema::enableForeignKeyConstraints();
 
-        return redirect('/admin/dashboard')->with('status', 'Todos los registros de las fichas fueron eliminadas con éxito!');
+        return redirect('/admin/update_system')->with('status', 'Todos los registros de las fichas fueron eliminadas con éxito!');
     }
-    
+
     public function import(Request $request)
     {
         if($request->file('imported-file'))
@@ -147,7 +151,7 @@ class AdminController extends Controller
                 if(!empty($dataArray3))
                 {
                     Classroom::insert($dataArray3);
-                    return redirect('/admin/dashboard')->with('status', 'Se ha importado el archivo con éxito!');
+                    return redirect('/admin/update_system')->with('status', 'Se ha importado el archivo con éxito!');
                 }
             }
         }

@@ -46,11 +46,11 @@ class HistoryRecordController extends Controller
     public function store(Request $request)
     {
         $dataHistoryR = new HistoryRecord();
-        $dataHistoryR->classgroup_id      = $request->get('classgroup_id');
+        $dataHistoryR->class_group_id      = $request->get('class_group_id');
         $dataHistoryR->instructor_id  = $request->get('instructor_id');
         $dataHistoryR->classroom_id   = $request->get('classroom_id');
         $dataHistoryR->prestado_en    = $request->get('prestado_en');
-        
+
 
         $dataHistoryR->save();
     }
@@ -104,9 +104,9 @@ class HistoryRecordController extends Controller
     public function agregar_novedad(Request $request, $fecha_prestamo)
     {
         if ($request->has('novedad')) {
-            $novedad=$request->get('novedad');
-        }else{
-            $novedad='no hay ningun registro de novedad';
+            $novedad = $request->get('novedad');
+        } else {
+            $novedad ='no hay ningun registro de novedad';
         }
         $dataHistoryR = HistoryRecord::where('prestado_en', '=', $fecha_prestamo)->first();
         $dataHistoryR->entregado_en = date('Y-m-d H:i:s');
@@ -130,11 +130,11 @@ class HistoryRecordController extends Controller
     }
     public function excel()
     {
-     \Excel:: create('Listahistoriales' , function($excel) {
-     $excel->sheet('Historial' , function($sheet) {
-     $his = HistoryRecord:: all();
-     $sheet->loadView('history_records.excel' , array('his' => $his));
-     });
-     })->download('xls' );
+        \Excel:: create('Listahistoriales' , function($excel) {
+            $excel->sheet('Historial' , function($sheet) {
+                $his = HistoryRecord:: all();
+                $sheet->loadView('history_records.excel' , array('his' => $his));
+            });
+        })->download('xls' );
     }
 }

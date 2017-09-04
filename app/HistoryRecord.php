@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class HistoryRecord extends Model
 {
     protected $fillable = [
-        'instructor_id', 'classgroup_id','classroom_id', 'prestado_en', 'entregado_en', 'novedad', 'novedad_nueva',
+        'instructor_id', 'class_group_id','classroom_id', 'prestado_en', 'entregado_en', 'novedad', 'novedad_nueva',
     ];
     public function classgroup() {
-        return $this->belongsTo('App\ClassGroup');
+        return $this->belongsTo('App\ClassGroup', 'class_group_id');
     }
     public function instructor() {
     	return $this->belongsTo('App\Instructor');

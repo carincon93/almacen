@@ -11,10 +11,12 @@
     <title>@yield('title')</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     @include('layouts.modal')
@@ -64,11 +66,7 @@
                     <a href="{{ url('/admin/history_record') }}"><i class="fa fa-fw fa-line-chart"></i>Historial de préstamos</a>
                 </li>
                 <li>
-                    <form action="{{ url('/admin/all_entries/truncate') }}" method="POST" style="display: inline-block;" class="form-truncate-ficha btn">
-                        {!! csrf_field()  !!}
-                        <i class="fa fa-fw fa-trash"></i>
-                        Eliminar todos los registros
-                    </form>
+                    <a href="{{ url('/admin/update_system') }}"><i class="fa fa-fw fa-circle-o-notch"></i>Actualizar sistema</a>
                 </li>
             </ul>
         </div>
@@ -162,9 +160,11 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/select2.min.js') }}"></script>
     <script>
         $(document).ready(function() {
+
             // =========================== Active Links =================================
             var current_url = "{{ Request::fullUrl() }}";
             var full_url = current_url+location.search;
@@ -181,8 +181,29 @@
             }
 
             $curentPageLink.parents('li').addClass('active');
+
+            var id_anchor = location.hash;
+            $(id_anchor).css('border', '1px solid rgb(232, 40, 111)').append('<div class="card clr-msg"><div class="caret"></div>Por favor entrega este ambiente</div>');
+
+            $('.select').select2();
+            $('.owl-carousel').owlCarousel({
+                loop:true,
+                // autoplay:true,
+                margin:10,
+                responsiveClass:true,
+                responsive:{
+                    0:{
+                        items:1,
+                        nav:true
+                    },
+                    1000:{
+                        items:1,
+                        nav:false,
+                        loop:false
+                    }
+                }
+            })
         });
-        $('.select').select2();
     </script>
     <!-- <script src="{{ asset('js/master.js') }}"></script> -->
     @stack('scripts')

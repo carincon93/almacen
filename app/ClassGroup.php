@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ClassGroup extends Model
 {
     protected $fillable = [
-        'id_ficha', 'nombre_ficha', 'instructor_id', 'tipo_formacion','disponibilidad',
+        'id_ficha', 'nombre_ficha', 'instructor_id', 'tipo_formacion', 'disponibilidad',
     ];
 
     public function instructor() {
@@ -16,7 +16,7 @@ class ClassGroup extends Model
     public function historyrecords() {
     	return $this->hasMany('App\HistoryRecord');
     }
-    public function classroom() {
+    public function classrooms() {
     	return $this->hasMany('App\Classroom');
     }
 }

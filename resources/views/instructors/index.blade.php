@@ -3,7 +3,7 @@
 @section('navbar-top')
 <div class="search-navbar-wrapper">
     <i class="fa fa-fw fa-search"></i>
-    <input type="text" id="myInputIns" onkeyup="filterTableIns()" placeholder="Buscar instructor" class="form-control search-navbar">
+    <input type="text" id="myInputIns" onkeyup="filterTableIns()" placeholder="Buscar por nombre de instructor" class="form-control search-navbar">
 </div>
 @endsection
 
@@ -12,20 +12,7 @@
 
 @section('content')
 @include('layouts.messages')
-<!-- <blockquote class="">
-    <p>Si desea realizar una importación de un archivo de excel, por favor primero elimine todos los registros de esta tabla</p>
-    <form action="{{ url('/admin/classroom/truncate') }}" method="POST" style="display: inline-block;" class="form-truncate-ficha btn">
-        {!! csrf_field()  !!}
-        <i class="fa fa-fw fa-trash"></i>
-        Eliminar todos los registros
-    </form>
-</blockquote>
-<form action="{{ url('admin/instructor/import') }}" enctype="multipart/form-data" method="POST">
-    {{ csrf_field() }}
-    <input type="file" name="imported-file" class="form-control" accept=".xlsx">
-    <button type="submit">Importar</button>
-</form> -->
-<a href="{{ url('/admin/instructor/create') }}" class="btn"><i class="fa fa-fw fa-user-plus"></i> Añadir</a>
+<a href="{{ url('/admin/instructor/create') }}" class="btn action-round"><i class="fa fa-fw fa-user-plus"></i></a>
 <div class="card">
     <div class="table-responsive">
         <table class="table table-full table-hover">
@@ -49,24 +36,21 @@
                     <td>{{ $ins->area }}</td>
                     <td>{{ $ins->celular }}</td>
                     <td class="td-actions">
-                        <a class="btn btn-action" href="{{ url('/admin/instructor/'.$ins->id) }}">
+                        <a class="btn btn-round" href="{{ url('/admin/instructor/'.$ins->id) }}">
                             <i class="fa fa-fw fa-search"></i>
                         </a>
-                        <a class="btn btn-action" href="{{ url('/admin/instructor/'.$ins->id.'/edit') }}">
+                        <a class="btn btn-round" href="{{ url('/admin/instructor/'.$ins->id.'/edit') }}">
                             <i class="fa fa-fw fa-edit"></i>
-                            Editar
                         </a>
                         @if($ins->disponibilidad == 'disponible')
-                        <form action="{{ url('/admin/instructor/'.$ins->id) }}" method="POST" class="btn-action btn-delete-tbl btn"  data-nombre="{{ $ins->nombre.' '.$ins->apellidos }}">
+                        <form action="{{ url('/admin/instructor/'.$ins->id) }}" method="POST" class="btn-round btn-delete-tbl btn"  data-nombre="{{ $ins->nombre.' '.$ins->apellidos }}">
                             {{ method_field('delete') }}
                             {!! csrf_field()  !!}
                             <i class="fa fa-fw fa-trash"></i>
-                            Eliminar
                         </form>
                         @else
-                        <a href="{{ url('/') }}" class="btn btn-action btn-not-delete" title="El instructor tiene un ambiente a cargo, para poder eliminarlo primero debe hacer la entrega del ambiente. Haga clic en este elemento para direccionarte al préstamo de ambientes">
+                        <a href="{{ url('/#').$ins->classroom->id }}" class="btn btn-round btn-not-delete" data-title="El instructor tiene un ambiente a cargo, para poder eliminarlo primero debe hacer la entrega del ambiente. Haga clic en este elemento para direccionarte al préstamo de ambientes" data-toggle="tooltip" data-placement="bottom">
                             <i class="fa fa-fw fa-trash"></i>
-                            Eliminar
                         </a>
                         @endif
                     </td>

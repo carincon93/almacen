@@ -16,7 +16,7 @@ class Classroom extends Model
         'disponibilidad',
         'prestado_en',
         'instructor_id',
-        'classgroup_id',
+        'class_group_id',
     ];
 
 
@@ -27,7 +27,7 @@ class Classroom extends Model
     	return $this->hasMany('App\HistoryRecord');
     }
     public function classgroup() {
-        return $this->hasMany('App\ClassGroup');
+        return $this->belongsTo('App\ClassGroup', 'class_group_id');
     }
 
     public function scopeNombre_ambiente($query, $nombre_ambiente)

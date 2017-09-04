@@ -67,12 +67,13 @@ Route::post('/admin/classroom/truncate', 'ClassroomController@truncate');
 Route::resource('/admin/history_record','HistoryRecordController');
 Route::post('/admin/history_record/{id}/novedad_nueva','HistoryRecordController@agregar_nueva_novedad');
 Route::get('/obtener_novedad','HistoryRecordController@obtener_novedad');
-Route:: get('history_record/excel' ,  'HistoryRecordController@excel' );
+Route::get('/excel','HistoryRecordController@excel');
 
 //
-Route::get('admin/password', 'AdminController@password');
-Route::post('admin/updatepassword', 'AdminController@updatePassword');
+Route::get('/admin/password', 'AdminController@password');
+Route::post('/admin/updatepassword', 'AdminController@updatePassword');
 Route::post('/admin/all_entries/truncate', 'AdminController@truncateAll');
+Route::get('/admin/update_system', 'AdminController@update_system_index');
 
 Route::resource('/admin/collaborator', 'CollaboratorController');
 

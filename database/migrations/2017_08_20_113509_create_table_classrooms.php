@@ -27,8 +27,8 @@ class CreateTableClassrooms extends Migration
             $table->dateTime('prestado_en')->nullable();
             $table->integer('instructor_id')->nullable()->unsigned();
             $table->foreign('instructor_id')->references('id')->on('instructors');
-            $table->integer('classgroup_id')->nullable()->unsigned();
-            $table->foreign('classgroup_id')->references('id')->on('class_groups');
+            $table->integer('class_group_id')->nullable()->unsigned();
+            $table->foreign('class_group_id')->references('id')->on('class_groups');
             $table->timestamps();
         });
     }

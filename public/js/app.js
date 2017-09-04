@@ -805,6 +805,7 @@ window.Vue = __webpack_require__(35);
 
 
 // Obtener la fecha actual
+$('[data-toggle="tooltip"]').tooltip();
 (function ($) {
     $.fn.getDate = function (format) {
 
@@ -875,12 +876,12 @@ $('body').on('click', '.amb-disponible', function (e) {
 $('.modal').on('click', '#btn-prestar-ambiente', function (event) {
     event.preventDefault();
     var $form_prestamo = $('#form-prestamo');
-    $classroom_id = $form_prestamo.find('#id_ambiente').val(), $prestado_en = $form_prestamo.find('input[name=prestado_en]').val(), $id_instructor = $form_prestamo.find('input[name=instructor_id]').val(), $token = $form_prestamo.find('input[name=_token]').val(), $classgroup_id = $form_prestamo.find('select[name=classgroup_id]').val();
+    $classroom_id = $form_prestamo.find('#id_ambiente').val(), $prestado_en = $form_prestamo.find('input[name=prestado_en]').val(), $id_instructor = $form_prestamo.find('input[name=instructor_id]').val(), $token = $form_prestamo.find('input[name=_token]').val(), $class_group_id = $form_prestamo.find('select[name=class_group_id]').val();
     if ($id_instructor > 0) {
-        if ($classgroup_id > 0) {
+        if ($class_group_id > 0) {
             disponibilidad_instructor($id_instructor, $token);
-            disponibilidad_classgroup($classgroup_id, $token);
-            guardar_historial($token, $classgroup_id, $id_instructor, $classroom_id, $prestado_en);
+            disponibilidad_classgroup($class_group_id, $token);
+            guardar_historial($token, $class_group_id, $id_instructor, $classroom_id, $prestado_en);
             setTimeout(function () {
                 $form_prestamo.submit();
             }, 1000);
@@ -900,18 +901,18 @@ function disponibilidad_instructor($id_instructor, $token) {
         /*optional stuff to do after success */
     });
 }
-function disponibilidad_classgroup($classgroup_id, $token) {
+function disponibilidad_classgroup($class_group_id, $token) {
     $.ajaxSetup({
         headers: {
             'X-CSRF-Token': $('input[name="_token"]').val()
         }
     });
-    $.post('/disponibilidad_classgroup/' + $classgroup_id, { _token: $token }, function (data, textStatus, xhr) {
+    $.post('/disponibilidad_classgroup/' + $class_group_id, { _token: $token }, function (data, textStatus, xhr) {
         /*optional stuff to do after success */
     });
 }
 
-function guardar_historial($token, $classgroup_id, $id_instructor, $classroom_id, $prestado_en) {
+function guardar_historial($token, $class_group_id, $id_instructor, $classroom_id, $prestado_en) {
     if ($id_instructor > 0) {
         $.ajaxSetup({
             headers: {
@@ -919,7 +920,7 @@ function guardar_historial($token, $classgroup_id, $id_instructor, $classroom_id
             }
         });
 
-        $.post('/guardar_historial', { _token: $token, classgroup_id: $classgroup_id, instructor_id: $id_instructor, classroom_id: $classroom_id, prestado_en: $prestado_en }, function (data, textStatus, xhr) {
+        $.post('/guardar_historial', { _token: $token, class_group_id: $class_group_id, instructor_id: $id_instructor, classroom_id: $classroom_id, prestado_en: $prestado_en }, function (data, textStatus, xhr) {
             /*optional stuff to do after success */
         });
     }
@@ -934,7 +935,7 @@ $('body').on('click', '.clr-entregar', function (e) {
         $id_ambiente = $(this).attr('data-id-ambiente'),
         $fecha_prestamo = $(this).attr('data-prestamo'),
         $id_instructor = $(this).attr('data-id-instructor');
-    $classgroup_id = $(this).attr('data-id-classgroup');
+    $class_group_id = $(this).attr('data-id-classgroup');
 
     // Set Titulo modal con nombre de ambiente
     $('.modal-title').text($nombre_ambiente);
@@ -942,7 +943,7 @@ $('body').on('click', '.clr-entregar', function (e) {
     $form_entrega.find('input[name=id]').attr('value', $id_ambiente);
     $form_entrega.find('input[name=prestado_en]').attr('value', $fecha_prestamo);
     $form_entrega.find('input[name=instructor_id]').attr('value', $id_instructor);
-    $form_entrega.find('input[name=classgroup_id]').attr('value', $classgroup_id);
+    $form_entrega.find('input[name=class_group_id]').attr('value', $class_group_id);
 
     // Construct the URL dynamically.
     var url = window.location.href.split("/");
@@ -955,10 +956,10 @@ $('.modal').on('click', '#btn-entregar-ambiente', function (event) {
         $novedad = $form_entrega.find('textarea').val(),
         $fecha_prestamo = $form_entrega.find('input[name=prestado_en]').val(),
         $id_instructor = $form_entrega.find('input[name=instructor_id]').val(),
-        $classgroup_id = $form_entrega.find('input[name=classgroup_id]').val(),
+        $class_group_id = $form_entrega.find('input[name=class_group_id]').val(),
         $token = $form_entrega.find('input[name=_token]').val();
     modificar_ins_disponibilidad($token, $id_instructor);
-    modificar_cg_disponibilidad($token, $classgroup_id);
+    modificar_cg_disponibilidad($token, $class_group_id);
     agregar_novedad($token, $fecha_prestamo, $novedad);
     setTimeout(function () {
         $form_entrega.submit();
@@ -985,13 +986,13 @@ function modificar_ins_disponibilidad($token, $id_instructor) {
         /*optional stuff to do after success */
     });
 }
-function modificar_cg_disponibilidad($token, $classgroup_id) {
+function modificar_cg_disponibilidad($token, $class_group_id) {
     $.ajaxSetup({
         headers: {
             'X-CSRF-Token': $token
         }
     });
-    $.post('/modificar_disponibilidad_cg/' + $classgroup_id, { _token: $token }, function (data, textStatus, xhr) {
+    $.post('/modificar_disponibilidad_cg/' + $class_group_id, { _token: $token }, function (data, textStatus, xhr) {
         /*optional stuff to do after success */
     });
 }
@@ -1005,7 +1006,9 @@ $('body').on('click', '.form-truncate-ficha', function (e) {
     $modalTrun.find('.modal-body').text('Va a eliminar todos los registros de esta tabla. ¿Está seguro que desea eliminar todos los registros?');
     $modalTrun.find('#btn-delete').text('Eliminar todo');
     $modalTrun.modal({ backdrop: 'static', keyboard: false }).on('click', '#btn-delete', function () {
-        $formTruncFic.submit();
+        setTimeout(function () {
+            $formTruncFic.submit();
+        }, 500);
     });
 });
 

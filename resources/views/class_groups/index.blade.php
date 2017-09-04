@@ -10,21 +10,8 @@
 @section('content')
 
 @include('layouts.messages')
-<!-- <blockquote class="">
-    <p>Si desea realizar una importación de un archivo de excel, por favor primero elimine todos los registros de esta tabla</p>
-    <form action="{{ url('/admin/class_group/truncate') }}" method="POST" style="display: inline-block;" class="form-truncate-ficha btn">
-        {!! csrf_field()  !!}
-        <i class="fa fa-fw fa-trash"></i>
-        Eliminar todos los registros
-    </form>
-</blockquote>
-<form action="{{ url('admin/class_group/import') }}" enctype="multipart/form-data" method="POST">
-    {{ csrf_field() }}
-    <input type="file" name="imported-file" class="form-control" accept=".xlsx">
-    <button type="submit">Importar</button>
-</form> -->
+<a href="{{ url('/admin/class_group/create') }}" class="action-round btn"><i class="fa fa-fw fa-plus"></i></a>
 <div class="card">
-    <a href="{{ url('/admin/class_group/create') }}"><i class="fa fa-fw fa-plus"></i> Añadir una nueva ficha</a>
     <div class="table-responsive">
         <table class="table table-full table-hover">
             <thead>
@@ -47,25 +34,24 @@
                     <td>{{ $dg->nombre_ficha }}</td>
                     <td>{{ $dg->tipo_formacion }}</td>
                     <td class="td-actions">
-                        <a class="btn btn-action" href="{{ url('/admin/class_group/'.$dg->id) }}">
+                        <a class="btn btn-round" href="{{ url('/admin/class_group/'.$dg->id) }}">
                             <i class="fa fa-fw fa-search"></i>
                         </a>
-                        <a class="btn btn-action" href="{{ url('/admin/class_group/'.$dg->id.'/edit') }}">
+                        <a class="btn btn-round" href="{{ url('/admin/class_group/'.$dg->id.'/edit') }}">
                             <i class="fa fa-fw fa-pencil"></i>
-                            Editar
                         </a>
                         @if($dg->disponibilidad == 'disponible')
-                        <form action="{{ url('/admin/class_group/'.$dg->id) }}" style="display: inline-block;"data-nombre="{{ $dg->nombre_ficha }}"  method="POST" class="btn-delete-tbl btn btn-action">
+                        <form action="{{ url('/admin/class_group/'.$dg->id) }}" style="display: inline-block;"data-nombre="{{ $dg->nombre_ficha }}"  method="POST" class="btn-delete-tbl btn btn-round">
                             {{ method_field('delete') }}
                             {!! csrf_field()  !!}
                             <i class="fa fa-fw fa-trash"></i>
-                            Eliminar
                         </form>
                         @else
-                        <a href="{{ url('/') }}" class="btn btn-action btn-not-delete" title="La ficha aun esta en uso, para poder eliminarlo primero debe hacer la entrega del ambiente. Haga clic en este elemento para direccionarte al préstamo de ambientes">
-                            <i class="fa fa-fw fa-trash"></i>
-                            Eliminar
-                        </a>
+                        @foreach($dg->classrooms as $classroom)
+                           <a href="{{ url('/#').$classroom->id }}" class="btn btn-round btn-not-delete" data-title="La ficha aun esta en uso, para poder eliminarlo primero debe hacer la entrega del ambiente. Haga clic en este elemento para direccionarte al préstamo de ambientes" data-toggle="tooltip" data-placement="bottom">
+                               <i class="fa fa-fw fa-trash"></i>
+                           </a>
+                        @endforeach
                         @endif
                     </td>
                 </tr>
@@ -85,7 +71,7 @@
             table = document.getElementById("myTableFicha");
             tr = table.getElementsByTagName("tr");
             for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[1];
+                td = tr[i].getElementsByTagName("td")[2];
                 if (td) {
                     if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
                         tr[i].style.display = "";

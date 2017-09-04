@@ -23,7 +23,7 @@
                         <input name="id" type="hidden" value="" id="id_ambiente">
                         <input name="prestado_en" type="hidden" value="">
                         <div id="resultado_instructor"></div>
-                        <select name="classgroup_id" class="select">
+                        <select name="class_group_id" class="select">
                             <option value="">Seleccione una ficha...</option>
                             @foreach($dataFicha as $ficha)
                             <option value="{{ $ficha->id }}">{{ $ficha->id_ficha.' '.$ficha->nombre_ficha }}</option>
@@ -54,7 +54,7 @@
 
                         <input name="id" type="hidden" value="" id="id-clrEntrega">
                         <input value="" name="instructor_id" class="hidden">
-                        <input value="" name="classgroup_id" class="hidden">
+                        <input value="" name="class_group_id" class="hidden">
                         <div class="form-group">
                             <label class="label-control">Agregar novedad</label>
                             <textarea name="novedad" rows="4" cols="80" class="form-control" autofocus></textarea>
@@ -87,9 +87,13 @@
                             <img src="{{ asset($clr->imagen) }}" alt="" class="img-classroom img-clrinactive img-responsive">
                         </div>
                         <div class="clr-desc">
-                            <h5 class="" data-nombreClr="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
+                            <div class="desc-1">
+                                <h5 class="" data-nombreClr="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
+                            </div>
                             <hr>
-                            <p>El ambiente está inactivo.</p>
+                            <div class="desc-1">
+                                <p>El ambiente está inactivo.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,37 +104,47 @@
                             <img src="{{ asset($clr->imagen) }}" alt="" class="img-classroom img-clrinactive img-responsive">
                         </div>
                         <div class="clr-desc">
-                            <span class="circle"></span>
-                            <h5 class="">{{ $clr->nombre_ambiente }}</h5>
+                            <div class="desc-1">
+                                <h5 class="">{{ $clr->nombre_ambiente }}</h5>
+                            </div>
+                            <span class="circle"><i class="fa fa-fw fa-minus"></i></span>
                             <hr class="hr-repair">
-                            <p>El ambiente se encuentra en reparación</p>
+                            <div class="desc-1">
+                                <p>El ambiente se encuentra en reparación</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 @elseif($clr->disponibilidad == 'no disponible')
                 <div>
-                    <div class="classroom-card card clr-entregar" data-toggle="modal" data-target="#modal_entregar_ambiente" data-id-ambiente="{{ $clr->id }}" data-prestamo="{{ $clr->prestado_en }}" data-id-instructor="{{ $clr->instructor->id }}" data-id-classgroup="{{ $clr->classgroup_id }}">
+                    <div id="{{ $clr->id }}" class="classroom-card card clr-entregar" data-toggle="modal" data-target="#modal_entregar_ambiente" data-id-ambiente="{{ $clr->id }}" data-prestamo="{{ $clr->prestado_en }}" data-id-instructor="{{ $clr->instructor->id }}" data-id-classgroup="{{ $clr->class_group_id }}" >
                         <div class="clr-img">
                             <img src="{{ asset($clr->imagen) }}" alt="" class="img-classroom img-responsive">
                             <div class="info-clr">Ambiente en uso <span class="pull-right">{{ $clr->prestado_en }}</span></div>
                         </div>
                         <div class="clr-desc">
-                            <h5 class="" data-nombre-ambiente="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
+                            <div class="desc-1">
+                                <h5 class="" data-nombre-ambiente="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
+                            </div>
                             <hr>
-                            <div class="text-capitalize">{{ $clr->instructor->nombre.' '.$clr->instructor->apellidos }}</div>
-                            <span class="badge fecha-prestamo"></span>
+                            <div class="desc-1 desc-prestamo">
+                                <div class="text-capitalize">{{ $clr->instructor->nombre.' '.$clr->instructor->apellidos }}</div>
+                                <div class="clr-classgroup">{{ $clr->classgroup->nombre_ficha }}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 @else
                 <div>
-                    <div class="classroom-card card amb-disponible" data-id-ambiente="{{ $clr->id }}" data-toggle="modal" data-target="#modal_solicitar_prestamo">
+                    <div class="classroom-card card amb-disponible" data-id-ambiente="{{ $clr->id }}" data-toggle="modal" data-target="#modal_solicitar_prestamo" id="ffd">
                         <div class="clr-img">
                             <img src="{{ asset($clr->imagen) }}" alt="" class="img-classroom img-responsive">
                         </div>
                         <div class="clr-desc">
                             <span class="circle"></span>
-                            <h5 class="" data-nombre-ambiente="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
+                            <div class="desc-1">
+                                <h5 class="" data-nombre-ambiente="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -2,28 +2,14 @@
 @section('navbar-top')
 <div class="search-navbar-wrapper">
     <i class="fa fa-fw fa-search"></i>
-    <input type="text" id="myInput" onkeyup="filterTableClr()" placeholder="Buscar ambiente" class="form-control search-navbar">
-    <!-- <input type="search" class="form-control search-navbar" id="hnombre_ambiente" placeholder="Buscar ambiente" autocomplete="off" onkeyup="searchClassroom()"> -->
+    <input type="text" id="myInput" onkeyup="filterTableClr()" placeholder="Buscar por nombre de ambiente" class="form-control search-navbar">
 </div>
 @endsection
 @section('big-content-desc')
-<a href="{{ url('/admin/classroom/create') }}"><i class="fa fa-fw fa-plus"></i> Añadir un nuevo ambiente</a>
+<a href="{{ url('/admin/classroom/create') }}" class="btn action-round"><i class="fa fa-fw fa-plus"></i></a>
 @endsection
 @section('content')
 @include('layouts.messages')
-<!-- <blockquote class="">
-    <p>Si desea realizar una importación de un archivo de excel, por favor primero elimine todos los registros de esta tabla</p>
-    <form action="{{ url('/admin/classroom/truncate') }}" method="POST" style="display: inline-block;" class="form-truncate-ficha btn">
-        {!! csrf_field()  !!}
-        <i class="fa fa-fw fa-trash"></i>
-        Eliminar todos los registros
-    </form>
-</blockquote>
-<form action="{{ url('admin/class_group/import') }}" enctype="multipart/form-data" method="POST">
-    {{ csrf_field() }}
-    <input type="file" name="imported-file" class="form-control" accept=".xlsx">
-    <button type="submit">Importar</button>
-</form> -->
 <div class="card">
     <div class="table-responsive">
         <table class="table table-full table-hover" data-form="deleteForm">
@@ -49,24 +35,21 @@
                     <td>{{ $clr->estado }}</td>
                     <td>{{ $clr->cupo }}</td>
                     <td class="td-actions">
-                        <a class="btn btn-action" href="{{ url('/admin/classroom/'.$clr->id) }}">
+                        <a class="btn btn-round" href="{{ url('/admin/classroom/'.$clr->id) }}">
                             <i class="fa fa-fw fa-search"></i>
                         </a>
-                        <a class="btn btn-action" href="{{ url('/admin/classroom/'.$clr->id.'/edit') }}">
+                        <a class="btn btn-round" href="{{ url('/admin/classroom/'.$clr->id.'/edit') }}">
                             <i class="fa fa-fw fa-edit"></i>
-                            Editar
                         </a>
                         @if($clr->disponibilidad == 'disponible')
-                        <form action="{{ url('/admin/classroom/'.$clr->id) }}" data-nombre="{{ $clr->nombre_ambiente }}" method="POST" style="display: inline-block;" class="btn-delete-tbl btn btn-action">
+                        <form action="{{ url('/admin/classroom/'.$clr->id) }}" data-nombre="{{ $clr->nombre_ambiente }}" method="POST" style="display: inline-block;" class="btn-delete-tbl btn btn-round btn-round">
                             {{ method_field('delete') }}
                             {!! csrf_field()  !!}
                             <i class="fa fa-fw fa-trash"></i>
-                            Eliminar
                         </form>
                         @else
-                        <a href="{{ url('/') }}" class="btn btn-action btn-not-delete" title="El ambiente aun esta en uso, para poder eliminarlo primero debe hacer la entrega del ambiente. Haga clic en este elemento para direccionarte al préstamo de ambientes">
+                        <a href="{{ url('/#').$clr->id }}" class="btn btn-round btn-not-delete" data-title="El ambiente aun esta en uso, para poder eliminarlo primero debe hacer la entrega del ambiente. Haga clic en este elemento para direccionarte al préstamo de ambientes" data-toggle="tooltip" data-placement="bottom">
                             <i class="fa fa-fw fa-trash"></i>
-                            Eliminar
                         </a>
                         @endif
                     </td>

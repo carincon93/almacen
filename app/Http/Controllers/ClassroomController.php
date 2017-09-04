@@ -139,7 +139,7 @@ class ClassroomController extends Controller
         $dataClassroom = Classroom::find($request->id);
         $dataClassroom->disponibilidad = 'no disponible';
         $dataClassroom->prestado_en    = $request->get('prestado_en');
-        $dataClassroom->classgroup_id  = $request->get('classgroup_id');
+        $dataClassroom->class_group_id  = $request->get('class_group_id');
         $dataClassroom->instructor_id  = $request->get('instructor_id');
         
 
@@ -154,7 +154,7 @@ class ClassroomController extends Controller
         $dataClassroom = Classroom::find($request->id);
         $dataClassroom->disponibilidad = 'disponible';
         $dataClassroom->instructor_id  = NULL;
-        $dataClassroom->classgroup_id  = NULL;
+        $dataClassroom->class_group_id  = NULL;
 
         if($dataClassroom->save()) {
             $request->session()->flash('status', 'El ambiente '.$dataClassroom->nombre_ambiente.' está disponible nuevamente!');

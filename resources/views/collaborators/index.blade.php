@@ -6,7 +6,7 @@
 </div>
 @endsection
 @section('big-content-desc')
-<a href="{{ url('/admin/collaborator/create') }}"><i class="fa fa-fw fa-plus"></i> Añadir un nuevo administrador</a>
+<a href="{{ url('/admin/collaborator/create') }}" class="btn action-round"><i class="fa fa-fw fa-plus"></i></a>
 @endsection
 @section('content')
 @include('layouts.modal')
@@ -30,19 +30,16 @@
                     <td>{{ $count++ }}</td>
                     <td>{{ $adm->name }}</td>
                     <td>
-                        <a class="btn btn-action" href="{{ url('/admin/collaborator/'.$adm->id) }}">
+                        <a class="btn btn-round" href="{{ url('/admin/collaborator/'.$adm->id) }}">
                             <i class="fa fa-fw fa-search"></i>
                         </a>
-                        <a class="btn btn-action" href="{{ url('/admin/collaborator/'.$adm->id.'/edit') }}">
+                        <a class="btn btn-round" href="{{ url('/admin/collaborator/'.$adm->id.'/edit') }}">
                             <i class="fa fa-fw fa-edit"></i>
-                            Editar
                         </a>
-                        <form action="{{ url('/admin/collaborator/'.$adm->id) }}" data-nombre="{{ $adm->name }}" method="POST" style="display: inline-block;" class="btn-delete-tbl btn-action btn">
+                        <form action="{{ url('/admin/collaborator/'.$adm->id) }}" data-nombre="{{ $adm->name }}" method="POST" style="display: inline-block;" class="btn-delete-tbl btn-round btn">
                             {{ method_field('delete') }}
                             {!! csrf_field()  !!}
-
                             <i class="fa fa-fw fa-trash"></i>
-                            Eliminar
                         </form>
                     </td>
                 </tr>
