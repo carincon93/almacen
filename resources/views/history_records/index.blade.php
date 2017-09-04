@@ -1,4 +1,11 @@
 @extends('layouts.app')
+    {{-- @section('navbar-top')
+        <div class="input-daterange input-group" id="datepicker">
+            <input type="text" class="input-sm form-control" name="start" />
+            <span class="input-group-addon">to</span>
+            <input type="text" class="input-sm form-control" name="end" />
+        </div>
+    @endsection --}}
 @section('content')
 @include('layouts.modal')
 <div class="modal fade" id="modalFormNovedad">

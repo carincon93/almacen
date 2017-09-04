@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-08-2017 a las 02:34:11
+-- Tiempo de generación: 04-09-2017 a las 20:57:18
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -51,29 +51,29 @@ CREATE TABLE `classrooms` (
 --
 
 INSERT INTO `classrooms` (`id`, `nombre_ambiente`, `descripcion`, `centro`, `tipo_ambiente`, `movilidad`, `estado`, `cupo`, `imagen`, `disponibilidad`, `prestado_en`, `instructor_id`, `class_group_id`, `created_at`, `updated_at`) VALUES
-(1, 'sistemas 1', NULL, NULL, 'aula', 'fijo', 'activo', 60, NULL, 'disponible', '2017-08-25 14:30:59', NULL, NULL, NULL, '0000-00-00 00:00:00'),
+(1, 'sistemas 1', NULL, NULL, 'aula', 'fijo', 'activo', 60, '/images/classrooms/1504550912.jpeg', 'disponible', '2017-08-25 14:30:59', NULL, NULL, NULL, '2017-09-04 18:48:32'),
 (2, 'sistemas 2', NULL, NULL, 'aula', 'fijo', 'activo', 40, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (3, 'ambiente lego', NULL, NULL, 'aula', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (4, 'auditorio procesos industriales y construccion', NULL, NULL, 'auditorio', 'fijo', 'activo', 200, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (5, 'autocad', NULL, NULL, 'laboratorio', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
-(6, 'automotriz', NULL, NULL, 'taller', 'fijo', 'activo', 90, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
+(6, 'automotriz', NULL, NULL, 'taller', 'fijo', 'activo', 90, '/images/classrooms/1504551162.jpeg', 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '2017-09-04 18:52:42'),
 (7, 'confeccion', NULL, NULL, 'taller', 'fijo', 'activo', 60, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
-(8, 'diesel', NULL, NULL, 'taller', 'fijo', 'activo', 100, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
-(9, 'electricidad 1 ', NULL, NULL, 'taller', 'fijo', 'activo', 60, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
+(8, 'diesel', NULL, NULL, 'taller', 'fijo', 'activo', 100, '/images/classrooms/1504551074.jpeg', 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '2017-09-04 18:51:14'),
+(9, 'electricidad 1', NULL, NULL, 'taller', 'fijo', 'activo', 60, '/images/classrooms/1504551125.jpeg', 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '2017-09-04 18:52:05'),
 (10, 'electricidad 2', NULL, NULL, 'taller', 'fijo', 'activo', 70, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (11, 'electricidad 3', NULL, NULL, 'aula', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
-(12, 'electricidad 4', NULL, NULL, 'taller', 'fijo', 'activo', 30, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
+(12, 'electricidad 4', NULL, NULL, 'taller', 'fijo', 'activo', 30, '/images/classrooms/1504551139.jpeg', 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '2017-09-04 18:52:19'),
 (13, 'espacio deportivo para la practica del futbol baloncesto voleibol', NULL, NULL, 'campo deportivo', 'fijo', 'activo', 300, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (14, 'espacio para trabajo en alturas', NULL, NULL, 'taller', 'fijo', 'activo', 350, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (15, 'gas', NULL, NULL, 'taller', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (16, 'gimnasio regional caldas', NULL, NULL, 'aula', 'fijo', 'activo', 1000, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (17, 'maderas', NULL, NULL, 'taller', 'fijo', 'activo', 35, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
-(18, 'mantenimiento', NULL, NULL, 'taller', 'fijo', 'activo', 105, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
+(18, 'mantenimiento', NULL, NULL, 'taller', 'fijo', 'activo', 105, '/images/classrooms/1504551272.jpeg', 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '2017-09-04 18:55:26'),
 (19, 'mecanizado', NULL, NULL, 'taller', 'fijo', 'activo', 80, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
-(20, 'metalografia', NULL, NULL, 'taller', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
+(20, 'metalografia', NULL, NULL, 'taller', 'fijo', 'activo', 50, '/images/classrooms/1504551180.jpeg', 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '2017-09-04 18:53:00'),
 (21, 'motos cpi', NULL, NULL, 'taller', 'fijo', 'activo', 60, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
-(22, 'refrigeracion', NULL, NULL, 'taller', 'fijo', 'activo', 60, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
-(23, 'sistemas 3', NULL, NULL, 'aula', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
+(22, 'refrigeracion', NULL, NULL, 'taller', 'fijo', 'activo', 60, '/images/classrooms/1504551226.jpeg', 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '2017-09-04 18:53:46'),
+(23, 'sistemas 3', NULL, NULL, 'aula', 'fijo', 'activo', 50, '/images/classrooms/1504551213.jpeg', 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '2017-09-04 18:53:33'),
 (24, 'salud ocupacional', NULL, NULL, 'aula', 'fijo', 'activo', 70, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (25, 'soldadura', NULL, NULL, 'taller', 'fijo', 'activo', 75, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00'),
 (26, 'tecnoparque procesos industriales', NULL, NULL, 'taller', 'fijo', 'activo', 50, NULL, 'disponible', '0000-00-00 00:00:00', NULL, NULL, NULL, '0000-00-00 00:00:00');
@@ -200,10 +200,10 @@ INSERT INTO `instructors` (`id`, `nombre`, `apellidos`, `especialidad`, `vincula
 (2, 'aparicio', 'mejia rendon', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-16 construccion', NULL, 75091846, 0, 3014160504, 'apariciomejia@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 16:27:32', NULL),
 (3, 'consuelo', 'garcia escobar ', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructora  g-20 emprendimiento', NULL, 24318223, 0, 3113076751, 'cgarciae@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 16:27:32', NULL),
 (4, 'cristian mauricio', 'toro', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-6 soldadura', NULL, 16071103, 0, 3136501532, 'mtorov@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 16:27:32', NULL),
-(5, 'diego alexander', 'grajales perez', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-11 mantenimiento', NULL, 75096903, 0, 3163965678, 'dagrajales@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 16:27:32', NULL),
+(5, 'diego alexander', 'grajales perez', NULL, 'planta selected=\"selected\"', NULL, NULL, NULL, NULL, 'instructor g-11 mantenimiento', NULL, 75096903, 0, 3163965678, 'dagrajales@misena.edu.co', '/images/instructors/1504550872.jpeg', 'disponible', '2017-08-10 16:27:32', '2017-09-04 18:47:52'),
 (6, 'elver', 'valencia', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g- 14 soldadura', NULL, 75064699, 0, 3117385100, 'elvervalencia@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 16:27:32', NULL),
 (7, 'fernando', 'rodriguez valencia ', NULL, 'planta', NULL, NULL, NULL, NULL, 'equipo tecnico pedagogico instructor g-20', NULL, 10232014, 62263, 3122588689, 'ferrodriguezv@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 16:27:32', NULL),
-(8, 'francisco javier', 'vargas   ', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-16 mantenimiento', NULL, 10243995, 0, 3104707065, 'fjvargas@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 16:27:32', NULL),
+(8, 'francisco javier', 'vargas', NULL, 'planta selected=\"selected\"', NULL, NULL, NULL, NULL, 'instructor g-16 mantenimiento', NULL, 10243995, 0, 3104707065, 'fjvargas@misena.edu.co', '/images/instructors/1504550892.jpeg', 'disponible', '2017-08-10 16:27:32', '2017-09-04 18:48:12'),
 (9, 'guillermo antonio', 'valencia velasquez', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-13 electricidad', NULL, 10279010, 0, 3137656579, 'guivalen@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 16:27:32', NULL),
 (10, 'jaime', 'giraldo orrego', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-19 electricidad', NULL, 10286761, 0, 3136443404, 'jagio13@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 16:27:32', NULL),
 (11, 'jaime', 'trejos londono', NULL, 'planta', NULL, NULL, NULL, NULL, 'instructor g-16 electricidad', NULL, 10274114, 0, 3147392470, 'jtrejos@misena.edu.co', '/images/perdefault.png', 'disponible', '2017-08-10 16:27:32', NULL),

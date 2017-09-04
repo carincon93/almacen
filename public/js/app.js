@@ -1047,6 +1047,7 @@ $('.modal').on('hidden.bs.modal', function (e) {
     $(this).find("input[type=search], input[name=id], input[name=prestado_en], input[id=nomInstructor], textarea[name=novedad], select").val('').end().find("input[type=checkbox], input[type=radio]").prop("checked", "").end().find("#resultado_instructor").children().remove();
 });
 
+
 /***/ }),
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
