@@ -1018,8 +1018,8 @@ $('.table-full').on('click', '.btn-delete-tbl', function (e) {
     var $formDel = $(this),
         $nombre_elemento = $formDel.attr('data-nombre');
 
-    $('.modal').find('.modal-title').text('Nombre: ' + $nombre_elemento);
-    $('.modal').find('.modal-body').text('Está seguro que desea eliminar este registro?');
+    $('#confirm-delete').find('.modal-title').text('Nombre: ' + $nombre_elemento);
+    $('#confirm-delete').find('.modal-body').text('Está seguro que desea eliminar este registro?');
     $('#btn-delete').text('Eliminar');
     $('#confirm-delete').modal({ backdrop: 'static', keyboard: false }).on('click', '#btn-delete', function () {
         $formDel.submit();
@@ -1046,7 +1046,6 @@ $('.table-full').on('click', '.novedad_nueva', function (e) {
 $('.modal').on('hidden.bs.modal', function (e) {
     $(this).find("input[type=search], input[name=id], input[name=prestado_en], input[id=nomInstructor], textarea[name=novedad], select").val('').end().find("input[type=checkbox], input[type=radio]").prop("checked", "").end().find("#resultado_instructor").children().remove();
 });
-
 
 /***/ }),
 /* 10 */
