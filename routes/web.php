@@ -68,6 +68,7 @@ Route::resource('/admin/history_record','HistoryRecordController');
 Route::post('/admin/history_record/{id}/novedad_nueva','HistoryRecordController@agregar_nueva_novedad');
 Route::get('/obtener_novedad','HistoryRecordController@obtener_novedad');
 Route::get('/excel','HistoryRecordController@excel');
+Route::post('/datesearch','HistoryRecordController@datesearch');
 
 //
 Route::get('/admin/password', 'AdminController@password');

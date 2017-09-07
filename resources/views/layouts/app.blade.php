@@ -16,7 +16,8 @@
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{-- <link href="{{ asset('css/bootstrap-datepicker3.min.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('css/bootstrap-datepicker.min.css') }}" rel="stylesheet"> 
+    <link href="{{ asset('css/bootstrap-datepicker.standalone.min.css') }}" rel="stylesheet">
 
 
 </head>
@@ -164,7 +165,8 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/select2.min.js') }}"></script>
-    {{-- <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script> --}}
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.es.min.js') }}"></script>
     <script>
         $(document).ready(function() {
 
@@ -206,11 +208,11 @@
                     }
                 }
             });
-            // $('#sandbox-container .input-daterange').datepicker({
-            //     format: "dd/mm/yyyy",
-            //     language: "es",
-            //     autoclose: true
-            // });
+            $('.datapickerr').datepicker({
+                    format: "yyyy/mm/dd",
+                    language: "es",
+                    autoclose: true
+                });
         });
     </script>
     <!-- <script src="{{ asset('js/master.js') }}"></script> -->

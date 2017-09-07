@@ -925,6 +925,27 @@ function guardar_historial($token, $class_group_id, $id_instructor, $classroom_i
         });
     }
 }
+$('body').on('click', '.enviarfechas', function(event) {
+  event.preventDefault();
+  $inicio=$('input[name=inicio]').val();
+  $fin=$('input[name=fin]').val();
+  $token=$('input[name=_token]').val();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-Token': $token
+            }
+        });
+
+        $.post('/datesearch', { _token: $token, inicio: $inicio, fin: $fin}, function (data, textStatus, xhr) {
+           $('.history').html(data);
+        });
+});
+$('body').on('click', '.reset', function(event) {
+  $('input[name=inicio]').val("");
+  $('input[name=fin]').val("");
+  $(".enviarfechas").click(); 
+});
+
 
 // ======================== Setear modal de entrega ========================================
 $('body').on('click', '.clr-entregar', function (e) {

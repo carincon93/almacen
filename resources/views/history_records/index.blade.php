@@ -1,11 +1,4 @@
 @extends('layouts.app')
-    {{-- @section('navbar-top')
-        <div class="input-daterange input-group" id="datepicker">
-            <input type="text" class="input-sm form-control" name="start" />
-            <span class="input-group-addon">to</span>
-            <input type="text" class="input-sm form-control" name="end" />
-        </div>
-    @endsection --}}
 @section('content')
 @include('layouts.modal')
 <div class="modal fade" id="modalFormNovedad">
@@ -32,7 +25,27 @@
         </div>
     </div>
 </div>
+
 <a href="{{ url('history_record/excel') }}" class="btn btn-success"><i class="fa fa-cloud-download"></i> Exportar Historial a Excel</a>
+    <form action="{{ url('datesearch') }}" method="POST">
+        {!! csrf_field()  !!} 
+        <h5>hacer busqueda por fecha</h5>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-daterange input-group datapickerr" id="datepicker">
+                    <input type="text" class="input-sm form-control" name="inicio"  autocomplete="off" />
+                    <span class="input-group-addon">hasta</span>
+                    <input type="text" class="input-sm form-control" name="fin" autocomplete="off" />
+                </div>
+                <br>
+                <div>
+                    <button type="button" class="btn btn-primary enviarfechas">enviar</button>
+                    <button type="button" class="btn btn-danger reset">borrar fechas</button>
+                </div>
+                
+            </div>
+        </div>
+    </form>
 <div class="card">
     <div class="table-responsive">
         <table class="table table-full table-hover">

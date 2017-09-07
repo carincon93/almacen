@@ -137,4 +137,16 @@ class HistoryRecordController extends Controller
             });
         })->download('xls' );
     }
+    public function datesearch(Request $request)
+    {
+        if ($request->get('inicio')=='' && $request->get('fin')=='') {
+            $hr = HistoryRecord::orderBy('prestado_en', 'DESC')->paginate(15);
+            return view('history_records.ajax')->with('hr',$hr);
+        }
+        else{
+            $hr=HistoryRecord::whereBetween('prestado_en',[$request->get('inicio'),$request->get('fin')])->get();
+            return view('history_records.ajax')->with('hr',$hr);
+            
+        }
+    }
 }
