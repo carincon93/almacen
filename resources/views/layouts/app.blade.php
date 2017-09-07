@@ -213,7 +213,5 @@
             // });
         });
     </script>
-    <!-- <script src="{{ asset('js/master.js') }}"></script> -->
-    @stack('scripts')
 </body>
 </html>
