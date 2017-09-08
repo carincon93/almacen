@@ -1,5 +1,7 @@
 fotos ambientes y instructores,
-busqueda en el historial por fechas ajax
+quitar links planos,
+hacer funcionar el modal de las fechas en historial
+
 
 ===== Verificar existencia de instructores y número de documento =======
 1132770	desarrollo grafico de proyectos de arquitectura e ingenieria	construccion	jorge gutierrez	2	00/00/0000	0000-00-00	17/10/2017	nocturna	presencial
