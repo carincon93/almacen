@@ -181,52 +181,42 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
-                    <h4>Ambientes en uso</h4>
+                    <h4>Lista de ambientes</h4>
                 </div>
                 <div class="list-item">
-                    <a href="#">
                         <i class="fa fa-fw fa-circle-o"></i>
                         Sistemas 1
                         <div class="item-text">
                             {{ ! empty($dataS1) ? $dataS1->instructor->nombre.' '.$dataS1->instructor->apellidos : 'Sin instructor asignado'}}
                         </div>
-                    </a>
                 </div>
                 <div class="list-item">
-                    <a href="#">
                         <i class="fa fa-fw fa-circle-o"></i>
                         Sistemas 3
                         <div class="item-text">
                             {{ ! empty($dataS3) ? $dataS3->instructor->nombre.' '.$dataS3->instructor->apellidos : 'Sin instructor asignado'}}
                         </div>
-                    </a>
                 </div>
                 <div class="list-item">
-                    <a href="#">
                         <i class="fa fa-fw fa-circle-o"></i>
                         Metalografía
                         <div class="item-text">
                             {{ ! empty($dataMeta) ? $dataMeta->instructor->nombre.' '.$dataMeta->instructor->apellidos : 'Sin instructor asignado'}}
                         </div>
-                    </a>
                 </div>
                 <div class="list-item">
-                    <a href="#">
                         <i class="fa fa-fw fa-circle-o"></i>
                         Mantenimiento Mecánico II
                         <div class="item-text">
                             {{ ! empty($dataMante) ? $dataMante->instructor->nombre.' '.$dataMante->instructor->apellidos : 'Sin instructor asignado'}}
                         </div>
-                    </a>
                 </div>
                 <div class="list-item">
-                    <a href="#">
                         <i class="fa fa-fw fa-circle-o"></i>
                         Mecanizado
                         <div class="item-text">
                             {{ ! empty($dataMeca) ? $dataMeca->instructor->nombre.' '.$dataMeca->instructor->apellidos : 'Sin instructor asignado'}}
                         </div>
-                    </a>
                 </div>
             </div>
         </div>

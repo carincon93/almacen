@@ -60,7 +60,7 @@
                 </tr>
             </thead>
             <tbody class="history">
-            @foreach($dataHistoryR as $his)
+            @foreach($history_records as $his)
                 <tr>
                     <td class="text-capitalize">{{ $his->cLassgroup->id_ficha.' '.$his->nombre_ficha }}</td>
                 	<td class="text-capitalize">{{ $his->instructor->nombre.' '.$his->instructor->apellidos }}</td>

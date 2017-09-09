@@ -1,5 +1,5 @@
 fotos ambientes y instructores,
-quitar links planos,
+poner css a los ambientes que se coloreen como en el mapa
 hacer funcionar el modal de las fechas en historial
 
 

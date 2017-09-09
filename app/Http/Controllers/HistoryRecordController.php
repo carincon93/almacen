@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
+use App\Instructor;
 use App\HistoryRecord;
 
 class HistoryRecordController extends Controller
@@ -23,8 +25,16 @@ class HistoryRecordController extends Controller
 
     public function index()
     {
-        $dataHistoryR = HistoryRecord::orderBy('prestado_en', 'DESC')->paginate(15);
-        return view('history_records.index')->with('dataHistoryR', $dataHistoryR);
+        $history_records = HistoryRecord::all();
+        $hh = DB::table('history_records')
+                    ->select('instructors.id', 'instructors.nombre','class_groups.id', 'class_groups.id_ficha','classrooms.id', 'classrooms.nombre_ambiente', DB::raw('count(history_records.instructor_id) as total'))
+                    ->join('instructors', 'instructors.id', '=', 'history_records.instructor_id')
+                    ->join('class_groups', 'class_groups.id', '=', 'history_records.class_group_id')
+                    ->join('classrooms', 'classrooms.id', '=', 'history_records.classroom_id')
+                    ->groupBy('instructors.id', 'instructors.nombre','class_groups.id', 'class_groups.id_ficha','classrooms.id', 'classrooms.nombre_ambiente')
+                    ->take(5)
+                    ->get();
+        return view('history_records.index', compact('history_records', 'hh'));
     }
 
     /**
@@ -139,14 +149,30 @@ class HistoryRecordController extends Controller
     }
     public function datesearch(Request $request)
     {
-        if ($request->get('inicio')=='' && $request->get('fin')=='') {
-            $hr = HistoryRecord::orderBy('prestado_en', 'DESC')->paginate(15);
-            return view('history_records.ajax')->with('hr',$hr);
+        $fechaInicio = $request->get('inicio');
+        $fechaFin    = $request->get('fin');
+
+        if ($fechaInicio == '' && $fechaFin == '') {
+            $hr = DB::table('history_records')
+                    ->select('instructors.id', 'instructors.nombre' ,'class_groups.id', 'class_groups.id_ficha','classrooms.id', 'classrooms.nombre_ambiente', 'history_records.prestado_en')
+                    ->join('instructors', 'instructors.id', '=', 'history_records.instructor_id')
+                    ->join('class_groups', 'class_groups.id', '=', 'history_records.class_group_id')
+                    ->join('classrooms', 'classrooms.id', '=', 'history_records.classroom_id')
+                    ->groupBy('instructors.id', 'instructors.nombre','class_groups.id', 'class_groups.id_ficha','classrooms.id', 'classrooms.nombre_ambiente', 'history_records.prestado_en')
+                    ->get();
+            return view('history_records.ajax')->with('hr', $hr);
         }
         else{
-            $hr=HistoryRecord::whereBetween('prestado_en',[$request->get('inicio'),$request->get('fin')])->get();
-            return view('history_records.ajax')->with('hr',$hr);
-            
+            // $hr = HistoryRecord::whereBetween('fecha', [$fechaInicio, $fechaFin])->get();
+            $hr = DB::table('history_records')
+                    ->select('instructors.id', 'instructors.nombre' ,'class_groups.id', 'class_groups.id_ficha','classrooms.id', 'classrooms.nombre_ambiente', 'history_records.prestado_en')
+                    ->join('instructors', 'instructors.id', '=', 'history_records.instructor_id')
+                    ->join('class_groups', 'class_groups.id', '=', 'history_records.class_group_id')
+                    ->join('classrooms', 'classrooms.id', '=', 'history_records.classroom_id')
+                    ->whereBetween(DB::raw('cast(prestado_en as date)'), [$fechaInicio, $fechaFin])
+                    ->groupBy('instructors.id', 'instructors.nombre','class_groups.id', 'class_groups.id_ficha','classrooms.id', 'classrooms.nombre_ambiente', 'history_records.prestado_en')
+                    ->get();
+            return view('history_records.ajax')->with('hr', $hr);
         }
     }
 }
