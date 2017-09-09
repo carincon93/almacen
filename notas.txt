@@ -1,6 +1,7 @@
 fotos ambientes y instructores,
 poner css a los ambientes que se coloreen como en el mapa
 hacer funcionar el modal de las fechas en historial
+cuando se teclee en el input que dio error que se quite
 
 
 ===== Verificar existencia de instructores y número de documento =======
