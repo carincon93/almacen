@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @if ($errors->has('token_error'))
+    {{ $errors->first('token_error') }}
+    @endif
     <!-- Modal -->
     <div class="modal fade" id="modal_solicitar_prestamo">
         <div class="modal-dialog" role="document">

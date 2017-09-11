@@ -44,6 +44,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof ModelNotFoundException) {
+            $exception = new NotFoundHttpException($exception->getMessage(), $exception);
+        }
+
+        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
+            return redirect('/')->withErrors(['token_error' => 'disculpe, su sesion a expirado. por favor intentelo de nuevo.']);
+        }
         return parent::render($request, $exception);
     }
 
