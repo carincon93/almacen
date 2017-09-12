@@ -23,6 +23,7 @@
 </head>
 <body>
     @include('layouts.modal')
+    @include('layouts.modal_historial')
     @if (Auth::check())
     <aside id="sidebar">
         <div id="sidebar-logo">

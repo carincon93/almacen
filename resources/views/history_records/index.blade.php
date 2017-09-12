@@ -69,7 +69,9 @@
                     <td class="novedad_nueva" data-target="#modalFormNovedad" data-toggle="modal" data-id-historial="{{$his->id}}">{{ $his->novedad_nueva != '' ? $his->novedad_nueva : ''}}</td>
 
                     <td class="td-actions">
-                        <i class="fa fa-fw fa-calendar-o btn btn-round"></i>
+                    <button class="btn btn-historial" data-toggle="modal" data-target="#modalHistorial" data-id="{{ $his->id }}" data-nombre="{{ $his->Classroom->nombre_ambiente }}">
+                            Ver historial
+                        </button>
                         <form action="{{ url('/admin/history_record/'.$his->id) }}" data-nombre="{{ $his->classgroup->id_ficha }}" method="POST" style="display: inline-block;" class="btn btn-round btn-delete-tbl">
                             {{ method_field('delete') }}
                             {!! csrf_field()  !!}
