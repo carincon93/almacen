@@ -31,22 +31,6 @@
                 <a href="{{ url('/admin') }}">ALMACÉN CPIC</a>
             </h4>
         </div>
-        <div id="sidebar-admin">
-            <div>
-                <h4 class="text-capitalize">{{ Auth::user()->name }}</h4>
-                <div>
-                    <a href="{{url('admin/password')}}" style="font-size:13px;">Cambiar mi contraseña</a><br>
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();" class="logout">
-                        <i class="fa fa-fw fa-sign-out"></i>
-                        Cerrar Sesión
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                </div>
-            </div>
-        </div>
         <div id="sidebar-content">
             <ul class="sidebar-menu list-unstyled">
                 <li>Administración</li>
@@ -83,8 +67,31 @@
     <main id="app">
         <div class="{{ Auth::check() ? 'app-check' : ''}}">
             <nav class="navbar navbar-default navbar-fixed-top {{ Auth::check() ? 'mleft' : '' }}">
-                <div class="container">
-                    @yield('navbar-top')
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            @if(Auth::check())
+                            <li><span id="userImage" class="text-uppercase"></span></li>
+                            <li class="dropdown">
+                                <a id="nameUser" href="#" class="dropdown-toggle text-capitalize user-name" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{url('admin/password')}}">Cambiar mi contraseña</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>
+                                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();" class="">
+                                            <i class="fa fa-fw fa-sign-out"></i>
+                                            Cerrar Sesión
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                            @endif
+                        </ul>
+                    </div>
                 </div>
             </nav>
         <div class="main-content">
