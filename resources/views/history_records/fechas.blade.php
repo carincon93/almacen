@@ -13,13 +13,13 @@
                         $dt1=new Jenssegers\Date\Date($his->prestado_en);
 
                     @endphp
-                        <td>{{ $dt1->format('d F Y h:i A') }}</td>
+                        <td>{{ $dt1->format('l d F Y h:i A') }}</td>
                     @php
 
                             $dt2=new Jenssegers\Date\Date($his->entregado_en);
 
                         @endphp
-                        <td>{{ $dt2->format('d F Y h:i A') }}</td>
+                        <td>{{ $dt2->format('l d F Y h:i A') }}</td>
                 </tr>
                @endforeach
             </tbody>

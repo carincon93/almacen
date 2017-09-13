@@ -128,7 +128,7 @@
                                 $dt1=new Jenssegers\Date\Date($clr->prestado_en);
 
                             @endphp
-                            <div class="info-clr">Ambiente en uso <span class="pull-right">{{ $dt1->format('d F Y h:i A') }}</span></div>
+                            <div class="info-clr">Ambiente en uso <span class="pull-right">{{ $dt1->format('l d F Y h:i A') }}</span></div>
                         </div>
                         <div class="clr-desc">
                             <div class="desc-1">
