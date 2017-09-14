@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @if ($errors->has('token_error'))
+    {{ $errors->first('token_error') }}
+    @endif
     <!-- Modal -->
     <div class="modal fade" id="modal_solicitar_prestamo">
         <div class="modal-dialog" role="document">
@@ -120,7 +123,12 @@
                     <div id="{{ $clr->id }}" class="classroom-card card clr-entregar" data-toggle="modal" data-target="#modal_entregar_ambiente" data-id-ambiente="{{ $clr->id }}" data-prestamo="{{ $clr->prestado_en }}" data-id-instructor="{{ $clr->instructor->id }}" data-id-classgroup="{{ $clr->class_group_id }}" >
                         <div class="clr-img">
                             <img src="{{ asset($clr->imagen) }}" alt="" class="img-classroom img-responsive">
-                            <div class="info-clr">Ambiente en uso <span class="pull-right">{{ $clr->prestado_en }}</span></div>
+                            @php
+
+                                $dt1=new Jenssegers\Date\Date($clr->prestado_en);
+
+                            @endphp
+                            <div class="info-clr">Ambiente en uso <span class="pull-right">{{ $dt1->format('l d F Y h:i A') }}</span></div>
                         </div>
                         <div class="clr-desc">
                             <div class="desc-1">

@@ -1,11 +1,4 @@
 @extends('layouts.app')
-    {{-- @section('navbar-top')
-        <div class="input-daterange input-group" id="datepicker">
-            <input type="text" class="input-sm form-control" name="start" />
-            <span class="input-group-addon">to</span>
-            <input type="text" class="input-sm form-control" name="end" />
-        </div>
-    @endsection --}}
 @section('content')
 @include('layouts.modal')
 <div class="modal fade" id="modalFormNovedad">
@@ -32,7 +25,27 @@
         </div>
     </div>
 </div>
+
 <a href="{{ url('history_record/excel') }}" class="btn btn-success"><i class="fa fa-cloud-download"></i> Exportar Historial a Excel</a>
+    <form action="{{ url('datesearch') }}" method="POST">
+        {!! csrf_field()  !!} 
+        <h5>hacer busqueda por fecha</h5>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-daterange input-group datapickerr" id="datepicker">
+                    <input type="text" class="input-sm form-control" name="inicio"  autocomplete="off" />
+                    <span class="input-group-addon">hasta</span>
+                    <input type="text" class="input-sm form-control" name="fin" autocomplete="off" />
+                </div>
+                <br>
+                <div>
+                    <button type="button" class="btn btn-primary enviarfechas">enviar</button>
+                    <button type="button" class="btn btn-danger reset">borrar fechas</button>
+                </div>
+                
+            </div>
+        </div>
+    </form>
 <div class="card">
     <div class="table-responsive">
         <table class="table table-full table-hover">
@@ -47,7 +60,7 @@
                 </tr>
             </thead>
             <tbody class="history">
-            @foreach($dataHistoryR as $his)
+            @foreach($history_records as $his)
                 <tr>
                     <td class="text-capitalize">{{ $his->cLassgroup->id_ficha.' '.$his->nombre_ficha }}</td>
                 	<td class="text-capitalize">{{ $his->instructor->nombre.' '.$his->instructor->apellidos }}</td>
@@ -56,7 +69,9 @@
                     <td class="novedad_nueva" data-target="#modalFormNovedad" data-toggle="modal" data-id-historial="{{$his->id}}">{{ $his->novedad_nueva != '' ? $his->novedad_nueva : ''}}</td>
 
                     <td class="td-actions">
-                        <i class="fa fa-fw fa-calendar-o btn btn-round"></i>
+                    <button class="btn btn-historial" data-toggle="modal" data-target="#modalHistorial" data-id="{{ $his->id }}" data-nombre="{{ $his->Classroom->nombre_ambiente }}">
+                            Ver historial
+                        </button>
                         <form action="{{ url('/admin/history_record/'.$his->id) }}" data-nombre="{{ $his->classgroup->id_ficha }}" method="POST" style="display: inline-block;" class="btn btn-round btn-delete-tbl">
                             {{ method_field('delete') }}
                             {!! csrf_field()  !!}

@@ -41,7 +41,7 @@
                             <i class="fa fa-fw fa-pencil"></i>
                         </a>
                         @if($dg->disponibilidad == 'disponible')
-                        <form action="{{ url('/admin/class_group/'.$dg->id) }}" style="display: inline-block;"data-nombre="{{ $dg->nombre_ficha }}"  method="POST" class="btn-delete-tbl btn btn-round">
+                        <form action="{{ url('/admin/class_group/'.$dg->id) }}" style="display: inline-block;" data-nombre="{{ $dg->nombre_ficha }}"  method="POST" class="btn-delete-tbl btn btn-round">
                             {{ method_field('delete') }}
                             {!! csrf_field()  !!}
                             <i class="fa fa-fw fa-trash"></i>

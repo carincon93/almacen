@@ -11,17 +11,19 @@
     <title>@yield('title')</title>
 
     <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{-- <link href="{{ asset('css/bootstrap-datepicker3.min.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-datepicker.standalone.min.css') }}" rel="stylesheet">
 
 
 </head>
 <body>
     @include('layouts.modal')
+    @include('layouts.modal_historial')
     @if (Auth::check())
     <aside id="sidebar">
         <div id="sidebar-logo">
@@ -29,24 +31,12 @@
                 <a href="{{ url('/admin') }}">ALMACÉN CPIC</a>
             </h4>
         </div>
-        <div id="sidebar-admin">
-            <div>
-                <h4 class="text-capitalize">{{ Auth::user()->name }}</h4>
-                <div>
-                    <a href="{{url('admin/password')}}" style="font-size:13px;">Cambiar mi contraseña</a><br>
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();" class="logout">
-                        <i class="fa fa-fw fa-sign-out"></i>
-                        Cerrar Sesión
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                </div>
-            </div>
-        </div>
         <div id="sidebar-content">
             <ul class="sidebar-menu list-unstyled">
+                <li>Administración</li>
+                <li>
+                    <a href="{{ url('/admin/dashboard') }}"><i class="fa fa-fw fa-cog"></i>Dashboard</a>
+                </li>
                 <li>Administración</li>
                 <li>
                     <a href="{{ url('/admin/collaborator') }}"><i class="fa fa-fw fa-cog"></i>Administradores</a>
@@ -77,8 +67,31 @@
     <main id="app">
         <div class="{{ Auth::check() ? 'app-check' : ''}}">
             <nav class="navbar navbar-default navbar-fixed-top {{ Auth::check() ? 'mleft' : '' }}">
-                <div class="container">
-                    @yield('navbar-top')
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            @if(Auth::check())
+                            <li><span id="userImage" class="text-uppercase"></span></li>
+                            <li class="dropdown">
+                                <a id="nameUser" href="#" class="dropdown-toggle text-capitalize user-name" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{url('admin/password')}}">Cambiar mi contraseña</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>
+                                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();" class="">
+                                            <i class="fa fa-fw fa-sign-out"></i>
+                                            Cerrar Sesión
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                            @endif
+                        </ul>
+                    </div>
                 </div>
             </nav>
         <div class="main-content">
@@ -164,7 +177,8 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/select2.min.js') }}"></script>
-    {{-- <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script> --}}
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.es.min.js') }}"></script>
     <script>
         $(document).ready(function() {
 
@@ -206,11 +220,11 @@
                     }
                 }
             });
-            // $('#sandbox-container .input-daterange').datepicker({
-            //     format: "dd/mm/yyyy",
-            //     language: "es",
-            //     autoclose: true
-            // });
+            $('.datapickerr').datepicker({
+                    format: "yyyy/mm/dd",
+                    language: "es",
+                    autoclose: true
+                });
         });
     </script>
 </body>

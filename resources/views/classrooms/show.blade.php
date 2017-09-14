@@ -40,6 +40,10 @@
 				<th>Cupo</th>
 				<td>{{ $classroom->cupo }}</td>
 			</tr>
+			<tr>
+				<th>Foto de ambiente</th>
+				<td><img src="{{ asset($classroom->imagen) }}" width="200px" class="img-responsive"></td>
+			</tr>
 		</table>
 	</div>
 @endsection
