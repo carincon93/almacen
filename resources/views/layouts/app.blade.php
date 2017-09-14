@@ -152,7 +152,7 @@
 
                                 <div class="form-group">
                                     <div class="">
-                                        <button type="submit" class="btn btn-primary">
+                                        <button type="submit" id="login" class="btn btn-primary">
                                             Iniciar sesión
                                         </button>
 

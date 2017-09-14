@@ -1068,6 +1068,14 @@ $('.modal').on('hidden.bs.modal', function (e) {
     $(this).find("input[type=search], input[name=id], input[name=prestado_en], input[id=nomInstructor], textarea[name=novedad], select").val('').end().find("input[type=checkbox], input[type=radio]").prop("checked", "").end().find("#resultado_instructor").children().remove();
 });
 
+
+$('#login').one('click',(function(event) {
+  event.preventDefault();
+  $(this).closest('form').submit();
+  $(this).prop('disabled',true);
+}));
+
+
 //modal-historial
 $('body').on('click', 'button[data-target="#modalHistorial"]', function (event) {
     event.preventDefault();
@@ -1079,6 +1087,7 @@ $('body').on('click', 'button[data-target="#modalHistorial"]', function (event) 
         $('#mbody-Historial').html(data);
     });
 });
+
 
 /***/ }),
 /* 10 */
