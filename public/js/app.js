@@ -782,20 +782,20 @@ module.exports = __webpack_require__(36);
 
 
 /**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+* First we will load all of this project's JavaScript dependencies which
+* includes Vue and other libraries. It is a great starting point when
+* building robust, powerful web applications using Vue and Laravel.
+*/
 
 __webpack_require__(10);
 
 window.Vue = __webpack_require__(35);
 
 /**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+* Next, we will create a fresh Vue application instance and attach it to
+* the page. Then, you may begin adding components to this application
+* or customize the JavaScript scaffolding to fit your unique needs.
+*/
 
 // Vue.component('example', require('./components/Example.vue'));
 //
@@ -925,27 +925,26 @@ function guardar_historial($token, $class_group_id, $id_instructor, $classroom_i
         });
     }
 }
-$('body').on('click', '.enviarfechas', function(event) {
-  event.preventDefault();
-  $inicio=$('input[name=inicio]').val();
-  $fin=$('input[name=fin]').val();
-  $token=$('input[name=_token]').val();
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-Token': $token
-            }
-        });
+$('body').on('click', '.enviarfechas', function (event) {
+    event.preventDefault();
+    $inicio = $('input[name=inicio]').val();
+    $fin = $('input[name=fin]').val();
+    $token = $('input[name=_token]').val();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-Token': $token
+        }
+    });
 
-        $.post('/datesearch', { _token: $token, inicio: $inicio, fin: $fin}, function (data, textStatus, xhr) {
-           $('.history').html(data);
-        });
+    $.post('/datesearch', { _token: $token, inicio: $inicio, fin: $fin }, function (data, textStatus, xhr) {
+        $('.history').html(data);
+    });
 });
-$('body').on('click', '.reset', function(event) {
-  $('input[name=inicio]').val("");
-  $('input[name=fin]').val("");
-  $(".enviarfechas").click(); 
+$('body').on('click', '.reset', function (event) {
+    $('input[name=inicio]').val("");
+    $('input[name=fin]').val("");
+    $(".enviarfechas").click();
 });
-
 
 // ======================== Setear modal de entrega ========================================
 $('body').on('click', '.clr-entregar', function (e) {
@@ -1068,26 +1067,37 @@ $('.modal').on('hidden.bs.modal', function (e) {
     $(this).find("input[type=search], input[name=id], input[name=prestado_en], input[id=nomInstructor], textarea[name=novedad], select").val('').end().find("input[type=checkbox], input[type=radio]").prop("checked", "").end().find("#resultado_instructor").children().remove();
 });
 
-
-$('#login').one('click',(function(event) {
-  event.preventDefault();
-  $(this).closest('form').submit();
-  $(this).prop('disabled',true);
-}));
-
+$('#login').one('click', function (event) {
+    event.preventDefault();
+    $(this).closest('form').submit();
+    $(this).prop('disabled', true);
+});
 
 //modal-historial
 $('body').on('click', 'button[data-target="#modalHistorial"]', function (event) {
     event.preventDefault();
     $id = $(this).attr('data-id');
     // $nombre_aprendiz = $('button[data-target="#modalHistorial"]').attr('data-nombre');
-    // $('#modalHistorial').find('.modal-title').text('Nombre: ' + $nombre_aprendiz); 
+    // $('#modalHistorial').find('.modal-title').text('Nombre: ' + $nombre_aprendiz);
     $('#modalHistorial').find('button[data-id]').attr('data-id', $id);
     $.get('/obtener_historial/', { id: $id }, function (data, textStatus, xhr) {
         $('#mbody-Historial').html(data);
     });
 });
 
+/**
+* @description Active-links
+* Activa el link con la url actual (debe contener el prefix admin)
+*/
+var loc = window.location.pathname.split("/")[2];
+
+$('#nav-sidebar').find('a').each(function () {
+    $a_loc = $(this).attr('href').split('/')[4];
+    console.log('loc=' + loc + '  a_loc=' + $a_loc);
+    if ($a_loc == loc && loc != undefined) {
+        $(this).toggleClass('active');
+    }
+});
 
 /***/ }),
 /* 10 */

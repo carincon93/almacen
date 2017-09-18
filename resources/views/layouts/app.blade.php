@@ -32,35 +32,37 @@
             </h4>
         </div>
         <div id="sidebar-content">
-            <ul class="sidebar-menu list-unstyled">
-                <li>Administración</li>
-                <li>
-                    <a href="{{ url('/admin/dashboard') }}"><i class="fa fa-fw fa-cog"></i>Dashboard</a>
-                </li>
-                <li>Administración</li>
-                <li>
-                    <a href="{{ url('/admin/collaborator') }}"><i class="fa fa-fw fa-cog"></i>Administradores</a>
-                </li>
-                <li>
-                    <a href="{{ url('/admin/instructor') }}"><i class="fa fa-fw fa-cog"></i>Instructores</a>
-                </li>
-                <li>
-                    <a href="{{ url('/admin/classroom') }}"><i class="fa fa-fw fa-cog"></i>Ambientes</a>
-                </li>
-                <li>
-                    <a href="{{ url('/admin/class_group') }}"><i class="fa fa-fw fa-cog"></i>Fichas</a>
-                </li>
-                <li>Acciones</li>
-                <li>
-                    <a href="{{ url('/') }}"><i class="fa fa-fw fa-key"></i>Prestar ambiente</a>
-                </li>
-                <li>
-                    <a href="{{ url('/admin/history_record') }}"><i class="fa fa-fw fa-line-chart"></i>Historial de préstamos</a>
-                </li>
-                <li>
-                    <a href="{{ url('/admin/update_system') }}"><i class="fa fa-fw fa-circle-o-notch"></i>Actualizar sistema</a>
-                </li>
-            </ul>
+            <nav id="nav-sidebar">
+                <ul class="sidebar-menu list-unstyled">
+                    <li>Administración</li>
+                    <li>
+                        <a href="{{ url('/admin/dashboard') }}"><i class="fa fa-fw fa-cog"></i>Dashboard</a>
+                    </li>
+                    <li>Administración</li>
+                    <li>
+                        <a href="{{ url('/admin/collaborator') }}"><i class="fa fa-fw fa-cog"></i>Administradores</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/admin/instructor') }}"><i class="fa fa-fw fa-cog"></i>Instructores</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/admin/classroom') }}"><i class="fa fa-fw fa-cog"></i>Ambientes</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/admin/class_group') }}"><i class="fa fa-fw fa-cog"></i>Fichas</a>
+                    </li>
+                    <li>Acciones</li>
+                    <li>
+                        <a href="{{ url('/') }}"><i class="fa fa-fw fa-key"></i>Prestar ambiente</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/admin/history_record') }}"><i class="fa fa-fw fa-line-chart"></i>Historial de préstamos</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/admin/update_system') }}"><i class="fa fa-fw fa-circle-o-notch"></i>Actualizar sistema</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </aside>
     @endif
@@ -181,28 +183,11 @@
     <script src="{{ asset('js/bootstrap-datepicker.es.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-
-            // =========================== Active Links =================================
-            var current_url = "{{ Request::fullUrl() }}";
-            var full_url = current_url+location.search;
-            var $navLinks = $("ul.sidebar-menu li a");
-            // First look for an exact match including the search string
-            var $curentPageLink = $navLinks.filter(
-                function() { return $(this).attr('href') === full_url; }
-            );
-            // If not found, look for the link that starts with the url
-            if(!$curentPageLink.length > 0){
-                $curentPageLink = $navLinks.filter(
-                    function() { return $(this).attr('href').startsWith(current_url) || current_url.startsWith($(this).attr('href')); }
-                );
-            }
-
-            $curentPageLink.parents('li').addClass('active');
-
+            $('.select').select2();
+            
             var id_anchor = location.hash;
             $(id_anchor).css('border', '1px solid rgb(232, 40, 111)').append('<div class="card clr-msg"><div class="caret"></div>Por favor entrega este ambiente</div>');
 
-            $('.select').select2();
             $('.owl-carousel').owlCarousel({
                 loop:true,
                 // autoplay:true,

@@ -1,19 +1,19 @@
 
 /**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+* First we will load all of this project's JavaScript dependencies which
+* includes Vue and other libraries. It is a great starting point when
+* building robust, powerful web applications using Vue and Laravel.
+*/
 
 require('./bootstrap');
 
 window.Vue = require('vue');
 
 /**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+* Next, we will create a fresh Vue application instance and attach it to
+* the page. Then, you may begin adding components to this application
+* or customize the JavaScript scaffolding to fit your unique needs.
+*/
 
 // Vue.component('example', require('./components/Example.vue'));
 //
@@ -73,8 +73,8 @@ $('body').on('keyup', '#buscar_instructor', function (event) {
 $('body').on('click', '.amb-disponible', function (e) {
     e.preventDefault();
     var $nombre_ambiente = $(this).find('h5').attr('data-nombre-ambiente'),
-        $id_ambiente = $(this).attr('data-id-ambiente'),
-        $form_prestamo = $('#form-prestamo');
+    $id_ambiente = $(this).attr('data-id-ambiente'),
+    $form_prestamo = $('#form-prestamo');
 
     var $currentDate = $().getDate("y-m-d H:M:S");
 
@@ -143,16 +143,37 @@ function guardar_historial($token, $class_group_id, $id_instructor, $classroom_i
         });
     }
 }
+$('body').on('click', '.enviarfechas', function(event) {
+    event.preventDefault();
+    $inicio=$('input[name=inicio]').val();
+    $fin=$('input[name=fin]').val();
+    $token=$('input[name=_token]').val();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-Token': $token
+        }
+    });
+
+    $.post('/datesearch', { _token: $token, inicio: $inicio, fin: $fin}, function (data, textStatus, xhr) {
+        $('.history').html(data);
+    });
+});
+$('body').on('click', '.reset', function(event) {
+    $('input[name=inicio]').val("");
+    $('input[name=fin]').val("");
+    $(".enviarfechas").click();
+});
+
 
 // ======================== Setear modal de entrega ========================================
 $('body').on('click', '.clr-entregar', function (e) {
     e.preventDefault();
     // Formulario de entrega
     var $form_entrega = $('#form-entrega'),
-        $nombre_ambiente = $(this).find('h5').attr('data-nombre-ambiente'),
-        $id_ambiente = $(this).attr('data-id-ambiente'),
-        $fecha_prestamo = $(this).attr('data-prestamo'),
-        $id_instructor = $(this).attr('data-id-instructor');
+    $nombre_ambiente = $(this).find('h5').attr('data-nombre-ambiente'),
+    $id_ambiente = $(this).attr('data-id-ambiente'),
+    $fecha_prestamo = $(this).attr('data-prestamo'),
+    $id_instructor = $(this).attr('data-id-instructor');
     $class_group_id = $(this).attr('data-id-classgroup');
 
     // Set Titulo modal con nombre de ambiente
@@ -171,11 +192,11 @@ $('body').on('click', '.clr-entregar', function (e) {
 $('.modal').on('click', '#btn-entregar-ambiente', function (event) {
     event.preventDefault();
     var $form_entrega = $('#form-entrega'),
-        $novedad = $form_entrega.find('textarea').val(),
-        $fecha_prestamo = $form_entrega.find('input[name=prestado_en]').val(),
-        $id_instructor = $form_entrega.find('input[name=instructor_id]').val(),
-        $class_group_id = $form_entrega.find('input[name=class_group_id]').val(),
-        $token = $form_entrega.find('input[name=_token]').val();
+    $novedad = $form_entrega.find('textarea').val(),
+    $fecha_prestamo = $form_entrega.find('input[name=prestado_en]').val(),
+    $id_instructor = $form_entrega.find('input[name=instructor_id]').val(),
+    $class_group_id = $form_entrega.find('input[name=class_group_id]').val(),
+    $token = $form_entrega.find('input[name=_token]').val();
     modificar_ins_disponibilidad($token, $id_instructor);
     modificar_cg_disponibilidad($token, $class_group_id);
     agregar_novedad($token, $fecha_prestamo, $novedad);
@@ -219,7 +240,7 @@ function modificar_cg_disponibilidad($token, $class_group_id) {
 $('body').on('click', '.form-truncate-ficha', function (e) {
     e.preventDefault();
     var $formTruncFic = $(this),
-        $modalTrun = $('#confirm-delete');
+    $modalTrun = $('#confirm-delete');
     $modalTrun.find('.modal-title').text('Eliminar todos los registros');
     $modalTrun.find('.modal-body').text('Va a eliminar todos los registros de esta tabla. ¿Está seguro que desea eliminar todos los registros?');
     $modalTrun.find('#btn-delete').text('Eliminar todo');
@@ -234,7 +255,7 @@ $('body').on('click', '.form-truncate-ficha', function (e) {
 $('.table-full').on('click', '.btn-delete-tbl', function (e) {
     e.preventDefault();
     var $formDel = $(this),
-        $nombre_elemento = $formDel.attr('data-nombre');
+    $nombre_elemento = $formDel.attr('data-nombre');
 
     $('#confirm-delete').find('.modal-title').text('Nombre: ' + $nombre_elemento);
     $('#confirm-delete').find('.modal-body').text('Está seguro que desea eliminar este registro?');
@@ -247,7 +268,7 @@ $('.table-full').on('click', '.btn-delete-tbl', function (e) {
 $('.table-full').on('click', '.novedad_nueva', function (e) {
     e.preventDefault();
     var $formNovedadNueva = $('#formNovedadNueva'),
-        $id_historial = $(this).attr('data-id-historial');
+    $id_historial = $(this).attr('data-id-historial');
     var url = window.location.href.split("/");
     url = url[0] + "//" + url[2] + "/";
     $formNovedadNueva.attr('action', url + 'admin/history_record/' + $id_historial + '/novedad_nueva');
@@ -263,5 +284,39 @@ $('.table-full').on('click', '.novedad_nueva', function (e) {
 
 $('.modal').on('hidden.bs.modal', function (e) {
     $(this).find("input[type=search], input[name=id], input[name=prestado_en], input[id=nomInstructor], textarea[name=novedad], select").val('').end().find("input[type=checkbox], input[type=radio]").prop("checked", "").end().find("#resultado_instructor").children().remove();
+});
 
+
+$('#login').one('click',(function(event) {
+    event.preventDefault();
+    $(this).closest('form').submit();
+    $(this).prop('disabled',true);
+}));
+
+
+//modal-historial
+$('body').on('click', 'button[data-target="#modalHistorial"]', function (event) {
+    event.preventDefault();
+    $id = $(this).attr('data-id');
+    // $nombre_aprendiz = $('button[data-target="#modalHistorial"]').attr('data-nombre');
+    // $('#modalHistorial').find('.modal-title').text('Nombre: ' + $nombre_aprendiz);
+    $('#modalHistorial').find('button[data-id]').attr('data-id', $id);
+    $.get('/obtener_historial/', { id: $id }, function (data, textStatus, xhr) {
+        $('#mbody-Historial').html(data);
+    });
+});
+
+
+/**
+* @description Active-links
+* Activa el link con la url actual (debe contener el prefix admin)
+*/
+var loc = window.location.pathname.split("/")[2];
+
+$('#nav-sidebar').find('a').each(function() {
+    $a_loc = $(this).attr('href').split('/')[4];
+    console.log('loc=' + loc + '  a_loc=' + $a_loc);
+    if ($a_loc == loc && loc != undefined) {
+        $(this).toggleClass('active');
+    }
 });
