@@ -1,9 +1,31 @@
 @extends('layouts.app')
 
+
 @section('content')
-    @if ($errors->has('token_error'))
-    {{ $errors->first('token_error') }}
-    @endif
+    @section('title', 'Suplemento alimenticio')
+
+    @section('big-content-desc')
+
+        @if ($errors->has('token_error'))
+        <!-- Modal -->
+        <div class="modal fade" id="modalSession" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Sesión expirada</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{ $errors->first('token_error') }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">
+                            <a href="{{ url('/') }}">Volver a la página principal</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
     <!-- Modal -->
     <div class="modal fade" id="modal_solicitar_prestamo">
         <div class="modal-dialog" role="document">

@@ -115,7 +115,7 @@
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                     <label for="email" class="control-label">Correo electrónico</label>
 
-                                    <div class="">
+                                    <div>
                                         <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                         @if ($errors->has('email'))
@@ -129,7 +129,7 @@
                                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                     <label for="password" class="control-label">Contraseña</label>
 
-                                    <div class="">
+                                    <div>
                                         <input id="password" type="password" class="form-control" name="password" required>
 
                                         @if ($errors->has('password'))
@@ -141,7 +141,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="">
+                                    <div>
                                         <div class="checkbox">
                                             <label>
                                                 <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Recuerda mi cuenta
@@ -151,7 +151,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="">
+                                    <div>
                                         <button type="submit" id="login" class="btn btn-primary">
                                             Iniciar sesión
                                         </button>
