@@ -873,6 +873,11 @@ $('body').on('click', '.amb-disponible', function (e) {
     $form_prestamo.find('input[name=prestado_en]').val($currentDate);
 });
 
+$('button[name="button-import"]').attr('disabled', true);
+$('input[name="imported-file"]').change(function () {
+    if ($(this).val().length != 0) $('button[name="button-import"]').attr('disabled', false);else $('button[name="button-import"]').attr('disabled', true);
+});
+
 $('.modal').on('click', '#btn-prestar-ambiente', function (event) {
     event.preventDefault();
     var $form_prestamo = $('#form-prestamo');
