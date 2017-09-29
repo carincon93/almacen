@@ -119,6 +119,7 @@ class AdminController extends Controller
                             'numero_documento' => $row['numero_documento_ins'],
                             'celular' => $row['celular'],
                             'email' => $row['correo_electronico'],
+                            'imagen' => $row['imagen'],
                         ];
                     }
                 }
@@ -145,6 +146,7 @@ class AdminController extends Controller
                             'movilidad' => $row['movilidad'],
                             'estado' => $row['estado'],
                             'cupo' => $row['cupo'],
+                            'imagen' => $row['imagen'],
                         ];
                     }
                 }
