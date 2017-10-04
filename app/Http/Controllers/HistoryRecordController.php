@@ -138,6 +138,7 @@ class HistoryRecordController extends Controller
         $query = HistoryRecord::id($request->get('id'))->get();
             return view('history_records.novedadajax')->with('query', $query);
     }
+
     public function excel()
     {
         \Excel:: create('Listahistoriales' , function($excel) {
@@ -147,6 +148,7 @@ class HistoryRecordController extends Controller
             });
         })->download('xls' );
     }
+
     public function datesearch(Request $request)
     {
         $fechaInicio = $request->get('inicio');
@@ -154,30 +156,30 @@ class HistoryRecordController extends Controller
 
         if ($fechaInicio == '' && $fechaFin == '') {
             $hr = DB::table('history_records')
-                    ->select('instructors.id', 'instructors.nombre', 'instructors.apellidos' ,'class_groups.id', 'class_groups.id_ficha', 'classrooms.id', 'classrooms.nombre_ambiente', 'history_records.novedad', 'history_records.novedad_nueva', 'history_records.prestado_en')
+                    ->select('instructors.id', 'instructors.nombre', 'instructors.apellidos' ,'class_groups.id', 'class_groups.id_ficha', 'classrooms.id', 'classrooms.nombre_ambiente', 'history_records.novedad', 'history_records.novedad_nueva', 'history_records.prestado_en', 'history_records.entregado_en')
                     ->join('instructors', 'instructors.id', '=', 'history_records.instructor_id')
                     ->join('class_groups', 'class_groups.id', '=', 'history_records.class_group_id')
                     ->join('classrooms', 'classrooms.id', '=', 'history_records.classroom_id')
-                    ->groupBy('instructors.id', 'instructors.nombre', 'instructors.apellidos' ,'class_groups.id', 'class_groups.id_ficha', 'classrooms.id', 'classrooms.nombre_ambiente', 'history_records.novedad', 'history_records.novedad_nueva', 'history_records.prestado_en')
+                    ->groupBy('instructors.id', 'instructors.nombre', 'instructors.apellidos' ,'class_groups.id', 'class_groups.id_ficha', 'classrooms.id', 'classrooms.nombre_ambiente', 'history_records.novedad', 'history_records.novedad_nueva', 'history_records.prestado_en', 'history_records.entregado_en')
                     ->get();
             return view('history_records.ajax')->with('hr', $hr);
         }
         else{
-            // $hr = HistoryRecord::whereBetween('fecha', [$fechaInicio, $fechaFin])->get();
             $hr = DB::table('history_records')
-                    ->select('instructors.id', 'instructors.nombre', 'instructors.apellidos' ,'class_groups.id', 'class_groups.id_ficha', 'classrooms.id', 'classrooms.nombre_ambiente', 'history_records.novedad', 'history_records.novedad_nueva', 'history_records.prestado_en')
+                    ->select('instructors.id', 'instructors.nombre', 'instructors.apellidos' ,'class_groups.id', 'class_groups.id_ficha', 'classrooms.id', 'classrooms.nombre_ambiente', 'history_records.novedad', 'history_records.novedad_nueva', 'history_records.prestado_en', 'history_records.entregado_en')
                     ->join('instructors', 'instructors.id', '=', 'history_records.instructor_id')
                     ->join('class_groups', 'class_groups.id', '=', 'history_records.class_group_id')
                     ->join('classrooms', 'classrooms.id', '=', 'history_records.classroom_id')
                     ->whereBetween(DB::raw('cast(history_records.prestado_en as date)'), [$fechaInicio, $fechaFin])
-                    ->groupBy('instructors.id', 'instructors.nombre', 'instructors.apellidos' ,'class_groups.id', 'class_groups.id_ficha', 'classrooms.id', 'classrooms.nombre_ambiente', 'history_records.novedad', 'history_records.novedad_nueva', 'history_records.prestado_en')
+                    ->groupBy('instructors.id', 'instructors.nombre', 'instructors.apellidos' ,'class_groups.id', 'class_groups.id_ficha', 'classrooms.id', 'classrooms.nombre_ambiente', 'history_records.novedad', 'history_records.novedad_nueva', 'history_records.prestado_en', 'history_records.entregado_en')
                     ->get();
             return view('history_records.ajax')->with('hr', $hr);
         }
     }
-    public function obtener_historial(Request $id)
+
+    public function obtener_historial(Request $request)
     {
-        $history_records = HistoryRecord::where('id', $id['id'])->orderBy('prestado_en', 'DESC')->get();
-        return view('history_records.fechas', compact('history_records'));
+        $history_records = HistoryRecord::where('id', $request->id)->orderBy('prestado_en', 'DESC')->get();
+        return view('history_records.novedad', compact('history_records'));
     }
 }

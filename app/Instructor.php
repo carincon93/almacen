@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\InsertOnDuplicateKey;
 
 class Instructor extends Model
 {
+    use InsertOnDuplicateKey;
+
     protected $fillable = [
         'nombre',
         'apellidos',

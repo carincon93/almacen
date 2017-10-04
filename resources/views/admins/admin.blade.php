@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('big-content-desc')
-@endsection
-
-@section('content')
-@include('layouts.messages')
 <h2>Ambientes Activos </h2>
 <p>
     Un ambiente con este color <i class="fa fa-fw fa-square itm_quare"></i> significa que esta en uso.
 </p>
+@endsection
+
+@section('content')
+@include('layouts.messages')
 <div class="owl-carousel">
     <div>
         <div class="card floor-plan col-md-8">
@@ -184,35 +184,35 @@
                     <h4>Lista de ambientes</h4>
                 </div>
                 <div class="list-item">
-                        <i class="fa fa-fw fa-circle-o"></i>
+                        <i class="fa fa-fw fa-circle-o {{ ! empty($dataS1) ? 'circle-green' : '' }}"></i>
                         Sistemas 1
                         <div class="item-text">
                             {{ ! empty($dataS1) ? $dataS1->instructor->nombre.' '.$dataS1->instructor->apellidos : 'Sin instructor asignado'}}
                         </div>
                 </div>
                 <div class="list-item">
-                        <i class="fa fa-fw fa-circle-o"></i>
+                        <i class="fa fa-fw fa-circle-o {{ ! empty($dataS3) ? 'circle-green' : '' }}"></i>
                         Sistemas 3
                         <div class="item-text">
                             {{ ! empty($dataS3) ? $dataS3->instructor->nombre.' '.$dataS3->instructor->apellidos : 'Sin instructor asignado'}}
                         </div>
                 </div>
                 <div class="list-item">
-                        <i class="fa fa-fw fa-circle-o"></i>
+                        <i class="fa fa-fw fa-circle-o {{ ! empty($dataMeta) ? 'circle-green' : '' }}"></i>
                         Metalografía
                         <div class="item-text">
                             {{ ! empty($dataMeta) ? $dataMeta->instructor->nombre.' '.$dataMeta->instructor->apellidos : 'Sin instructor asignado'}}
                         </div>
                 </div>
                 <div class="list-item">
-                        <i class="fa fa-fw fa-circle-o"></i>
+                        <i class="fa fa-fw fa-circle-o {{ ! empty($dataMante) ? 'circle-green' : '' }}"></i>
                         Mantenimiento Mecánico II
                         <div class="item-text">
                             {{ ! empty($dataMante) ? $dataMante->instructor->nombre.' '.$dataMante->instructor->apellidos : 'Sin instructor asignado'}}
                         </div>
                 </div>
                 <div class="list-item">
-                        <i class="fa fa-fw fa-circle-o"></i>
+                        <i class="fa fa-fw fa-circle-o {{ ! empty($dataMeca) ? 'circle-green' : '' }}"></i>
                         Mecanizado
                         <div class="item-text">
                             {{ ! empty($dataMeca) ? $dataMeca->instructor->nombre.' '.$dataMeca->instructor->apellidos : 'Sin instructor asignado'}}
@@ -221,12 +221,6 @@
             </div>
         </div>
     </div>
-    <div> Your Content </div>
-    <div> Your Content </div>
-    <div> Your Content </div>
-    <div> Your Content </div>
-    <div> Your Content </div>
-    <div> Your Content </div>
     <div> Your Content </div>
 </div>
 @endsection

@@ -773,7 +773,8 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(9);
-module.exports = __webpack_require__(36);
+__webpack_require__(40);
+module.exports = __webpack_require__(41);
 
 
 /***/ }),
@@ -797,305 +798,11 @@ window.Vue = __webpack_require__(35);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// Vue.component('example', require('./components/Example.vue'));
-//
-// const app = new Vue({
-//     el: '#app'
-// });
+Vue.component('example', __webpack_require__(36));
 
-
-// Obtener la fecha actual
-$('[data-toggle="tooltip"]').tooltip();
-(function ($) {
-    $.fn.getDate = function (format) {
-
-        var gDate = new Date();
-        var mDate = {
-            'S': gDate.getSeconds(),
-            'M': gDate.getMinutes(),
-            'H': gDate.getHours(),
-            'd': gDate.getDate(),
-            'm': gDate.getMonth() + 1,
-            'y': gDate.getFullYear()
-
-            // Apply format and add leading zeroes
-        };return format.replace(/([SMHdmy])/g, function (key) {
-            return (mDate[key] < 10 ? '0' : '') + mDate[key];
-        });
-
-        return getDate(str);
-    };
-})(jQuery);
-
-// Autofocus del input al abrir el modal de préstamo
-$('.modal').on('shown.bs.modal', function () {
-    $(this).find('[autofocus]').focus();
-    // $('.modal-busqueda').click(function (event) {
-    //     $(this).find('[autofocus]').focus();
-    // });
+var app = new Vue({
+  el: '#app'
 });
-// Búsqueda mediante ajax - Número de documento del instructor
-var request = null;
-$('body').on('keyup', '#buscar_instructor', function (event) {
-    var $numero_documento = $(this).val();
-    if ($numero_documento > 0) {
-        if (request != null) request.abort();
-
-        request = $.get('/instructorajax', { numero_documento: $numero_documento }, function (data, textStatus, xhr) {
-            $('#resultado_instructor').html(data);
-        });
-    } else {
-        setTimeout(function () {
-            $('#resultado_instructor').children().remove();
-        }, 500);
-    }
-});
-
-// ======================== Setear modal de préstamo =========================================
-$('body').on('click', '.amb-disponible', function (e) {
-    e.preventDefault();
-    var $nombre_ambiente = $(this).find('h5').attr('data-nombre-ambiente'),
-        $id_ambiente = $(this).attr('data-id-ambiente'),
-        $form_prestamo = $('#form-prestamo');
-
-    var $currentDate = $().getDate("y-m-d H:M:S");
-
-    // Set Titulo modal con nombre de ambiente
-    $('.modal-title').text($nombre_ambiente);
-    // Set ID de ambiente
-    $('#id_ambiente').attr('value', $id_ambiente);
-
-    // Set url del form action.
-    var url = window.location.href.split("/");
-    url = url[0] + "//" + url[2] + "/";
-    $form_prestamo.attr('action', url + 'solicitar_prestamo/' + $id_ambiente + '/aprobado');
-
-    $form_prestamo.find('input[name=prestado_en]').val($currentDate);
-});
-
-$('button[name="button-import"]').attr('disabled', true);
-$('input[name="imported-file"]').change(function () {
-    if ($(this).val().length != 0) $('button[name="button-import"]').attr('disabled', false);else $('button[name="button-import"]').attr('disabled', true);
-});
-
-$('.modal').on('click', '#btn-prestar-ambiente', function (event) {
-    event.preventDefault();
-    var $form_prestamo = $('#form-prestamo');
-    $classroom_id = $form_prestamo.find('#id_ambiente').val(), $prestado_en = $form_prestamo.find('input[name=prestado_en]').val(), $id_instructor = $form_prestamo.find('input[name=instructor_id]').val(), $token = $form_prestamo.find('input[name=_token]').val(), $class_group_id = $form_prestamo.find('select[name=class_group_id]').val();
-    if ($id_instructor > 0) {
-        if ($class_group_id > 0) {
-            disponibilidad_instructor($id_instructor, $token);
-            disponibilidad_classgroup($class_group_id, $token);
-            guardar_historial($token, $class_group_id, $id_instructor, $classroom_id, $prestado_en);
-            setTimeout(function () {
-                $form_prestamo.submit();
-            }, 1000);
-        } else {
-            $('#mensaje').text('*Debe seleccionar una ficha');
-        }
-    }
-});
-
-function disponibilidad_instructor($id_instructor, $token) {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-Token': $('input[name="_token"]').val()
-        }
-    });
-    $.post('/disponibilidad_instructor/' + $id_instructor, { _token: $token }, function (data, textStatus, xhr) {
-        /*optional stuff to do after success */
-    });
-}
-function disponibilidad_classgroup($class_group_id, $token) {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-Token': $('input[name="_token"]').val()
-        }
-    });
-    $.post('/disponibilidad_classgroup/' + $class_group_id, { _token: $token }, function (data, textStatus, xhr) {
-        /*optional stuff to do after success */
-    });
-}
-
-function guardar_historial($token, $class_group_id, $id_instructor, $classroom_id, $prestado_en) {
-    if ($id_instructor > 0) {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-Token': $token
-            }
-        });
-
-        $.post('/guardar_historial', { _token: $token, class_group_id: $class_group_id, instructor_id: $id_instructor, classroom_id: $classroom_id, prestado_en: $prestado_en }, function (data, textStatus, xhr) {
-            /*optional stuff to do after success */
-        });
-    }
-}
-$('body').on('click', '.enviarfechas', function(event) {
-  event.preventDefault();
-  $inicio=$('input[name=inicio]').val();
-  $fin=$('input[name=fin]').val();
-  $token=$('input[name=_token]').val();
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-Token': $token
-            }
-        });
-
-        $.post('/datesearch', { _token: $token, inicio: $inicio, fin: $fin}, function (data, textStatus, xhr) {
-           $('.history').html(data);
-        });
-});
-$('body').on('click', '.reset', function(event) {
-  $('input[name=inicio]').val("");
-  $('input[name=fin]').val("");
-  $(".enviarfechas").click(); 
-});
-
-
-// ======================== Setear modal de entrega ========================================
-$('body').on('click', '.clr-entregar', function (e) {
-    e.preventDefault();
-    // Formulario de entrega
-    var $form_entrega = $('#form-entrega'),
-        $nombre_ambiente = $(this).find('h5').attr('data-nombre-ambiente'),
-        $id_ambiente = $(this).attr('data-id-ambiente'),
-        $fecha_prestamo = $(this).attr('data-prestamo'),
-        $id_instructor = $(this).attr('data-id-instructor');
-    $class_group_id = $(this).attr('data-id-classgroup');
-
-    // Set Titulo modal con nombre de ambiente
-    $('.modal-title').text($nombre_ambiente);
-
-    $form_entrega.find('input[name=id]').attr('value', $id_ambiente);
-    $form_entrega.find('input[name=prestado_en]').attr('value', $fecha_prestamo);
-    $form_entrega.find('input[name=instructor_id]').attr('value', $id_instructor);
-    $form_entrega.find('input[name=class_group_id]').attr('value', $class_group_id);
-
-    // Construct the URL dynamically.
-    var url = window.location.href.split("/");
-    url = url[0] + "//" + url[2] + "/";
-    $form_entrega.attr('action', url + 'entregar_ambiente/' + $id_ambiente + '/aprobado');
-});
-$('.modal').on('click', '#btn-entregar-ambiente', function (event) {
-    event.preventDefault();
-    var $form_entrega = $('#form-entrega'),
-        $novedad = $form_entrega.find('textarea').val(),
-        $fecha_prestamo = $form_entrega.find('input[name=prestado_en]').val(),
-        $id_instructor = $form_entrega.find('input[name=instructor_id]').val(),
-        $class_group_id = $form_entrega.find('input[name=class_group_id]').val(),
-        $token = $form_entrega.find('input[name=_token]').val();
-    modificar_ins_disponibilidad($token, $id_instructor);
-    modificar_cg_disponibilidad($token, $class_group_id);
-    agregar_novedad($token, $fecha_prestamo, $novedad);
-    setTimeout(function () {
-        $form_entrega.submit();
-    }, 1000);
-});
-function agregar_novedad($token, $fecha_prestamo, $novedad) {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-Token': $token
-        }
-    });
-
-    $.post('/agregar_novedad/' + $fecha_prestamo, { _token: $token, novedad: $novedad }, function (data, textStatus, xhr) {
-        /*optional stuff to do after success */
-    });
-}
-function modificar_ins_disponibilidad($token, $id_instructor) {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-Token': $token
-        }
-    });
-    $.post('/modificar_disponibilidad_ins/' + $id_instructor, { _token: $token }, function (data, textStatus, xhr) {
-        /*optional stuff to do after success */
-    });
-}
-function modificar_cg_disponibilidad($token, $class_group_id) {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-Token': $token
-        }
-    });
-    $.post('/modificar_disponibilidad_cg/' + $class_group_id, { _token: $token }, function (data, textStatus, xhr) {
-        /*optional stuff to do after success */
-    });
-}
-
-// ======================== Truncate class_groups ========================================
-$('body').on('click', '.form-truncate-ficha', function (e) {
-    e.preventDefault();
-    var $formTruncFic = $(this),
-        $modalTrun = $('#confirm-delete');
-    $modalTrun.find('.modal-title').text('Eliminar todos los registros');
-    $modalTrun.find('.modal-body').text('Va a eliminar todos los registros de esta tabla. ¿Está seguro que desea eliminar todos los registros?');
-    $modalTrun.find('#btn-delete').text('Eliminar todo');
-    $modalTrun.modal({ backdrop: 'static', keyboard: false }).on('click', '#btn-delete', function () {
-        setTimeout(function () {
-            $formTruncFic.submit();
-        }, 500);
-    });
-});
-
-// Eliminar registros - Modal eliminar
-$('.table-full').on('click', '.btn-delete-tbl', function (e) {
-    e.preventDefault();
-    var $formDel = $(this),
-        $nombre_elemento = $formDel.attr('data-nombre');
-
-    $('#confirm-delete').find('.modal-title').text('Nombre: ' + $nombre_elemento);
-    $('#confirm-delete').find('.modal-body').text('Está seguro que desea eliminar este registro?');
-    $('#btn-delete').text('Eliminar');
-    $('#confirm-delete').modal({ backdrop: 'static', keyboard: false }).on('click', '#btn-delete', function () {
-        $formDel.submit();
-    });
-});
-
-$('.table-full').on('click', '.novedad_nueva', function (e) {
-    e.preventDefault();
-    var $formNovedadNueva = $('#formNovedadNueva'),
-        $id_historial = $(this).attr('data-id-historial');
-    var url = window.location.href.split("/");
-    url = url[0] + "//" + url[2] + "/";
-    $formNovedadNueva.attr('action', url + 'admin/history_record/' + $id_historial + '/novedad_nueva');
-
-    $('.modal').on('click', '#btn-novedad-nueva', function () {
-        $formNovedadNueva.submit();
-    });
-
-    $.get('/obtener_novedad/', { id: $id_historial }, function (data, textStatus, xhr) {
-        $('#novedad_vieja').html(data);
-    });
-});
-
-$('.modal').on('hidden.bs.modal', function (e) {
-    $(this).find("input[type=search], input[name=id], input[name=prestado_en], input[id=nomInstructor], textarea[name=novedad], select").val('').end().find("input[type=checkbox], input[type=radio]").prop("checked", "").end().find("#resultado_instructor").children().remove();
-});
-$(window).on('load', function () {
-    $('#modalSession').modal({ backdrop: 'static', keyboard: false });
-});
-
-
-$('#login').one('click',(function(event) {
-  event.preventDefault();
-  $(this).closest('form').submit();
-  $(this).prop('disabled',true);
-}));
-
-
-//modal-historial
-$('body').on('click', 'button[data-target="#modalHistorial"]', function (event) {
-    event.preventDefault();
-    $id = $(this).attr('data-id');
-    // $nombre_aprendiz = $('button[data-target="#modalHistorial"]').attr('data-nombre');
-    // $('#modalHistorial').find('.modal-title').text('Nombre: ' + $nombre_aprendiz); 
-    $('#modalHistorial').find('button[data-id]').attr('data-id', $id);
-    $.get('/obtener_historial/', { id: $id }, function (data, textStatus, xhr) {
-        $('#mbody-Historial').html(data);
-    });
-});
-
 
 /***/ }),
 /* 10 */
@@ -42079,6 +41786,207 @@ module.exports = Vue$3;
 
 /***/ }),
 /* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(37)(
+  /* script */
+  __webpack_require__(38),
+  /* template */
+  __webpack_require__(39),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "C:\\xampp\\htdocs\\proyectoalmacen2\\resources\\assets\\js\\components\\Example.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1c9aeec8", Component.options)
+  } else {
+    hotAPI.reload("data-v-1c9aeec8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// this module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 38 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    }
+});
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-8 col-md-offset-2"
+  }, [_c('div', {
+    staticClass: "panel panel-default"
+  }, [_c('div', {
+    staticClass: "panel-heading"
+  }, [_vm._v("Example Component")]), _vm._v(" "), _c('div', {
+    staticClass: "panel-body"
+  }, [_vm._v("\n                    I'm an example component!\n                ")])])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1c9aeec8", module.exports)
+  }
+}
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 41 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

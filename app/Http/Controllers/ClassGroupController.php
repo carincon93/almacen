@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClassGroupRequest;
+
 
 use App\ClassGroup;
 use App\Instructor;
@@ -93,6 +95,12 @@ class ClassGroupController extends Controller
     public function update(ClassGroupRequest $request, $id)
     {
         $dataClassGroup = ClassGroup::find($id);
+        $this->validate($request, [
+            'id_ficha' => [
+                'required',
+                Rule::unique('class_groups')->ignore($dataClassGroup->id),
+            ]
+        ]);
         $dataClassGroup->id_ficha       = $request->get('id_ficha');
         $dataClassGroup->nombre_ficha   = $request->get('nombre_ficha');
         $dataClassGroup->instructor_id  = $request->get('instructor_id');

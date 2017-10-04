@@ -23,12 +23,19 @@ class ClassGroupRequest extends FormRequest
     */
     public function rules()
     {
-        return [
-            'id_ficha' => 'required|max:8',
-            'nombre_ficha'=>'required|max:100',
-            'instructor_id'=>'required',
-            'tipo_formacion'=>'required',
-        ];
+        if ($this->isMethod('put')) {
+            return [
+                'id_ficha' => 'required|max:8|unique:class_groups,id,:id',
+                'nombre_ficha'=>'required|max:100',
+                'tipo_formacion'=>'required',
+            ];
+        } else {
+            return [
+                'id_ficha' => 'required|max:8|unique:class_groups',
+                'nombre_ficha'=>'required|max:100',
+                'tipo_formacion'=>'required',
+            ];
+        }
     }
 
     public function messages()
@@ -36,6 +43,7 @@ class ClassGroupRequest extends FormRequest
         return [
             'id_ficha.required'=>'El campo ID de ficha es requerido',
             'id_ficha.max'=>'El campo ID de ficha debe tener como máximo 8 caracteres',
+            'id_ficha.unique'=>'Este número de ficha ya existe',
             'nombre_ficha.required'=>'El campo nombre de ficha es requerido',
             'nombre_ficha.max'=>'El campo nombre de ficha debe tener como máximo 100 caracteres',
             'instructor_id.required'=>'El campo instructor es requerido',

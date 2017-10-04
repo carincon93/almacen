@@ -72,7 +72,7 @@
 					@endif
 				</div>
 				<div class="form-group{{ $errors->has('ip') ? ' has-error' : '' }}">
-					<label for="ip" class="control-label">IP *</label>
+					<label for="ip" class="control-label">IP</label>
 					<input type="number" name="ip" min="0" class="form-control" value="{{ $dataInstructor->ip }}">
 					@if ($errors->has('ip'))
 						<span class="help-block">

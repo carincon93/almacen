@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\InstructorRequest;
+use Illuminate\Validation\Rule;
 
 use App\Instructor;
 
@@ -17,10 +18,10 @@ class InstructorController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * Display a listing of the resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function index()
     {
         $dataInstructor = Instructor::all()->sortBy('nombre');
@@ -28,21 +29,21 @@ class InstructorController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function create()
     {
         return view('instructors.create');
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
     public function store(InstructorRequest $request)
     {
         $dataInstructor = new Instructor();
@@ -63,46 +64,56 @@ class InstructorController extends Controller
 
         if ($dataInstructor->save()){
             return redirect('/admin/instructor')
-                ->with('status', 'El instructor '.$dataInstructor->nombre.' '.$dataInstructor->apellidos.' fue adicionado con éxito');
+            ->with('status', 'El instructor '.$dataInstructor->nombre.' '.$dataInstructor->apellidos.' fue adicionado con éxito');
         }
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    * Display the specified resource.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
     public function show($id)
     {
         $dataInstructor  = Instructor::find($id);
         return view('instructors.show')
-            ->with('dataInstructor', $dataInstructor);
+        ->with('dataInstructor', $dataInstructor);
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    * Show the form for editing the specified resource.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
     public function edit($id)
     {
         $dataInstructor  = Instructor::find($id);
-       return view('instructors.edit')
-           ->with('dataInstructor', $dataInstructor);
+        return view('instructors.edit')
+        ->with('dataInstructor', $dataInstructor);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    * Update the specified resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
     public function update(InstructorRequest $request, $id)
     {
         $dataInstructor = Instructor::find($id);
+        $this->validate($request, [
+            'numero_documento' => [
+                'required',
+                Rule::unique('instructors')->ignore($dataInstructor->id),
+            ],
+            'email' => [
+                'required',
+                Rule::unique('instructors')->ignore($dataInstructor->id),
+            ]
+        ]);
         $dataInstructor->nombre               = $request->get('nombre');
         $dataInstructor->apellidos            = $request->get('apellidos');
         $dataInstructor->vinculacion1         = $request->get('vinculacion1');
@@ -118,21 +129,21 @@ class InstructorController extends Controller
         }
         if ($dataInstructor->save()){
             return redirect('admin/instructor')
-                ->with('status', 'El instructor '.$dataInstructor->nombre.' '.$dataInstructor->apellidos.' fue modificado con éxito');
+            ->with('status', 'El instructor '.$dataInstructor->nombre.' '.$dataInstructor->apellidos.' fue modificado con éxito');
         }
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    * Remove the specified resource from storage.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
     public function destroy($id)
     {
         Instructor::destroy($id);
         return redirect('/admin/instructor')
-            ->with('status', 'El instructor fue eliminado con éxito');
+        ->with('status', 'El instructor fue eliminado con éxito');
     }
 
     public function disponibilidad_instructor(Request $request, $id_instructor)

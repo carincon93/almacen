@@ -4,8 +4,8 @@
 			<th>Ficha</th>
 			<th>Instructor</th>
 			<th>Ambiente</th>
-			<th>Fecha Prestado</th>
-			<th>Fecha Entregado</th>
+			<th>Fecha prestado</th>
+			<th>Fecha entregado</th>
 			<th>Novedad</th>
 			<th>Novedad nueva</th>
 		</tr>
@@ -18,8 +18,8 @@
 			<td>{{ $h->classroom->nombre_ambiente}}</td>
 			<td>{{ $h->prestado_en }}</td>
 			<td>{{ $h->entregado_en != '' ? $h->entregado_en : 'Sin entrega'}}</td>
-			<td>{{ $h->entregado_en != '' ? $h->novedad : 'Sin novedad'}}</td>
-			<td>{{ $h->entregado_en != '' ? $h->novedad_nueva : ''}}</td>
+			<td>{{ $h->novedad != '' ? $h->novedad : 'Sin novedad'}}</td>
+			<td>{{ $h->novedad_nueva != '' ? $h->novedad_nueva : ''}}</td>
 		</tr>
 		@endforeach
 	</tbody>

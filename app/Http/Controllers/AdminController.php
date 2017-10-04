@@ -96,7 +96,7 @@ class AdminController extends Controller
                 }
                 if(!empty($dataArray))
                 {
-                    ClassGroup::insert($dataArray);
+                    ClassGroup::insertIgnore($dataArray);
                 }
             }
 
@@ -125,7 +125,7 @@ class AdminController extends Controller
                 }
                 if(!empty($dataArray2))
                 {
-                    Instructor::insert($dataArray2);
+                    Instructor::insertIgnore($dataArray2);
                 }
             }
 

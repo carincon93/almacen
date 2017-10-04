@@ -18,7 +18,7 @@
     <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-datepicker.standalone.min.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
 </head>
 <body>
@@ -179,25 +179,9 @@
     <script src="{{ asset('js/select2.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap-datepicker.es.min.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
     <script>
         $(document).ready(function() {
-
-            // =========================== Active Links =================================
-            var current_url = "{{ Request::fullUrl() }}";
-            var full_url = current_url+location.search;
-            var $navLinks = $("ul.sidebar-menu li a");
-            // First look for an exact match including the search string
-            var $curentPageLink = $navLinks.filter(
-                function() { return $(this).attr('href') === full_url; }
-            );
-            // If not found, look for the link that starts with the url
-            if(!$curentPageLink.length > 0){
-                $curentPageLink = $navLinks.filter(
-                    function() { return $(this).attr('href').startsWith(current_url) || current_url.startsWith($(this).attr('href')); }
-                );
-            }
-
-            $curentPageLink.parents('li').addClass('active');
 
             var id_anchor = location.hash;
             $(id_anchor).css('border', '1px solid rgb(232, 40, 111)').append('<div class="card clr-msg"><div class="caret"></div>Por favor entrega este ambiente</div>');

@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\InsertOnDuplicateKey;
 
 class Classroom extends Model
 {
+
+    use InsertOnDuplicateKey;
+
     protected $fillable = [
         'nombre_ambiente',
         'tipo_ambiente',
