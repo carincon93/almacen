@@ -204,6 +204,10 @@ button:focus {
   position: relative;
 }
 
+#sidebar #sidebar-content ul li a.active {
+  color: #fff;
+}
+
 #sidebar #sidebar-content ul li a i {
   background: #1c1b27;
   font-size: 16px;
@@ -461,6 +465,20 @@ button:focus {
   object-fit: cover;
   width: 100%;
   height: inherit;
+}
+
+.sin-foto {
+  height: auto !important;
+  margin-top: 1.8rem;
+  width: auto !important;
+}
+
+.tbl-fichas {
+  width: 23rem;
+}
+
+.classroom-card.clr-entregar {
+  border: 1px solid #76ef76;
 }
 
 .classroom-card.clr-entregar .info-clr {
@@ -793,17 +811,29 @@ form .img-instructor {
   color: #93f793;
 }
 
+.buscar-ambiente {
+  margin-bottom: 3rem;
+}
+
+#classroom-resultados {
+  border: 1px solid #eee;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
 #resultado_instructor {
   background: #eee;
   margin-bottom: 3rem;
   padding: 3rem 1rem;
 }
 
+#wnombre_ambiente,
 #buscar_instructor {
   float: left;
   width: 90%;
 }
 
+#btn-buscar-ambiente,
 #btn_instructor {
   border: none;
   height: inherit;

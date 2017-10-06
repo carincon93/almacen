@@ -2,7 +2,7 @@
 
 @section('title','Adicionar instructor')
 
-@section('navbar-top')
+@section('big-content-desc')
 <ul class="breadcrumb">
 	<li><a href="{{ url('/admin/instructor') }}" class="btn-link">Lista de instructores</a></li>
 	<li>Adicionar instructor</li>

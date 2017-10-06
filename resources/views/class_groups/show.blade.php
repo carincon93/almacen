@@ -2,7 +2,7 @@
 
 @section('title', 'Ver ficha')
 
-@section('navbar-top')
+@section('big-content-desc')
 <ul class="breadcrumb">
 	<li><a href="{{ url('/admin/class_group') }}" class="btn-link">Lista de fichas</a></li>
 	<li>Adicionar ficha</li>

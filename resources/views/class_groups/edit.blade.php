@@ -2,7 +2,7 @@
 
 @section('title','Editar ficha')
 
-@section('navbar-top')
+@section('big-content-desc')
 <ul class="breadcrumb">
 	<li><a href="{{ url('/admin/class_group') }}" class="btn-link">Lista de fichas</a></li>
 	<li>Editar ficha</li>

@@ -32,7 +32,7 @@
         <table class="table table-full table-hover">
             <thead>
                 <tr>
-                    <th>Ficha</th>
+                    <th class="tbl-fichas">Ficha</th>
                     <th>Instructor</th>
                     <th>Ambiente</th>
                     <th>Prestado en</th>
@@ -43,7 +43,12 @@
             <tbody class="history">
             @foreach($history_records as $his)
                 <tr>
-                    <td class="text-capitalize">{{ $his->cLassgroup->id_ficha.' '.$his->nombre_ficha }}</td>
+                    <td class="text-capitalize">
+                        ID: {{ $his->classgroup->id_ficha }}
+                        <div class="">
+                            {{ $his->classgroup->nombre_ficha }}
+                        </div>
+                    </td>
                 	<td class="text-capitalize">{{ $his->instructor->nombre.' '.$his->instructor->apellidos }}</td>
                 	<td class="text-capitalize">{{ $his->classroom->nombre_ambiente }}</td>
                     <td>{{ $his->prestado_en }}</td>

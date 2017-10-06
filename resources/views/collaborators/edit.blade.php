@@ -2,7 +2,7 @@
 
 @section('title','Editar administrador')
 
-@section('navbar-top')
+@section('big-content-desc')
 <ul class="breadcrumb">
 	<li><a href="{{ url('/admin/collaborator') }}" class="btn-link">Lista de administradores</a></li>
 	<li>Editar administrador</li>

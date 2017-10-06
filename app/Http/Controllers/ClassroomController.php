@@ -141,7 +141,7 @@ class ClassroomController extends Controller
         $dataClassroom->prestado_en    = $request->get('prestado_en');
         $dataClassroom->class_group_id  = $request->get('class_group_id');
         $dataClassroom->instructor_id  = $request->get('instructor_id');
-        
+
 
         if($dataClassroom->save()) {
             session()->flash('status', 'El ambiente '.$dataClassroom->nombre_ambiente.' fue asignado con éxtio!');
@@ -160,5 +160,11 @@ class ClassroomController extends Controller
             $request->session()->flash('status', 'El ambiente '.$dataClassroom->nombre_ambiente.' está disponible nuevamente!');
             return redirect('/');
         }
+    }
+
+    public function obtener_ambiente(Request $request)
+    {
+        $query = Classroom::Nombre_ambiente($request->get('nombre_ambiente'))->orderBy('id', 'ASC')->get();
+        return view('classrooms.ajax')->with('query', $query);
     }
 }

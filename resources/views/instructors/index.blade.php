@@ -8,6 +8,9 @@
 @endsection
 
 @section('big-content-desc')
+    <ul class="breadcrumb">
+    	<li>Lista de instructores</li>
+    </ul>
 @endsection
 
 @section('content')

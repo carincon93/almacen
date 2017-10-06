@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     // Obtener la fecha actual
     $('[data-toggle="tooltip"]').tooltip();
     (function ($) {
@@ -51,6 +52,34 @@ $(document).ready(function() {
         }
     });
 
+    $('body').on('keyup', '#wnombre_ambiente', function (event) {
+        var $nombre_ambiente = $(this).val();
+        if ($nombre_ambiente != '') {
+            if (request != null) request.abort();
+
+            request = $.get('obtener_ambiente', { nombre_ambiente: $nombre_ambiente }, function (data, textStatus, xhr) {
+                if(data) {
+                    $('#classroom-resultados').html('<h2>Resultados:</h2>' + data);
+                }
+            });
+        } else {
+            $('#classroom-resultados').children().remove();
+        }
+    });
+
+    $('body').on('click', '#btn-buscar-ambiente', function (event) {
+        var $nombre_ambiente = $('#wnombre_ambiente').val();
+        if ($nombre_ambiente != '') {
+            if (request != null) request.abort();
+
+            request = $.get('obtener_ambiente', { nombre_ambiente: $nombre_ambiente }, function (data, textStatus, xhr) {
+                if(data) {
+                    $('#classroom-section').html(data);
+                }
+            });
+        }
+    });
+
     $('body').on('click', '#btn_instructor', function (event) {
         var $numero_documento = $('#buscar_instructor').val();
         if ($numero_documento > 0) {
@@ -81,7 +110,7 @@ $(document).ready(function() {
         $('#id_ambiente').attr('value', $id_ambiente);
 
         // Set url del form action.
-        var url = window.location.href;
+        var url = window.location.href.split("#")[0];
         // url = url[0] + "//" + url[2] + "/";
         $form_prestamo.attr('action', url + 'solicitar_prestamo/' + $id_ambiente + '/aprobado');
 
@@ -182,7 +211,7 @@ $(document).ready(function() {
         $form_entrega.find('input[name=class_group_id]').attr('value', $class_group_id);
 
         // Construct the URL dynamically.
-        var url = window.location.href;
+        var url = window.location.href.split("#")[0];
         // url = url[0] + "//" + url[2] + "/";
         $form_entrega.attr('action', url + 'entregar_ambiente/' + $id_ambiente + '/aprobado');
     });
@@ -266,7 +295,7 @@ $(document).ready(function() {
         e.preventDefault();
         var $formNovedadNueva = $('#formNovedadNueva'),
         $id_historial = $(this).attr('data-id-historial');
-        var url = window.location.href;
+        var url = window.location.href.split("#")[0];
         // url = url[0] + "//" + url[2] + "/";
         $formNovedadNueva.attr('action', url + '/' + $id_historial + '/novedad_nueva');
 

@@ -2,10 +2,10 @@
 
 @section('title', 'Ver ambiente')
 
-@section('navbar-top')
+@section('big-content-desc')
 <ul class="breadcrumb">
 	<li><a href="{{ url('/admin/classroom') }}" class="btn-link">Lista de ambientes</a></li>
-	<li>Adicionar ambiente</li>
+	<li>Ver ambiente</li>
 </ul>
 @endsection
 

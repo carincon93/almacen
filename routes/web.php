@@ -77,6 +77,8 @@ Route::post('/admin/updatepassword', 'AdminController@updatePassword');
 Route::post('/admin/all_entries/truncate', 'AdminController@truncateAll');
 Route::get('/admin/update_system', 'AdminController@update_system_index');
 
+Route::get('obtener_ambiente', 'ClassroomController@obtener_ambiente');
+
 Route::resource('/admin/collaborator', 'CollaboratorController');
 
 

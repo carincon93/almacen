@@ -25,16 +25,16 @@ class HistoryRecordController extends Controller
 
     public function index()
     {
-        $history_records = HistoryRecord::all();
-        $hh = DB::table('history_records')
-                    ->select('instructors.id', 'instructors.nombre','class_groups.id', 'class_groups.id_ficha','classrooms.id', 'classrooms.nombre_ambiente', DB::raw('count(history_records.instructor_id) as total'))
-                    ->join('instructors', 'instructors.id', '=', 'history_records.instructor_id')
-                    ->join('class_groups', 'class_groups.id', '=', 'history_records.class_group_id')
-                    ->join('classrooms', 'classrooms.id', '=', 'history_records.classroom_id')
-                    ->groupBy('instructors.id', 'instructors.nombre','class_groups.id', 'class_groups.id_ficha','classrooms.id', 'classrooms.nombre_ambiente')
-                    ->take(5)
-                    ->get();
-        return view('history_records.index', compact('history_records', 'hh'));
+        $history_records = HistoryRecord::orderByDesc('prestado_en')->get();
+        // $hh = DB::table('history_records')
+        //             ->select('instructors.id', 'instructors.nombre','class_groups.id', 'class_groups.id_ficha','classrooms.id', 'classrooms.nombre_ambiente', DB::raw('count(history_records.instructor_id) as total'))
+        //             ->join('instructors', 'instructors.id', '=', 'history_records.instructor_id')
+        //             ->join('class_groups', 'class_groups.id', '=', 'history_records.class_group_id')
+        //             ->join('classrooms', 'classrooms.id', '=', 'history_records.classroom_id')
+        //             ->groupBy('instructors.id', 'instructors.nombre','class_groups.id', 'class_groups.id_ficha','classrooms.id', 'classrooms.nombre_ambiente')
+        //             ->take(5)
+        //             ->get();
+        return view('history_records.index', compact('history_records'));
     }
 
     /**
