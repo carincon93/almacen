@@ -15,7 +15,7 @@ class ClassroomController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except('prestamo_aprobado', 'entrega_aprobado');
+        $this->middleware('auth')->except('prestamo_aprobado', 'entrega_aprobado', 'obtener_ambiente');
     }
 
     /**
