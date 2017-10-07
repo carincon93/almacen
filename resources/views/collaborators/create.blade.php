@@ -10,7 +10,6 @@
 @endsection
 
 @section('big-content-desc')
-<h4>Adicionar administrador</h4>
 @endsection
 
 @section('content')
