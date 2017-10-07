@@ -13,14 +13,14 @@
                             <div id="{{ $clr->id }}" class="classroom-card card clr-entregar" data-toggle="modal" data-target="#modal_entregar_ambiente" data-id-ambiente="{{ $clr->id }}" data-prestamo="{{ $clr->prestado_en }}" data-id-instructor="{{ $clr->instructor->id }}" data-id-classgroup="{{ $clr->class_group_id }}" >
                                 <div class="clr-img">
                                     <img src="{{ asset($clr->imagen) }}" alt="" class="{{ $clr->imagen == '/images/sin_foto.png' ? 'center-block sin-foto' : ''}} img-classroom img-responsive">
-                                    @php
-                                    $dt1=new Jenssegers\Date\Date($clr->prestado_en);
-                                    @endphp
-                                    <div class="info-clr">Ambiente en uso <span class="pull-right">{{ $dt1->format('l d F Y h:i A') }}</span></div>
                                 </div>
                                 <div class="clr-desc">
                                     <div class="desc-1">
                                         <h5 class="" data-nombre-ambiente="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
+                                        @php
+                                        $dt1=new Jenssegers\Date\Date($clr->prestado_en);
+                                        @endphp
+                                        <div class="clearfix"><span class="pull-right">{{ $dt1->format('l d F Y h:i A') }}</span></div>
                                     </div>
                                     <hr>
                                     <div class="desc-1 desc-prestamo">
