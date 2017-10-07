@@ -14,8 +14,8 @@
 @section('content')
     @include('layouts.messages')
     <div class="card">
-        <div class="table-responsive">
-            <table class="table table-full table-hover" data-form="deleteForm">
+        <div class="table-responsive card-content">
+            <table class="table table-full table-hover" id="myTable" data-form="deleteForm">
                 <thead>
                     <tr>
                         <th>#</th>

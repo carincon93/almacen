@@ -15,8 +15,8 @@
     @include('layouts.messages')
     <a href="{{ url('/admin/class_group/create') }}" class="action-round btn"><i class="fa fa-fw fa-plus"></i></a>
     <div class="card">
-        <div class="table-responsive">
-            <table class="table table-full table-hover">
+        <div class="table-responsive card-content">
+            <table class="table table-full table-hover" id="myTable" data-form="deleteForm">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -64,25 +64,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script>
-    function filterTableFicha() {
-        var input, filter, table, tr, td, i;
-        input = document.getElementById("myInputFicha");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTableFicha");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[2];
-            if (td) {
-                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    </script>
-@endpush

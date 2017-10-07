@@ -1,12 +1,5 @@
 @extends('layouts.app')
 
-@section('navbar-top')
-<div class="search-navbar-wrapper">
-    <i class="fa fa-fw fa-search"></i>
-    <input type="text" id="myInputIns" onkeyup="filterTableIns()" placeholder="Buscar por nombre de instructor" class="form-control search-navbar">
-</div>
-@endsection
-
 @section('big-content-desc')
     <ul class="breadcrumb">
     	<li>Lista de instructores</li>
@@ -17,8 +10,8 @@
 @include('layouts.messages')
 <a href="{{ url('/admin/instructor/create') }}" class="btn action-round"><i class="fa fa-fw fa-user-plus"></i></a>
 <div class="card">
-    <div class="table-responsive">
-        <table class="table table-full table-hover">
+    <div class="table-responsive card-content">
+        <table class="table table-full table-hover" id="myTable" data-form="deleteForm">
             <thead>
                 <tr>
                     <th>#</th>
@@ -28,7 +21,7 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody id="myTableIns">
+            <tbody  class="history" id="myTableIns">
                 @php
                 $count = 1;
                 @endphp
@@ -66,24 +59,3 @@
 
 @endsection
 
-@push('scripts')
-    <script>
-        function filterTableIns() {
-            var input, filter, table, tr, td, i;
-            input = document.getElementById("myInputIns");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("myTableIns");
-            tr = table.getElementsByTagName("tr");
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[1];
-                if (td) {
-                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
-    </script>
-@endpush
