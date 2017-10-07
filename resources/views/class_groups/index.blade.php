@@ -1,10 +1,4 @@
 @extends('layouts.app')
-@section('navbar-top')
-    <div class="search-navbar-wrapper">
-        <i class="fa fa-fw fa-search"></i>
-        <input type="text" id="myInputFicha" onkeyup="filterTableFicha()" placeholder="Buscar por ficha de grupo" class="form-control search-navbar">
-    </div>
-@endsection
 @section('big-content-desc')
     <ul class="breadcrumb">
     	<li>Lista de fichas</li>

@@ -1,10 +1,4 @@
 @extends('layouts.app')
-@section('navbar-top')
-    <div class="search-navbar-wrapper">
-        <i class="fa fa-fw fa-search"></i>
-        <input type="text" id="myInput" onkeyup="filterTableClr()" placeholder="Buscar por nombre de ambiente" class="form-control search-navbar">
-    </div>
-@endsection
 @section('big-content-desc')
     <a href="{{ url('/admin/classroom/create') }}" class="btn action-round"><i class="fa fa-fw fa-plus"></i></a>
     <ul class="breadcrumb">
@@ -63,25 +57,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script>
-    function filterTableClr() {
-        var input, filter, table, tr, td, i;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
-            if (td) {
-                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    </script>
-@endpush
