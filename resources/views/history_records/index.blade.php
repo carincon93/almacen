@@ -28,8 +28,8 @@
 @include('layouts.messages')
 @include('layouts.modal')
 <div class="card">
-    <div class="table-responsive">
-        <table class="table table-full table-hover">
+    <div class="table-responsive card-content">
+        <table class="table table-full table-hover" id="myTable" data-form="deleteForm">
             <thead>
                 <tr>
                     <th class="tbl-fichas">Ficha</th>
