@@ -113,6 +113,10 @@ button:focus {
   color: #3097D1 !important;
 }
 
+div.dataTables_filter, div.dataTables_info, div.dataTables_length, div.dataTables_paginate {
+  padding: 20px;
+}
+
 .row.no-gutter {
   display: -ms-flex;
   display: -webkit-box;
@@ -160,9 +164,7 @@ button:focus {
   font-size: 12px;
   margin-left: 22px;
 }
-.card-content {
-  padding: 15px 20px;
-}
+
 .table-hover > tbody > tr:hover {
   background-color: #fdfdfd;
 }

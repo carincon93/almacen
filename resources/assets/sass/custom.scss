@@ -113,6 +113,10 @@ button:focus {
     color: #3097D1 !important;
 }
 
+div.dataTables_filter, div.dataTables_info, div.dataTables_length, div.dataTables_paginate {
+    padding: 20px;
+}
+
 .row.no-gutter {
     display: -ms-flex;
     display: -webkit-box;
