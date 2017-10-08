@@ -4,6 +4,7 @@
 
 @section('big-content-desc')
     <h3 class="text-center">Ambientes en uso</h3>
+    @include('layouts.messages')
     @foreach($dataClassroom->chunk(3) as $chunk)
         <div class="row">
             @foreach($chunk as $clr)
