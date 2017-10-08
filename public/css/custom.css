@@ -472,9 +472,9 @@ div.dataTables_filter, div.dataTables_info, div.dataTables_length, div.dataTable
 }
 
 .sin-foto {
-  height: auto !important;
-  margin-top: 1.8rem;
-  width: auto !important;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+  opacity: 0.1;
 }
 
 .tbl-fichas {

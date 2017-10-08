@@ -101,7 +101,6 @@
                                         <img src="{{ asset($clr->imagen) }}" alt="" class="{{ $clr->imagen == '/images/sin_foto.png' ? 'center-block sin-foto' : ''}} img-classroom img-responsive">
                                     </div>
                                     <div class="clr-desc">
-                                        <span class="circle"></span>
                                         <div class="desc-1">
                                             <h5 class="" data-nombre-ambiente="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
                                         </div>
