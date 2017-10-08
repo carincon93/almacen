@@ -160,7 +160,9 @@ button:focus {
   font-size: 12px;
   margin-left: 22px;
 }
-
+.card-content {
+  padding: 15px 20px;
+}
 .table-hover > tbody > tr:hover {
   background-color: #fdfdfd;
 }
