@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-10-2017 a las 20:01:48
+-- Tiempo de generación: 08-10-2017 a las 08:54:27
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -52,10 +52,10 @@ CREATE TABLE `classrooms` (
 
 INSERT INTO `classrooms` (`id`, `nombre_ambiente`, `descripcion`, `centro`, `tipo_ambiente`, `movilidad`, `estado`, `cupo`, `imagen`, `disponibilidad`, `prestado_en`, `instructor_id`, `class_group_id`, `created_at`, `updated_at`) VALUES
 (1, 'sistemas 1', NULL, NULL, 'aula', 'fijo', 'activo', 60, '/images/classrooms/1504550912.jpeg', 'disponible', NULL, NULL, NULL, NULL, NULL),
-(2, 'sistemas 2', NULL, NULL, 'aula', 'fijo', 'activo', 40, '/images/sin_foto.png', 'disponible', NULL, NULL, NULL, NULL, NULL),
-(3, 'ambiente lego', NULL, NULL, 'aula', 'fijo', 'activo', 50, '/images/sin_foto.png', 'disponible', NULL, NULL, NULL, NULL, NULL),
+(2, 'sistemas 2', NULL, NULL, 'aula', 'fijo', 'activo', 40, '/images/classrooms/1507445626.jpg', 'disponible', NULL, NULL, NULL, NULL, '2017-10-08 06:53:46'),
+(3, 'ambiente lego', NULL, NULL, 'aula', 'fijo', 'activo', 50, '/images/classrooms/1507445573.jpg', 'disponible', NULL, NULL, NULL, NULL, '2017-10-08 06:52:53'),
 (4, 'auditorio procesos industriales y construccion', NULL, NULL, 'auditorio', 'fijo', 'activo', 200, '/images/classrooms/1507399170.JPG', 'disponible', NULL, NULL, NULL, NULL, '2017-10-07 17:59:30'),
-(5, 'autocad', NULL, NULL, 'laboratorio', 'fijo', 'activo', 50, '/images/sin_foto.png', 'disponible', NULL, NULL, NULL, NULL, NULL),
+(5, 'autocad', NULL, NULL, 'laboratorio', 'fijo', 'activo', 50, '/images/classrooms/1507445589.jpg', 'disponible', NULL, NULL, NULL, NULL, '2017-10-08 06:53:09'),
 (6, 'automotriz', NULL, NULL, 'taller', 'fijo', 'activo', 90, '/images/classrooms/1504551162.jpeg', 'disponible', NULL, NULL, NULL, NULL, NULL),
 (7, 'confeccion', NULL, NULL, 'taller', 'fijo', 'activo', 60, '/images/sin_foto.png', 'disponible', NULL, NULL, NULL, NULL, NULL),
 (8, 'diesel', NULL, NULL, 'taller', 'fijo', 'activo', 100, '/images/classrooms/1504551074.jpeg', 'disponible', NULL, NULL, NULL, NULL, NULL),
