@@ -74,9 +74,11 @@ $(document).ready(function() {
 
             request = $.get('obtener_ambiente', { nombre_ambiente: $nombre_ambiente }, function (data, textStatus, xhr) {
                 if(data) {
-                    $('#classroom-section').html(data);
+                    $('#classroom-resultados').html(data);
                 }
             });
+        } else {
+            $('#classroom-resultados').children().remove();
         }
     });
 
