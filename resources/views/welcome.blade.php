@@ -38,6 +38,7 @@
     @endforeach
 @endsection
 
+
 @section('content')
     <hr>
     <div class="buscar-ambiente">
@@ -141,26 +142,23 @@
         </div>
     @endif
 
-
     @if ($errors->has('token_error'))
-        <!-- Modal -->
-        <div class="modal fade" id="modalSession" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Sesión expirada</h4>
-                    </div>
-                    <div class="modal-body">
-                        {{ $errors->first('token_error') }}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">
-                            <a href="{{ url('/') }}">Volver a la página principal</a>
-                        </button>
-                    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalSession" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Sesión expirada</h4>
+                </div>
+                <div class="modal-body">
+                    {{ $errors->first('token_error') }}
+                </div>
+                <div class="modal-footer">
+                    <a href="{{ url('/') }}" class="btn-link">Volver a la página principal</a>
                 </div>
             </div>
         </div>
+    </div>
     @endif
     <!-- Modal -->
     <div class="modal fade" id="modal_solicitar_prestamo">

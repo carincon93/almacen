@@ -63,7 +63,6 @@ class AdminController extends Controller
     public function truncateAll()
     {
         Schema::disableForeignKeyConstraints();
-        Classroom::truncate();
         Instructor::truncate();
         ClassGroup::truncate();
         HistoryRecord::truncate();
@@ -126,34 +125,7 @@ class AdminController extends Controller
                 if(!empty($dataArray2))
                 {
                     Instructor::insertIgnore($dataArray2);
-                }
-            }
-
-            $data3 = Excel::selectSheets('Ambientes')->load($path, function($reader)
-            {
-            })->get();
-            if(!empty($data3) && $data3->count())
-            {
-                foreach ($data3->toArray() as $row)
-                {
-                    if(!empty($row))
-                    {
-                        $dataArray3[] =
-                        [
-                            'nombre_ambiente' => $row['nombre_ambiente'],
-                            'centro' => $row['centro'],
-                            'tipo_ambiente' => $row['tipo_ambiente'],
-                            'movilidad' => $row['movilidad'],
-                            'estado' => $row['estado'],
-                            'cupo' => $row['cupo'],
-                            'imagen' => $row['imagen'],
-                        ];
-                    }
-                }
-                if(!empty($dataArray3))
-                {
-                    Classroom::insert($dataArray3);
-                    return redirect('/admin/update_system')->with('status', 'Se ha importado el archivo con éxito!');
+                    return redirect('/admin/update_system')->with('status', 'Se han importado los instructores y los grupos con éxito!');
                 }
             }
         }
