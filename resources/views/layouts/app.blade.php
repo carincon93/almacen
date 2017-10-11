@@ -50,7 +50,7 @@
                     <a href="{{ url('/admin/classroom') }}"><i class="fa fa-fw fa-cog"></i>Ambientes</a>
                 </li>
                 <li>
-                    <a href="{{ url('/admin/class_group') }}"><i class="fa fa-fw fa-cog"></i>Fichas</a>
+                    <a href="{{ url('/admin/class_group') }}"><i class="fa fa-fw fa-cog"></i>Grupos</a>
                 </li>
                 <li>Acciones</li>
                 <li>
@@ -157,10 +157,6 @@
                                         <button type="submit" id="login" class="btn btn-primary">
                                             Iniciar sesión
                                         </button>
-
-                                        <a class="btn-link pwd-req" href="{{ route('password.request') }}">
-                                            ¿Olvidaste tu contraseña?
-                                        </a>
                                     </div>
                                 </div>
                             </form>
@@ -185,6 +181,13 @@
     <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>
     <script>
+        $(window).on('load', function () {
+            $('#modalSession').modal({ backdrop: 'static', keyboard: false });
+            $('#modalSession').css({
+                'display': 'block',
+                'opacity': '1'
+            });
+        });
         $(document).ready(function() {
 
             var id_anchor = location.hash;

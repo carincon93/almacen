@@ -36,7 +36,7 @@
             <section class="import-section">
                 <div>
                     <img src="{{ asset('images/import-img.png') }}" alt="" class="img-responsive center-block import-img">
-                    <p class="text-center">Importar todas las solicitudes desde un archivo excel</p>
+                    <p class="text-center">Importar los instructores y grupos desde un archivo excel</p>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
@@ -67,7 +67,7 @@
                     <div class="col-md-12">
                         <div class="text-center">
                             <i class="fa fa-warning fa-4x"></i>
-                            <p>Si quieres eliminar todos los registros, da clic en el botón <span class="btn">Eliminar todos los registros</span></p>
+                            <p>Si quieres eliminar todos los registros de los instructores y grupos, da clic en el botón <span class="btn">Eliminar todos los registros</span></p>
                         </div>
                         <blockquote class="blockquote blockquote-danger">
                             <i class="fa fa-fw fa-warning"></i>

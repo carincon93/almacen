@@ -312,10 +312,6 @@ $(document).ready(function() {
     $('.modal').on('hidden.bs.modal', function (e) {
         $(this).find("input[type=search], input[name=id], input[name=prestado_en], input[id=nomInstructor], textarea[name=novedad], select").val('').end().find("input[type=checkbox], input[type=radio]").prop("checked", "").end().find("#resultado_instructor").children().remove();
     });
-    $(window).on('load', function () {
-        $('#modalSession').modal({ backdrop: 'static', keyboard: false });
-    });
-
 
     $('#login').one('click',(function(event) {
         event.preventDefault();
