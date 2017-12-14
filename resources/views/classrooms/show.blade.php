@@ -3,20 +3,20 @@
 @section('title', 'Ver ambiente')
 
 @section('big-content-desc')
-<ul class="breadcrumb">
-	<li><a href="{{ url('/admin/classroom') }}" class="btn-link">Lista de ambientes</a></li>
-	<li>Ver ambiente</li>
-</ul>
+	<ul class="breadcrumb">
+		<li><a href="{{ url('/admin/classroom') }}" class="btn-link">Lista de ambientes</a></li>
+		<li>Ver ambiente</li>
+	</ul>
 @endsection
 
 @section('content')
 	<h1 class="text-uppercase">{{ $classroom->nombre_ambiente }}</h1>
 	<hr>
 	@if (session('status'))
-	<div class="alert alert-success alert-dismissible" role="alert">
-		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
-		{!!  html_entity_decode(session('status')) !!}
-	</div>
+		<div class="alert alert-success alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+			{!!  html_entity_decode(session('status')) !!}
+		</div>
 	@endif
 	<div class="table-responsive">
 		<table class="table table-stripped table-bordered table-hover">

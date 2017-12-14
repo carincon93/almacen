@@ -165,6 +165,9 @@ div.dataTables_filter, div.dataTables_info, div.dataTables_length, div.dataTable
     margin-left: 22px;
 }
 
+.table caption {
+    padding: 1rem;
+}
 .table-hover > tbody > tr:hover {
     background-color: #fdfdfd;
 }
@@ -230,6 +233,10 @@ div.dataTables_filter, div.dataTables_info, div.dataTables_length, div.dataTable
     font-family: FontAwesome;
     position: absolute;
     right: 0;
+}
+
+.icon-cyan {
+    background: #00ffff!important;
 }
 
 .search-navbar-wrapper {
@@ -372,10 +379,11 @@ div.dataTables_filter, div.dataTables_info, div.dataTables_length, div.dataTable
 
 .tooltip-inner {
     color: #fff;
-    font-size: 14px;
-    max-width: 550px;
+    font-size: 12px;
+    font-family: Arial;
+    // max-width: 550px;
     /* If max-width does not work, try using width instead */
-    width: 550px;
+    // width: 550px;
 }
 
 .tooltip.in {
@@ -572,6 +580,13 @@ i.itm_quare {
 
 .modal-prestar p {
     margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+    .modal-prestamo {
+        width: 900px;
+        margin: 30px auto;
+    }
 }
 
 // .modal-prestar i {
@@ -805,6 +820,7 @@ form .img-instructor {
     }
 }
 .big-content .big-content-desc {
+    background: #eee;
     border: 1px solid #eee;
     padding: 1rem;
     margin: 1.6rem 0rem;
@@ -831,9 +847,9 @@ form .img-instructor {
     padding: 1rem;
 }
 #resultado_instructor {
-    background: #eee;
-    margin-bottom: 3rem;
-    padding: 3rem 1rem;
+    // background: #eee;
+    // margin-bottom: 3rem;
+    padding: 1rem;
 }
 #wnombre_ambiente,
 #buscar_instructor {

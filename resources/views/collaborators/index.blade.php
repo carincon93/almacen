@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('big-content-desc')
-    <a href="{{ url('/admin/collaborator/create') }}" class="btn action-round"><i class="fa fa-fw fa-plus"></i></a>
     <ul class="breadcrumb">
     	<li>Lista de administradores</li>
     </ul>
@@ -13,6 +12,9 @@
     <div class="card">
         <div class="table-responsive">
             <table class="table table-full table-hover">
+                <caption>
+                    <a href="{{ url('/admin/collaborator/create') }}" class="btn btn-success"><i class="fa fa-fw fa-plus"></i> Añadir administrador</a>
+                </caption>
                 <thead>
                     <tr>
                         <th>#</th>

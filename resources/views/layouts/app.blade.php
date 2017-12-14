@@ -35,10 +35,10 @@
         </div>
         <div id="sidebar-content">
             <ul class="sidebar-menu list-unstyled">
-                <li>Administración</li>
+                {{-- <li>Administración</li>
                 <li>
                     <a href="{{ url('/admin/dashboard') }}"><i class="fa fa-fw fa-cog"></i>Dashboard</a>
-                </li>
+                </li> --}}
                 <li>Administración</li>
                 <li>
                     <a href="{{ url('/admin/collaborator') }}"><i class="fa fa-fw fa-cog"></i>Administradores</a>
@@ -54,7 +54,7 @@
                 </li>
                 <li>Acciones</li>
                 <li>
-                    <a href="{{ url('/') }}"><i class="fa fa-fw fa-key"></i>Prestar ambiente</a>
+                    <a href="{{ url('/') }}"><i class="fa fa-fw fa-key icon-cyan"></i>Prestar ambiente</a>
                 </li>
                 <li>
                     <a href="{{ url('/admin/history_record') }}"><i class="fa fa-fw fa-line-chart"></i>Historial de préstamos</a>

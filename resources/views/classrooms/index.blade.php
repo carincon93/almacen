@@ -1,15 +1,21 @@
 @extends('layouts.app')
+
+@section('title', 'Ambientes')
+
 @section('big-content-desc')
-    <a href="{{ url('/admin/classroom/create') }}" class="btn action-round"><i class="fa fa-fw fa-plus"></i></a>
     <ul class="breadcrumb">
-    	<li>Lista de ambientes</li>
+        <li>Lista de ambientes</li>
     </ul>
 @endsection
+
 @section('content')
     @include('layouts.messages')
     <div class="card">
         <div class="table-responsive card-content">
             <table class="table table-full table-hover" id="myTable" data-form="deleteForm">
+                <caption>
+                    <a href="{{ url('/admin/classroom/create') }}" class="btn btn-success"><i class="fa fa-fw fa-plus"></i> Añadir ambiente</a>
+                </caption>
                 <thead>
                     <tr>
                         <th>#</th>
@@ -32,14 +38,14 @@
                             <td>{{ $clr->estado }}</td>
                             <td>{{ $clr->cupo }}</td>
                             <td class="td-actions">
-                                <a class="btn btn-round" href="{{ url('/admin/classroom/'.$clr->id) }}">
+                                <a class="btn btn-round" href="{{ url('/admin/classroom/'.$clr->id) }}" data-toggle="tooltip" data-placement="top" title="Ver ambiente">
                                     <i class="fa fa-fw fa-search"></i>
                                 </a>
-                                <a class="btn btn-round" href="{{ url('/admin/classroom/'.$clr->id.'/edit') }}">
+                                <a class="btn btn-round" href="{{ url('/admin/classroom/'.$clr->id.'/edit') }}" data-toggle="tooltip" data-placement="top" title="Editar ambiente">
                                     <i class="fa fa-fw fa-edit"></i>
                                 </a>
                                 @if($clr->disponibilidad == 'disponible')
-                                    <form action="{{ url('/admin/classroom/'.$clr->id) }}" data-nombre="{{ $clr->nombre_ambiente }}" method="POST" style="display: inline-block;" class="btn-delete-tbl btn btn-round btn-round">
+                                    <form action="{{ url('/admin/classroom/'.$clr->id) }}" data-nombre="{{ $clr->nombre_ambiente }}" method="POST" style="display: inline-block;" class="btn-delete-tbl btn btn-round btn-round" data-toggle="tooltip" data-placement="top" title="Eliminar ambiente">
                                         {{ method_field('delete') }}
                                         {!! csrf_field()  !!}
                                         <i class="fa fa-fw fa-trash"></i>

@@ -72,7 +72,7 @@ class ClassroomController extends Controller
      */
     public function show($id)
     {
-        return view('classrooms.show')->with('classroom', classroom::find($id));
+        return view('classrooms.show')->with('classroom', classroom::findOrFail($id));
     }
 
     /**
@@ -83,7 +83,7 @@ class ClassroomController extends Controller
      */
     public function edit($id)
     {
-        $dataClassroom = Classroom::find($id);
+        $dataClassroom = Classroom::findOrFail($id);
             return view('classrooms.edit')->with('clr', $dataClassroom);
     }
 
@@ -96,7 +96,7 @@ class ClassroomController extends Controller
      */
     public function update(ClassroomRequest $request, $id)
     {
-        $dataClassroom = Classroom::find($id);
+        $dataClassroom = Classroom::findOrFail($id);
         $dataClassroom->nombre_ambiente = $request->get('nombre_ambiente');
         $dataClassroom->tipo_ambiente   = $request->get('tipo_ambiente');
         $dataClassroom->movilidad       = $request->get('movilidad');
@@ -136,7 +136,7 @@ class ClassroomController extends Controller
     // Aprobar préstamo y cambiar disponibilidad del ambiente
     public function prestamo_aprobado(Request $request)
     {
-        $dataClassroom = Classroom::find($request->id);
+        $dataClassroom = Classroom::findOrFail($request->id);
         $dataClassroom->disponibilidad = 'no disponible';
         $dataClassroom->prestado_en    = $request->get('prestado_en');
         $dataClassroom->class_group_id  = $request->get('class_group_id');
@@ -151,7 +151,7 @@ class ClassroomController extends Controller
 
     public function entrega_aprobado(Request $request)
     {
-        $dataClassroom = Classroom::find($request->id);
+        $dataClassroom = Classroom::findOrFail($request->id);
         $dataClassroom->disponibilidad = 'disponible';
         $dataClassroom->instructor_id  = NULL;
         $dataClassroom->class_group_id  = NULL;

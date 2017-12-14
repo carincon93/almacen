@@ -3,22 +3,22 @@
 @section('title','Editar instructor')
 
 @section('big-content-desc')
-<ul class="breadcrumb">
-	<li><a href="{{ url('/admin/instructor') }}" class="btn-link">Lista de instructores</a></li>
-	<li>Editar instructor</li>
-</ul>
+	<ul class="breadcrumb">
+		<li><a href="{{ url('/admin/instructor') }}" class="btn-link">Lista de instructores</a></li>
+		<li>Editar instructor</li>
+	</ul>
 @endsection
 
 @section('content')
 	<div class="col-md-8">
 		<div class="card-form">
 			<form action="{{ url('/admin/instructor/'.$dataInstructor->id) }}" method="POST" enctype="multipart/form-data">
-                {!! csrf_field()  !!}
-                {{ method_field('put') }}
+				{!! csrf_field()  !!}
+				{{ method_field('put') }}
 				@if(!empty($dataInstructor->imagen))
-				<img src="{{ asset($dataInstructor->imagen) }}" alt="" class="img-responsive img-instructor">
+					<img src="{{ asset($dataInstructor->imagen) }}" alt="" class="img-responsive img-instructor">
 				@else
-				<img src="{{ asset('/images/instructors/perdefault.png') }}" alt="" class="img-responsive img-instructor">
+					<img src="{{ asset('/images/instructors/perdefault.png') }}" alt="" class="img-responsive img-instructor">
 				@endif
 
 				<div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
@@ -40,18 +40,18 @@
 					@endif
 				</div>
 				<div class="form-group{{ $errors->has('vinculacion1') ? ' has-error' : '' }}">
-						<label for="vinculacion1" class="control-label">
-							Tipo de contrato *
-						</label>
-						<select name="vinculacion1" class="form-control">
-							<option value="planta {{ $dataInstructor->vinculacion1 == 'planta' ? 'selected="selected"' : '' }}" class="text-capitalize">Planta</option>
-							<option value="contratista {{ $dataInstructor->vinculacion1 == 'contratista' ? 'selected="selected"' : '' }}" class="text-capitalize">Contratista</option>
-						</select>
-						@if ($errors->has('vinculacion1'))
-							<span class="help-block">
-								{{ $errors->first('vinculacion1') }}
-							</span>
-						@endif
+					<label for="vinculacion1" class="control-label">
+						Tipo de contrato *
+					</label>
+					<select name="vinculacion1" class="form-control">
+						<option value="planta {{ $dataInstructor->vinculacion1 == 'planta' ? 'selected="selected"' : '' }}" class="text-capitalize">Planta</option>
+						<option value="contratista {{ $dataInstructor->vinculacion1 == 'contratista' ? 'selected="selected"' : '' }}" class="text-capitalize">Contratista</option>
+					</select>
+					@if ($errors->has('vinculacion1'))
+						<span class="help-block">
+							{{ $errors->first('vinculacion1') }}
+						</span>
+					@endif
 				</div>
 				<div class="form-group{{ $errors->has('area') ? ' has-error' : '' }}">
 					<label for="area" class="control-label">Área/Especialidad *</label>

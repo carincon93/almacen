@@ -3,10 +3,10 @@
 @section('title', 'Ver instructor')
 
 @section('big-content-desc')
-<ul class="breadcrumb">
-	<li><a href="{{ url('/admin/instructor') }}" class="btn-link">Lista de instructores</a></li>
-	<li>Ver instructor</li>
-</ul>
+	<ul class="breadcrumb">
+		<li><a href="{{ url('/admin/instructor') }}" class="btn-link">Lista de instructores</a></li>
+		<li>Ver instructor</li>
+	</ul>
 @endsection
 
 @section('content')
@@ -56,7 +56,7 @@
 				<td>
 					<ul>
 						@foreach($dataInstructor->classgroups as $classgroup)
-						<li>{{ $classgroup->nombre_ficha }}</li>
+							<li>{{ $classgroup->nombre_ficha }}</li>
 						@endforeach
 					</ul>
 				</td>

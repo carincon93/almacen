@@ -35,7 +35,7 @@ class AdminController extends Controller
 
     public function redirect()
     {
-        return redirect('admin/dashboard');
+        return redirect('/');
     }
 
     public function password(){
@@ -87,9 +87,9 @@ class AdminController extends Controller
                     {
                         $dataArray[] =
                         [
-                            'id_ficha' => $row['ficha'],
-                            'nombre_ficha' => $row['nombre_ficha'],
-                            'tipo_formacion' => $row['tipo_formacion'],
+                            'id_ficha'          => $row['ficha'],
+                            'nombre_ficha'      => $row['nombre_ficha'],
+                            'tipo_formacion'    => $row['tipo_formacion'],
                         ];
                     }
                 }
@@ -110,15 +110,14 @@ class AdminController extends Controller
                     {
                         $dataArray2[] =
                         [
-                            'nombre' => $row['nombre'],
-                            'apellidos' => $row['apellidos'],
-                            'especialidad' => $row['especialidad_ins'],
-                            'vinculacion1' => $row['vinculacion'],
-                            'area' => $row['area'],
-                            'numero_documento' => $row['numero_documento_ins'],
-                            'celular' => $row['celular'],
-                            'email' => $row['correo_electronico'],
-                            'imagen' => $row['imagen'],
+                            'nombre'            => $row['nombre'],
+                            'apellidos'         => $row['apellidos'],
+                            'especialidad'      => $row['especialidad_instructor'],
+                            'vinculacion1'      => $row['vinculacion'],
+                            'area'              => $row['area'],
+                            'numero_documento'  => $row['numero_documento_instructor'],
+                            'celular'           => $row['celular'],
+                            'email'             => $row['correo_electronico'],
                         ];
                     }
                 }

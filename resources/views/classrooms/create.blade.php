@@ -3,14 +3,14 @@
 @section('title','Adicionar ambiente')
 
 @section('big-content-desc')
-<ul class="breadcrumb">
-	<li><a href="{{ url('/admin/classroom') }}" class="btn-link">Lista de ambientes</a></li>
-	<li>Adicionar ambiente</li>
-</ul>
+	<ul class="breadcrumb">
+		<li><a href="{{ url('/admin/classroom') }}" class="btn-link">Lista de ambientes</a></li>
+		<li>Adicionar ambiente</li>
+	</ul>
 @endsection
 
 @section('big-content-desc')
-<h4>Adicionar ambiente</h4>
+	<h4>Adicionar ambiente</h4>
 @endsection
 
 @section('content')

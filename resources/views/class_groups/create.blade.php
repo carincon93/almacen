@@ -3,14 +3,14 @@
 @section('title','Adicionar ficha')
 
 @section('big-content-desc')
-<ul class="breadcrumb">
-	<li><a href="{{ url('/admin/class_group') }}" class="btn-link">Lista de fichas</a></li>
-	<li>Adicionar ficha</li>
-</ul>
+	<ul class="breadcrumb">
+		<li><a href="{{ url('/admin/class_group') }}" class="btn-link">Lista de fichas</a></li>
+		<li>Adicionar ficha</li>
+	</ul>
 @endsection
 
 @section('big-content-desc')
-<h4>Adicionar ficha</h4>
+	<h4>Adicionar ficha</h4>
 @endsection
 
 @section('content')
@@ -47,7 +47,7 @@
 					<select name="instructor_id" class="form-control select">
 						<option value="">Seleccione un instructor...</option>
 						@foreach($dataInstructor as $ins)
-						<option value="{{ $ins->id }}" {{ (old("id") == $ins->numero_documento ? "selected" : "")}}>{{ $ins->nombre.' '.$ins->apellidos }}</option>
+							<option value="{{ $ins->id }}" {{ (old("id") == $ins->numero_documento ? "selected" : "")}}>{{ $ins->nombre.' '.$ins->apellidos }}</option>
 						@endforeach
 					</select>
 					@if ($errors->has('instructor_id'))

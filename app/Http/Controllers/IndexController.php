@@ -9,7 +9,7 @@ use App\Instructor;
 use App\HistoryRecord;
 use App\ClassGroup;
 
-class WelcomeController extends Controller
+class IndexController extends Controller
 {
     protected $dataClassroom = [];
     protected $dataHistoryR = [];
@@ -27,6 +27,6 @@ class WelcomeController extends Controller
         $dataInstructor = Instructor::all()->sortBy('nombre');
         $dataFicha          = ClassGroup::where('disponibilidad', '=', 'disponible')->get();
 
-        return view('welcome', compact('dataClassroom', 'dataHistoryR', 'dataInstructor', 'dataFicha'));
+        return view('index', compact('dataClassroom', 'dataHistoryR', 'dataInstructor', 'dataFicha'));
     }
 }

@@ -1,26 +1,28 @@
 @foreach($query as $ins)
-@if($ins->disponibilidad == "disponible")
-<input value="{{ $ins-> id}}" name="instructor_id" class="hidden">
-<div class="panel panel-ins">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card-instructor">
-                <h4>Nombre Instructor</h4>
-                <p class="text-capitalize h5">{{ $ins->nombre.' '.$ins->apellidos }}</p>
-                <h4>Área / Especialidad</h4>
-                <p class="h5">{{ $ins->area }}</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <img src="{{ asset($ins->imagen) }}" alt="" class="img-responsive">
-        </div>
-    </div>
-</div>
 
-@else
-<h3>Este instructor ya tiene un ambiente asignado: <br>
-{{ $ins->classroom->nombre_ambiente }}
-</h3>
-@endif
+    @if($ins->disponibilidad == "disponible")
+        <input value="{{ $ins-> id}}" name="instructor_id" class="hidden">
+        <div class="text-center">
+
+        </div>
+        <h5>Nombre Instructor</h5>
+        <p class="text-capitalize h2">{{ $ins->nombre.' '.$ins->apellidos }}</p>
+        <h5>Área / Especialidad</h5>
+        <p class="text-capitalize h2">{{ $ins->area }}</p>
+        {{-- <div class="row">
+            <div class="col-md-8">
+                <div class="card-instructor">
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <img src="{{ asset($ins->imagen) }}" alt="" class="img-responsive">
+            </div>
+        </div> --}}
+    @else
+        <h3>Este instructor ya tiene un ambiente asignado: <br>
+            {{ $ins->classroom->nombre_ambiente }}
+        </h3>
+    @endif
 
 @endforeach

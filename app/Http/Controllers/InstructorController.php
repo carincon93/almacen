@@ -76,7 +76,7 @@ class InstructorController extends Controller
     */
     public function show($id)
     {
-        $dataInstructor  = Instructor::find($id);
+        $dataInstructor  = Instructor::findOrFail($id);
         return view('instructors.show')
         ->with('dataInstructor', $dataInstructor);
     }
@@ -89,7 +89,7 @@ class InstructorController extends Controller
     */
     public function edit($id)
     {
-        $dataInstructor  = Instructor::find($id);
+        $dataInstructor  = Instructor::findOrFail($id);
         return view('instructors.edit')
         ->with('dataInstructor', $dataInstructor);
     }
@@ -103,7 +103,7 @@ class InstructorController extends Controller
     */
     public function update(InstructorRequest $request, $id)
     {
-        $dataInstructor = Instructor::find($id);
+        $dataInstructor = Instructor::findOrFail($id);
         $this->validate($request, [
             'numero_documento' => [
                 'required',

@@ -22,8 +22,8 @@
     Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
     // Registration Routes...
-    // Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-    // Route::post('register', 'Auth\RegisterController@register');
+    Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'Auth\RegisterController@register');
 
     // Password Reset Routes...
     // Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
@@ -31,7 +31,7 @@
     // Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
     // Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-Route::get('/', 'WelcomeController@index')->name('welcome');
+Route::get('/', 'IndexController@index')->name('index');
 Route::get('/admin', 'AdminController@redirect');
 Route::get('/admin/dashboard', 'AdminController@dashboard');
 Route::post('/admin/dashboard/import', 'AdminController@import');

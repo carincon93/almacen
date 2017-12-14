@@ -3,7 +3,8 @@
 @section('title', 'Almacén')
 
 @section('big-content-desc')
-    <h3 class="text-center">Ambientes en uso</h3>
+    <h2 class="text-center">Ambientes en uso</h2>
+    <br>
     @include('layouts.messages')
     @foreach($dataClassroom->chunk(3) as $chunk)
         <div class="row">
@@ -40,7 +41,7 @@
 
 
 @section('content')
-    <hr>
+    {{-- <hr>
     <div class="buscar-ambiente">
         <h1 class="text-center">Buscar ambientes disponibles por nombre</h1>
         <input type="search" id="wnombre_ambiente" class="form-control search-navbar" placeholder="Buscar ambiente" autocomplete="off" autofocus>
@@ -53,9 +54,11 @@
         <div class="resultados">
 
         </div>
-    </div>
+    </div> --}}
 
     <div id="classroom-section">
+        <h2 class="text-center">Todos los ambientes CPIC</h2>
+        <br>
         @foreach($dataClassroom->chunk(3) as $chunk)
             <div class="row">
                 @foreach($chunk as $clr)
@@ -133,7 +136,6 @@
                             <tr class="text-capitalize">
                                 <td>{{ $his->instructor->nombre }}</td>
                                 <td>{{ $his->classroom->nombre_ambiente }}</td>
-
                             </tr>
                         @endforeach
                     </tbody>
@@ -162,7 +164,7 @@
     @endif
     <!-- Modal -->
     <div class="modal fade" id="modal_solicitar_prestamo">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-prestamo" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -179,27 +181,32 @@
                         </button>
                     </div>
 
+                    <br>
                     <!-- Formulario para préstamo -->
                     <form action="" method="POST" id="form-prestamo">
-                        {!! csrf_field() !!}
+                        {{ csrf_field() }}
                         <div class="clearfix">
                             <input name="id" type="hidden" value="" id="id_ambiente">
                             <input name="prestado_en" type="hidden" value="">
                         </div>
-                        <div id="resultado_instructor">
-                            Resultados:
+                        <div class="row d-flex">
+                            <div class="col-md-6">
+                                Instructor:
+                                <div id="resultado_instructor"></div>
+                            </div>
+                            <div class="col-md-6" style="border-left: 1px solid #eee">
+                                <div>
+                                    <p>Una vez identificado el instructor selecciona el grupo</p>
+                                    <select name="class_group_id" class="select">
+                                        <option value="">Seleccione una ficha...</option>
+                                        @foreach($dataFicha as $ficha)
+                                            <option value="{{ $ficha->id }}">{{ $ficha->id_ficha.' '.$ficha->nombre_ficha }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span id="mensaje" class="help-block" style="color:#a94442"></span>
+                                </div>
+                            </div>
                         </div>
-                        <hr>
-                        <div>
-                            <p>Una vez identificado el instructor selecciona el grupo</p>
-                            <select name="class_group_id" class="select">
-                                <option value="">Seleccione una ficha...</option>
-                                @foreach($dataFicha as $ficha)
-                                    <option value="{{ $ficha->id }}">{{ $ficha->id_ficha.' '.$ficha->nombre_ficha }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <span id="mensaje" class="help-block" style="color:#a94442"></span>
                     </form>
                 </div>
                 <div class="modal-footer">

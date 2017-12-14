@@ -1,16 +1,23 @@
 @extends('layouts.app')
+
+@section('title', 'Grupos')
+
 @section('big-content-desc')
     <ul class="breadcrumb">
-    	<li>Lista de fichas</li>
+        <li>Lista de fichas</li>
     </ul>
 @endsection
+
 @section('content')
 
     @include('layouts.messages')
-    <a href="{{ url('/admin/class_group/create') }}" class="action-round btn"><i class="fa fa-fw fa-plus"></i></a>
+
     <div class="card">
         <div class="table-responsive card-content">
             <table class="table table-full table-hover" id="myTable" data-form="deleteForm">
+                <caption>
+                    <a href="{{ url('/admin/class_group/create') }}" class="btn btn-success"><i class="fa fa-fw fa-plus"></i> Añadir grupo</a>
+                </caption>
                 <thead>
                     <tr>
                         <th>#</th>
@@ -31,16 +38,16 @@
                             <td>{{ $dg->nombre_ficha }}</td>
                             <td>{{ $dg->tipo_formacion }}</td>
                             <td class="td-actions">
-                                <a class="btn btn-round" href="{{ url('/admin/class_group/'.$dg->id) }}">
+                                <a class="btn btn-round" href="{{ url('/admin/class_group/'.$dg->id) }}" data-toggle="tooltip" data-placement="top" title="Ver grupo">
                                     <i class="fa fa-fw fa-search"></i>
                                 </a>
-                                <a class="btn btn-round" href="{{ url('/admin/class_group/'.$dg->id.'/edit') }}">
+                                <a class="btn btn-round" href="{{ url('/admin/class_group/'.$dg->id.'/edit') }}" data-toggle="tooltip" data-placement="top" title="Editar grupo">
                                     <i class="fa fa-fw fa-pencil"></i>
                                 </a>
                                 @if($dg->disponibilidad == 'disponible')
-                                    <form action="{{ url('/admin/class_group/'.$dg->id) }}" style="display: inline-block;" data-nombre="{{ $dg->nombre_ficha }}"  method="POST" class="btn-delete-tbl btn btn-round">
+                                    <form action="{{ url('/admin/class_group/'.$dg->id) }}" style="display: inline-block;" data-nombre="{{ $dg->nombre_ficha }}" method="POST" class="btn-delete-tbl btn btn-round" data-toggle="tooltip" data-placement="top" title="Eliminar grupo">
                                         {{ method_field('delete') }}
-                                        {!! csrf_field()  !!}
+                                        {{ csrf_field()  }}
                                         <i class="fa fa-fw fa-trash"></i>
                                     </form>
                                 @else

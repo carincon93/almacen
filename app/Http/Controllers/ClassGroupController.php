@@ -68,7 +68,7 @@ class ClassGroupController extends Controller
     public function show($id)
     {
 
-        return view('class_groups.show')->with('dataClassGroup', ClassGroup::find($id));
+        return view('class_groups.show')->with('dataClassGroup', ClassGroup::findOrFail($id));
     }
 
     /**
@@ -80,7 +80,7 @@ class ClassGroupController extends Controller
     public function edit($id)
     {
         $dataInstructor = Instructor::all()->sortBy('nombre');
-        $dataClassGroup = ClassGroup::find($id);
+        $dataClassGroup = ClassGroup::findOrFail($id);
         return view('class_groups.edit')
             ->with('dataClassGroup', $dataClassGroup)->with('dataInstructor', $dataInstructor);
     }
@@ -94,7 +94,7 @@ class ClassGroupController extends Controller
      */
     public function update(ClassGroupRequest $request, $id)
     {
-        $dataClassGroup = ClassGroup::find($id);
+        $dataClassGroup = ClassGroup::findOrFail($id);
         $this->validate($request, [
             'id_ficha' => [
                 'required',

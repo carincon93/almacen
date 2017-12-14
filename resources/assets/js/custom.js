@@ -1,7 +1,8 @@
 $(document).ready(function() {
 
-    // Obtener la fecha actual
     $('[data-toggle="tooltip"]').tooltip();
+    
+    // Obtener la fecha actual
     (function ($) {
         $.fn.getDate = function (format) {
 
@@ -29,6 +30,14 @@ $(document).ready(function() {
         // $('.modal-busqueda').click(function (event) {
         //     $(this).find('[autofocus]').focus();
         // });
+    });
+
+    var url = window.location;
+
+    $(document).ajaxStart(function () {
+        $('#resultado_instructor').append('<img src="'+ url +'images/loader.gif" class="center-block" width="50">');
+    }).ajaxStop(function () {
+        $('#resultado_instructor').children('img').remove();
     });
 
     // Búsqueda mediante ajax - Número de documento del instructor

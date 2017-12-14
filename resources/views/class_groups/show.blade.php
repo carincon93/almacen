@@ -3,20 +3,20 @@
 @section('title', 'Ver ficha')
 
 @section('big-content-desc')
-<ul class="breadcrumb">
-	<li><a href="{{ url('/admin/class_group') }}" class="btn-link">Lista de fichas</a></li>
-	<li>Adicionar ficha</li>
-</ul>
+	<ul class="breadcrumb">
+		<li><a href="{{ url('/admin/class_group') }}" class="btn-link">Lista de fichas</a></li>
+		<li>Adicionar ficha</li>
+	</ul>
 @endsection
 
 @section('content')
 	<h1 class="text-uppercase">{{ $dataClassGroup->id_ficha }}</h1>
 	<hr>
 	@if (session('status'))
-	<div class="alert alert-success alert-dismissible" role="alert">
-		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
-		{!!  html_entity_decode(session('status')) !!}
-	</div>
+		<div class="alert alert-success alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+			{!!  html_entity_decode(session('status')) !!}
+		</div>
 	@endif
 	<div class="table-responsive">
 		<table class="table table-stripped table-bordered table-hover">

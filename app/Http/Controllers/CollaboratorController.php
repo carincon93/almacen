@@ -62,7 +62,7 @@ class CollaboratorController extends Controller
      */
     public function show($id)
     {
-        return view('collaborators.show')->with('dataCollaborator', User::find($id));
+        return view('collaborators.show')->with('dataCollaborator', User::findOrFail($id));
     }
 
     /**
@@ -73,7 +73,7 @@ class CollaboratorController extends Controller
      */
     public function edit($id)
     {
-        $dataCollaborator = User::find($id);
+        $dataCollaborator = User::findOrFail($id);
         return view('collaborators.edit')
             ->with('dataCollaborator', $dataCollaborator);
     }
@@ -87,7 +87,7 @@ class CollaboratorController extends Controller
      */
     public function update(CollaboratorRequest $request, $id)
     {
-        $dataCollaborator = User::find($id);
+        $dataCollaborator = User::findOrFail($id);
         $dataCollaborator->name = $request->get('name');
         $dataCollaborator->email = $request->get('email');
         $dataCollaborator->password = bcrypt($request->get('password'));
