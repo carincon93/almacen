@@ -232,7 +232,7 @@ div.dataTables_filter, div.dataTables_info, div.dataTables_length, div.dataTable
 
 #sidebar #sidebar-content ul li a:after {
   content: "\F105";
-  font-family: FontAwesome;
+  font-family: "Font Awesome 5 Free Solid";
   position: absolute;
   right: 0;
 }

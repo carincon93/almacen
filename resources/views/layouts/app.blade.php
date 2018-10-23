@@ -56,10 +56,10 @@
                     <a href="{{ url('/') }}"><i class="fa fa-fw fa-key icon-cyan"></i>Prestar ambiente</a>
                 </li>
                 <li>
-                    <a href="{{ url('/admin/history_record') }}"><i class="fa fa-fw fa-line-chart"></i>Historial de préstamos</a>
+                    <a href="{{ url('/admin/history_record') }}"><i class="fas fa-chart-line"></i>Historial de préstamos</a>
                 </li>
                 <li>
-                    <a href="{{ url('/admin/update_system') }}"><i class="fa fa-fw fa-circle-o-notch"></i>Actualizar sistema</a>
+                    <a href="{{ url('/admin/update_system') }}"><i class="fas fa-circle-notch"></i>Actualizar sistema</a>
                 </li>
             </ul>
         </div>
