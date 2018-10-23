@@ -1,9 +1,0 @@
-fotos ambientes y instructores,
-poner css a los ambientes que se coloreen como en el mapa
-
-
-===== Verificar existencia de instructores y número de documento =======
-1132770	desarrollo grafico de proyectos de arquitectura e ingenieria	construccion	jorge gutierrez	2	00/00/0000	0000-00-00	17/10/2017	nocturna	presencial
-1197693	gestion integrada de sistemas de calidad ambiental seguridad y salud ocupacional HSEQ	ambiental	carlos arturo valencia	1	11/07/2016	01/11/2018	11/07/2018	nocturna	presencial
-1261575	tecnologo en gestion integrada de la calidad medio ambiente seguridad y salud ocupacional	salud ocupacional	carlos arturo valencia	1	11/09/2016	0000-00-00	26/03/2018	nocturna	presencial
-1261575	tecnologo en gestion integrada de la calidad medio ambiente seguridad y salud ocupacional (b)	salud ocupacional	carlos arturo valencia	1	26/09/2016	26/03/2018	26/09/2018	nocturna	presencial

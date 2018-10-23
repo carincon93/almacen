@@ -342,7 +342,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Administrador del sistema', 'admin@almacen.com', '$2y$10$aPB2QJIjPnZZaSAAUHM0.u09e..brK6CIXHdpk6HPcNyeLoZUKRNW', '9mkn4MkF23fA5F7WCm4aCGZgtbZdC99WDJ1qkeB81nFTZateLj00uNsw9x7o', '2017-10-08 21:59:19', '2017-10-08 21:59:19');
+(1, 'Administrador del sistema', 'admin@almacen.com', '$2a$04$OgpVnJbSZAuWalmdqMWd4eIme8upteQHSBOOZT6VOXaTA1YtiWRiS', '9mkn4MkF23fA5F7WCm4aCGZgtbZdC99WDJ1qkeB81nFTZateLj00uNsw9x7o', '2017-10-08 21:59:19', '2017-10-08 21:59:19');
 
 --
 -- Índices para tablas volcadas
