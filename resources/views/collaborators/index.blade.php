@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    @include('layouts.modal')
+    @include('partials.modal')
     @include('layouts.messages')
     <div class="card">
         <div class="table-responsive">

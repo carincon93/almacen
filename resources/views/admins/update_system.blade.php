@@ -8,7 +8,8 @@
 
 @section('content')
     @include('layouts.messages')
-    <div class="modal fade" id="confirm-delete">
+    @include('partials.modal')
+    {{-- <div class="modal fade" id="confirm-delete">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -23,7 +24,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Nav tabs -->
     <div class="d-flex">
         <div id="sidebar-system">

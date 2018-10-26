@@ -23,8 +23,8 @@
 
 </head>
 <body>
-    @include('layouts.modal')
-    @include('layouts.modal_historial')
+    @include('partials.modal')
+    @include('partials.modal_historial')
     @auth
         <aside id="sidebar">
             <div id="sidebar-logo">

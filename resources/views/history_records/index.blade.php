@@ -12,7 +12,7 @@
 @section('content')
 
     @include('layouts.messages')
-    @include('layouts.modal')
+    @include('partials.modal')
     <div class="card">
         <div class="table-responsive card-content">
             <table class="table table-full table-hover" id="myTable" data-form="deleteForm">
