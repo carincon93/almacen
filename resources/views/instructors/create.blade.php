@@ -21,7 +21,7 @@
 	<div class="card-form">
 		<form action="{{ url('admin/instructor') }}" method="POST" enctype="multipart/form-data">
 			<div class="form-group">
-				{{ csrf_field() }}
+				@csrf
 				<div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
 					<label for="nombre" class="control-label">
 						Nombre *

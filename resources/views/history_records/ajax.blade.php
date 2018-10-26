@@ -17,7 +17,7 @@
             </button>
             <form action="{{ url('/admin/history_record/'.$h->id) }}" data-nombre="{{ $h->id_ficha }}" method="POST" style="display: inline-block;" class="btn btn-round btn-delete-tbl">
                 {{ method_field('delete') }}
-                {!! csrf_field()  !!}
+                @csrf
                 <i class="fa fa-fw fa-trash"></i>
             </form>
         </td>

@@ -1,5 +1,10 @@
 // Font Awesome 5 Free Solid
 // Font Awesome 5 Free Regular
+
+// Variables
+$danger: #fd8f8f; // Planos
+$success: #89ffa0; // Planos
+
 html {
     height: 100%;
 }
@@ -372,11 +377,13 @@ div.dataTables_filter, div.dataTables_info, div.dataTables_length, div.dataTable
     padding-top: 51px;
     padding-left: 40px;
     padding-right: 40px;
+    width: 100%;
 }
 
 .big-content .big-content-desc {
     padding: 20px;
     padding-left: 0;
+    width: 100%;
 }
 
 .tooltip-inner {
@@ -576,10 +583,6 @@ div.dataTables_filter, div.dataTables_info, div.dataTables_length, div.dataTable
     background: #ccc;
 }
 
-i.itm_quare {
-    color: #93f793;
-}
-
 .modal-prestar p {
     margin-bottom: 3rem;
 }
@@ -629,12 +632,17 @@ form .img-instructor {
     width: 100%;
 }
 
-.cpic-floor1 path {
-    fill: #fff;
+.bloque-azul path {
+    fill: $success;
+    transition: all 0.3s;
 }
 
-.cpic-floor1 path:hover {
-    fill: #f7f7f7 !important;
+.bloque-azul path:hover {
+    fill: #f4fffc !important;
+}
+
+.bloque-azul .ocupado {
+    fill: $danger;
 }
 
 .err404 {
@@ -837,8 +845,8 @@ form .img-instructor {
     padding: 4rem;
 }
 
-.circle-green {
-    color: #93f793;
+.circle-red {
+    color: $danger;
 }
 .buscar-ambiente {
     margin-bottom: 3rem;
@@ -869,4 +877,17 @@ form .img-instructor {
 
 .card-instructor {
     padding: 2rem;
+}
+
+.bgc-success {
+    background-color: $success;
+}
+.bgc-danger {
+    background-color: $danger;
+}
+.color-success {
+    color: $success;
+}
+.color-danger {
+    color: $danger;
 }

@@ -18,7 +18,7 @@
 		<div class="card-form">
 			<form action="{{ url('/admin/classroom') }}" method="POST" enctype="multipart/form-data">
 				<div class="form-group{{ $errors->has('nombre_ambiente') ? ' has-error' : '' }}">
-					{!! csrf_field()  !!}
+					@csrf
 					<div class="form-group{{ $errors->has('nombre_ambiente') ? ' has-error' : '' }}">
 						<label for="nombre_ambiente" class="control-label">
 							Nombre del ambiente *

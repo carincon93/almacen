@@ -45,7 +45,7 @@
                                 @if($ins->disponibilidad == 'disponible')
                                     <form action="{{ url('/admin/instructor/'.$ins->id) }}" method="POST" class="btn-round btn-delete-tbl btn" data-nombre="{{ $ins->nombre.' '.$ins->apellidos }}" data-toggle="tooltip" data-placement="top" title="Eliminar instructor">
                                         {{ method_field('delete') }}
-                                        {{ csrf_field() }}
+                                        @csrf
                                         <i class="fa fa-fw fa-trash"></i>
                                     </form>
                                 @else

@@ -17,7 +17,7 @@
 	<div class="col-md-8">
 		<div class="card-form">
 			<form action="{{ url('/admin/class_group/'.$dataClassGroup->id) }}" method="POST">
-				{!! csrf_field()  !!}
+				@csrf
 				{{ method_field('PUT') }}
 				<div class="form-group{{ $errors->has('id_ficha') ? ' has-error' : '' }}">
 					<label for="id_ficha" class="control-label">

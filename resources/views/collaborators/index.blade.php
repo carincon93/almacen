@@ -39,7 +39,7 @@
                                 </a>
                                 <form action="{{ url('/admin/collaborator/'.$adm->id) }}" data-nombre="{{ $adm->name }}" method="POST" style="display: inline-block;" class="btn-delete-tbl btn-round btn">
                                     {{ method_field('delete') }}
-                                    {!! csrf_field()  !!}
+                                    @csrf
                                     <i class="fa fa-fw fa-trash"></i>
                                 </form>
                             </td>

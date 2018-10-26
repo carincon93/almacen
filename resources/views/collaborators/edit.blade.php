@@ -18,7 +18,7 @@
 		<div class="card-form">
 			<form action="{{ url('/admin/collaborator/'.$dataCollaborator->id) }}" method="POST">
 				<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-					{!! csrf_field()  !!}
+					@csrf
 					{{ method_field('PUT') }}
 					<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 						<label for="name" class="control-label">

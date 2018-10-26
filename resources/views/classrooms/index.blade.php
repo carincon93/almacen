@@ -47,7 +47,7 @@
                                 @if($clr->disponibilidad == 'disponible')
                                     <form action="{{ url('/admin/classroom/'.$clr->id) }}" data-nombre="{{ $clr->nombre_ambiente }}" method="POST" style="display: inline-block;" class="btn-delete-tbl btn btn-round btn-round" data-toggle="tooltip" data-placement="top" title="Eliminar ambiente">
                                         {{ method_field('delete') }}
-                                        {!! csrf_field()  !!}
+                                        @csrf
                                         <i class="fa fa-fw fa-trash"></i>
                                     </form>
                                 @else

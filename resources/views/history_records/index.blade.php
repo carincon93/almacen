@@ -3,10 +3,10 @@
 @section('title', 'Historial de préstamos')
 
 @section('big-content-desc')
-    <div>
+    {{-- <div>
         <p>Si quieres exportar todo el historial de prestamos a un archivo de excel, da clic en 'Exportar historial'</p>
         <a href="{{ url('history_record/excel') }}" class="btn btn-success"><i class="fa fa-cloud-download"></i> Exportar historial</a>
-    </div>
+    </div> --}}
 @endsection
 
 @section('content')
@@ -67,7 +67,7 @@
                                 </button>
                                 <form action="{{ url('/admin/history_record/'.$his->id) }}" data-nombre="{{ $his->classgroup->id_ficha }}" method="POST" style="display: inline-block;" class="btn btn-round btn-delete-tbl">
                                     {{ method_field('delete') }}
-                                    {!! csrf_field()  !!}
+                                    @csrf
                                     <i class="fa fa-fw fa-trash"></i>
                                 </form>
                             </td>

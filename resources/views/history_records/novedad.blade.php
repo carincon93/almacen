@@ -1,6 +1,6 @@
 @foreach($history_records as $his)
     <form action="{{ url( 'admin/history_record/' . $his->id . '/novedad_nueva') }}" method="POST" id="formNovedadNueva">
-        {{ csrf_field() }}
+        @csrf
         {{ method_field('PUT') }}
         <div class="form-group">
             <label for="novedad">Novedad vieja</label>

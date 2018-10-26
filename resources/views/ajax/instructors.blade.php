@@ -1,7 +1,7 @@
 @foreach($query as $ins)
 
     @if($ins->disponibilidad == "disponible")
-        <input value="{{ $ins-> id}}" name="instructor_id" class="hidden">
+        <input type="hidden" value="{{ $ins-> id}}" name="instructor_id">
         <div class="text-center">
 
         </div>

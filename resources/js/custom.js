@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     $('[data-toggle="tooltip"]').tooltip();
-    
+
     // Obtener la fecha actual
     (function ($) {
         $.fn.getDate = function (format) {
@@ -339,5 +339,11 @@ $(document).ready(function() {
         $.get('obtener_historial', { id: $id }, function (data, textStatus, xhr) {
             $('#mbody-Historial').html(data);
         });
+    });
+
+    $('body').on('click', '.bloque-azul path', function(event) {
+        event.preventDefault();
+        /* Act on the event */
+        alert($(this).attr('d'));
     });
 });

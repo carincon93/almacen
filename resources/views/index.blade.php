@@ -19,10 +19,7 @@
                                 <div class="clr-desc">
                                     <div class="desc-1">
                                         <h5 class="" data-nombre-ambiente="{{ $clr->nombre_ambiente }}">{{ $clr->nombre_ambiente }}</h5>
-                                        @php
-                                        $dt1=new Jenssegers\Date\Date($clr->prestado_en);
-                                        @endphp
-                                        <div class="clearfix"><span class="pull-right">{{ $dt1->format('l d F Y h:i A') }}</span></div>
+                                        <div class="clearfix"><span class="pull-right"></span></div>
                                     </div>
                                     <hr>
                                     <div class="desc-1 desc-prestamo">
@@ -184,7 +181,7 @@
                     <br>
                     <!-- Formulario para préstamo -->
                     <form action="" method="POST" id="form-prestamo">
-                        {{ csrf_field() }}
+                        @csrf
                         <div class="clearfix">
                             <input name="id" type="hidden" value="" id="id_ambiente">
                             <input name="prestado_en" type="hidden" value="">
@@ -226,12 +223,12 @@
                 </div>
                 <div class="modal-body">
                     <form action="" method="POST" id="form-entrega">
-                        {!! csrf_field() !!}
+                        @csrf
                         <input name="prestado_en" type="hidden" value="" id="prestado_en">
 
                         <input name="id" type="hidden" value="" id="id-clrEntrega">
-                        <input value="" name="instructor_id" class="hidden">
-                        <input value="" name="class_group_id" class="hidden">
+                        <input type="hidden" value="" name="instructor_id">
+                        <input type="hidden" value="" name="class_group_id">
                         <div class="form-group">
                             <label class="label-control">Agregar novedad</label>
                             <textarea name="novedad" rows="4" cols="80" class="form-control" autofocus></textarea>

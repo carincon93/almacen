@@ -113,7 +113,10 @@ button:focus {
   color: #3097D1 !important;
 }
 
-div.dataTables_filter, div.dataTables_info, div.dataTables_length, div.dataTables_paginate {
+div.dataTables_filter,
+div.dataTables_info,
+div.dataTables_length,
+div.dataTables_paginate {
   padding: 20px;
 }
 
@@ -372,11 +375,13 @@ div.dataTables_filter, div.dataTables_info, div.dataTables_length, div.dataTable
   padding-top: 51px;
   padding-left: 40px;
   padding-right: 40px;
+  width: 100%;
 }
 
 .big-content .big-content-desc {
   padding: 20px;
   padding-left: 0;
+  width: 100%;
 }
 
 .tooltip-inner {
@@ -576,10 +581,6 @@ div.dataTables_filter, div.dataTables_info, div.dataTables_length, div.dataTable
   background: #ccc;
 }
 
-i.itm_quare {
-  color: #93f793;
-}
-
 .modal-prestar p {
   margin-bottom: 3rem;
 }
@@ -618,12 +619,18 @@ form .img-instructor {
   width: 100%;
 }
 
-.cpic-floor1 path {
-  fill: #fff;
+.bloque-azul path {
+  fill: #89ffa0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
-.cpic-floor1 path:hover {
-  fill: #f7f7f7 !important;
+.bloque-azul path:hover {
+  fill: #f4fffc !important;
+}
+
+.bloque-azul .ocupado {
+  fill: #fd8f8f;
 }
 
 .err404 {
@@ -724,6 +731,7 @@ form .img-instructor {
 }
 
 /*import*/
+
 .js .inputfile {
   width: 0.1px;
   height: 0.1px;
@@ -762,6 +770,7 @@ form .img-instructor {
 }
 
 /* style 5 */
+
 .inputfile-5 + label {
   background: #eee;
   display: block;
@@ -826,8 +835,8 @@ form .img-instructor {
   padding: 4rem;
 }
 
-.circle-green {
-  color: #93f793;
+.circle-red {
+  color: #fd8f8f;
 }
 
 .buscar-ambiente {
@@ -861,3 +870,20 @@ form .img-instructor {
 .card-instructor {
   padding: 2rem;
 }
+
+.bgc-success {
+  background-color: #89ffa0;
+}
+
+.bgc-danger {
+  background-color: #fd8f8f;
+}
+
+.color-success {
+  color: #89ffa0;
+}
+
+.color-danger {
+  color: #fd8f8f;
+}
+

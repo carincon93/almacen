@@ -13,7 +13,7 @@
 	<div class="col-md-8">
 		<div class="card-form">
 			<form action="{{ url('/admin/instructor/'.$dataInstructor->id) }}" method="POST" enctype="multipart/form-data">
-				{!! csrf_field()  !!}
+				@csrf
 				{{ method_field('put') }}
 				@if(!empty($dataInstructor->imagen))
 					<img src="{{ asset($dataInstructor->imagen) }}" alt="" class="img-responsive img-instructor">

@@ -17,7 +17,7 @@
 	<div class="col-md-8">
 		<div class="card-form">
 			<form action="{{ url('/admin/class_group') }}" method="POST" data-toggle="validator" role="form">
-				{!! csrf_field()  !!}
+				@csrf
 				<div class="form-group{{ $errors->has('id_ficha') ? ' has-error' : '' }}">
 					<label for="id_ficha" class="control-label">
 						ID de ficha *

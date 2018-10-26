@@ -44,7 +44,7 @@
                         <div class="col-md-12">
                             <form class="" action="{{ url('/admin/dashboard/import') }}" method="post" enctype="multipart/form-data" >
                                 <fieldset>
-                                    {!! csrf_field() !!}
+                                    @csrf
                                     <!-- <label for="imported-file">Selecciona un archivo excel para importar</label> -->
                                     <blockquote class="blockquote">
                                         <i class="fa fa-fw fa-info"></i>
@@ -80,7 +80,7 @@
                         <br>
                         <div>
                             <form action="{{ url('/admin/all_entries/truncate') }}" method="POST" class="form-truncate-ficha btn btn-danger center-block width-button">
-                                {!! csrf_field() !!}
+                                @csrf
                                 Eliminar todos los registros
                             </form>
                         </div>

@@ -13,7 +13,7 @@
 	<div class="col-md-8">
 		<div class="card-form">
 			<form action="{{ url('/admin/classroom/'.$clr->id) }}" method="POST" enctype="multipart/form-data">
-				{!! csrf_field()  !!}
+				@csrf
 				{{ method_field('put') }}
 				<div class="form-group{{ $errors->has('nombre_ambiente') ? ' has-error' : '' }}">
 					<label for="nombre_ambiente" class="control-label">
